@@ -1,0 +1,22 @@
+{
+ "name": "Area riservata Riccardo",
+ "short_name": "Riccardo",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#F2F4F3",
+ "theme_color": "#1B7D8D",
+ "lang": "it",
+ "icons": [
+  {
+   "src": "../assets/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "../assets/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
