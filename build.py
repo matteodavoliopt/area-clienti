@@ -8,6 +8,8 @@ import json, re, html, pathlib
 
 ROOT = pathlib.Path(__file__).parent
 TPL = (ROOT / 'template.html').read_text(encoding='utf-8')
+_cfg = ROOT / 'config.json'
+CONFIG = json.loads(_cfg.read_text(encoding='utf-8')) if _cfg.exists() else {}
 
 HEAD = '''<!doctype html>
 <html lang="it">
@@ -41,7 +43,9 @@ def page(entry):
                       lambda m: m.group(1) + js + m.group(2), body, count=1, flags=re.S)
     assert n == 1, 'blocco dati non trovato nel template'
     first = name.split()[0]
-    return HEAD.format(title=html.escape('Area riservata · ' + name), short=html.escape(first)) + body + '\n</body>\n</html>\n', first
+    site = {'slug': entry['slug'], 'form': CONFIG.get('form')}
+    boot = '<script>window.SITE=' + json.dumps(site, ensure_ascii=False).replace('<', '\\u003c') + ';</script>\n'
+    return HEAD.format(title=html.escape('Area riservata · ' + name), short=html.escape(first)) + boot + body + '\n</body>\n</html>\n', first
 
 def manifest(first):
     return json.dumps({

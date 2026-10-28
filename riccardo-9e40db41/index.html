@@ -17,6 +17,7 @@
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<script>window.SITE={"slug": "riccardo-9e40db41", "form": null};</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style id="st">
@@ -89,6 +90,15 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wk.now{border-color:var(--accent);background:var(--accent-soft)}
 .wk.now b{color:var(--accent)}
 .wk.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
+button.wk{cursor:pointer;color:var(--ink);text-align:left}
+button.wk.empty{color:var(--accent)}
+.wk.mine{border-color:var(--rest)}
+.wk i{font:600 10px/1 var(--body);font-style:normal;color:var(--rest);text-transform:uppercase;letter-spacing:.04em}
+.le{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--accent);border-radius:10px;background:var(--accent-soft)}
+.le label{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.le input{font:16px/1.4 var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;width:100%}
+.le small{color:var(--muted);font-size:12.5px}
+.le-btns{display:flex;justify-content:flex-end;gap:8px}
 .log-ed{grid-column:1/-1;display:flex;flex-direction:column;gap:6px}
 .log-ed .weeks{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
 .log-ed .weeks label{flex:0 0 76px}
@@ -174,7 +184,7 @@ var S;
 try { S = JSON.parse(document.getElementById('data').textContent); } catch(e){ S = {client:{name:''},note:'',days:[],appts:[]}; }
 S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
 S.days.forEach(function(d){ (d.ex||[]).forEach(function(e){ if(!e.vids){ e.vids = e.v ? [{t:'',u:e.v}] : []; } delete e.v; e.log = e.log || []; if(e.lab==null) e.lab=''; }); });
-var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false };
+var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false, le:null };
 var ORIG = JSON.stringify(S);
 var draft = null;
 var app = document.getElementById('app');
@@ -193,6 +203,22 @@ var PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/
 function nWeeks(){ return Math.max(1, Math.min(52, parseInt(S.weeks,10) || 12)); }
 function curWeek(){ var s=S.client.start; if(!s) return 0; var a=parseD({d:s}), n=new Date(); n.setHours(0,0,0,0); if(n<a) return 0; return Math.floor((n-a)/864e5/7)+1; }
 function vidLinks(e){ return (e.vids||[]).filter(function(v){ return safeUrl(v.u); }); }
+/* --- Pesi segnati dal cliente (solo sul sito) --- */
+var SITE = (window.SITE && window.SITE.form && window.SITE.form.action) ? window.SITE : null;
+var PK = SITE ? 'pesi-'+SITE.slug : '';
+var PEND = {};
+if(SITE){ try{ PEND = JSON.parse(localStorage.getItem(PK)||'{}') || {}; }catch(e){ PEND = {}; } }
+function pendSave(){ try{ localStorage.setItem(PK, JSON.stringify(PEND)); }catch(e){} }
+function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
+function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
+if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k], e=findEx(p.d,p.n); if(!e){ return; } if(p.sent && ((e.log||[])[p.w-1]||'').trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
+function sendPend(k){
+  var p=PEND[k]; if(!p || !SITE) return;
+  var fd=new FormData();
+  fd.append(SITE.form.entry, JSON.stringify({s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
+  fetch(SITE.form.action,{method:'POST',mode:'no-cors',body:fd}).then(function(){ if(PEND[k]){ PEND[k].sent=true; pendSave(); render(); } }).catch(function(){});
+}
+if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
 
 function viewPlan(){
   var c = S.client, g = (c.goal||'').trim(), s = c.start, e = c.end, fq = (c.freq||'').trim(), du = (c.dur||'').trim();
@@ -244,7 +270,24 @@ function viewTrain(){
         (e.info?'<span class="info">'+esc(e.info)+'</span>':'');
       if(vs.length>1){ h += '<span class="vids">'; vs.forEach(function(v,j){ h += '<a class="vid" href="'+esc(safeUrl(v.u))+'" target="_blank" rel="noopener">'+PLAY+esc((v.t||'').trim()||('Video '+(j+1)))+'</a>'; }); h += '</span>'; }
       var lg = e.log||[], any = lg.some(function(x){ return (x||'').trim(); });
-      if(any){
+      if(SITE){
+        var di = ui.day, last = 0;
+        lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
+        Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
+        var upto = Math.min(nWeeks(), Math.max(last, cw||1));
+        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span><div class="log-weeks">';
+        for(var w=1; w<=upto; w++){
+          var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
+          var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
+          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(val.trim()?esc(val):'+ segna')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
+        }
+        h += '</div>';
+        if(ui.le && ui.le.d===di && ui.le.n===e.n){
+          var cur = PEND[pkey(di,e,ui.le.w)] ? PEND[pkey(di,e,ui.le.w)].v : (lg[ui.le.w-1]||'');
+          h += '<div class="le"><label for="le-in">Settimana '+ui.le.w+' · '+esc((e.lab||'').trim()||'REP/KG')+'</label><input id="le-in" type="text" inputmode="text" autocomplete="off" value="'+esc(cur)+'" placeholder="Es. 8/80 · 7/80"><small>Una serie dopo l\u2019altra, ripetizioni/kg.</small><div class="le-btns"><button type="button" class="btn small" data-act="logCancel">Annulla</button><button type="button" class="btn small primary" data-act="logSave">Salva</button></div></div>';
+        }
+        h += '</div>';
+      } else if(any){
         h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Settimane')+'</span><div class="log-weeks">';
         lg.forEach(function(x,w){ if((x||'').trim()) h += '<span class="wk'+(w+1===cw?' now':'')+'"><b>S'+(w+1)+'</b>'+esc(x)+'</span>'; });
         if(cw && cw<=nWeeks() && !((lg[cw-1]||'').trim())) h += '<span class="wk now empty"><b>S'+cw+'</b>questa settimana</span>';
@@ -394,6 +437,7 @@ function render(){
                : '<button class="btn primary" data-act="edit">Modifica</button>')+'</div></div>';
   }
   app.innerHTML = h;
+  try{ document.querySelectorAll('.log-weeks').forEach(function(el){ var n=el.querySelector('.now'); if(n) el.scrollLeft = Math.max(0, n.offsetLeft - el.offsetLeft - 60); }); }catch(err){}
 }
 
 function setPath(obj,path,val){ var p=path.split('.'), o=obj; for(var i=0;i<p.length-1;i++){ if(o[p[i]]==null) o[p[i]] = /^\d+$/.test(p[i+1]) ? [] : {}; o=o[p[i]]; } o[p[p.length-1]]=val; }
@@ -402,6 +446,16 @@ app.addEventListener('change', function(e){
   var k = e.target.getAttribute && e.target.getAttribute('data-pkg');
   if(k && !ui.edit){ S.pkg=S.pkg||{total:'',done:''}; S.pkg[k]=e.target.value; ui.dirty=true; ui.msg=''; var y2=window.scrollY; render(); window.scrollTo(0,y2); }
 });
+
+function saveLog(){
+  var inp2=document.getElementById('le-in'); if(!inp2 || !ui.le) return;
+  var v=inp2.value.trim(), L=ui.le, e=findEx(L.d,L.n); if(!e) return;
+  var k=pkey(L.d,e,L.w);
+  if(v===((e.log||[])[L.w-1]||'').trim() && !PEND[k]){ ui.le=null; render(); return; }
+  PEND[k]={d:L.d,dn:(S.days[L.d]||{}).name||'',n:e.n,w:L.w,v:v,ts:Date.now(),sent:false};
+  pendSave(); ui.le=null; var y4=window.scrollY; render(); window.scrollTo(0,y4); sendPend(k);
+}
+app.addEventListener('keydown', function(e){ if(e.target.id==='le-in' && e.key==='Enter'){ e.preventDefault(); saveLog(); } });
 
 app.addEventListener('input', function(e){
   var p = e.target.getAttribute && e.target.getAttribute('data-p');
@@ -426,6 +480,9 @@ app.addEventListener('click', function(e){
     S.pkg.total=t?String(t):''; S.pkg.done=String(dn); ui.dirty=true; ui.msg='';
     var yy=window.scrollY; render(); window.scrollTo(0,yy); return;
   }
+  if(a==='logEdit'){ ui.le={d:+b.dataset.d,n:b.dataset.n,w:+b.dataset.w}; var y3=window.scrollY; render(); window.scrollTo(0,y3); var inp1=document.getElementById('le-in'); if(inp1){ try{ inp1.focus({preventScroll:true}); }catch(err){ inp1.focus(); } } return; }
+  if(a==='logCancel'){ ui.le=null; render(); return; }
+  if(a==='logSave'){ saveLog(); return; }
   var D=draft;
   if(a==='addDay') D.days.push({name:'DAY '+(D.days.length+1),focus:'',extra:[],ex:[{n:'',sr:'',info:'',rec:'',vids:[],lab:'',log:[]}]});
   if(a==='delDay') D.days.splice(i,1);
