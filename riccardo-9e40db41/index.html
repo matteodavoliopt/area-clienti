@@ -125,6 +125,9 @@ button.wk.empty{color:var(--accent)}
 .dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--accent)}
 .dots i.on{background:var(--accent)}
 .pkg small{color:var(--muted);font-size:13px}
+.pay{align-self:flex-start;font:700 13px/1 var(--body);padding:7px 10px;border-radius:999px;margin-top:-4px}
+.pay.ok{color:var(--accent);background:var(--accent-soft)}
+.pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
 .policy{margin:0;display:flex;gap:8px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.4;color:var(--muted)}
 .policy svg{flex:0 0 auto;width:16px;height:16px;margin-top:1px;color:var(--rest)}
 .policy strong{color:var(--ink);font-weight:600}
@@ -321,6 +324,8 @@ function stepper(label, act, val, what){
 }
 function isLesson(a){ var w=(a.what||'').toLowerCase(); return w.indexOf('lezion')>=0 || w.indexOf('massagg')<0; }
 function pastLessonsSince(from){ var now=new Date(); return S.appts.filter(function(a){ return a.d && a.d>=from && parseD(a)<now && isLesson(a); }).length; }
+function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
+function payState(p,mode){ if(p.paid==null) return null; if(mode==='month') return (p.paid===true && p.paidMonth===curYM()); return p.paid===true; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
@@ -331,6 +336,7 @@ function viewPkg(){
       [['pack','Pacchetto'],['month','Mensile'],['none','Nessuno']].map(function(m){ return '<button data-act="pkgM" data-v="'+m[0]+'" aria-pressed="'+(mode===m[0])+'">'+m[1]+'</button>'; }).join('')+'</div>';
     if(mode==='pack') coach += '<div class="pkg-ctl">'+stepper('Totale lezioni','pkgT',tot,'una lezione al pacchetto')+(p.start?'<div><small>Lezioni fatte contate dal calendario.</small></div>':stepper('Lezioni fatte','pkgD',Math.min(done,tot),'una lezione fatta'))+'</div><label>Inizio pacchetto (per contare dal calendario)<input type="date" id="pkg-start" data-pkg="start" value="'+esc(p.start||'')+'"></label>';
     if(mode==='month') coach += '<div class="pkg-ctl">'+stepper('Lezioni al mese','pkgQ',quota,'una lezione al mese')+'<div><small>Fatte e in programma si contano dagli appuntamenti del mese.</small></div></div>';
+    if(mode!=='none'){ var ps0=payState(p,mode); coach += '<div><span class="eyebrow">'+(mode==='month'?'Pagamento del mese':'Pagamento del pacchetto')+'</span><div class="seg" role="group" aria-label="Pagamento" style="margin-top:6px"><button data-act="pkgP" data-v="1" aria-pressed="'+(ps0===true)+'">Pagato</button><button data-act="pkgP" data-v="0" aria-pressed="'+(ps0===false)+'">Da pagare</button></div>'+(mode==='month'?'<small>Ogni mese nuovo torna su “Da pagare” finché non lo segni.</small>':'')+'</div>'; }
     coach += '</div>';
   }
   var h = '';
@@ -364,6 +370,8 @@ function viewPkg(){
   } else {
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
+  var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
+  if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+(ps?'ok':'no')+'">'+(ps?'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'):(mode==='month'?'Mese da pagare':'Pacchetto da pagare'))+'</span>');
   var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
   return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
 }
@@ -446,7 +454,7 @@ function render(){
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
   if(ui.canEdit){
-    h += '<div class="bar"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Pacchetto modificato: premi Salva per mostrarlo al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
+    h += '<div class="bar"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Modifiche al pacchetto: premi Salva per mostrarle al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
       (ui.dirty && !ui.edit ? '<button class="btn" data-act="discard">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>' : ui.edit ? '<button class="btn" data-act="cancel">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>'
                : '<button class="btn primary" data-act="edit">Modifica</button>')+'</div></div>';
   }
@@ -486,6 +494,7 @@ app.addEventListener('click', function(e){
   if(a==='save'){ if(!ui.edit) draft=JSON.parse(JSON.stringify(S)); save(); return; }
   if(a==='discard'){ S=JSON.parse(ORIG); ui.dirty=false; ui.msg=''; render(); return; }
   if(a==='pkgM'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.mode=b.dataset.v; ui.dirty=true; ui.msg=''; var y0=window.scrollY; render(); window.scrollTo(0,y0); return; }
+  if(a==='pkgP'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.paid=(b.dataset.v==='1'); if(S.pkg.paid) S.pkg.paidMonth=curYM(); ui.dirty=true; ui.msg=''; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='pkgQ'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.month=String(Math.max(0,(parseInt(S.pkg.month,10)||0)+(+b.dataset.v))); ui.dirty=true; ui.msg=''; var y1=window.scrollY; render(); window.scrollTo(0,y1); return; }
   if(a==='pkgT'||a==='pkgD'){
     S.pkg=S.pkg||{total:'',done:''};
