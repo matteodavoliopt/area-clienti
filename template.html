@@ -109,6 +109,8 @@ button.wk.empty{color:var(--accent)}
 .pkg small{color:var(--muted);font-size:13px}
 .pay{align-self:flex-start;font:700 13px/1 var(--body);padding:7px 10px;border-radius:999px;margin-top:-4px}
 .pay.ok{color:var(--accent);background:var(--accent-soft)}
+.pay .px{display:inline-block;font-size:1.45em;line-height:0;vertical-align:-.14em;margin-right:6px}
+.pay.no{display:inline-flex;align-items:center}
 .pay.rata{color:var(--warn-ink);background:var(--warn-bg)}
 .seg button[data-v="rata"][aria-pressed="true"]{background:var(--warn-bg);color:var(--warn-ink)}
 .pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
@@ -355,7 +357,7 @@ function viewPkg(){
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
   var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
-  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2713 Prima rata pagata', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2713 Prima rata pagata', no:'<span class="px" aria-hidden="true">\u2716</span>'+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
   if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
   var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
   return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
