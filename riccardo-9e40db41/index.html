@@ -373,7 +373,7 @@ function viewPkg(){
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
   var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
-  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'Prima rata pagata', no:(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2713 Prima rata pagata', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
   if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
   var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
   return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
