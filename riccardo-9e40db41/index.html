@@ -153,6 +153,25 @@ button.wk.empty{color:var(--accent)}
 .step{display:flex;align-items:center;gap:10px}
 .step b{min-width:2ch;text-align:center;font:800 24px/1 var(--display);font-variant-numeric:tabular-nums}
 .step .btn{width:38px;height:38px;padding:0;font-size:20px;line-height:1}
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px}
+.cal-head{display:flex;align-items:center;justify-content:space-between}
+.cal-head b{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.cal-nav{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.cal-nav:disabled{opacity:.35;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-w{font:700 11px/1 var(--display);letter-spacing:.1em;color:var(--muted);padding:4px 0}
+.cal-d{aspect-ratio:1;max-width:100%;display:grid;place-items:center;border-radius:50%;font:600 14px/1 var(--body);font-variant-numeric:tabular-nums;color:var(--ink);border:2px solid transparent}
+.cal-d.done{background:var(--accent);color:var(--accent-ink)}
+.cal-d.mass{background:var(--rest);color:var(--accent-ink)}
+.cal-d.up{border-color:var(--accent);border-style:dashed}
+.cal-d.today{box-shadow:inset 0 0 0 2px var(--ink)}
+.cal-d.done.today,.cal-d.mass.today{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.cal-foot{color:var(--muted);font-size:14px}
+.cal-foot strong{font:800 22px/1 var(--display);color:var(--accent)}
+.cal-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.cal-leg span{display:inline-flex;align-items:center;gap:6px}
+.lg{width:12px;height:12px;border-radius:50%;display:inline-block}
+.lg.done{background:var(--accent)} .lg.mass{background:var(--rest)} .lg.up{border:2px dashed var(--accent)}
 .next{background:var(--ink);color:var(--bg);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
 .next .eyebrow{color:inherit;opacity:.7}
 .next .when{font:800 32px/1 var(--display);text-transform:uppercase}
@@ -409,19 +428,38 @@ function viewAppts(){
   return pk + viewApptList();
 }
 
+function calendar(list){
+  var now=new Date(), off=ui.calOff||0, base=new Date(now.getFullYear(), now.getMonth()+off, 1);
+  var y=base.getFullYear(), m=base.getMonth(), nd=new Date(y,m+1,0).getDate(), lead=(base.getDay()+6)%7, map={}, done=0;
+  list.forEach(function(a){ var d=parseD(a); if(d.getFullYear()!==y||d.getMonth()!==m) return; var k=d.getDate(), past=d<now, les=isLesson(a);
+    var c=map[k]||(map[k]={}); if(past){ if(les){ c.done=true; done++; } else c.mass=true; } else c.up=true; });
+  var mn=new Intl.DateTimeFormat('it-IT',{month:'long',year:'numeric'}).format(base);
+  var h='<section class="cal" aria-label="Calendario di '+esc(mn)+'"><div class="cal-head"><button type="button" class="cal-nav" data-act="calPrev" aria-label="Mese precedente">‹</button><b>'+esc(mn)+'</b><button type="button" class="cal-nav" data-act="calNext" aria-label="Mese successivo"'+(off>=1?' disabled':'')+'>›</button></div><div class="cal-grid">';
+  ['L','M','M','G','V','S','D'].forEach(function(w){ h+='<span class="cal-w">'+w+'</span>'; });
+  for(var i=0;i<lead;i++) h+='<span></span>';
+  var isCur = (y===now.getFullYear() && m===now.getMonth());
+  for(var dd=1; dd<=nd; dd++){ var c=map[dd]||{}, cls='cal-d'+(c.done?' done':(c.mass?' mass':''))+(c.up?' up':'')+(isCur&&dd===now.getDate()?' today':'');
+    var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.up?', in programma':'');
+    h+='<span class="'+cls+'" aria-label="'+lab+'">'+dd+'</span>'; }
+  h+='</div><div class="cal-foot"><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con me '+(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)))+'</div>';
+  h+='<div class="cal-leg"><span><i class="lg done"></i>Allenamento fatto</span><span><i class="lg mass"></i>Massaggio</span><span><i class="lg up"></i>In programma</span></div></section>';
+  return h;
+}
+
 function viewApptList(){
   var now = new Date(); now.setHours(0,0,0,0);
   var list = S.appts.filter(function(a){return a.d;}).slice().sort(function(a,b){return parseD(a)-parseD(b);});
   var up = list.filter(function(a){ return parseD(a) >= now; });
   var past = list.filter(function(a){ return parseD(a) < now; }).reverse();
-  if(!list.length) return '<p class="empty">Nessun appuntamento in programma.</p>';
+  if(!list.length) return calendar(list)+'<p class="empty">Nessun appuntamento in programma.</p>';
   var h = '';
   if(up.length){
     var n = up[0];
     h += '<div class="next"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
     if(up.length>1){ h += '<ul class="appts">'; up.slice(1).forEach(function(a){ h += row(a,''); }); h += '</ul>'; }
   } else h += '<p class="empty">Nessun appuntamento in arrivo.</p>';
-  if(past.length){ h += '<details><summary>Appuntamenti passati ('+past.length+')</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
+  h += calendar(list);
+  if(past.length){ h += '<details><summary>Tutti gli appuntamenti passati ('+past.length+')</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
   return h;
   function row(a,cls){ var dt=parseD(a); return '<li class="appt '+cls+'"><span class="date"><strong>'+dt.getDate()+'</strong>'+esc(fmtMon.format(dt))+'</span><span class="what">'+esc(a.what||'Appuntamento')+'<span>'+(a.t?'Ore '+esc(a.t):'')+(a.where?' · '+esc(a.where):'')+'</span></span></li>'; }
 }
@@ -521,6 +559,7 @@ app.addEventListener('click', function(e){
   if(a==='cancel'){ draft=null; ui.edit=false; ui.msg=''; render(); return; }
   if(a==='save'){ if(!ui.edit) draft=JSON.parse(JSON.stringify(S)); save(); return; }
   if(a==='discard'){ S=JSON.parse(ORIG); ui.dirty=false; ui.msg=''; render(); return; }
+  if(a==='calPrev'||a==='calNext'){ ui.calOff=(ui.calOff||0)+(a==='calPrev'?-1:1); if(ui.calOff>1) ui.calOff=1; var y8=window.scrollY; render(); window.scrollTo(0,y8); return; }
   if(a==='pkgM'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.mode=b.dataset.v; ui.dirty=true; ui.msg=''; var y0=window.scrollY; render(); window.scrollTo(0,y0); return; }
   if(a==='pkgP'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.paid = b.dataset.v==='1' ? true : (b.dataset.v==='rata' ? 'rata' : false); if(S.pkg.paid) S.pkg.paidMonth=curYM(); ui.dirty=true; ui.msg=''; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='pkgQ'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.month=String(Math.max(0,(parseInt(S.pkg.month,10)||0)+(+b.dataset.v))); ui.dirty=true; ui.msg=''; var y1=window.scrollY; render(); window.scrollTo(0,y1); return; }
