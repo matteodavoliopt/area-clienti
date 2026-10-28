@@ -24,17 +24,17 @@
 /* Layout: one narrow column like a phone training log; day chips on top, exercise rows as a numbered list, coach toolbar pinned to the bottom edge */
 :root{
   --bg:#F2F4F3; --surface:#FFFFFF; --ink:#141C1A; --muted:#5D6B67; --line:#DCE2E0;
-  --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9; --rest:#B4621A; --danger:#B3261E;
+  --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9; --rest:#B4621A; --danger:#B3261E; --warn-ink:#7A5600; --warn-bg:#FCEBB0;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
-  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; color-scheme:dark}}
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
-  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; color-scheme:dark}
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -127,6 +127,8 @@ button.wk.empty{color:var(--accent)}
 .pkg small{color:var(--muted);font-size:13px}
 .pay{align-self:flex-start;font:700 13px/1 var(--body);padding:7px 10px;border-radius:999px;margin-top:-4px}
 .pay.ok{color:var(--accent);background:var(--accent-soft)}
+.pay.rata{color:var(--warn-ink);background:var(--warn-bg)}
+.seg button[data-v="rata"][aria-pressed="true"]{background:var(--warn-bg);color:var(--warn-ink)}
 .pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
 .policy{margin:0;display:flex;gap:8px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.4;color:var(--muted)}
 .policy svg{flex:0 0 auto;width:16px;height:16px;margin-top:1px;color:var(--rest)}
@@ -325,7 +327,7 @@ function stepper(label, act, val, what){
 function isLesson(a){ var w=(a.what||'').toLowerCase(); return w.indexOf('lezion')>=0 || w.indexOf('massagg')<0; }
 function pastLessonsSince(from){ var now=new Date(); return S.appts.filter(function(a){ return a.d && a.d>=from && parseD(a)<now && isLesson(a); }).length; }
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
-function payState(p,mode){ if(p.paid==null) return null; if(mode==='month') return (p.paid===true && p.paidMonth===curYM()); return p.paid===true; }
+function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
@@ -336,7 +338,7 @@ function viewPkg(){
       [['pack','Pacchetto'],['month','Mensile'],['none','Nessuno']].map(function(m){ return '<button data-act="pkgM" data-v="'+m[0]+'" aria-pressed="'+(mode===m[0])+'">'+m[1]+'</button>'; }).join('')+'</div>';
     if(mode==='pack') coach += '<div class="pkg-ctl">'+stepper('Totale lezioni','pkgT',tot,'una lezione al pacchetto')+(p.start?'<div><small>Lezioni fatte contate dal calendario.</small></div>':stepper('Lezioni fatte','pkgD',Math.min(done,tot),'una lezione fatta'))+'</div><label>Inizio pacchetto (per contare dal calendario)<input type="date" id="pkg-start" data-pkg="start" value="'+esc(p.start||'')+'"></label>';
     if(mode==='month') coach += '<div class="pkg-ctl">'+stepper('Lezioni al mese','pkgQ',quota,'una lezione al mese')+'<div><small>Fatte e in programma si contano dagli appuntamenti del mese.</small></div></div>';
-    if(mode!=='none'){ var ps0=payState(p,mode); coach += '<div><span class="eyebrow">'+(mode==='month'?'Pagamento del mese':'Pagamento del pacchetto')+'</span><div class="seg" role="group" aria-label="Pagamento" style="margin-top:6px"><button data-act="pkgP" data-v="1" aria-pressed="'+(ps0===true)+'">Pagato</button><button data-act="pkgP" data-v="0" aria-pressed="'+(ps0===false)+'">Da pagare</button></div>'+(mode==='month'?'<small>Ogni mese nuovo torna su “Da pagare” finché non lo segni.</small>':'')+'</div>'; }
+    if(mode!=='none'){ var ps0=payState(p,mode); coach += '<div><span class="eyebrow">'+(mode==='month'?'Pagamento del mese':'Pagamento del pacchetto')+'</span><div class="seg" role="group" aria-label="Pagamento" style="margin-top:6px"><button data-act="pkgP" data-v="1" aria-pressed="'+(ps0==='ok')+'">Pagato</button><button data-act="pkgP" data-v="rata" aria-pressed="'+(ps0==='rata')+'">1ª rata</button><button data-act="pkgP" data-v="0" aria-pressed="'+(ps0==='no')+'">Da pagare</button></div>'+(mode==='month'?'<small>Ogni mese nuovo torna su “Da pagare” finché non lo segni.</small>':'')+'</div>'; }
     coach += '</div>';
   }
   var h = '';
@@ -371,7 +373,8 @@ function viewPkg(){
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
   var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
-  if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+(ps?'ok':'no')+'">'+(ps?'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'):(mode==='month'?'Mese da pagare':'Pacchetto da pagare'))+'</span>');
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'Prima rata pagata', no:(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
   var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
   return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
 }
@@ -494,7 +497,7 @@ app.addEventListener('click', function(e){
   if(a==='save'){ if(!ui.edit) draft=JSON.parse(JSON.stringify(S)); save(); return; }
   if(a==='discard'){ S=JSON.parse(ORIG); ui.dirty=false; ui.msg=''; render(); return; }
   if(a==='pkgM'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.mode=b.dataset.v; ui.dirty=true; ui.msg=''; var y0=window.scrollY; render(); window.scrollTo(0,y0); return; }
-  if(a==='pkgP'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.paid=(b.dataset.v==='1'); if(S.pkg.paid) S.pkg.paidMonth=curYM(); ui.dirty=true; ui.msg=''; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
+  if(a==='pkgP'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.paid = b.dataset.v==='1' ? true : (b.dataset.v==='rata' ? 'rata' : false); if(S.pkg.paid) S.pkg.paidMonth=curYM(); ui.dirty=true; ui.msg=''; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='pkgQ'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.month=String(Math.max(0,(parseInt(S.pkg.month,10)||0)+(+b.dataset.v))); ui.dirty=true; ui.msg=''; var y1=window.scrollY; render(); window.scrollTo(0,y1); return; }
   if(a==='pkgT'||a==='pkgD'){
     S.pkg=S.pkg||{total:'',done:''};
