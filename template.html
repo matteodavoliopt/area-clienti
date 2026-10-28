@@ -53,6 +53,18 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .day-head p{margin:0;color:var(--muted)}
 .block{border-left:3px solid var(--accent);padding:4px 0 4px 12px}
 .block b{display:block;font:700 14px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.mob{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.mob li{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.mob li.txt{background:none;border:0;padding:0}
+.illu{width:100%;max-width:340px;height:auto;display:block}
+.illu .is{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round}
+.illu .il{fill:none;stroke:var(--ink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.illu .ih{fill:var(--ink)}
+.illu .ip{fill:var(--line)}
+.illu .ifl{stroke:var(--muted);stroke-width:2;opacity:.5}
+.illu .idb line{stroke:var(--ink);stroke-width:3}
+.illu .idb rect{fill:var(--ink)}
+.illu .iar path{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .block div{white-space:pre-wrap}
 .ex-list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px}
 .ex{display:grid;grid-template-columns:28px 1fr auto;gap:4px 12px;padding:14px 16px;border-top:1px solid var(--line)}
@@ -264,6 +276,9 @@ function sendPend(k){
 }
 if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
 
+var ILLU = {"box": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><g><rect x=\"26\" y=\"66\" width=\"30\" height=\"26\" rx=\"3\" class=\"ip\"/><line x1=\"4\" y1=\"92\" x2=\"106\" y2=\"92\" class=\"ifl\"/><polyline points=\"44,64 74,64 76,90\" class=\"il\"/><path d=\"M44 64 Q66 58 62 36\" class=\"is\"/><polyline points=\"62,38 68,52 74,62\" class=\"il\"/><circle cx=\"70\" cy=\"30\" r=\"7\" class=\"ih\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><rect x=\"26\" y=\"66\" width=\"30\" height=\"26\" rx=\"3\" class=\"ip\"/><line x1=\"4\" y1=\"92\" x2=\"106\" y2=\"92\" class=\"ifl\"/><polyline points=\"44,64 74,64 76,90\" class=\"il\"/><path d=\"M44 64 Q36 48 48 30\" class=\"is\"/><polyline points=\"48,32 62,46 72,60\" class=\"il\"/><circle cx=\"52\" cy=\"20\" r=\"7\" class=\"ih\"/><\/g><\/svg>", "jefferson": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><g><rect x=\"24\" y=\"80\" width=\"26\" height=\"14\" rx=\"3\" class=\"ip\"/><line x1=\"4\" y1=\"94\" x2=\"106\" y2=\"94\" class=\"ifl\"/><polyline points=\"40,46 40,63 40,80\" class=\"il\"/><path d=\"M40 46 Q40 32 40 20\" class=\"is\"/><polyline points=\"40,22 44,34 46,46\" class=\"il\"/><circle cx=\"40\" cy=\"11\" r=\"7\" class=\"ih\"/><g class=\"idb\"><line x1=\"39\" y1=\"48\" x2=\"53\" y2=\"48\"/><rect x=\"36\" y=\"43\" width=\"5\" height=\"9\" rx=\"1\"/><rect x=\"51\" y=\"43\" width=\"5\" height=\"9\" rx=\"1\"/><\/g><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><rect x=\"24\" y=\"80\" width=\"26\" height=\"14\" rx=\"3\" class=\"ip\"/><line x1=\"4\" y1=\"94\" x2=\"106\" y2=\"94\" class=\"ifl\"/><polyline points=\"40,44 40,62 40,80\" class=\"il\"/><path d=\"M40 44 Q70 38 60 64\" class=\"is\"/><polyline points=\"60,64 62,76 63,86\" class=\"il\"/><circle cx=\"53\" cy=\"73\" r=\"7\" class=\"ih\"/><g class=\"idb\"><line x1=\"56\" y1=\"88\" x2=\"70\" y2=\"88\"/><rect x=\"53\" y=\"83\" width=\"5\" height=\"9\" rx=\"1\"/><rect x=\"68\" y=\"83\" width=\"5\" height=\"9\" rx=\"1\"/><\/g><\/g><\/svg>", "crunch": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><g><line x1=\"4\" y1=\"88\" x2=\"106\" y2=\"88\" class=\"ifl\"/><polyline points=\"56,80 72,60 86,84\" class=\"il\"/><path d=\"M56 80 Q38 82 22 80\" class=\"is\"/><circle cx=\"13\" cy=\"78\" r=\"7\" class=\"ih\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"4\" y1=\"88\" x2=\"106\" y2=\"88\" class=\"ifl\"/><polyline points=\"58,80 72,60 86,84\" class=\"il\"/><path d=\"M58 80 Q38 86 28 66\" class=\"is\"/><polyline points=\"30,66 44,64 58,62\" class=\"il\"/><circle cx=\"21\" cy=\"58\" r=\"7\" class=\"ih\"/><\/g><\/svg>", "catcow": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><g><line x1=\"4\" y1=\"90\" x2=\"106\" y2=\"90\" class=\"ifl\"/><polyline points=\"72,56 72,88 92,88\" class=\"il\"/><path d=\"M72 56 Q48 30 28 54\" class=\"is\"/><polyline points=\"28,54 26,72 24,88\" class=\"il\"/><circle cx=\"18\" cy=\"68\" r=\"7\" class=\"ih\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"4\" y1=\"90\" x2=\"106\" y2=\"90\" class=\"ifl\"/><polyline points=\"72,52 72,88 92,88\" class=\"il\"/><path d=\"M72 52 Q48 72 28 52\" class=\"is\"/><polyline points=\"28,52 26,70 24,88\" class=\"il\"/><circle cx=\"18\" cy=\"42\" r=\"7\" class=\"ih\"/><\/g><\/svg>"};
+function illuFor(t){ t=(t||'').toLowerCase(); if(/quadrupedia|gatto|cat.?cow/.test(t)) return 'catcow'; if(/retroversione/.test(t)) return 'crunch'; if(/gambe tese/.test(t) && /manubri/.test(t)) return 'jefferson'; if(/box/.test(t) && /schiena/.test(t)) return 'box'; return ''; }
+
 function viewPlan(){
   var c = S.client, g = (c.goal||'').trim(), s = c.start, e = c.end, fq = (c.freq||'').trim(), du = (c.dur||'').trim();
   if(!g && !s && !e && !fq && !du) return '';
@@ -299,7 +314,14 @@ function viewTrain(){
     h += '</div>';
   }
   h += '<div class="day-head"><h2>'+esc(d.name)+'</h2>'+(d.focus?'<p>'+esc(d.focus)+'</p>':'')+'</div>';
-  function blk(b){ if((b.text||'').trim()) h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><div>'+esc(b.text)+'</div></div>'; }
+  function blk(b){
+    if(!(b.text||'').trim()) return;
+    var lines=b.text.split('\n').filter(function(x){ return x.trim(); });
+    if(!lines.some(illuFor)){ h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><div>'+esc(b.text)+'</div></div>'; return; }
+    h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><ul class="mob">';
+    lines.forEach(function(x){ var k=illuFor(x); h += '<li'+(k?'':' class="txt"')+'>'+(k?ILLU[k]:'')+'<span>'+esc(x.trim())+'</span></li>'; });
+    h += '</ul></div>';
+  }
   S.pre.forEach(blk);
   (d.extra||[]).forEach(blk);
   var ex = (d.ex||[]).filter(function(e){ return (e.n||'').trim(); });
