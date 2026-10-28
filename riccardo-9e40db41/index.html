@@ -82,6 +82,16 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .rec{color:var(--rest)}
 .info{grid-column:2/4;color:var(--muted);font-size:14px}
 .vids{grid-column:2/4;display:flex;flex-wrap:wrap;gap:6px}
+.thumbs{grid-column:2/4;display:grid;gap:8px;margin:4px 0 2px}
+.thumbs.many{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.thumb{position:relative;display:block;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:var(--accent-soft);text-decoration:none}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.noimg img{display:none}
+.thumb .play{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:rgba(0,0,0,.62);display:grid;place-items:center}
+.thumb .play svg{width:22px;height:22px;fill:#fff;margin-left:2px}
+.thumbs.many .thumb .play{width:38px;height:38px;margin:-19px 0 0 -19px}
+.thumb .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;font:600 12.5px/1.2 var(--body);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb.noimg .cap{background:none;color:var(--accent);position:static;padding:8px}
 .log{grid-column:2/4;display:flex;flex-direction:column;gap:6px;margin-top:4px;min-width:0}
 .log-lab{font:700 11px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .log-weeks{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
@@ -214,6 +224,20 @@ var PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/
 function nWeeks(){ return Math.max(1, Math.min(52, parseInt(S.weeks,10) || 12)); }
 function curWeek(){ var s=S.client.start; if(!s) return 0; var a=parseD({d:s}), n=new Date(); n.setHours(0,0,0,0); if(n<a) return 0; return Math.floor((n-a)/864e5/7)+1; }
 function vidLinks(e){ return (e.vids||[]).filter(function(v){ return safeUrl(v.u); }); }
+function ytId(u){ var m=(u||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{11})/); return m?m[1]:''; }
+function isShort(u){ return /youtube\.com\/shorts\//.test(u||''); }
+function thumbs(vs){
+  var h='<div class="thumbs'+(vs.length>1?' many':'')+'">';
+  vs.forEach(function(v,j){
+    var u=safeUrl(v.u), id=ytId(u), cap=(v.t||'').trim()||(vs.length>1?'Video '+(j+1):'Guarda il video');
+    if(id){
+      h+='<a class="thumb'+(isShort(u)?' short':'')+'" href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+esc(cap)+'"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'noimg\')"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'+(vs.length>1||v.t?'<span class="cap">'+esc(cap)+'</span>':'')+'</a>';
+    } else {
+      h+='<a class="vid" href="'+esc(u)+'" target="_blank" rel="noopener">'+PLAY+esc(cap)+'</a>';
+    }
+  });
+  return h+'</div>';
+}
 /* --- Pesi segnati dal cliente (solo sul sito) --- */
 var SITE = (window.SITE && window.SITE.form && window.SITE.form.action) ? window.SITE : null;
 var PK = SITE ? 'pesi-'+SITE.slug : '';
@@ -284,10 +308,11 @@ function viewTrain(){
     ex.forEach(function(e,i){
       var vs = vidLinks(e), one = vs.length===1;
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
-        (one?'<a class="vid" href="'+esc(safeUrl(vs[0].u))+'" target="_blank" rel="noopener">'+PLAY+'Video</a>':'<span></span>')+
+        ((one && !SITE)?'<a class="vid" href="'+esc(safeUrl(vs[0].u))+'" target="_blank" rel="noopener">'+PLAY+'Video</a>':'<span></span>')+
         '<span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
-      if(vs.length>1){ h += '<span class="vids">'; vs.forEach(function(v,j){ h += '<a class="vid" href="'+esc(safeUrl(v.u))+'" target="_blank" rel="noopener">'+PLAY+esc((v.t||'').trim()||('Video '+(j+1)))+'</a>'; }); h += '</span>'; }
+      if(SITE && vs.length){ h += thumbs(vs); }
+      else if(vs.length>1){ h += '<span class="vids">'; vs.forEach(function(v,j){ h += '<a class="vid" href="'+esc(safeUrl(v.u))+'" target="_blank" rel="noopener">'+PLAY+esc((v.t||'').trim()||('Video '+(j+1)))+'</a>'; }); h += '</span>'; }
       var lg = e.log||[], any = lg.some(function(x){ return (x||'').trim(); });
       if(SITE){
         var di = ui.day, last = 0;
