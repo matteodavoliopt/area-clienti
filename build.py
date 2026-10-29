@@ -68,6 +68,28 @@ def main():
         (out / 'index.html').write_text(doc, encoding='utf-8')
         (out / 'manifest.webmanifest').write_text(manifest(first), encoding='utf-8')
         slugs.append(slug)
+    panel = CONFIG.get('panel')
+    if panel and (ROOT / 'pannello.html').exists():
+        assert re.fullmatch(r'[a-z0-9-]+', panel), panel
+        clients = []
+        for f in sorted((ROOT / 'data').glob('*.json')):
+            e = json.loads(f.read_text(encoding='utf-8')); d = e['data']; c = d.get('client', {})
+            clients.append({'name': c.get('name', ''), 'url': e.get('source', ''), 'site': 'https://matteodavoliopt.github.io/area-clienti/' + e['slug'] + '/',
+                            'g': c.get('g', 'm'), 'start': c.get('start', ''), 'end': c.get('end', ''), 'pkg': d.get('pkg') or {},
+                            'appts': [{'d': a.get('d', ''), 't': a.get('t', ''), 'what': a.get('what', '')} for a in d.get('appts', [])]})
+        clients.sort(key=lambda x: x['name'].lower())
+        upd = max([json.loads(f.read_text(encoding='utf-8'))['data'].get('updated', '') for f in (ROOT / 'data').glob('*.json')] or [''])
+        js = json.dumps({'updated': upd, 'clients': clients}, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+        body = (ROOT / 'pannello.html').read_text(encoding='utf-8')
+        body, n = re.subn(r'(<script type="application/json" id="data">).*?(</script>)', lambda m: m.group(1) + js + m.group(2), body, count=1, flags=re.S)
+        assert n == 1
+        out = ROOT / panel; out.mkdir(exist_ok=True)
+        head = HEAD.format(title='Pannello clienti', short='Pannello').replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
+        (out / 'index.html').write_text(head + body + '\n</body>\n</html>\n', encoding='utf-8')
+        (out / 'manifest.webmanifest').write_text(json.dumps({"name": "Pannello clienti", "short_name": "Pannello", "start_url": "./", "scope": "./", "display": "standalone",
+            "background_color": "#000000", "theme_color": "#1B7D8D", "lang": "it",
+            "icons": [{"src": "../assets/icon-192.png?v=3", "sizes": "192x192", "type": "image/png"}, {"src": "../assets/icon-512.png?v=3", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False, indent=1), encoding='utf-8')
+        print('Pannello creato:', panel)
     print('Pagine create:', len(slugs))
 
 if __name__ == '__main__':
