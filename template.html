@@ -6,17 +6,17 @@
 /* Layout: one narrow column like a phone training log; day chips on top, exercise rows as a numbered list, coach toolbar pinned to the bottom edge */
 :root{
   --bg:#F2F4F3; --surface:#FFFFFF; --ink:#141C1A; --muted:#5D6B67; --line:#DCE2E0;
-  --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9; --rest:#B4621A; --danger:#B3261E; --warn-ink:#7A5600; --warn-bg:#FCEBB0; --fig-shorts:#2F3A3D; --fig-shoe:#1E2426; --fig-shorts-far:#232C2E;
+  --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9; --rest:#B4621A; --danger:#B3261E; --warn-ink:#7A5600; --warn-bg:#FCEBB0; --ok-ink:#2E7D32; --ok-bg:#E2F3E2; --fig-shorts:#2F3A3D; --fig-shoe:#1E2426; --fig-shorts-far:#232C2E;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
-  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}}
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --ok-ink:#7FD48A; --ok-bg:#1C3A22; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
-  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --ok-ink:#7FD48A; --ok-bg:#1C3A22; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -173,7 +173,7 @@ button.wk.empty{color:var(--accent)}
 .dots i.on{background:var(--accent)}
 .pkg small{color:var(--muted);font-size:13px}
 .pay{align-self:flex-start;font:700 13px/1 var(--body);padding:7px 10px;border-radius:999px;margin-top:-4px}
-.pay.ok{color:var(--accent);background:var(--accent-soft)}
+.pay.ok{color:var(--ok-ink);background:var(--ok-bg)}
 .pay.rata{color:var(--warn-ink);background:var(--warn-bg)}
 .seg button[data-v="rata"][aria-pressed="true"]{background:var(--warn-bg);color:var(--warn-ink)}
 .pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}

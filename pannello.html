@@ -5,7 +5,7 @@
 :root{
   --bg:#F2F4F3; --surface:#FFFFFF; --ink:#141C1A; --muted:#5D6B67; --line:#DCE2E0;
   --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9;
-  --warn:#B4621A; --warn-soft:#FBEBDD; --rata-ink:#7A5600; --rata-bg:#FCEBB0; --bad:#B3261E; --bad-soft:#FBE3E1;
+  --warn:#B4621A; --warn-soft:#FBEBDD; --rata-ink:#7A5600; --rata-bg:#FCEBB0; --ok-ink:#2E7D32; --ok-bg:#E2F3E2; --bad:#B3261E; --bad-soft:#FBE3E1;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -13,11 +13,11 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
   --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5;
-  --warn:#E39A57; --warn-soft:#3A2A1A; --rata-ink:#F5CF5B; --rata-bg:#3B3112; --bad:#F08A82; --bad-soft:#3D2120; color-scheme:dark}}
+  --warn:#E39A57; --warn-soft:#3A2A1A; --rata-ink:#F5CF5B; --rata-bg:#3B3112; --ok-ink:#7FD48A; --ok-bg:#1C3A22; --bad:#F08A82; --bad-soft:#3D2120; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
   --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5;
-  --warn:#E39A57; --warn-soft:#3A2A1A; --rata-ink:#F5CF5B; --rata-bg:#3B3112; --bad:#F08A82; --bad-soft:#3D2120; color-scheme:dark}
+  --warn:#E39A57; --warn-soft:#3A2A1A; --rata-ink:#F5CF5B; --rata-bg:#3B3112; --ok-ink:#7FD48A; --ok-bg:#1C3A22; --bad:#F08A82; --bad-soft:#3D2120; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -50,6 +50,7 @@ h1,h2{margin:0;text-wrap:balance}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font:600 12.5px/1 var(--body);padding:6px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--line);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .tag.ok{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+.tag.paid{color:var(--ok-ink);background:var(--ok-bg);border-color:transparent}
 .tag.warn{color:var(--warn);background:var(--warn-soft);border-color:transparent}
 .tag.rata{color:var(--rata-ink);background:var(--rata-bg);border-color:transparent}
 .tag.bad{color:var(--bad);background:var(--bad-soft);border-color:transparent}
@@ -106,7 +107,7 @@ function status(c){
   var p = c.pkg || {}, mode = p.mode || ((parseInt(p.total,10)>0)?'pack':'none');
   var r = { next:next, tags:[], renew:false, ending:false, ended:false, unpaid:false };
   var ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-  if(mode!=='none' && p.paid!=null){ var pv = p.paid===true?'ok':(p.paid==='rata'?'rata':'no'); if(mode==='month' && pv!=='no' && p.paidMonth!==ym) pv='no'; if(pv==='no'){ r.unpaid=true; r.tags.push({c:'bad', t: '\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')}); } else if(pv==='rata'){ r.unpaid=true; r.tags.push({c:'rata', t:'\u2713 Prima rata pagata'}); } else r.tags.push({c:'ok', t:'\u2713 Pagato'}); }
+  if(mode!=='none' && p.paid!=null){ var pv = p.paid===true?'ok':(p.paid==='rata'?'rata':'no'); if(mode==='month' && pv!=='no' && p.paidMonth!==ym) pv='no'; if(pv==='no'){ r.unpaid=true; r.tags.push({c:'bad', t: '\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')}); } else if(pv==='rata'){ r.unpaid=true; r.tags.push({c:'rata', t:'\u2713 Prima rata pagata'}); } else r.tags.push({c:'paid', t:'\u2713 Pagato'}); }
   if(mode==='pack'){
     var tot = parseInt(p.total,10)||0, done = parseInt(p.done,10)||0;
     if(p.start) done = ap.filter(function(a){ return a.d>=p.start && parseD(a)<now && isLesson(a); }).length;
