@@ -316,7 +316,8 @@ function viewTrain(){
     var lines=b.text.split('\n').filter(function(x){ return x.trim(); });
     if(!lines.some(illuFor)){ h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><div>'+esc(b.text)+'</div></div>'; return; }
     var rm=(b.label||'').match(/(\d+)\s*ripetizion/i), sr=rm?'1 x '+rm[1]:'';
-    h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><ul class="mob">';
+    var lab=(b.label||'Note'); if(rm) lab=lab.replace(/\s*\([^)]*ripetizion[^)]*\)\s*/i,' ').trim();
+    h += '<div class="block"><b>'+esc(lab)+'</b><ul class="mob">';
     lines.forEach(function(x){ var k=illuFor(x); h += '<li'+(k?'':' class="txt"')+'>'+(k?ILLU[k]:'')+'<span>'+esc(x.trim())+(sr?'<em class="mob-sr">'+sr+'</em>':'')+'</span></li>'; });
     h += '</ul></div>';
   }
