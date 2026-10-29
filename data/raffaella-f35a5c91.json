@@ -1,0 +1,417 @@
+{
+ "slug": "raffaella-f35a5c91",
+ "source": "https://claude.ai/artifact/3VjScdTJRdoRgWheyw6ZBZ",
+ "data": {
+  "client": {
+   "name": "Raffaella Salomone",
+   "g": "f",
+   "goal": "Ricomposizione",
+   "freq": "3",
+   "dur": "60’-90’",
+   "start": "2026-09-07",
+   "end": "2026-12-07",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Goblet squat + Sumo squat trx",
+      "sr": "3 x 10+12",
+      "info": "Utilizzo step altezza massima",
+      "rec": "60”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "5kg",
+       "10kg",
+       "12kg",
+       "7,5 per lato"
+      ]
+     },
+     {
+      "n": "LEG EXTENSION",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "25kg",
+       "20kg",
+       "25kg",
+       "25kg",
+       "27,5kg"
+      ]
+     },
+     {
+      "n": "PUSH DOWN SBARRA CURVA CAVO ALTO + FRENCH PRESS MANUBRIO IN PIEDI",
+      "sr": "3 x 10+12",
+      "info": "Eseguo i due esercizi di fila senza riposo",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/f3-ogykya8Y?si=40XpgmmazjbyyFa1"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/6EwEemytwiE?si=ZOrXHqMsTLN6aQHc"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8,5kg · 4kg",
+       "8,5kg · 4kg",
+       "10kg",
+       "11kg",
+       "8,5kg"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN TRX + Air bike",
+      "sr": "3 x 12+60”",
+      "info": "Utilizzo il cardio come recupero attivo",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Super man inverso",
+      "sr": "3 x 12",
+      "info": "Poggio a terra braccio e gamba opposti",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Vogatore",
+      "sr": "3 x 30” lento - 30” forte",
+      "info": "3 minuti di fila",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Tapis roulant, ellittica, bike",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Squat sumo kb + Camminata laterale squat",
+      "sr": "3 x 10+20",
+      "info": "Eseguo i due esercizi di fila senza riposo",
+      "rec": "60”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "10kg",
+       "10kg"
+      ]
+     },
+     {
+      "n": "Abductor machine in piedi",
+      "sr": "3 x 12",
+      "info": "Bacino fermo altezza ginocchia",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/qPJa8M3iB7M?is=r2_ZeA3Szu2Yo0t1"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "50kg",
+       "60kg"
+      ]
+     },
+     {
+      "n": "LAT MACHINE TRIANGOLO",
+      "sr": "3 x 10",
+      "info": "Gomiti stretti vicino ai fianchi",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/yAn2qY7WplY?si=d9vy1CRjETVC7zfO"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "20kg",
+       "25kg"
+      ]
+     },
+     {
+      "n": "Affondi trx + Vogatore R5",
+      "sr": "3 x 12+60”",
+      "info": "Utilizzo il cardio come recupero attivo",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg raises alternato",
+      "sr": "3 x 12",
+      "info": "Testa sempre poggiata a terra",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Skillmill",
+      "sr": "3 x 30” camminata - 30” slitta",
+      "info": "3 minuti di fila",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Tapis roulant, ellittica, bike",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Stacco kettlebell + Step up box alternati",
+      "sr": "3 x 10+20",
+      "info": "Box altezza 40cm",
+      "rec": "60”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "16kg · 4kg",
+       "16kg · 4kg",
+       "16kg · 4kg",
+       "20kg · 4kg"
+      ]
+     },
+     {
+      "n": "HIP TRUST MACHINE",
+      "sr": "3 x 10",
+      "info": "Tenere sempre l’addome attivo",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "0kg",
+       "5kg",
+       "5kg",
+       "10kg"
+      ]
+     },
+     {
+      "n": "FRENCH PRESS MANUBRI PANCA PIANA + BOX DIP",
+      "sr": "3 x 10+12",
+      "info": "Eseguo i due esercizi di fila senza riposo",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jX720d3MHbQ?si=j6SoGHqXpW6Q5NjS"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "3kg",
+       "3kg",
+       "3kg"
+      ]
+     },
+     {
+      "n": "SPINTE MANUBRI IN PIEDI 4kg + Slitta Skillmill R7",
+      "sr": "3 x 12+60”",
+      "info": "Utilizzo il cardio come recupero attivo",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Aa0U3nYoz64?si=l4_qvOqrPZfRW6Ti"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Shoulder tap box",
+      "sr": "3 x 12",
+      "info": "Box altezza 40cm",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Air bike",
+      "sr": "3 x 30” gambe - 30” completo",
+      "info": "3 minuti di fila",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Tapis roulant, ellittica, bike",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-07",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-14",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-16",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-21",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-23",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-28",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-30",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "16:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-23",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-11",
+    "t": "16:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-18",
+    "t": "16:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-25",
+    "t": "16:30",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}
