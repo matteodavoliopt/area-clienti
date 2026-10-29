@@ -3,7 +3,7 @@
  "source": "https://claude.ai/artifact/9xmv7t7GC1usQ9XuksySZn",
  "data": {
   "client": {
-   "name": "Eduardo Muntiel",
+   "name": "Eduardo Montiel",
    "g": "m",
    "goal": "Ricomposizione e rinforzo posturale",
    "freq": "3",
@@ -79,7 +79,8 @@
       ],
       "lab": "REP/KG",
       "log": [
-       "10/10"
+       "10/10",
+       "12/15"
       ]
      },
      {
@@ -126,7 +127,10 @@
        }
       ],
       "lab": "",
-      "log": []
+      "log": [
+       "",
+       "12/15"
+      ]
      },
      {
       "n": "Cardio a scelta",
@@ -157,7 +161,8 @@
       ],
       "lab": "REP/KG",
       "log": [
-       "8/30"
+       "8/30",
+       "6/45"
       ]
      },
      {
@@ -205,7 +210,8 @@
       ],
       "lab": "REP/KG",
       "log": [
-       "10/15"
+       "10/15",
+       "8/20"
       ]
      },
      {
@@ -312,7 +318,7 @@
      {
       "n": "ALZATE LATERALI MULTI FLIGHT",
       "sr": "3 x 8-12",
-      "info": "",
+      "info": "Alt 14 aperture 2",
       "rec": "90”",
       "vids": [
        {
@@ -320,8 +326,11 @@
         "u": "https://youtube.com/shorts/iwHY5VuGhag?is=yb5ytWC-_6KwFYvX"
        }
       ],
-      "lab": "",
-      "log": []
+      "lab": "REP/KG",
+      "log": [
+       "",
+       "12/22,5"
+      ]
      },
      {
       "n": "Rotazioni obliqui al cavo",
@@ -379,6 +388,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-10-29",
+  "pesiTs": 1793295283315
  }
 }
