@@ -17,7 +17,16 @@
   },
   "note": "",
   "weeks": "12",
-  "pre": [],
+  "pre": [
+   {
+    "label": "Mobilità (10 ripetizioni per esercizio)",
+    "text": "Gatto e leone\nPosizione di affondo e rotazione\nCirconduzioni spalle con elastico\nAperture braccia tese con elastico\nExtra rotazioni con elastico gomiti ai fianchi\nAdduzione e abduzione scapolare con elastico\nElevazione e depressione scapolare con elastico"
+   },
+   {
+    "label": "Pre attivazione (10 ripetizioni per esercizio)",
+    "text": "Ponte glutei\nCrunch braccia tese\nSuper man inverso"
+   }
+  ],
   "post": [],
   "days": [
    {

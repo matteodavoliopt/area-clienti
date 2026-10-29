@@ -27,9 +27,9 @@
     "ex": [
      {
       "n": "SPINTE BILANCIERE PANCA 45° · altezza 3",
-      "sr": "3",
-      "info": "8",
-      "rec": "15kg per lato",
+      "sr": "3 x 8",
+      "info": "15kg per lato",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -41,9 +41,9 @@
      },
      {
       "n": "CHEST PRESS CARICO LIBERO altezza 2",
-      "sr": "3",
-      "info": "10",
-      "rec": "30kg per lato",
+      "sr": "3 x 10",
+      "info": "30kg per lato",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -55,9 +55,9 @@
      },
      {
       "n": "LAT MACHINE presa inversa stretta",
-      "sr": "3",
-      "info": "10",
-      "rec": "45kg",
+      "sr": "3 x 10",
+      "info": "45kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -69,9 +69,9 @@
      },
      {
       "n": "SPINTE MANUBRI PANCA 60°",
-      "sr": "3",
-      "info": "8",
-      "rec": "16kg",
+      "sr": "3 x 8",
+      "info": "16kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -83,9 +83,9 @@
      },
      {
       "n": "ALZATE LATERALI MANUBRI",
-      "sr": "3",
-      "info": "12",
-      "rec": "10kg",
+      "sr": "3 x 12",
+      "info": "10kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -97,9 +97,9 @@
      },
      {
       "n": "PUSH DOWN CORDA CAVO ALTO",
-      "sr": "3",
-      "info": "12",
-      "rec": "15kg",
+      "sr": "3 x 12",
+      "info": "15kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -118,9 +118,9 @@
     "ex": [
      {
       "n": "PULLDOWN CARICO LIBERO",
-      "sr": "3",
-      "info": "10",
-      "rec": "40kg per lato",
+      "sr": "3 x 10",
+      "info": "40kg per lato",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -132,9 +132,9 @@
      },
      {
       "n": "LOW ROW SINGOLO CARICO LIBERO in piedi",
-      "sr": "3",
-      "info": "10",
-      "rec": "30kg per lato",
+      "sr": "3 x 10",
+      "info": "30kg per lato",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -146,9 +146,9 @@
      },
      {
       "n": "AUSTRALIAN GOMITI LARGHI TRX",
-      "sr": "3",
-      "info": "12",
-      "rec": "",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -160,9 +160,9 @@
      },
      {
       "n": "CHEST PRESS ISOTONICA",
-      "sr": "3",
-      "info": "10",
-      "rec": "50kg",
+      "sr": "3 x 10",
+      "info": "50kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -174,9 +174,9 @@
      },
      {
       "n": "ALZATA LATERALE SINGOLA CAVO",
-      "sr": "3",
-      "info": "12",
-      "rec": "5kg",
+      "sr": "3 x 12",
+      "info": "5kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
@@ -188,9 +188,9 @@
      },
      {
       "n": "HUMMER CURL MANUBRI PANCA 60°",
-      "sr": "3",
-      "info": "12",
-      "rec": "10kg",
+      "sr": "3 x 12",
+      "info": "10kg",
+      "rec": "90”",
       "vids": [
        {
         "t": "",
