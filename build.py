@@ -24,8 +24,8 @@ HEAD = '''<!doctype html>
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1413" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=2">
+<link rel="icon" type="image/png" href="../assets/favicon-32.png?v=2">
 <link rel="manifest" href="manifest.webmanifest">
 <style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
 </head>
@@ -52,8 +52,8 @@ def manifest(first):
         "name": "Area riservata " + first, "short_name": first,
         "start_url": "./", "scope": "./", "display": "standalone",
         "background_color": "#F2F4F3", "theme_color": "#1B7D8D", "lang": "it",
-        "icons": [{"src": "../assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
-                  {"src": "../assets/icon-512.png", "sizes": "512x512", "type": "image/png"}]
+        "icons": [{"src": "../assets/icon-192.png?v=2", "sizes": "192x192", "type": "image/png"},
+                  {"src": "../assets/icon-512.png?v=2", "sizes": "512x512", "type": "image/png"}]
     }, ensure_ascii=False, indent=1)
 
 def main():
