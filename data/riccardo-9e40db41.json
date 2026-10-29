@@ -8,7 +8,11 @@
    "freq": "2",
    "dur": "60’-90’",
    "start": "2026-09-07",
-   "end": "2026-12-07"
+   "end": "2026-12-07",
+   "age": "24",
+   "weight": "92",
+   "issues": "Fastidio spalla destra ",
+   "general": "Oltre alla palestra fa una seduta di nuoto e una di bici "
   },
   "note": "",
   "weeks": "12",
@@ -399,7 +403,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "pesiTs": 1793217917437
  }
 }
