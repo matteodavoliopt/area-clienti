@@ -291,7 +291,8 @@ function safeUrl(u){ u=(u||'').trim(); return /^https?:\/\//i.test(u) ? u : ''; 
 var LOGO = '<svg class="logo" viewBox="440 380 1060 1170" role="img" aria-label="Logo"><path d="M463 405H900C1220 405 1470 640 1470 966C1470 1290 1220 1528 900 1528H463V1302H552V1455H880C1170 1455 1377 1250 1377 966C1377 690 1170 478 880 478H552V643H463Z"/><path d="M463 720H552L778 1213L774 1223H696L552 915V1223H463Z"/><path d="M909 720H992V1223H911V915L822 1113L777 1014Z"/></svg>';
 var BRAND = '<header class="brand">'+LOGO+'<div class="brand-txt"><span class="brand-name">Matteo D’Avolio</span><span class="brand-role">Personal Trainer &amp; Massaggiatore sportivo</span></div></header>';
 var PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/></svg>';
-function nWeeks(){ return Math.max(1, Math.min(52, parseInt(S.weeks,10) || 12)); }
+function planWeeks(){ var c=S.client||{}; if(!c.start||!c.end) return 0; var a=parseD({d:c.start}), b=parseD({d:c.end}); if(b<a) return 0; return Math.ceil((Math.round((b-a)/864e5)+1)/7); }
+function nWeeks(){ var pw=planWeeks(); return Math.max(1, Math.min(52, pw || parseInt(S.weeks,10) || 12)); }
 function curWeek(){ var s=S.client.start; if(!s) return 0; var a=parseD({d:s}), n=new Date(); n.setHours(0,0,0,0); if(n<a) return 0; return Math.floor((n-a)/864e5/7)+1; }
 function vidLinks(e){ return (e.vids||[]).filter(function(v){ return safeUrl(v.u); }); }
 function ytId(u){ var m=(u||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{11})/); return m?m[1]:''; }
@@ -518,7 +519,7 @@ function viewTrain(){
         var di = ui.day, last = 0;
         lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
-        var upto = Math.min(nWeeks(), Math.max(last, cw||1));
+        var upto = Math.max(nWeeks(), last);
         h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span><div class="log-weeks">';
         for(var w=1; w<=upto; w++){
           var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
