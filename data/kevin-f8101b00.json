@@ -19,27 +19,27 @@
   "weeks": "12",
   "pre": [
    {
-    "label": "MOBILITà POLSI",
+    "label": "Mobilità polsi (10 ripetizioni ad esercizio)",
     "text": "Piegamento polso quadrupedia\nPiegamento inverso polso quadrupedia\nPiegamento dita palmi sollevati"
    },
    {
-    "label": "MOBILITà SCAPOLE",
+    "label": "Mobilità scapole (10 ripetizioni ad esercizio)",
     "text": "Adduzioni e abduzioni scapolari bastone\nDepressione ed elevazione scapolare bastone"
    },
    {
-    "label": "MOBILITà SPALLE",
+    "label": "Mobilità spalle (10 ripetizioni ad esercizio)",
     "text": "Circonduzioni spalle elastico\nExtrarotazione gomiti elastico\nExtrarotazione gomito singolo bastone\nDistensioni braccia schiena al muro\nCirconduzione frontale bastone da sdraiato e gambe su box\nSuperman bastone dietro la testa sdraiato pancia a terra\nAllungamento braccia con pesi sdraiato su panca"
    },
    {
-    "label": "MOBILITà TORACICA",
+    "label": "Mobilità toracica (10 ripetizioni ad esercizio)",
     "text": "Estensioni toraciche su box\nEstensioni toraciche su foam roller"
    },
    {
-    "label": "MOBILITà LOMBARE",
+    "label": "Mobilità lombare (10 ripetizioni ad esercizio)",
     "text": "Posizione gatto e leone\nPosizione bambino e cobra\nPosizione di affondo e rotazioni"
    },
    {
-    "label": "MOBILITà ANCHE E GAMBE",
+    "label": "Mobilità anche e gambe (10 ripetizioni ad esercizio)",
     "text": "Posizione di affondo ginocchio al muro\nIntrarotazioni ed extrarotazioni gambe da seduto\nSquat profondo gomiti tra le ginocchia\nOscillazioni squat profondo\nRotazioni busto squat profondo\nPosizione cobra gambe divaricate"
    }
   ],
@@ -55,15 +55,6 @@
     "focus": "",
     "extra": [],
     "ex": [
-     {
-      "n": "Mobilità parte alta",
-      "sr": "1 x 10",
-      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
-      "rec": "",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
      {
       "n": "Tecnica slancio",
       "sr": "15’-20’",
@@ -136,15 +127,6 @@
     "extra": [],
     "ex": [
      {
-      "n": "Mobilità parte bassa",
-      "sr": "2 x 10",
-      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
-      "rec": "",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
-     {
       "n": "Tecnica slancio",
       "sr": "15’-20’",
       "info": "",
@@ -210,15 +192,6 @@
     "focus": "",
     "extra": [],
     "ex": [
-     {
-      "n": "Mobilità parte alta",
-      "sr": "2 x 10",
-      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
-      "rec": "",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
      {
       "n": "Tecnica slancio",
       "sr": "15’-20’",
@@ -291,15 +264,6 @@
     "focus": "",
     "extra": [],
     "ex": [
-     {
-      "n": "Mobilità parte bassa",
-      "sr": "2 x 10",
-      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
-      "rec": "",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
      {
       "n": "Tecnica slancio",
       "sr": "15’-20’",
