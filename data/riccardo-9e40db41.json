@@ -214,11 +214,16 @@
       ]
      },
      {
-      "n": "PULL DOWN CARICO LIBERO",
+      "n": "PULLDOWN CARICO LIBERO PRESA PRONA",
       "sr": "2 x 6-10",
       "info": "Gomiti sempre avanti",
       "rec": "180”",
-      "vids": [],
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/0eMT9GE6iYg?is=mMtU6dqNoM3TA84j"
+       }
+      ],
       "lab": "REP/KG",
       "log": [
        "9/55 · 7/55",
