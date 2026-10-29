@@ -572,7 +572,7 @@ function render(){
   } else {
     var nA = S.appts.filter(function(a){ var n=new Date(); n.setHours(0,0,0,0); return a.d && parseD(a)>=n; }).length;
     h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1><p>Rimani sempre aggiornat'+(S.client.g==='f'?'a':'o')+' su tutto, i tuoi allenamenti e i tuoi appuntamenti in un’unica app!</p></div>';
-    h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Allenamento</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
+    h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     h += ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
