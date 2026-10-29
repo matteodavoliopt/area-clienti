@@ -65,6 +65,10 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .pl-goal{font-size:18px;font-weight:600;line-height:1.3;color:var(--ink)}
 .pland .bd-t small{color:var(--muted);font-size:13px}
 .pland[open] .chev{transform:rotate(180deg)}
+.pe-form label.pe-l{display:flex;flex-direction:column;gap:4px;font:600 12px/1.2 var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.pe-form input,.pe-form textarea{font:16px/1.4 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;text-transform:none;letter-spacing:0}
+.pe-foot{display:flex;align-items:center;gap:10px;justify-content:flex-end;padding-top:10px;border-top:1px solid var(--line)}
+.pe-foot i{font:600 10px/1 var(--body);font-style:normal;color:var(--rest);text-transform:uppercase;letter-spacing:.04em}
 .pers-iss{white-space:pre-wrap;font-size:16px !important;font-weight:500 !important}
 .plan-in{display:flex;flex-direction:column;gap:12px;padding:0 16px 16px}
 .prog{display:flex;flex-direction:column;gap:6px}
@@ -317,7 +321,7 @@ if(SITE){ try{ PEND = JSON.parse(localStorage.getItem(PK)||'{}') || {}; }catch(e
 function pendSave(){ try{ localStorage.setItem(PK, JSON.stringify(PEND)); }catch(e){} }
 function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
 function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
-if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k], e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
+if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.f==='client'){ if(p.sent && String((S.client||{})[p.k]||'').trim()===String(p.v||'').trim()) delete PEND[k]; return; } var e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
 function ikey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|info'; }
 function infoSite(e){
   var di = ui.day, k = ikey(di,e), p = PEND[k], val = p ? p.v : (e.info||'');
@@ -329,7 +333,7 @@ function infoSite(e){
 function sendPend(k){
   var p=PEND[k]; if(!p || !SITE) return;
   var fd=new FormData();
-  fd.append(SITE.form.entry, JSON.stringify(p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
+  fd.append(SITE.form.entry, JSON.stringify(p.f==='client' ? {s:SITE.slug,f:'client',k:p.k,v:p.v,t:p.ts} : p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
   fetch(SITE.form.action,{method:'POST',mode:'no-cors',body:fd}).then(function(){ if(PEND[k]){ PEND[k].sent=true; pendSave(); render(); } }).catch(function(){});
 }
 if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
@@ -352,15 +356,24 @@ function illuFor(t){ t=(t||'').toLowerCase();
   if(/toracic/.test(t)){ if(/foam|rull/.test(t)) return 'foam'; return 'thorbox'; }
   if(/quadrupedia|gatto|cat.?cow/.test(t)) return 'catcow'; if(/retroversione/.test(t)) return 'crunch'; if(/gambe tese/.test(t) && /manubri/.test(t)) return 'jefferson'; if(/box/.test(t) && /schiena/.test(t)) return 'box'; if(/sit.?up/.test(t)) return 'situp'; if(/leg.?rais|sollevament[oi] gamb/.test(t)) return 'legraise'; if(/russian|twist/.test(t)) return 'twist'; return ''; }
 
+var PERSF=[['age','Età','Es. 32'],['weight','Peso (kg)','Es. 78'],['issues','Problematiche fisiche','Es. fastidio spalla destra'],['general','Informazioni generali','Es. lavoro sedentario, nuoto il martedì']];
+function persVal(k){ var p=SITE&&PEND['client|'+k]; return String(p ? p.v : ((S.client||{})[k]||'')).trim(); }
 function viewPers(){
-  var c = S.client, age=(c.age||'').trim(), w=(c.weight||'').trim(), iss=(c.issues||'').trim(), gen=(c.general||'').trim();
-  if(!age && !w && !iss && !gen && !ui.canEdit) return '';
+  var c = S.client, age=persVal('age'), w=persVal('weight'), iss=persVal('issues'), gen=persVal('general');
+  if(!age && !w && !iss && !gen && !ui.canEdit && !SITE) return '';
+  if(SITE && ui.pe){
+    var f='<details class="plan pland" data-blk="__pers" open><summary><span class="bd-t"><span class="eyebrow">Dati personali</span><span class="pl-goal">'+esc((c.name||'').trim()||'Cliente')+'</span></span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="plan-in pe-form">';
+    PERSF.forEach(function(x){ var v=persVal(x[0]); f += '<label class="pe-l" for="pe-'+x[0]+'">'+x[1]+(x[0]==='issues'||x[0]==='general' ? '<textarea id="pe-'+x[0]+'" rows="2" placeholder="'+esc(x[2])+'">'+esc(v)+'</textarea>' : '<input id="pe-'+x[0]+'" type="text" inputmode="'+(x[0]==='general'?'text':'decimal')+'" value="'+esc(v)+'" placeholder="'+esc(x[2])+'">')+'</label>'; });
+    return f+'<div class="le-btns"><button type="button" class="btn small" data-act="persCancel">Annulla</button><button type="button" class="btn small primary" data-act="persSave">Salva</button></div></div></details>';
+  }
+  var anyP = SITE && PERSF.some(function(x){ return PEND['client|'+x[0]]; }), allS = anyP && PERSF.every(function(x){ var q=PEND['client|'+x[0]]; return !q || q.sent; });
   var sum = [age?esc(age)+(/^\d+$/.test(age)?' anni':''):'', w?esc(w)+(/^[\d.,]+$/.test(w)?' kg':''):''].filter(Boolean).join(' · ');
   var op = ui.ob && ui.ob.__pers;
   var h = '<details class="plan pland" data-blk="__pers"'+(op?' open':'')+'><summary><span class="bd-t"><span class="eyebrow">Dati personali</span><span class="pl-goal">'+esc((c.name||'').trim()||'Cliente')+'</span>'+(iss?'<small>Problematiche fisiche indicate</small>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="plan-in">';
   h += '<div class="plan-dates" style="border-top:0;padding-top:0"><div><span class="eyebrow">Età</span><strong>'+(age?esc(age)+(/^\d+$/.test(age)?' anni':''):'—')+'</strong></div><div><span class="eyebrow">Peso</span><strong>'+(w?esc(w)+(/^[\d.,]+$/.test(w)?' kg':''):'—')+'</strong></div></div>';
   h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Problematiche fisiche</span><span class="pers-iss">'+(iss?esc(iss):'Nessuna indicata')+'</span></div>';
-  if(gen || ui.canEdit) h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Informazioni generali</span><span class="pers-iss">'+(gen?esc(gen):'Nessuna')+'</span></div>';
+  if(gen || ui.canEdit || SITE) h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Informazioni generali</span><span class="pers-iss">'+(gen?esc(gen):'Nessuna')+'</span></div>';
+  if(SITE) h += '<div class="pe-foot">'+(anyP?'<i>'+(allS?'inviato':'da inviare')+'</i>':'')+'<button type="button" class="pen" data-act="persEdit">Modifica i tuoi dati</button></div>';
   return h + '</div></details>';
 }
 
@@ -773,6 +786,15 @@ app.addEventListener('click', function(e){
   if(a==='logCancel'){ ui.le=null; render(); return; }
   if(a==='infoEdit'){ ui.ie={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y5=window.scrollY; render(); window.scrollTo(0,y5); var t1=document.getElementById('ie-in'); if(t1){ try{ t1.focus({preventScroll:true}); }catch(err){ t1.focus(); } } return; }
   if(a==='infoCancel'){ ui.ie=null; render(); return; }
+  if(a==='persEdit'){ ui.pe=true; ui.ob=ui.ob||{}; ui.ob.__pers=true; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
+  if(a==='persCancel'){ ui.pe=false; render(); return; }
+  if(a==='persSave'){
+    var sent=[];
+    PERSF.forEach(function(x){ var el=document.getElementById('pe-'+x[0]); if(!el) return; var v=el.value.trim(), k='client|'+x[0];
+      if(v===persVal(x[0])) return;
+      PEND[k]={f:'client',k:x[0],v:v,ts:Date.now(),sent:false}; sent.push(k); });
+    pendSave(); ui.pe=false; var y8=window.scrollY; render(); window.scrollTo(0,y8); sent.forEach(sendPend); return;
+  }
   if(a==='infoSave'){
     var t2=document.getElementById('ie-in'); if(!t2||!ui.ie) return;
     var I=ui.ie, ex2=findEx(I.d,I.n); if(!ex2) return;
