@@ -578,7 +578,8 @@ function stepper(label, act, val, what){
   return '<div><span class="eyebrow">'+label+'</span><div class="step"><button class="btn small" data-act="'+act+'" data-v="-1" aria-label="Togli '+what+'">−</button><b>'+val+'</b><button class="btn small" data-act="'+act+'" data-v="1" aria-label="Aggiungi '+what+'">+</button></div></div>';
 }
 function isLesson(a){ var w=(a.what||'').toLowerCase(); return w.indexOf('lezion')>=0 || w.indexOf('massagg')<0; }
-function pastLessonsSince(from){ var now=new Date(); return S.appts.filter(function(a){ return a.d && a.d>=from && parseD(a)<now && isLesson(a); }).length; }
+function oneADay(l){ var s={}; return l.filter(function(a){ if(s[a.d]) return false; s[a.d]=1; return true; }); }
+function pastLessonsSince(from){ var now=new Date(); return oneADay(S.appts.filter(function(a){ return a.d && a.d>=from && parseD(a)<now; })).length; }
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
 function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
@@ -607,7 +608,7 @@ function viewPkg(){
     if(p.start){ try{ h += '<small>Pacchetto iniziato il '+esc(new Intl.DateTimeFormat("it-IT",{day:"numeric",month:"long"}).format(parseD({d:p.start})))+'.</small>'; }catch(e){} }
   } else if(mode==='month'){
     var now = new Date(), y = now.getFullYear(), mo = now.getMonth();
-    var inMonth = S.appts.filter(function(a){ if(!a.d) return false; var d=parseD(a); return d.getFullYear()===y && d.getMonth()===mo && isLesson(a); });
+    var inMonth = oneADay(S.appts.slice().sort(function(a,b){return parseD(a)-parseD(b);}).filter(function(a){ if(!a.d) return false; var d=parseD(a); return d.getFullYear()===y && d.getMonth()===mo; }));
     var fatte = inMonth.filter(function(a){ return parseD(a) < now; }).length;
     var prog = inMonth.length - fatte;
     var mese = new Intl.DateTimeFormat('it-IT',{month:'long'}).format(now);

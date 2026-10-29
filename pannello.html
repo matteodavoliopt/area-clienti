@@ -95,6 +95,7 @@ try{ ui.f = localStorage.getItem('pc-filter') || 'all'; }catch(e){}
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 function parseD(a){ var p=(a.d||'').split('-'); var t=(a.t||'00:00').split(':'); return new Date(+p[0],(+p[1]||1)-1,+p[2]||1,+t[0]||0,+t[1]||0); }
 function isLesson(a){ var w=(a.what||'').toLowerCase(); return w.indexOf('lezion')>=0 || w.indexOf('massagg')<0; }
+function oneADay(l){ var s={}; return l.filter(function(a){ if(s[a.d]) return false; s[a.d]=1; return true; }); }
 var fNext = new Intl.DateTimeFormat('it-IT',{weekday:'short',day:'numeric',month:'short'});
 var fDate = new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short'});
 var LOGO = '<svg class="logo" viewBox="440 380 1060 1170" role="img" aria-label="Logo"><path d="M463 405H900C1220 405 1470 640 1470 966C1470 1290 1220 1528 900 1528H463V1302H552V1455H880C1170 1455 1377 1250 1377 966C1377 690 1170 478 880 478H552V643H463Z"/><path d="M463 720H552L778 1213L774 1223H696L552 915V1223H463Z"/><path d="M909 720H992V1223H911V915L822 1113L777 1014Z"/></svg>';
@@ -110,12 +111,12 @@ function status(c){
   if(mode!=='none' && p.paid!=null){ var pv = p.paid===true?'ok':(p.paid==='rata'?'rata':'no'); if(mode==='month' && pv!=='no' && p.paidMonth!==ym) pv='no'; if(pv==='no'){ r.unpaid=true; r.tags.push({c:'bad', t: '\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')}); } else if(pv==='rata'){ r.unpaid=true; r.tags.push({c:'rata', t:'\u2713 Prima rata pagata'}); } else r.tags.push({c:'paid', t:'\u2713 Pagato'}); }
   if(mode==='pack'){
     var tot = parseInt(p.total,10)||0, done = parseInt(p.done,10)||0;
-    if(p.start) done = ap.filter(function(a){ return a.d>=p.start && parseD(a)<now && isLesson(a); }).length;
+    if(p.start) done = oneADay(ap.filter(function(a){ return a.d>=p.start && parseD(a)<now; })).length;
     if(tot>0){ var left = Math.max(0, tot-Math.min(done,tot)); r.left=left; r.renew = left<=2;
       r.tags.push({c: left===0?'bad':(left<=2?'warn':'ok'), t: left===0?'Pacchetto finito':(left+(left===1?' lezione rimasta':' lezioni rimaste')+' su '+tot)}); }
   } else if(mode==='month'){
     var y=now.getFullYear(), m=now.getMonth(), q=parseInt(p.month,10)||0;
-    var fatte = ap.filter(function(a){ var d=parseD(a); return d.getFullYear()===y && d.getMonth()===m && d<now && isLesson(a); }).length;
+    var fatte = oneADay(ap.filter(function(a){ var d=parseD(a); return d.getFullYear()===y && d.getMonth()===m && d<now; })).length;
     r.tags.push({c:'ok', t:'Mensile: '+fatte+(q?' di '+q:'')+' fatte'});
   }
   var s = c.start, e = c.end;
