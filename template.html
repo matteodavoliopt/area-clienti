@@ -514,10 +514,9 @@ function viewTrain(){
           h += '<div class="le"><label for="le-in">Settimana '+ui.le.w+' · '+esc((e.lab||'').trim()||'REP/KG')+'</label><input id="le-in" type="text" inputmode="text" autocomplete="off" value="'+esc(cur)+'" placeholder="Es. 8/80 · 7/80"><small>Una serie dopo l\u2019altra, ripetizioni/kg.</small><div class="le-btns"><button type="button" class="btn small" data-act="logCancel">Annulla</button><button type="button" class="btn small primary" data-act="logSave">Salva</button></div></div>';
         }
         h += '</div>';
-      } else if(any){
+      } else if(true){
         h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Settimane')+'</span><div class="log-weeks">';
-        lg.forEach(function(x,w){ if((x||'').trim()) h += '<span class="wk'+(w+1===cw?' now':'')+'"><b>S'+(w+1)+'</b>'+esc(x)+'</span>'; });
-        if(cw && cw<=nWeeks() && !((lg[cw-1]||'').trim())) h += '<span class="wk now empty"><b>S'+cw+'</b>questa settimana</span>';
+        for(var w2=0, W2=Math.max(nWeeks(), lg.length); w2<W2; w2++){ var x2=(lg[w2]||'').trim(); h += '<span class="wk'+(w2+1===cw?' now':'')+(x2?'':' empty')+'"><b>S'+(w2+1)+'</b>'+(x2?esc(x2):(w2+1===cw?'questa settimana':'—'))+'</span>'; }
         h += '</div></div>';
       }
       h += '</li>';
