@@ -1,0 +1,130 @@
+{
+ "slug": "matteo-5722cc71",
+ "source": "https://claude.ai/artifact/9hUrXVh4PCW7Ax2SVYK1UT",
+ "data": {
+  "client": {
+   "name": "Matteo Gullotta",
+   "g": "m",
+   "goal": "",
+   "freq": "",
+   "dur": "",
+   "start": "",
+   "end": "",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-07-03",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-09",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-16",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-27",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-30",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-08-31",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-04",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-18",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-25",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-02",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-16",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-22",
+    "t": "10:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-30",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}

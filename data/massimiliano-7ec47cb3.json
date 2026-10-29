@@ -1,0 +1,411 @@
+{
+ "slug": "massimiliano-7ec47cb3",
+ "source": "https://claude.ai/artifact/WuJEheu4wgcidVujcrhcen",
+ "data": {
+  "client": {
+   "name": "Massimiliano Iannello",
+   "g": "m",
+   "goal": "Massa muscolare",
+   "freq": "3",
+   "dur": "60”",
+   "start": "2026-05-05",
+   "end": "2026-08-05",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "SPINTE MANUBRI PANCA 30°",
+      "sr": "3 x 6-10",
+      "info": "30kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/6h0Rrnd0V0U?si=HPJnpO8AvBIUjxjt"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "CROCI MULTI FLY",
+      "sr": "3 x 8-12",
+      "info": "62,6kg",
+      "rec": "120”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "SPINTE MANUBRI PANCA 60°",
+      "sr": "3 x 6-10",
+      "info": "18kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ReEeWKFVnIg?si=pSxKQCzKlIqdq2Bo"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ALZATE LATERALI MULTIFLY",
+      "sr": "3 x 10-15",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/iwHY5VuGhag?is=yb5ytWC-_6KwFYvX"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 x 8-12",
+      "info": "17,5kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "OVERHEAD EXTENSION CORDA CAVO BASSO",
+      "sr": "3 x 8-12",
+      "info": "12,5kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/pjLTIqzfJ28?si=l1t8UzMMVzX-Rpnl"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "LAT MACHINE SBARRA PRESA PRONA FOCUS DORSALI",
+      "sr": "3 x 6-10",
+      "info": "60kg 40kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/gObmwxkY7uM?si=SEWTk7X40412jIzb"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "PULLEY TRIANGOLO FOCUS DORSALI",
+      "sr": "3 x 6-10",
+      "info": "35kg 40kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/EMg1HGTwiTw?si=Rjw76P0xy5XDZxPY"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "CROCI INVERSE KINESIS",
+      "sr": "3 x 10-15",
+      "info": "2,5kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "CURL BILANCIERE EZ",
+      "sr": "3 x 8-12",
+      "info": "10kg",
+      "rec": "120”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "HUMMER CURL CORDA CAVO BASSO",
+      "sr": "3 x 8-12",
+      "info": "17,5kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/aK0lC3zvxLA?si=rVhBj2MWETw7_f3P"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "SIT UP PANCA CRUNCH",
+      "sr": "3 x 8-12",
+      "info": "Panca declinata -1",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "BELT SQUAT",
+      "sr": "3 x 8",
+      "info": "120kg 40kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/65k61H6pmYo?is=vm5XfXZZyw7jgZTD"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG EXTENSION",
+      "sr": "3 x 10",
+      "info": "60kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG CURL SDRAIATO",
+      "sr": "3 x 12",
+      "info": "35kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/6ymnnC4zneo?is=48lKA8ZtXJ72NJtx"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ADDUCTOR MACHINE",
+      "sr": "3 x 15",
+      "info": "35kg",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Richiamo petto/schiena/spalle/braccia",
+      "sr": "",
+      "info": "Un solo gruppo muscolare e 2 esercizi per distretto muscolare",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-17",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-19",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-22",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-24",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-29",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-01",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-03",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-06",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-08",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-15",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-17",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-21",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-28",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-30",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-03",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "09:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-16",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-30",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "09:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-14",
+    "t": "08:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-21",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}

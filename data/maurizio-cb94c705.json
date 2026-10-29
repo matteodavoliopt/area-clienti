@@ -1,0 +1,40 @@
+{
+ "slug": "maurizio-cb94c705",
+ "source": "https://claude.ai/artifact/BE4jumd5NsmjnTRXNZg5q5",
+ "data": {
+  "client": {
+   "name": "Maurizio Cannizzaro",
+   "g": "m",
+   "goal": "",
+   "freq": "",
+   "dur": "",
+   "start": "",
+   "end": "",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-10-29",
+    "t": "13:30",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-11-05",
+    "t": "13:00",
+    "what": "Massaggio",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}

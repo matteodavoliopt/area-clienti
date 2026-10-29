@@ -1,0 +1,283 @@
+{
+ "slug": "paola-096f3850",
+ "source": "https://claude.ai/artifact/L27DQu64AizMooh3Jqqf4b",
+ "data": {
+  "client": {
+   "name": "Paola Molteni",
+   "g": "f",
+   "goal": "Ricomposizione",
+   "freq": "2",
+   "dur": "60’",
+   "start": "2026-09-07",
+   "end": "2026-12-07",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "GOBLET SQUAT 10kg",
+      "sr": "3 x 10",
+      "info": "Utilizzo step altezza massima",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "HIP TRUST MACHINE 0kg",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG EXTENSION 27,5kg",
+      "sr": "3 x 12",
+      "info": "Sedile 3 e cuscinetto 1",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ADDUCTOR MACHINE 20kg",
+      "sr": "3 x 12",
+      "info": "Apertura 3",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "PUSH DOWN SBARRA CURVA CAVO ALTO 11kg + CURL MANUBRI 5kg",
+      "sr": "3 x 10+10",
+      "info": "Due esercizi da fare di fila",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/f3-ogykya8Y?si=40XpgmmazjbyyFa1"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/h9hZmMdmLSk?si=cU1w-RzrnHkL_SBp"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ROTAZIONI ADDOME AL CAVO",
+      "sr": "3 x 10+10",
+      "info": "Cavo altezza petto",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Slitta Skillmill",
+      "sr": "1 x 3’",
+      "info": "30” camminata veloce + 30” spinta della slitta",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "STACCO KETTLEBELL 12kg",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG PRESS ORIZZONTALE 40kg",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/pOzkipChf68?si=-BKaN7x_R7cQ8A8N"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG CURL 1,25kg",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/JpdJA3FPE0Q?si=texDFCIgW_drLyol"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ABDUCTOR MACHINE 30kg",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/6QsvrlB-w08?si=3k1fPqDtsQZOXA27"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "AUSTRALIAN TRX + SPINTE MANUBRI IN PIEDI",
+      "sr": "3 x 10+10",
+      "info": "Due esercizi da fare di fila",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/Aa0U3nYoz64?si=l4_qvOqrPZfRW6Ti"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "SHOULDER TAP",
+      "sr": "3 x 20",
+      "info": "Oscillare il meno possibile col busto",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Air Bike",
+      "sr": "1 x 3’",
+      "info": "30” solo gambe + 30” completa",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-01",
+    "t": "16:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-09",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-18",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-23",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-14",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-23",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-13",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-20",
+    "t": "15:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "slug": "gianluca-b27870af",
+ "source": "https://claude.ai/artifact/2VgUXLhvHA8UwEEG1WsZvn",
+ "data": {
+  "client": {
+   "name": "Gianluca Falzarano",
+   "g": "m",
+   "goal": "",
+   "freq": "",
+   "dur": "",
+   "start": "",
+   "end": "",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-30",
+    "t": "09:15",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "09:00",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-10-14",
+    "t": "07:30",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-10-21",
+    "t": "09:00",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "09:00",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-11-07",
+    "t": "13:00",
+    "what": "Massaggio",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}

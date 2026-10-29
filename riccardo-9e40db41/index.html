@@ -342,10 +342,10 @@ var ILLU = {"box": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"tr
 function illuFor(t){ t=(t||'').toLowerCase();
   if(/apertur/.test(t) && /bracci/.test(t)) return 'bandpull'; if(/ponte glut/.test(t)) return 'bridge'; if(/super ?man/.test(t) && /invers/.test(t)) return 'revsuperman'; if(/crunch/.test(t) && /bracci/.test(t)) return 'crunchreach';
   if(/squat profond/.test(t)){ if(/oscillazion/.test(t)) return 'squatrock'; if(/rotazion/.test(t)) return 'squatrot'; return 'deepsquat'; }
-  if(/affondo/.test(t)){ if(/muro/.test(t)) return 'kneewall'; return 'lungerot'; }
+  if(/affondo/.test(t)){ if(/muro/.test(t)) return 'kneewall'; if(/rotazion/.test(t)) return 'lungerot'; return ''; }
   if(/bambino/.test(t)) return 'childcobra'; if(/cobra/.test(t)) return 'cobra';
   if(/polso|polsi|palmi/.test(t)) return 'wrist';
-  if(/scapolar/.test(t) && !/ponte/.test(t)){ if(/depression|elevazion/.test(t)) return 'overheadstick'; return 'scapstick'; }
+  if(/scapolar/.test(t) && !/ponte|push|australian|trazion/.test(t)){ if(/depression|elevazion/.test(t)) return 'overheadstick'; return 'scapstick'; }
   if(/circonduzion/.test(t) && /frontale|sdraiat/.test(t)) return 'supinestick';
   if(/circonduzion/.test(t) && /spall/.test(t)) return 'dislocate';
   if(/rotazion/.test(t) && /gomit/.test(t)) return 'extrot';

@@ -1,0 +1,341 @@
+{
+ "slug": "federica-b2e70370",
+ "source": "https://claude.ai/artifact/W3vwpCcmBSXQoVsCLpwvHY",
+ "data": {
+  "client": {
+   "name": "Federica Peluso",
+   "g": "f",
+   "goal": "Rinforzo schiena e dimagrimento",
+   "freq": "2",
+   "dur": "60 min.",
+   "start": "2025-10-06",
+   "end": "2025-12-06",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [
+   {
+    "label": "Mobilità (10 ripetizioni ad esercizio)",
+    "text": "Gatto e leone\nPosizione del bambino e del cobra\nPosizione del cobra gambe divaricate\nIntra ed extra rotazione anche\nRotazione in affondo"
+   }
+  ],
+  "post": [
+   {
+    "label": "Cardio",
+    "text": "opzionale fine allenamento\nA scelta tra tapis roulant, cycle o ellittica, dai 15 ai 30 minuti in base al tempo e ritmo medio-basso ma sempre costante"
+   }
+  ],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Crunch",
+      "sr": "3 x 12",
+      "info": "Sollevo il più possibile le spalle da terra",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Barchetta",
+      "sr": "3 x 30 sec.",
+      "info": "Zona lombare attaccata a terra e spalle sempre sollevate",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Ponte glutei",
+      "sr": "3 x 12",
+      "info": "Piedi larghezza spalle e spingo il bacino verso l’alto",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Box squat",
+      "sr": "3 x 10",
+      "info": "Piedi poco più larghi delle spalle, punte leggermente in fuori e scendo a toccare il boxe",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Australian pull up trx",
+      "sr": "3 x 12",
+      "info": "Tiro con i gomiti vicino ai fianchi",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Croci inverse kinesis",
+      "sr": "3 x 12",
+      "info": "Braccia semi tese e spalle sempre basse quando apro le braccia",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Plank braccia tese",
+      "sr": "3 x 30 sec.",
+      "info": "Mani sotto le spalle e piedi larghezza spalle",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Plank laterale",
+      "sr": "3 x 20 sec.",
+      "info": "Appoggio il gomito sotto la spalla",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Super man a terra",
+      "sr": "3 x 10",
+      "info": "Da sdraiato sollevo solo il busto da terra",
+      "rec": "1 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Lat machine triangolo",
+      "sr": "3 x 10",
+      "info": "Busto dritto e gomiti stretti 25kg",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg curl",
+      "sr": "3 x 12",
+      "info": "Distendo completamente le gambe e piedi sempre a martello",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Abductor machine",
+      "sr": "3 x 12 + 12",
+      "info": "Apro il più possibile e spingo solo con le ginocchia 40kg",
+      "rec": "1,30 min.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-15",
+    "t": "19:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-19",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": "Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"
+   },
+   {
+    "d": "2026-06-22",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-25",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-29",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-03",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-06",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-10",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-17",
+    "t": "09:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-20",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-22",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-27",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-30",
+    "t": "09:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-07",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-14",
+    "t": "18:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-17",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-21",
+    "t": "19:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-28",
+    "t": "21:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-02",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-05",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-12",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-16",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-19",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-23",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-26",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-30",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-02",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}
