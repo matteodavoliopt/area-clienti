@@ -150,12 +150,12 @@ function status(c){
 
 function week(){
   var t0 = new Date(); t0.setHours(0,0,0,0); var now = new Date(), days = [];
-  for(var i=0;i<7;i++){ var d=new Date(t0); d.setDate(t0.getDate()+i); days.push({d:d, k:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'), items:[]}); }
+  for(var i=0;i<2;i++){ var d=new Date(t0); d.setDate(t0.getDate()+i); days.push({d:d, k:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'), items:[]}); }
   C.forEach(function(c){ (c.appts||[]).forEach(function(a){ days.forEach(function(x){ if(a.d===x.k) x.items.push({c:c,a:a}); }); }); });
   var n=0; days.forEach(function(x){ x.items.sort(function(p,q){ return (p.a.t||'').localeCompare(q.a.t||''); }); n+=x.items.length; });
   var fD = new Intl.DateTimeFormat('it-IT',{weekday:'long',day:'numeric',month:'short'});
-  var h = '<section class="week" aria-label="Prossimi 7 giorni"><div class="week-h"><h2>Prossimi 7 giorni</h2><small>'+n+(n===1?' appuntamento':' appuntamenti')+'</small></div>';
-  if(!n) h += '<p class="wnone">Nessun appuntamento in calendario nei prossimi 7 giorni.</p>';
+  var h = '<section class="week" aria-label="Oggi e domani"><div class="week-h"><h2>Oggi e domani</h2><small>'+n+(n===1?' appuntamento':' appuntamenti')+'</small></div>';
+  if(!n) h += '<p class="wnone">Nessun appuntamento oggi e domani.</p>';
   days.forEach(function(x,i){
     if(!x.items.length) return;
     var lab = i===0?'Oggi':(i===1?'Domani':fD.format(x.d));
