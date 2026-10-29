@@ -1,0 +1,411 @@
+{
+ "slug": "kevin-f8101b00",
+ "source": "https://claude.ai/artifact/4z4U8hMz7MaSjadheNXEfM",
+ "data": {
+  "client": {
+   "name": "Kevin Perez",
+   "g": "m",
+   "goal": "Weightlifting",
+   "freq": "4",
+   "dur": "60’",
+   "start": "2026-06-22",
+   "end": "2026-09-22",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [
+   {
+    "label": "MOBILITà POLSI",
+    "text": "Piegamento polso quadrupedia\nPiegamento inverso polso quadrupedia\nPiegamento dita palmi sollevati"
+   },
+   {
+    "label": "MOBILITà SCAPOLE",
+    "text": "Adduzioni e abduzioni scapolari bastone\nDepressione ed elevazione scapolare bastone"
+   },
+   {
+    "label": "MOBILITà SPALLE",
+    "text": "Circonduzioni spalle elastico\nExtrarotazione gomiti elastico\nExtrarotazione gomito singolo bastone\nDistensioni braccia schiena al muro\nCirconduzione frontale bastone da sdraiato e gambe su box\nSuperman bastone dietro la testa sdraiato pancia a terra\nAllungamento braccia con pesi sdraiato su panca"
+   },
+   {
+    "label": "MOBILITà TORACICA",
+    "text": "Estensioni toraciche su box\nEstensioni toraciche su foam roller"
+   },
+   {
+    "label": "MOBILITà LOMBARE",
+    "text": "Posizione gatto e leone\nPosizione bambino e cobra\nPosizione di affondo e rotazioni"
+   },
+   {
+    "label": "MOBILITà ANCHE E GAMBE",
+    "text": "Posizione di affondo ginocchio al muro\nIntrarotazioni ed extrarotazioni gambe da seduto\nSquat profondo gomiti tra le ginocchia\nOscillazioni squat profondo\nRotazioni busto squat profondo\nPosizione cobra gambe divaricate"
+   }
+  ],
+  "post": [
+   {
+    "label": "OPZIONALI A FINE ALLENAMENTO",
+    "text": "Push down corda 3 x 8-12\nCurl bilanciere ez panca scott 3 x 8-12\nAlzate laterali manubri 3 x 8-12\nSit up panca crunch 3 x 8-12"
+   }
+  ],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Mobilità parte alta",
+      "sr": "1 x 10",
+      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Tecnica slancio",
+      "sr": "15’-20’",
+      "info": "",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Panca piana",
+      "sr": "",
+      "info": "",
+      "rec": "180°",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/e_hfdQZvlMQ?si=O6r7YjlFBzp-he6g"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "2 x 5 · 87,5kg · 2 x 5 · 85kg",
+       "3 x 5 · 87,5kg",
+       "4 x 5 · 87,5kg",
+       "2 x 5 · 90kg · 2 x 5 · 87,5kg",
+       "3 x 5 · 90kg",
+       "2 x 4 · 92,5kg · 2 x 5 · 90kg",
+       "3 x 4 · 92,5kg",
+       "2 x 3 · 95kg · 2 x 4 · 92,5kg",
+       "3 x 3 · 95kg",
+       "1 x 3 · 97,5kg · 3 x 3 · 95kg",
+       "2 x 3 · 97,5kg · 2 x 3 · 95kg",
+       "1 x 3 · 100kg · 2 x 3 · 97,5"
+      ]
+     },
+     {
+      "n": "Spinte manubri panca 30°",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/6h0Rrnd0V0U?si=HPJnpO8AvBIUjxjt"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Spinte manubri panca 60°",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ReEeWKFVnIg?si=pSxKQCzKlIqdq2Bo"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Mobilità parte bassa",
+      "sr": "2 x 10",
+      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Tecnica slancio",
+      "sr": "15’-20’",
+      "info": "",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Back squat",
+      "sr": "",
+      "info": "",
+      "rec": "180°",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/7pg7qHA1j_E?feature=share"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "2 x 5 · 87,5kg · 2 x 5 · 85kg",
+       "3 x 5 · 87,5kg",
+       "4 x 5 · 87,5kg",
+       "2 x 5 · 90kg · 2 x 5 · 87,5kg",
+       "3 x 5 · 90kg",
+       "2 x 4 · 92,5kg · 2 x 5 · 90kg",
+       "3 x 4 · 92,5kg",
+       "2 x 3 · 95kg · 2 x 4 · 92,5kg",
+       "3 x 3 · 95kg",
+       "1 x 3 · 100kg · 3 x 3 · 97,5 kg",
+       "2 x 3 · 97,5kg · 2 x 3 · 95kg",
+       "1 x 3 · 100kg · 2 x 3 · 97,5"
+      ]
+     },
+     {
+      "n": "Front squat",
+      "sr": "3 x 8",
+      "info": "",
+      "rec": "120”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg extension",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Mobilità parte alta",
+      "sr": "2 x 10",
+      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Tecnica slancio",
+      "sr": "15’-20’",
+      "info": "",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Military press",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Nty7-34iXoU?si=aC8u65elYmShw2dF"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Rematore bilanciere",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Wbvo_zMmAio?si=RXXgcFBKB5wytwcY"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Lat machine presa prona",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/gObmwxkY7uM?si=SEWTk7X40412jIzb"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Pulley triangolo",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/EMg1HGTwiTw?si=Rjw76P0xy5XDZxPY"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 4",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Mobilità parte bassa",
+      "sr": "2 x 10",
+      "info": "Esegui circa 10 ripetizioni per ogni esercizio e fai due giri tutto.",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Tecnica slancio",
+      "sr": "15’-20’",
+      "info": "",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Stacco regular",
+      "sr": "",
+      "info": "",
+      "rec": "180°",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Xestlgwi4Gk?si=kVeH--ulvGF0Cnp3"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "2 x 5 · 130kg · 2 x 5 · 125kg",
+       "3 x 5 · 130kg",
+       "4 x 5 · 130kg",
+       "2 x 5 · 130kg · 2 x 5 · 135kg",
+       "3 x 5 · 135kg",
+       "2 x 4 · 135+ · + · kg · 2 x 5 · 140kg",
+       "3 x 4 · 140kg",
+       "2 x 3 · 145kg · 2 x 4 · 140kg",
+       "3 x 3 · 145kg",
+       "1 x 3 · 150kg · 3 x 3 · 145kg",
+       "2 x 3 · 150kg · 2 x 3 · 155kg",
+       "1 x 3 · 165kg · 2 x 3 · 160kg"
+      ]
+     },
+     {
+      "n": "Hip trust machine",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg curl sdraito",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/6ymnnC4zneo?is=48lKA8ZtXJ72NJtx"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-23",
+    "t": "21:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-04",
+    "t": "12:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-11",
+    "t": "11:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-17",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-23",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-26",
+    "t": "21:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

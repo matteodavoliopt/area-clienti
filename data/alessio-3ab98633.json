@@ -1,0 +1,317 @@
+{
+ "slug": "alessio-3ab98633",
+ "source": "https://claude.ai/artifact/GoYEWzcdaKMBbagyfXudsL",
+ "data": {
+  "client": {
+   "name": "Alessio",
+   "g": "m",
+   "goal": "Massa muscolare e posturale",
+   "freq": "2",
+   "dur": "60’-90’",
+   "start": "2026-10-05",
+   "end": "2027-01-05",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "SPINTE BILANCIERE PANCA 45°",
+      "sr": "3 x 6-10",
+      "info": "spalle basse e petto alto, Altezza 3",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jAzROGqoxsA?si=07d54_QCP2b_Cg8a"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/25"
+      ]
+     },
+     {
+      "n": "CROCI MULTI FLYGHT / PECTORAL MACHINE",
+      "sr": "3 x 8-12",
+      "info": "non superare con le braccia l’altezza delle spalle, altezza 5 apertura 11",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/EzM4ERun1sw?si=vTdEVmVKdj6qVJHj"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/30"
+      ]
+     },
+     {
+      "n": "LOW ROW CARICO LIBERO FOCUS TRAPEZIO",
+      "sr": "3 x 6-10",
+      "info": "Allontano le scapole e tiro col petto in fuori, altezza 2",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Q4cCLOaLYpc?si=qBLtjGbZIV4uJXey"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/15"
+      ]
+     },
+     {
+      "n": "CROCI INVERSE KINESIS",
+      "sr": "3 x 8-12",
+      "info": "Altezza 22, riposiziona sempre basse le spalle",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/1,12"
+      ]
+     },
+     {
+      "n": "Curl bicipiti panca scott / CURL MANUBRI ALTERNATO",
+      "sr": "3 x 8-12",
+      "info": "arrivo con le braccia semi tese, Altezza 4",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/6M1JLl_ukIQ?si=DwenZqGRzwsOzGUm"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/5"
+      ]
+     },
+     {
+      "n": "LEG PRESS ORIZZONTALE",
+      "sr": "3 x 6-10",
+      "info": "Piedi larghezza spalle, leggermente girati in fuori sotto la seconda linea",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/pOzkipChf68?si=-BKaN7x_R7cQ8A8N"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/50"
+      ]
+     },
+     {
+      "n": "LEG EXTENSION",
+      "sr": "3 x 8-12",
+      "info": "Sedile 3 e cuscinetto 1",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/25"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "PULLDOWN MACHINE / LAT MACHINE SBARRA PRESA PRONA",
+      "sr": "3 x 6-10",
+      "info": "Non staccare mai il petto",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/NFJXLpobtps?si=7hg333vZ1nQXjvkP"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/M8qPeMitEdY?si=gwxjxaFnuDN1r-LU"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/50"
+      ]
+     },
+     {
+      "n": "PULLEY TRAZY BAR",
+      "sr": "3 x 8-12",
+      "info": "Porta la sbarra allo stomaco e non butrare le spalle in avanti",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/oq1ngpfVYh4?si=nDBmyL6fuZqAynk7"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/20"
+      ]
+     },
+     {
+      "n": "CHEST PRESS ISOTONICA",
+      "sr": "3 x 6-10",
+      "info": "Altezza 2, gomiti a 45° e spalle giù",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ivS7JFSwfe4?si=iygs5AbCrydNt7wz"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/30"
+      ]
+     },
+     {
+      "n": "SHOULDER PRESS CARICO LIBERO",
+      "sr": "3 x 6-10",
+      "info": "Altezza 5, tacca 2 e gomiti sotto le mani",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/5D0K7wNIfBk?si=gurACf4xLbr5Ux16"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10"
+      ]
+     },
+     {
+      "n": "ALZATE LATERALI MANUBRI",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/4"
+      ]
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/10"
+      ]
+     },
+     {
+      "n": "SIT UP PANCA CRUNCH",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-10-07",
+    "t": "17:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-08",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-13",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-15",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-20",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-22",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-27",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-05",
+    "t": "20:30",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

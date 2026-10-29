@@ -1,0 +1,350 @@
+{
+ "slug": "silvia-6bc135c6",
+ "source": "https://claude.ai/artifact/RCWb7XbYT8TkiB7ZLZBn1a",
+ "data": {
+  "client": {
+   "name": "Silvia Natucci",
+   "g": "f",
+   "goal": "Massa muscolare e aerobico",
+   "freq": "2",
+   "dur": "60’",
+   "start": "2026-09-28",
+   "end": "2026-12-28",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "HACK SQUAT",
+      "sr": "3 x 6-10",
+      "info": "Punte dei piedi sotto la quarta linea dall’alto",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/SLFey3ehtak?is=_iwonct74fARd8L-"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/5",
+       "10/5",
+       "8/5",
+       "10/5"
+      ]
+     },
+     {
+      "n": "STACCO GAMBE SEMI TESE con manubri",
+      "sr": "3 x 6-10",
+      "info": "Peso sul centro piede",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/eBW0IfP3_zE?si=Te9H0xbfMWOEs7uR"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10",
+       "10/10",
+       "8/12",
+       "10/12"
+      ]
+     },
+     {
+      "n": "LEG CURL IN PIEDI",
+      "sr": "3 x 8-12",
+      "info": "Altezza 6",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/Nj-ASMYAwyI?is=Bl134O79RYP-7KBy"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/7,5",
+       "12/7,5",
+       "12/7,5",
+       "12/7,5"
+      ]
+     },
+     {
+      "n": "LAT MACHINE SBARRA PRESA PRONA",
+      "sr": "3 x 6-10",
+      "info": "Mignolo alla prima zigrinatura della sbarra",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/gObmwxkY7uM?si=SEWTk7X40412jIzb"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/30",
+       "10/30",
+       "10/30",
+       "10/30"
+      ]
+     },
+     {
+      "n": "REMATORE BILANCIERE",
+      "sr": "3 x 8-12",
+      "info": "Bilanciere che parte altezza ginocchia",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Wbvo_zMmAio?si=RXXgcFBKB5wytwcY"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/20",
+       "10/25",
+       "10/25",
+       "10/25"
+      ]
+     },
+     {
+      "n": "CROCI INVERSE / ALZATE LATERALI MANUBRI",
+      "sr": "3 x 10-15",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/4",
+       "",
+       "15/1,25",
+       "10/1,25"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "LEG PRESS ORIZZONTALE SINGOLA",
+      "sr": "3 x 6-10",
+      "info": "Piede stretto sotto la prima linea",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/L63ikNo2Rw8?si=P-Im_wV89kU0mK2q"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/20",
+       "8/20",
+       "8/30"
+      ]
+     },
+     {
+      "n": "HIP TRUST MACHINE",
+      "sr": "3 x 6-10",
+      "info": "Sempre retroversione del bacino, addome attivo e non supero l’altezza delle ginocchia",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/35",
+       "",
+       "8/35"
+      ]
+     },
+     {
+      "n": "KICK BACK MACHINE",
+      "sr": "3 x 8-12",
+      "info": "Piede largo, basso ed extraruotato",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/ppu_8qEmLLA?is=O6wYUBM2MV9KhcF7"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/20",
+       "12/20",
+       "10/50"
+      ]
+     },
+     {
+      "n": "PUSH UP RIALZATI",
+      "sr": "3 x 6-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10 · Box 70",
+       "",
+       "10 · Box 70"
+      ]
+     },
+     {
+      "n": "RING CURL TRX al petto + BOX DIP",
+      "sr": "3 x 10+10",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/K5VKphotb-w?si=AVGSyfigIPw0Ff-o"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "CRUNCH DA SEDUTO + RUSSIAN TWIST",
+      "sr": "3 X 10+20",
+      "info": "",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-07-01",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-04",
+    "t": "11:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-06",
+    "t": "13:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-10",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-22",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-27",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-03",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-09",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-16",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-22",
+    "t": "18:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-01",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-05",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-21",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-02",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

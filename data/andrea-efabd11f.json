@@ -1,0 +1,361 @@
+{
+ "slug": "andrea-efabd11f",
+ "source": "https://claude.ai/artifact/HXgVGf3kNMuNtgD2RyZ3MV",
+ "data": {
+  "client": {
+   "name": "Andrea Doati",
+   "g": "m",
+   "goal": "Ricomposizione",
+   "freq": "2",
+   "dur": "60’-90’",
+   "start": "2026-09-01",
+   "end": "2026-12-01",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "HIP TRUST MACHINE",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/40",
+       "8/45",
+       "8/45",
+       "8/50",
+       "8/50",
+       "8/45"
+      ]
+     },
+     {
+      "n": "LEG PRESS ORIZZONTALE SINGOLA",
+      "sr": "2 x 6-10",
+      "info": "Piede alto focus glutei",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/L63ikNo2Rw8?si=P-Im_wV89kU0mK2q"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/20",
+       "8/30",
+       "8/30",
+       "8/40",
+       "8/40",
+       "10/30"
+      ]
+     },
+     {
+      "n": "KICK BACK MACHINE",
+      "sr": "2 x 8-12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/ppu_8qEmLLA?is=O6wYUBM2MV9KhcF7"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/60",
+       "10/60",
+       "10/60",
+       "10/60",
+       "10/60",
+       "8/60"
+      ]
+     },
+     {
+      "n": "ADDUCTOR MACHINE",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/35",
+       "12/35",
+       "8/40",
+       "12/40",
+       "12/40",
+       "12/35"
+      ]
+     },
+     {
+      "n": "PULLEY TRIANGOLO",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/EMg1HGTwiTw?si=Rjw76P0xy5XDZxPY"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/20",
+       "12/20",
+       "10/20",
+       "10/20",
+       "10/20",
+       "12/15"
+      ]
+     },
+     {
+      "n": "FRENCH PRESS MANUBRI PANCA PIANA",
+      "sr": "3 x 8-12",
+      "info": "Posso usare un solo manubrio con entrambe le mani per renderlo più semplice",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jX720d3MHbQ?si=j6SoGHqXpW6Q5NjS"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/7.5",
+       "10/8",
+       "8/8",
+       "12/4",
+       "12/4",
+       "12/4"
+      ]
+     },
+     {
+      "n": "Circuito addome: · Crunch pilates · Spider plank",
+      "sr": "3 x 10+10",
+      "info": "Eseguo i due esercizi di fila, se troppo pesanti riposo qualche secondo tra un esercizio e l’altro",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "STACCO GAMBE SEMI TESE",
+      "sr": "3 X 6-10",
+      "info": "Con bilanciere",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/eBW0IfP3_zE?si=Te9H0xbfMWOEs7uR"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "6/24",
+       "8/50",
+       "8/50",
+       "10/50",
+       "8/40",
+       "10/40"
+      ]
+     },
+     {
+      "n": "BELT SQUAT",
+      "sr": "2 X 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/65k61H6pmYo?is=vm5XfXZZyw7jgZTD"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/80",
+       "8/80",
+       "8/80",
+       "8/90",
+       "8/90",
+       "8/90"
+      ]
+     },
+     {
+      "n": "LEG CURL DA SDRAIATO",
+      "sr": "3 X 6-10",
+      "info": "Cuscinetto sul 1",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/6ymnnC4zneo?is=48lKA8ZtXJ72NJtx"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "20",
+       "8/20",
+       "6/25",
+       "8/25",
+       "10/22,5",
+       "10/22,5"
+      ]
+     },
+     {
+      "n": "ABDUCTOR MACHINE IN PIEDI",
+      "sr": "3 X 8-12",
+      "info": "Rimango in isometria con il bacino poco sopra l’altezza delle ginocchia",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/qPJa8M3iB7M?is=r2_ZeA3Szu2Yo0t1"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "60",
+       "12/70",
+       "10/80",
+       "12/80",
+       "10/70",
+       "12/60"
+      ]
+     },
+     {
+      "n": "PULLDOWN CARICO LIBERO PRESA PRONA",
+      "sr": "3 X 6-10",
+      "info": "Petto sempre alto non lasciarti mai a peso morto",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/0eMT9GE6iYg?is=mMtU6dqNoM3TA84j"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "",
+       "10/42",
+       "8/42",
+       "10/42",
+       "10/20",
+       "10/20"
+      ]
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 X 8-12",
+      "info": "Drop set: Dopo le prime ripetizioni scalo circa metà del peso e faccio più ripetizioni possibili",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/ · 12,5",
+       "10/ · 12,5",
+       "10/ · 12,5",
+       "10/ · 12,5",
+       "12/10",
+       "10/10"
+      ]
+     },
+     {
+      "n": "Circuito addome: · Sit up gambe tese · Plank tocco frontale",
+      "sr": "3 x 10+10",
+      "info": "Eseguo i due esercizi di fila, se troppo pesanti riposo qualche secondo tra un esercizio e l’altro",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-19",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-03",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-29",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-02",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-12",
+    "t": "13:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-21",
+    "t": "18:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-05",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-30",
+    "t": "14:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

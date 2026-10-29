@@ -1,0 +1,402 @@
+{
+ "slug": "denis-9e500108",
+ "source": "https://claude.ai/artifact/SatmEHtxZku5E6Y59aseB2",
+ "data": {
+  "client": {
+   "name": "Denis Bergamin",
+   "g": "m",
+   "goal": "Forza e massa muscolare",
+   "freq": "3",
+   "dur": "60’",
+   "start": "2026-10-05",
+   "end": "2027-01-05",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "BOX SQUAT",
+      "sr": "3 x 8-12",
+      "info": "1” di tenuta in accosciata, ginocchia larghe",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/fXSnbO2PIcs?feature=share"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/20"
+      ]
+     },
+     {
+      "n": "COPENAGHEN PLANK",
+      "sr": "2 x 8-12",
+      "info": "Poggio sempre il bacino a terra e risalgo, bacino aperto in avanti",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "BARCHETTA",
+      "sr": "3 x 40”",
+      "info": "20” per gamba, zona lombare sempre attaccata a terra",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG PRESS ORIZZONTALE SINGOLA",
+      "sr": "2 x 8-12",
+      "info": "Piedi stretti sotto 1",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/L63ikNo2Rw8?si=P-Im_wV89kU0mK2q"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/20"
+      ]
+     },
+     {
+      "n": "LEG EXTENSION SINGOLA",
+      "sr": "2 x 8-12",
+      "info": "Altezza 4",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Obu7TEZwoc0?si=mGxbXtL1APzsWhOS"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/15"
+      ]
+     },
+     {
+      "n": "LOW ROW CARICO LIBERO",
+      "sr": "3 x 8-12",
+      "info": "Altezza 2, allontano e avvicino le scapole",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/J57oY6tHH7k?si=YVaKlWJBn_y3Y4OM"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10"
+      ]
+     },
+     {
+      "n": "PULLDOWN MACHINE",
+      "sr": "3 x 8-12",
+      "info": "Gomiti che chiudono verso i fianchi",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/NFJXLpobtps?si=7hg333vZ1nQXjvkP"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/50"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "SPINTE BILANCIERE PANCA PIANA",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/e_hfdQZvlMQ?si=O6r7YjlFBzp-he6g"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "6/65",
+       "6/70"
+      ]
+     },
+     {
+      "n": "REMATORE BILANCIERE",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Wbvo_zMmAio?si=RXXgcFBKB5wytwcY"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/40",
+       "10/40"
+      ]
+     },
+     {
+      "n": "CHEST PRESS CARICO LIBERO",
+      "sr": "3 x 8-12",
+      "info": "altezza 3 tacca 3",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/rKL44vXn_WM?si=uQYw_mVEEAQYmnzK"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/30",
+       "8/35"
+      ]
+     },
+     {
+      "n": "LAT MACHINE SBARRA PRESA PRONA",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/gObmwxkY7uM?si=SEWTk7X40412jIzb"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/45",
+       "10/45"
+      ]
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/15",
+       "12/15"
+      ]
+     },
+     {
+      "n": "HUMMER CURL MANUBRI PANCA 60°",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/2h85Dm5HiD8?si=qYRerXNL8prDJCwX"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/8",
+       "10/10"
+      ]
+     },
+     {
+      "n": "ALZATE LATERALI MANUBRI da seduto",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "",
+       "12/6"
+      ]
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "STACCO REGULAR kettlebell",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Xestlgwi4Gk?si=kVeH--ulvGF0Cnp3"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/20"
+      ]
+     },
+     {
+      "n": "PONTE GLUTEI SINGOLO",
+      "sr": "2 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "8/0"
+      ]
+     },
+     {
+      "n": "SIDE PLANK ABDUCTION",
+      "sr": "2 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "8/0"
+      ]
+     },
+     {
+      "n": "PLANK",
+      "sr": "3 x 40”",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LEG CURL SINGOLO IN PIEDI",
+      "sr": "2 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/Nj-ASMYAwyI?is=Bl134O79RYP-7KBy"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/0"
+      ]
+     },
+     {
+      "n": "SHOULDER PRESS CARICO LIBERO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/5D0K7wNIfBk?si=gurACf4xLbr5Ux16"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/15"
+      ]
+     },
+     {
+      "n": "DELTS MACHINE",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/hSpVdTHBrTs?si=yYJxjhXzqx2pW_va"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-30",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "18:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "21:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-14",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-22",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-27",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-31",
+    "t": "10:30",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

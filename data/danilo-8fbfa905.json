@@ -1,0 +1,285 @@
+{
+ "slug": "danilo-8fbfa905",
+ "source": "https://claude.ai/artifact/McWdmw9tif5FBKyYEAn1xb",
+ "data": {
+  "client": {
+   "name": "Danilo Marzo",
+   "g": "m",
+   "goal": "Forza",
+   "freq": "1",
+   "dur": "60”",
+   "start": "2026-10-05",
+   "end": "2027-01-05",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "PUSH UP",
+      "sr": "3 x 10",
+      "info": "A terra",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN TRX",
+      "sr": "3 x 12",
+      "info": "Muro bianco altezza anca Muro Nero altezza mezza coscia",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12"
+      ]
+     },
+     {
+      "n": "CROCI MANUBRI PANCA PIANA",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SavBMDHtmjU?si=ngYiIDcbZ4FOyWRA"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "7,5kg",
+       "8kg"
+      ]
+     },
+     {
+      "n": "ALZATE LATERALI DA SEDUTO",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/I1DdbCiy8vI?is=CThu7IYRLFDSaE2b"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "7kg"
+      ]
+     },
+     {
+      "n": "RING CURL TRX",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/K5VKphotb-w?si=AVGSyfigIPw0Ff-o"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "BOX DIP",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ROTAZIONI OBLIQUI AL CAVO",
+      "sr": "3 x 10",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "7,5kg",
+       "10kg"
+      ]
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-15",
+    "t": "18:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-22",
+    "t": "18:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-24",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-29",
+    "t": "18:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-01",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-06",
+    "t": "18:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-10",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-15",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-16",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-20",
+    "t": "18:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-24",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-03",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-09",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-18",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-23",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-28",
+    "t": "18:45",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-02",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-09",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-12",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-19",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-26",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-02",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

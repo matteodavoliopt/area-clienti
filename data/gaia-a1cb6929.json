@@ -1,0 +1,403 @@
+{
+ "slug": "gaia-a1cb6929",
+ "source": "https://claude.ai/artifact/J4gGekGDG82BXReqypbJdx",
+ "data": {
+  "client": {
+   "name": "Gaia Gasparri",
+   "g": "f",
+   "goal": "Ricomposizione",
+   "freq": "3",
+   "dur": "60’",
+   "start": "2026-09-07",
+   "end": "2026-12-07",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "BELT SQUAT",
+      "sr": "2 x 6-10",
+      "info": "Punta sulla quinta tacca",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/65k61H6pmYo?is=vm5XfXZZyw7jgZTD"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/60",
+       "10/60"
+      ]
+     },
+     {
+      "n": "HIP TRUST MACHINE",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/40",
+       "10/40"
+      ]
+     },
+     {
+      "n": "ABDUCTOR MACHINE IN PIEDI",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/qPJa8M3iB7M?is=r2_ZeA3Szu2Yo0t1"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/60",
+       "10/65"
+      ]
+     },
+     {
+      "n": "LAT MACHINE TRIANGOLO",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/yAn2qY7WplY?si=d9vy1CRjETVC7zfO"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/30"
+      ]
+     },
+     {
+      "n": "REMATORE BILANCIERE",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Wbvo_zMmAio?si=RXXgcFBKB5wytwcY"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/17,5",
+       "12/17,5"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN GOMITI LARGHI TRX",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/fiRZDUmxCCI?si=hhdVIv6S_P30XKMD"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "STACCO GAMBE SEMI TESE BILANCIERE",
+      "sr": "2 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/eBW0IfP3_zE?si=Te9H0xbfMWOEs7uR"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/55",
+       "10/60",
+       "8/60",
+       "6/65"
+      ]
+     },
+     {
+      "n": "LEG CURL SDRAIATO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/6ymnnC4zneo?is=48lKA8ZtXJ72NJtx"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/17.5",
+       "12/20",
+       "8/22,5",
+       "10/22,5"
+      ]
+     },
+     {
+      "n": "HYPEREXTENSION",
+      "sr": "3 x 8-12",
+      "info": "Altezza 2",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/TApsp5JL2GQ?si=rk1S7eig7pDds_Js"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10",
+       "12/10",
+       "12/12",
+       "10/16"
+      ]
+     },
+     {
+      "n": "SPINTE MANUBRI PANCA 60°",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ReEeWKFVnIg?si=pSxKQCzKlIqdq2Bo"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/8",
+       "12/8",
+       "8/9",
+       "8/9"
+      ]
+     },
+     {
+      "n": "LOW ROW CARICO LIBERO FOCUS TRAPEZIO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Q4cCLOaLYpc?si=qBLtjGbZIV4uJXey"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "",
+       "",
+       "",
+       "12/5"
+      ]
+     },
+     {
+      "n": "SIT UP MANUBRIO + RUSSIAN TWIST",
+      "sr": "3 x 10+20",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "SPLIT SQUAT BULGARI",
+      "sr": "2 x 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "10/8+8",
+       "8/8",
+       "8/9"
+      ]
+     },
+     {
+      "n": "DEADLIFT MACHINE",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "120”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/E740rc_iMG8?is=sU1YTPA_ExI1pTra"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "9/50",
+       "8/20",
+       "10/20"
+      ]
+     },
+     {
+      "n": "KICK BACK MACHINE",
+      "sr": "2 x 8-12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/ppu_8qEmLLA?is=O6wYUBM2MV9KhcF7"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/14",
+       "12/15",
+       "10/35"
+      ]
+     },
+     {
+      "n": "ILLIAC PULLDOWN SINGOLO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/C-Ng8ILsHYA?si=n6DoL5wN-K5q5wTJ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/12.5",
+       "12/12,5",
+       "10/15"
+      ]
+     },
+     {
+      "n": "CROCI INVERSE KINESIS",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "",
+       "12/1,25",
+       "12/1,25"
+      ]
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10",
+       "10/10",
+       "12/10"
+      ]
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-08",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-15",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-22",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-29",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-13",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-20",
+    "t": "19:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "19:00",
+    "what": "Massaggio",
+    "where": ""
+   },
+   {
+    "d": "2026-11-04",
+    "t": "19:00",
+    "what": "Massaggio",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

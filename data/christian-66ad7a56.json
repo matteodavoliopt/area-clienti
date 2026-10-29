@@ -1,0 +1,357 @@
+{
+ "slug": "christian-66ad7a56",
+ "source": "https://claude.ai/artifact/XsSy29Y6gJWPKCwEwp9aaa",
+ "data": {
+  "client": {
+   "name": "Christian Gallina",
+   "g": "m",
+   "goal": "Ipertrofia e forza",
+   "freq": "3",
+   "dur": "60’",
+   "start": "2026-10-12",
+   "end": "2027-01-12",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "PUSH UP RIALZATI",
+      "sr": "3 x 6-10",
+      "info": "Porto il petto tra i pollici e uso lo Step altezza media",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "8 · Step medio",
+       "8 · Step · Minimo"
+      ]
+     },
+     {
+      "n": "PULL UP SCAPOLAR isometria 3”",
+      "sr": "3 x 10",
+      "info": "Isometria di 3” quando sei su",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "PUSH UP PIEDI RIALZATI eccentrica lenta in 5”",
+      "sr": "3 x 5-8",
+      "info": "Senza fare la risalita e uso so step basso",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/RYy2PFll8k0?si=9MLXJDYDYxTFQY2C"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "5 · Step basso",
+       "8 · Step · Basso"
+      ]
+     },
+     {
+      "n": "CHIN UP isometria alla fronte 20”",
+      "sr": "4 x 20”",
+      "info": "Fronte vicino alla sbarra",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/AFhfAlHAwr4?si=0OAlRARx6NEwfSjj"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "20” · 2 rossi altezza 4",
+       "20” · 1 rosso · Altezza · 8"
+      ]
+     },
+     {
+      "n": "HOLLOW",
+      "sr": "3 x 40”",
+      "info": "",
+      "rec": "60”",
+      "vids": [],
+      "lab": "REP",
+      "log": [
+       "40”",
+       "40” · Gambe 45°"
+      ]
+     },
+     {
+      "n": "EMOM 10’ · 8 BOX DIP · 8 AUSTRALIAN TRX/ANELLI",
+      "sr": "",
+      "info": "5 giri, un esercizio al minuto",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "LEG PRESS 45°",
+      "sr": "3 x 6-10",
+      "info": "Punte sotto la seconda tacca e piedi larghi e rumoristi in fuori",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/lR23kM1k9uI?si=VQ3gGN7cZ5KBorsa"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/80",
+       "8/100"
+      ]
+     },
+     {
+      "n": "LEG EXTENSION",
+      "sr": "3 x 8-12",
+      "info": "Seduta 3 e cuscinetto 1",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/35",
+       "10/37,5"
+      ]
+     },
+     {
+      "n": "LEG CURL IN PIEDI",
+      "sr": "3 x 8-12",
+      "info": "Altezza 4",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/Nj-ASMYAwyI?is=Bl134O79RYP-7KBy"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/7,5",
+       "10/12,5"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN TRX/ANELLI",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "",
+       "12 · Disco mezzo piede rack"
+      ]
+     },
+     {
+      "n": "L SIT isometria 25”",
+      "sr": "4 x 25”",
+      "info": "",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "IT 30-30 · COMMANDO PUSH UP · RING CURL TRX/ANELLI",
+      "sr": "3 giri",
+      "info": "30” di lavoro e 30” di riposo",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/K5VKphotb-w?si=AVGSyfigIPw0Ff-o"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "CHIN UP ELASTICO alla fronte",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/mmsgl8Hab80?si=hKRG5ODCXEzawrmZ"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "8 · Altezza 6 · 2 rossi"
+      ]
+     },
+     {
+      "n": "DIP ELASTICO",
+      "sr": "3 x 6-10",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/wiaJXtFQiVU?si=YRIjWcmHPj0c6XwF"
+       }
+      ],
+      "lab": "REP",
+      "log": [
+       "7 · Elastico rosso"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN BILANCIERE presa prona",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP",
+      "log": [
+       "10 · Altezza 5"
+      ]
+     },
+     {
+      "n": "DIP ELASTICO eccentrica lenta 5”",
+      "sr": "3 x 5-8",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/wiaJXtFQiVU?si=YRIjWcmHPj0c6XwF"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "HOLLOW ALTERNATA",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "LADDER +1 10’ · PUSH UP · RING CURL TRX/ANELLI al petto · LEG RAISES",
+      "sr": "",
+      "info": "Aumento di una ripetizione per ogni esercizio ad ogni giro",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/h7_-WWvfpB8?si=r2CMffH2PwZ8c2vG"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/K5VKphotb-w?si=AVGSyfigIPw0Ff-o"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-10-02",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-13",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-15",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-20",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-21",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-27",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-03",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

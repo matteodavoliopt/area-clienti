@@ -1,0 +1,386 @@
+{
+ "slug": "arianna-1743af21",
+ "source": "https://claude.ai/artifact/Xak1Dz1vecsJAP6SBuJYF8",
+ "data": {
+  "client": {
+   "name": "Arianna Salamida",
+   "g": "f",
+   "goal": "Calisthenics",
+   "freq": "2",
+   "dur": "60’",
+   "start": "2026-10-19",
+   "end": "2027-01-19",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "PUSH UP RIALZATI",
+      "sr": "3 x 8-12",
+      "info": "Utilizza la panca come rialzo",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8 rep"
+      ]
+     },
+     {
+      "n": "CHIN UP ELASTICO",
+      "sr": "4 x 20”",
+      "info": "Isometria petto alla sbarra, elastico verde altezza 8",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/mmsgl8Hab80?si=hKRG5ODCXEzawrmZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "20 sec"
+      ]
+     },
+     {
+      "n": "DIP ELASTICO",
+      "sr": "3 x 5",
+      "info": "Eccentrica lenta 5”, elastico nero, altezza 5",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/wiaJXtFQiVU?si=YRIjWcmHPj0c6XwF"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "5 rep"
+      ]
+     },
+     {
+      "n": "Australian sbarra presa prona",
+      "sr": "3 x 8-12",
+      "info": "Altezza 5",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "12 rep"
+      ]
+     },
+     {
+      "n": "Dragon flag",
+      "sr": "3 x 10",
+      "info": "Gamba semi tesa",
+      "rec": "60”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "IT: BOX DIP / AUSTRALIAN TRX/ANELLI / Leg raises gambe tese",
+      "sr": "30”-30”",
+      "info": "",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"
+       },
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "DIP ELASTICO",
+      "sr": "3 x 6-10",
+      "info": "Elastico nero e giallo, altezza 5",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/wiaJXtFQiVU?si=YRIjWcmHPj0c6XwF"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10 rep"
+      ]
+     },
+     {
+      "n": "CHIN UP ELASTICO",
+      "sr": "3 x 6-10",
+      "info": "Alla fronte, elastico viola altezza 6",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/mmsgl8Hab80?si=hKRG5ODCXEzawrmZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "7 rep"
+      ]
+     },
+     {
+      "n": "PUSH UP RIALZATI",
+      "sr": "3 x 5",
+      "info": "Eccentrica lenta 5”, utilizza lo step altezza minima",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "5 rep"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN TRX/ANELLI",
+      "sr": "3 x 8-12",
+      "info": "altezza ombelico, disco da 5 metà sbarra",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12 rep"
+      ]
+     },
+     {
+      "n": "L Sit parallele alte",
+      "sr": "4 x 20”",
+      "info": "",
+      "rec": "60”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "20”"
+      ]
+     },
+     {
+      "n": "IT: PUSH UP RIALZATI / Ring curl trx al petto / Hollow alternata",
+      "sr": "30”-30”",
+      "info": "",
+      "rec": "",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-15",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-18",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-22",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-29",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-02",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-14",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-16",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-20",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-23",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-27",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-01",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-04",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-07",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-11",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-15",
+    "t": "07:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-18",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-21",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-24",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-09-29",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-01",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-08",
+    "t": "07:30",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-13",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-15",
+    "t": "13:15",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-22",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-27",
+    "t": "07:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-30",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-02",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

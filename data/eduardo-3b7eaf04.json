@@ -1,0 +1,375 @@
+{
+ "slug": "eduardo-3b7eaf04",
+ "source": "https://claude.ai/artifact/9xmv7t7GC1usQ9XuksySZn",
+ "data": {
+  "client": {
+   "name": "Eduardo Muntiel",
+   "g": "m",
+   "goal": "Ricomposizione e rinforzo posturale",
+   "freq": "3",
+   "dur": "60’-90’",
+   "start": "2026-10-19",
+   "end": "2027-01-19",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "CHEST PRESS ISOTONICA",
+      "sr": "3 x 6-10",
+      "info": "Altezza 2",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ivS7JFSwfe4?si=iygs5AbCrydNt7wz"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/45"
+      ]
+     },
+     {
+      "n": "CROCI MULTI FLIGHT",
+      "sr": "3 x 8-12",
+      "info": "Altezza 6 apertura 11",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/Zr1M1TozCMA?is=9ulm55fxkkWNtF13"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/45"
+      ]
+     },
+     {
+      "n": "LOW ROW CARICO LIBERO FOCUS TRAPEZIO",
+      "sr": "3 x 6-10",
+      "info": "Altezza 2",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Q4cCLOaLYpc?si=qBLtjGbZIV4uJXey"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/10"
+      ]
+     },
+     {
+      "n": "CROCI INVERSE CAVI DOPPI",
+      "sr": "3 x 8-12",
+      "info": "Altezza 20",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/yhYVUi6TNnU?is=JBt2rY22FqtaPMNX"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/2,5"
+      ]
+     },
+     {
+      "n": "CURL BILANCIERE EZ PANCA SCOTT",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/JJJTcnE2GIw?is=DzQCGSRwYcCqCWvA"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/7,5"
+      ]
+     },
+     {
+      "n": "PUSH DOWN CORDA CAVO ALTO",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Intensità media e ritmo costante",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "STACCO REGULAR",
+      "sr": "3 x 5-8",
+      "info": "Per adesso utilizza la kettlebell e non il bilanciere",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/Xestlgwi4Gk?si=kVeH--ulvGF0Cnp3"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "8/30"
+      ]
+     },
+     {
+      "n": "LEG EXTENSION",
+      "sr": "3 x 6-10",
+      "info": "seduta 3, cuscinetto 1, leva 2 e arrivo con la gamba semi tesa",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/30"
+      ]
+     },
+     {
+      "n": "LEG CURL IN PIEDI",
+      "sr": "3 x 8-12",
+      "info": "altezza 3",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/Nj-ASMYAwyI?is=Bl134O79RYP-7KBy"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "12/7,5"
+      ]
+     },
+     {
+      "n": "SHOULDER PRESS CARICO LIBERO",
+      "sr": "3 x 6-10",
+      "info": "altezza 5, tacca 3",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/5D0K7wNIfBk?si=gurACf4xLbr5Ux16"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/15"
+      ]
+     },
+     {
+      "n": "ALZATE LATERALI MANUBRI",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "9/8"
+      ]
+     },
+     {
+      "n": "Barchetta",
+      "sr": "3 x 60”",
+      "info": "",
+      "rec": "90”",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Intensità media e ritmo costante",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 3",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "PULLDOWN CARICO LIBERO PRESA PRONA",
+      "sr": "3 x 6-10",
+      "info": "Altezza 5",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/0eMT9GE6iYg?is=mMtU6dqNoM3TA84j"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/35"
+      ]
+     },
+     {
+      "n": "SPINTE BILANCIERE PANCA 45°",
+      "sr": "3 x 6-10",
+      "info": "altezza 3",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/jAzROGqoxsA?si=07d54_QCP2b_Cg8a"
+       }
+      ],
+      "lab": "REP/KG",
+      "log": [
+       "10/35"
+      ]
+     },
+     {
+      "n": "AUSTRALIAN TRX/ANELLI",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "PUSH UP",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/h7_-WWvfpB8?si=r2CMffH2PwZ8c2vG"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "ALZATE LATERALI MULTI FLIGHT",
+      "sr": "3 x 8-12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtube.com/shorts/iwHY5VuGhag?is=yb5ytWC-_6KwFYvX"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Rotazioni obliqui al cavo",
+      "sr": "3 x 10",
+      "info": "altezza 21",
+      "rec": "90”",
+      "vids": [],
+      "lab": "REP/KG",
+      "log": [
+       "10/2,5"
+      ]
+     },
+     {
+      "n": "Cardio a scelta",
+      "sr": "15’-30’",
+      "info": "Intensità media e ritmo costante",
+      "rec": "",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-09-25",
+    "t": "20:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-19",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-23",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-26",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-29",
+    "t": "18:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-29"
+ }
+}

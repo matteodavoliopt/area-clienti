@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Area riservata · Silvia Natucci</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Silvia">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1413" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" href="../assets/favicon-32.png?v=3">
+<link rel="manifest" href="manifest.webmanifest">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<script>window.SITE={"slug": "silvia-6bc135c6", "form": {"action": "https://docs.google.com/forms/d/e/1FAIpQLScPa781Ms3C4i5psS4UHXTN7OVYLDNYycnVGboBFZcMfAEqmw/formResponse", "entry": "entry.1997063615"}};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style id="st">
+/* Layout: one narrow column like a phone training log; day chips on top, exercise rows as a numbered list, coach toolbar pinned to the bottom edge */
+:root{
+  --bg:#F2F4F3; --surface:#FFFFFF; --ink:#141C1A; --muted:#5D6B67; --line:#DCE2E0;
+  --accent:#1B7D8D; --accent-ink:#FFFFFF; --accent-soft:#DDF0F2; --brand:#2397A9; --rest:#B4621A; --danger:#B3261E; --warn-ink:#7A5600; --warn-bg:#FCEBB0; --fig-shorts:#2F3A3D; --fig-shoe:#1E2426; --fig-shorts-far:#232C2E;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1413; --surface:#182120; --ink:#E8EEEC; --muted:#93A29E; --line:#2A3634;
+  --accent:#4FC3D3; --accent-ink:#062126; --accent-soft:#13333A; --brand:#3FB4C5; --rest:#E39A57; --danger:#F08A82; --warn-ink:#F5CF5B; --warn-bg:#3B3112; --fig-shorts:#5E6E72; --fig-shoe:#9DB0B3; --fig-shorts-far:#4A585B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+#app{max-width:640px;margin:0 auto;padding-block:20px 120px;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3{margin:0;text-wrap:balance}
+.eyebrow{font:700 13px/1 var(--display);letter-spacing:.18em;color:var(--accent);text-transform:uppercase}
+.brand{display:flex;justify-content:flex-start;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.brand-txt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0;text-align:left}
+.brand-name{font:800 21px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.brand-role{font:600 clamp(7px,2.4vw,11px)/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.logo{flex:0 0 auto;width:40px;height:auto;fill:var(--brand);stroke:var(--brand);stroke-width:22;stroke-linejoin:round;overflow:visible}
+.hero{display:flex;flex-direction:column;gap:6px}
+.hero h1{font:800 clamp(44px,13vw,72px)/.9 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.hero p{margin:0;color:var(--muted)}
+.tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px}
+.tabs button{flex:1;border:0;background:none;color:var(--muted);font:700 17px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:12px 8px;border-radius:8px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.plan-goal{display:flex;flex-direction:column;gap:4px}
+.plan-goal span{font-size:18px;font-weight:600;line-height:1.3}
+.plan-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.plan-dates div{display:flex;flex-direction:column;gap:2px}
+.plan-dates strong{font:700 20px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.plan .eyebrow{font-size:12px}
+.pland{padding:0;gap:0}
+.pland summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer}
+.pland summary::-webkit-details-marker{display:none}
+.pl-goal{font-size:18px;font-weight:600;line-height:1.3;color:var(--ink)}
+.pland .bd-t small{color:var(--muted);font-size:13px}
+.pland[open] .chev{transform:rotate(180deg)}
+.pers-iss{white-space:pre-wrap;font-size:16px !important;font-weight:500 !important}
+.plan-in{display:flex;flex-direction:column;gap:12px;padding:0 16px 16px}
+.prog{display:flex;flex-direction:column;gap:6px}
+.prog-bar{height:6px;border-radius:3px;background:var(--accent-soft);overflow:hidden}
+.prog-bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.prog small{color:var(--muted);font-size:13px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.chip{flex:0 0 auto;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:700 18px/1 var(--display);letter-spacing:.05em;padding:10px 16px;border-radius:999px;cursor:pointer;text-transform:uppercase}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.day-head{display:flex;flex-direction:column;gap:2px}
+.day-head h2{font:800 34px/1 var(--display);text-transform:uppercase}
+.day-head p{margin:0;color:var(--muted)}
+.block{border-left:3px solid var(--accent);padding:4px 0 4px 12px}
+.block b{display:block;font:700 14px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.mob{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.mob li{display:grid;grid-template-columns:minmax(0,150px) 1fr;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px 8px 8px}
+.mob li.txt{display:block;background:none;border:0;padding:0}
+.mob li span{min-width:0;font-size:14.5px;line-height:1.35}
+.blockd{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px}
+.blockd summary{list-style:none;display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer}
+.blockd summary::-webkit-details-marker{display:none}
+.bd-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.bd-t b{font:700 14px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.bd-t small{color:var(--muted);font-size:13px}
+.chev{flex:0 0 auto;width:18px;height:18px;transition:transform .2s}
+.chev path{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.blockd[open] .chev{transform:rotate(180deg)}
+.blockd .mob{margin:0;padding:0 10px 10px}
+.mob-sub{color:var(--muted)}
+.tm{grid-column:2/4;display:flex;align-items:center;gap:8px;margin-top:2px;padding:4px 6px 4px 4px;border:1px solid var(--line);border-radius:999px;max-width:210px;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tm button{flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;padding:0;background:var(--rest);color:var(--accent-ink)}
+.tm button.tm-rs{background:none;color:var(--muted);width:26px;height:26px}
+.tm button svg{width:12px;height:12px;fill:currentColor}
+.tm button.tm-rs svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tm-t{font-weight:700;font-size:14px;color:var(--rest);min-width:42px}
+.tm-bar{flex:1 1 auto;height:4px;border-radius:2px;background:var(--line);overflow:hidden;min-width:40px}
+.tm-bar i{display:block;height:100%;width:0;background:var(--rest);transition:width .25s linear}
+.tm.done{border-color:var(--rest)} .tm.done .tm-t{font-family:var(--body)}
+.tmc{margin:0 10px 10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 12px;font-variant-numeric:tabular-nums}
+.tmc button{width:40px;height:40px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;padding:0;background:var(--accent);color:var(--accent-ink);grid-row:1/3}
+.tmc button.tm-rs{background:none;color:var(--muted);width:32px;height:32px;grid-column:3;grid-row:1/3}
+.tmc button svg{width:16px;height:16px;fill:currentColor}
+.tmc button.tm-rs svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tmc .tm-t{font:700 26px/1 var(--mono);color:var(--accent)}
+.tmc .tm-ph{font-size:12.5px;color:var(--muted);grid-column:2}
+.tmc .tm-bar{grid-column:1/4;margin-top:6px}
+.tmc .tm-bar i{background:var(--accent)}
+.tmc.rest .tm-t,.tmc.prep .tm-t{color:var(--rest)} .tmc.rest .tm-bar i,.tmc.prep .tm-bar i{background:var(--rest)} .tmc.rest button:not(.tm-rs){background:var(--rest)}
+.tmc.done .tm-t{font:700 18px/1.2 var(--body)}
+.mob li.cur{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.tmc.rest ~ .mob li.cur{border-color:var(--rest);box-shadow:0 0 0 1px var(--rest)}
+
+.mob-sr{display:block;margin-top:4px;font:700 13px/1 var(--mono);font-style:normal;color:var(--ink)}
+.illu{width:100%;height:auto;display:block}
+.illu .ip{fill:var(--line)}
+.illu .ifl{stroke:var(--muted);stroke-width:2;opacity:.5}
+.illu .iar path{fill:none;stroke:var(--muted);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.block div{white-space:pre-wrap}
+.ex-list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.ex{display:grid;grid-template-columns:28px 1fr auto;gap:4px 12px;padding:14px 16px;border-top:1px solid var(--line)}
+.ex:first-child{border-top:0}
+.ex .n{font:700 20px/1.3 var(--display);color:var(--muted)}
+.ex .name{min-width:0;font-weight:600;font-size:16px;line-height:1.3}
+.ex .meta{grid-column:2/4;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.sr{font-weight:700;color:var(--ink)}
+.rec{color:var(--rest)}
+.info{grid-column:2/4;color:var(--muted);font-size:14px}
+.vids{grid-column:2/4;display:flex;flex-wrap:wrap;gap:6px}
+.thumbs{grid-column:2/4;display:grid;gap:8px;margin:4px 0 2px}
+.thumbs.many{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+.thumb{position:relative;display:block;aspect-ratio:16/9;max-width:100%;border-radius:10px;overflow:hidden;background:var(--accent-soft);text-decoration:none}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.noimg img{display:none}
+.thumb .play{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:rgba(0,0,0,.62);display:grid;place-items:center}
+.thumb .play svg{width:22px;height:22px;fill:#fff;margin-left:2px}
+.thumbs.many .thumb .play{width:38px;height:38px;margin:-19px 0 0 -19px}
+.thumb .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;font:600 12.5px/1.2 var(--body);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thumb.noimg .cap{background:none;color:var(--accent);position:static;padding:8px}
+.log{grid-column:2/4;display:flex;flex-direction:column;gap:6px;margin-top:4px;min-width:0}
+.log-lab{font:700 11px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.log-weeks{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.wk{flex:0 0 auto;display:flex;flex-direction:column;gap:2px;min-width:52px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font:500 12.5px/1.25 var(--mono);font-variant-numeric:tabular-nums;max-width:140px}
+.wk b{font:700 11px/1 var(--display);letter-spacing:.08em;color:var(--muted)}
+.wk.now{border-color:var(--accent);background:var(--accent-soft)}
+.wk.now b{color:var(--accent)}
+.wk.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
+button.wk{cursor:pointer;color:var(--ink);text-align:left}
+button.wk.empty{color:var(--accent)}
+.wk.mine{border-color:var(--rest)}
+.wk i{font:600 10px/1 var(--body);font-style:normal;color:var(--rest);text-transform:uppercase;letter-spacing:.04em}
+.le{display:flex;flex-direction:column;gap:6px;padding:12px;border:1px solid var(--accent);border-radius:10px;background:var(--accent-soft)}
+.le label{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.le input{font:16px/1.4 var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;width:100%}
+.le small{color:var(--muted);font-size:12.5px}
+.le-btns{display:flex;justify-content:flex-end;gap:8px}
+.le textarea{font:15px/1.4 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;width:100%;resize:vertical}
+.ie{grid-column:2/4}
+.info-ed{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.info-ed .ph{font-style:italic}
+.info-ed i{font:600 10px/1 var(--body);font-style:normal;color:var(--rest);text-transform:uppercase;letter-spacing:.04em}
+.pen{border:0;background:none;padding:2px 0;color:var(--accent);font:600 13px/1.2 var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.log-ed{grid-column:1/-1;display:flex;flex-direction:column;gap:6px}
+.log-ed .weeks{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.log-ed .weeks label{flex:0 0 76px}
+.vid-ed{grid-column:1/-1;display:grid;grid-template-columns:1fr 2fr auto;gap:6px;align-items:end}
+@media (max-width:420px){.vid-ed{grid-template-columns:1fr auto}.vid-ed label:nth-child(2){grid-column:1/-1;grid-row:2}}
+.vid{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--accent);background:var(--accent-soft);font:600 13px/1 var(--body);padding:7px 10px;border-radius:8px;white-space:nowrap;align-self:start}
+.vid svg{width:12px;height:12px;fill:currentColor}
+.note{background:var(--accent-soft);border-radius:14px;padding:14px 16px}
+.note b{font:700 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.note p{margin:6px 0 0;white-space:pre-wrap}
+.pkg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.pkg-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pkg-nums div{display:flex;flex-direction:column;gap:2px}
+.pkg-nums strong{font:800 44px/.9 var(--display);font-variant-numeric:tabular-nums}
+.pkg-nums .left strong{color:var(--accent)}
+.pkg .eyebrow{font-size:12px}
+.dots{display:flex;flex-wrap:wrap;gap:6px}
+.dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--accent)}
+.dots i.on{background:var(--accent)}
+.pkg small{color:var(--muted);font-size:13px}
+.pay{align-self:flex-start;font:700 13px/1 var(--body);padding:7px 10px;border-radius:999px;margin-top:-4px}
+.pay.ok{color:var(--accent);background:var(--accent-soft)}
+.pay.rata{color:var(--warn-ink);background:var(--warn-bg)}
+.seg button[data-v="rata"][aria-pressed="true"]{background:var(--warn-bg);color:var(--warn-ink)}
+.pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
+.policy{margin:0;display:flex;gap:8px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.4;color:var(--muted)}
+.policy svg{flex:0 0 auto;width:16px;height:16px;margin-top:1px;color:var(--rest)}
+.policy strong{color:var(--ink);font-weight:600}
+.pkg-coach{display:flex;flex-direction:column;gap:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.pkg-coach .pkg-ctl{padding-top:0;border-top:0}
+.seg{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px}
+.seg button{flex:1;border:0;background:none;color:var(--muted);font:600 14px/1 var(--body);padding:9px 6px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.pkg-ctl{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.pkg-ctl>div{display:flex;flex-direction:column;gap:6px}
+.step{display:flex;align-items:center;gap:10px}
+.step b{min-width:2ch;text-align:center;font:800 24px/1 var(--display);font-variant-numeric:tabular-nums}
+.step .btn{width:38px;height:38px;padding:0;font-size:20px;line-height:1}
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px}
+.cal-head{display:flex;align-items:center;justify-content:space-between}
+.cal-head b{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.cal-nav{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:20px;line-height:1;cursor:pointer}
+.cal-nav:disabled{opacity:.35;cursor:default}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-w{font:700 11px/1 var(--display);letter-spacing:.1em;color:var(--muted);padding:4px 0}
+.cal-d{aspect-ratio:1;max-width:100%;display:grid;place-items:center;border-radius:50%;font:600 14px/1 var(--body);font-variant-numeric:tabular-nums;color:var(--ink);border:2px solid transparent}
+.cal-d.done{background:var(--accent);color:var(--accent-ink)}
+.cal-d.mass{background:var(--rest);color:var(--accent-ink)}
+.cal-d.up{border-color:var(--accent);border-style:dashed}
+.cal-d.today{box-shadow:inset 0 0 0 2px var(--ink)}
+.cal-d.done.today,.cal-d.mass.today{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.cal-foot{color:var(--muted);font-size:14px}
+.cal-foot strong{font:800 22px/1 var(--display);color:var(--accent)}
+.cal-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.cal-leg span{display:inline-flex;align-items:center;gap:6px}
+.lg{width:12px;height:12px;border-radius:50%;display:inline-block}
+.lg.done{background:var(--accent)} .lg.mass{background:var(--rest)} .lg.up{border:2px dashed var(--accent)}
+.next{background:var(--ink);color:var(--bg);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
+.next .eyebrow{color:inherit;opacity:.7}
+.next .when{font:800 32px/1 var(--display);text-transform:uppercase}
+.next .sub{opacity:.8}
+.appts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.appt{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.appt .date{font:700 15px/1.1 var(--display);text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.appt .date strong{display:block;font-size:28px;color:var(--ink)}
+.appt .what{min-width:0}
+.appt .what span{display:block;color:var(--muted);font-size:14px}
+.past{opacity:.55}
+.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
+.foot{color:var(--muted);font-size:13px}
+details summary{cursor:pointer;color:var(--muted);font-weight:600;padding:8px 0}
+/* coach toolbar */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);z-index:5;
+  padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bar-in{max-width:640px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar-in .msg{flex:1 1 160px;min-width:0;color:var(--muted);font-size:14px}
+.btn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:600 15px/1 var(--body);padding:11px 16px;border-radius:10px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.small{font-size:13px;padding:8px 12px}
+.btn.ghost{border-style:dashed;color:var(--muted)}
+.btn.del{color:var(--danger);border-color:transparent;background:none;padding:8px}
+.btn:disabled{opacity:.5;cursor:default}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* editor */
+.ed{display:flex;flex-direction:column;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.card h3{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;min-width:0}
+input,textarea{font:15px/1.4 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-width:0;text-transform:none;letter-spacing:0}
+textarea{min-height:64px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ex-ed{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.ex-ed input{background:var(--surface)}
+.ex-ed .full{grid-column:1/-1}
+.ex-ed .tools{grid-column:1/-1;display:flex;justify-content:flex-end;gap:4px}
+@media (max-width:420px){.ex-ed{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div id="app"><p class="empty">Caricamento del programma…</p></div>
+<script type="application/json" id="data">{"client":{"name":"Silvia Natucci","g":"f","goal":"Massa muscolare e aerobico","freq":"2","dur":"60’","start":"2026-09-28","end":"2026-12-28","age":"","weight":"","issues":"","general":""},"note":"","weeks":"12","pre":[],"post":[],"days":[{"name":"DAY 1","focus":"","extra":[],"ex":[{"n":"HACK SQUAT","sr":"3 x 6-10","info":"Punte dei piedi sotto la quarta linea dall’alto","rec":"120”","vids":[{"t":"","u":"https://youtube.com/shorts/SLFey3ehtak?is=_iwonct74fARd8L-"}],"lab":"REP/KG","log":["10/5","10/5","8/5","10/5"]},{"n":"STACCO GAMBE SEMI TESE con manubri","sr":"3 x 6-10","info":"Peso sul centro piede","rec":"90”","vids":[{"t":"","u":"https://youtu.be/eBW0IfP3_zE?si=Te9H0xbfMWOEs7uR"}],"lab":"REP/KG","log":["10/10","10/10","8/12","10/12"]},{"n":"LEG CURL IN PIEDI","sr":"3 x 8-12","info":"Altezza 6","rec":"90”","vids":[{"t":"","u":"https://youtube.com/shorts/Nj-ASMYAwyI?is=Bl134O79RYP-7KBy"}],"lab":"REP/KG","log":["12/7,5","12/7,5","12/7,5","12/7,5"]},{"n":"LAT MACHINE SBARRA PRESA PRONA","sr":"3 x 6-10","info":"Mignolo alla prima zigrinatura della sbarra","rec":"90”","vids":[{"t":"","u":"https://youtu.be/gObmwxkY7uM?si=SEWTk7X40412jIzb"}],"lab":"REP/KG","log":["10/30","10/30","10/30","10/30"]},{"n":"REMATORE BILANCIERE","sr":"3 x 8-12","info":"Bilanciere che parte altezza ginocchia","rec":"90”","vids":[{"t":"","u":"https://youtu.be/Wbvo_zMmAio?si=RXXgcFBKB5wytwcY"}],"lab":"REP/KG","log":["10/20","10/25","10/25","10/25"]},{"n":"CROCI INVERSE / ALZATE LATERALI MANUBRI","sr":"3 x 10-15","info":"","rec":"60”","vids":[{"t":"","u":"https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"},{"t":"","u":"https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"}],"lab":"REP/KG","log":["12/4","","15/1,25","10/1,25"]}]},{"name":"DAY 2","focus":"","extra":[],"ex":[{"n":"LEG PRESS ORIZZONTALE SINGOLA","sr":"3 x 6-10","info":"Piede stretto sotto la prima linea","rec":"90”","vids":[{"t":"","u":"https://youtu.be/L63ikNo2Rw8?si=P-Im_wV89kU0mK2q"}],"lab":"REP/KG","log":["8/20","8/20","8/30"]},{"n":"HIP TRUST MACHINE","sr":"3 x 6-10","info":"Sempre retroversione del bacino, addome attivo e non supero l’altezza delle ginocchia","rec":"120”","vids":[{"t":"","u":"https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"}],"lab":"REP/KG","log":["8/35","","8/35"]},{"n":"KICK BACK MACHINE","sr":"3 x 8-12","info":"Piede largo, basso ed extraruotato","rec":"90”","vids":[{"t":"","u":"https://youtube.com/shorts/ppu_8qEmLLA?is=O6wYUBM2MV9KhcF7"}],"lab":"REP/KG","log":["12/20","12/20","10/50"]},{"n":"PUSH UP RIALZATI","sr":"3 x 6-12","info":"","rec":"90”","vids":[{"t":"","u":"https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"}],"lab":"REP/KG","log":["10 · Box 70","","10 · Box 70"]},{"n":"RING CURL TRX al petto + BOX DIP","sr":"3 x 10+10","info":"","rec":"60”","vids":[{"t":"","u":"https://youtu.be/K5VKphotb-w?si=AVGSyfigIPw0Ff-o"},{"t":"","u":"https://youtu.be/e0vQbkdTMb8?si=da_JR1YSqHopi2Z-"}],"lab":"","log":[]},{"n":"CRUNCH DA SEDUTO + RUSSIAN TWIST","sr":"3 X 10+20","info":"","rec":"60”","vids":[],"lab":"","log":[]}]}],"pkg":{},"appts":[{"d":"2026-07-01","t":"18:00","what":"Lezione","where":""},{"d":"2026-07-04","t":"11:30","what":"Lezione","where":""},{"d":"2026-07-06","t":"13:00","what":"Lezione","where":""},{"d":"2026-07-10","t":"17:00","what":"Lezione","where":""},{"d":"2026-07-22","t":"18:00","what":"Lezione","where":""},{"d":"2026-07-27","t":"18:00","what":"Lezione","where":""},{"d":"2026-09-03","t":"18:00","what":"Lezione","where":""},{"d":"2026-09-09","t":"18:00","what":"Lezione","where":""},{"d":"2026-09-16","t":"18:00","what":"Lezione","where":""},{"d":"2026-09-22","t":"18:15","what":"Lezione","where":""},{"d":"2026-10-01","t":"18:00","what":"Lezione","where":""},{"d":"2026-10-05","t":"18:00","what":"Lezione","where":""},{"d":"2026-10-21","t":"18:00","what":"Lezione","where":""},{"d":"2026-10-28","t":"18:00","what":"Lezione","where":""},{"d":"2026-11-02","t":"18:00","what":"Lezione","where":""}],"updated":"2026-10-29"}</script>
+<script id="app-js">
+(function(){
+var SELF = document.getElementById('app-js').textContent;
+var CSS = document.getElementById('st').textContent;
+var S;
+try { S = JSON.parse(document.getElementById('data').textContent); } catch(e){ S = {client:{name:''},note:'',days:[],appts:[]}; }
+S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
+S.days.forEach(function(d){ (d.ex||[]).forEach(function(e){ if(!e.vids){ e.vids = e.v ? [{t:'',u:e.v}] : []; } delete e.v; e.log = e.log || []; if(e.lab==null) e.lab=''; }); });
+var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false, le:null, ie:null };
+var ORIG = JSON.stringify(S);
+var draft = null;
+var app = document.getElementById('app');
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+function firstName(n){ return (n||'').trim().split(/\s+/)[0] || 'Cliente'; }
+function today(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function parseD(a){ var p=(a.d||'').split('-'); var t=(a.t||'00:00').split(':'); return new Date(+p[0],(+p[1]||1)-1,+p[2]||1,+t[0]||0,+t[1]||0); }
+var fmtDay = new Intl.DateTimeFormat('it-IT',{weekday:'long',day:'numeric',month:'long'});
+var fmtMon = new Intl.DateTimeFormat('it-IT',{month:'short'});
+var fmtUpd = new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+function safeUrl(u){ u=(u||'').trim(); return /^https?:\/\//i.test(u) ? u : ''; }
+var LOGO = '<svg class="logo" viewBox="440 380 1060 1170" role="img" aria-label="Logo"><path d="M463 405H900C1220 405 1470 640 1470 966C1470 1290 1220 1528 900 1528H463V1302H552V1455H880C1170 1455 1377 1250 1377 966C1377 690 1170 478 880 478H552V643H463Z"/><path d="M463 720H552L778 1213L774 1223H696L552 915V1223H463Z"/><path d="M909 720H992V1223H911V915L822 1113L777 1014Z"/></svg>';
+var BRAND = '<header class="brand">'+LOGO+'<div class="brand-txt"><span class="brand-name">Matteo D’Avolio</span><span class="brand-role">Personal Trainer &amp; Massaggiatore sportivo</span></div></header>';
+var PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/></svg>';
+function planWeeks(){ var c=S.client||{}; if(!c.start||!c.end) return 0; var a=parseD({d:c.start}), b=parseD({d:c.end}); if(b<a) return 0; return Math.ceil((Math.round((b-a)/864e5)+1)/7); }
+function nWeeks(){ var pw=planWeeks(); return Math.max(1, Math.min(52, pw || parseInt(S.weeks,10) || 12)); }
+function curWeek(){ var s=S.client.start; if(!s) return 0; var a=parseD({d:s}), n=new Date(); n.setHours(0,0,0,0); if(n<a) return 0; return Math.floor((n-a)/864e5/7)+1; }
+function vidLinks(e){ return (e.vids||[]).filter(function(v){ return safeUrl(v.u); }); }
+function ytId(u){ var m=(u||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/))([A-Za-z0-9_-]{11})/); return m?m[1]:''; }
+function isShort(u){ return /youtube\.com\/shorts\//.test(u||''); }
+function thumbs(vs){
+  var h='<div class="thumbs'+(vs.length>1?' many':'')+'">';
+  vs.forEach(function(v,j){
+    var u=safeUrl(v.u), id=ytId(u), cap=(v.t||'').trim()||(vs.length>1?'Video '+(j+1):'Guarda il video');
+    if(id){
+      h+='<a class="thumb'+(isShort(u)?' short':'')+'" href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+esc(cap)+'"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'noimg\')"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'+(vs.length>1||v.t?'<span class="cap">'+esc(cap)+'</span>':'')+'</a>';
+    } else {
+      h+='<a class="vid" href="'+esc(u)+'" target="_blank" rel="noopener">'+PLAY+esc(cap)+'</a>';
+    }
+  });
+  return h+'</div>';
+}
+/* --- Pesi segnati dal cliente (solo sul sito) --- */
+var SITE = (window.SITE && window.SITE.form && window.SITE.form.action) ? window.SITE : null;
+var PK = SITE ? 'pesi-'+SITE.slug : '';
+var PEND = {};
+if(SITE){ try{ PEND = JSON.parse(localStorage.getItem(PK)||'{}') || {}; }catch(e){ PEND = {}; } }
+function pendSave(){ try{ localStorage.setItem(PK, JSON.stringify(PEND)); }catch(e){} }
+function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
+function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
+if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k], e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
+function ikey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|info'; }
+function infoSite(e){
+  var di = ui.day, k = ikey(di,e), p = PEND[k], val = p ? p.v : (e.info||'');
+  if(ui.ie && ui.ie.d===di && ui.ie.n===e.n){
+    return '<div class="le ie"><label for="ie-in">Note su '+esc(e.n)+'</label><textarea id="ie-in" rows="3" placeholder="Es. seduta 3, cavo altezza 32, sensazioni…">'+esc(val)+'</textarea><div class="le-btns"><button type="button" class="btn small" data-act="infoCancel">Annulla</button><button type="button" class="btn small primary" data-act="infoSave">Salva</button></div></div>';
+  }
+  return '<div class="info info-ed">'+(val.trim()?'<span>'+esc(val)+'</span>':'<span class="ph">Nessuna nota</span>')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'<button type="button" class="pen" data-act="infoEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" aria-label="Modifica le note di '+esc(e.n)+'">'+(val.trim()?'Modifica':'+ Aggiungi nota')+'</button></div>';
+}
+function sendPend(k){
+  var p=PEND[k]; if(!p || !SITE) return;
+  var fd=new FormData();
+  fd.append(SITE.form.entry, JSON.stringify(p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
+  fetch(SITE.form.action,{method:'POST',mode:'no-cors',body:fd}).then(function(){ if(PEND[k]){ PEND[k].sent=true; pendSave(); render(); } }).catch(function(){});
+}
+if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
+
+var ILLU = {"box": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-box\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><rect x=\"22\" y=\"64\" width=\"30\" height=\"28\" rx=\"3\" class=\"ip\"/><line x1=\"2\" y1=\"92\" x2=\"108\" y2=\"92\" class=\"ifl\"/><ellipse cx=\"56.0\" cy=\"91.5\" rx=\"22.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"60.0\" x2=\"77.0\" y2=\"86.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"45.0\" y1=\"58.0\" x2=\"63.6\" y2=\"59.2\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"63.6\" y1=\"59.2\" x2=\"75.0\" y2=\"60.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"80.0\" cy=\"85.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"65.0\" y1=\"34.0\" x2=\"71.0\" y2=\"48.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"71.0\" y1=\"48.0\" x2=\"77.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"77.0\" cy=\"58.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"62.0\" x2=\"70.9\" y2=\"73.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"70.8\" y1=\"72.4\" x2=\"72.0\" y2=\"88.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"40.0\" y1=\"60.0\" x2=\"58.6\" y2=\"61.2\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"58.6\" y1=\"61.2\" x2=\"70.0\" y2=\"62.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"75.0\" cy=\"87.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"75.0\" cy=\"89.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"60.0\" y1=\"34.0\" x2=\"66.0\" y2=\"28.8\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M40.0 60.0 Q62.0 56.0 60.0 34.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M40.0 60.0 Q62.0 56.0 60.0 34.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"68.0\" cy=\"27.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"68.0\" cy=\"27.0\" r=\"7.5\" fill=\"url(#hsh-box)\"/><path d=\"M60.7 29.7 A7.8 7.8 0 0 1 74.0 22.0 Z\" fill=\"#2E2420\"/><line x1=\"62.7\" y1=\"42.3\" x2=\"66.0\" y2=\"50.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"66.0\" y1=\"50.0\" x2=\"69.0\" y2=\"55.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"68.7\" y1=\"54.5\" x2=\"72.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"36.0\" x2=\"62.7\" y2=\"42.3\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"72.0\" cy=\"60.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><rect x=\"22\" y=\"64\" width=\"30\" height=\"28\" rx=\"3\" class=\"ip\"/><line x1=\"2\" y1=\"92\" x2=\"108\" y2=\"92\" class=\"ifl\"/><ellipse cx=\"56.0\" cy=\"91.5\" rx=\"22.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"60.0\" x2=\"77.0\" y2=\"86.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"45.0\" y1=\"58.0\" x2=\"63.6\" y2=\"59.2\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"63.6\" y1=\"59.2\" x2=\"75.0\" y2=\"60.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"80.0\" cy=\"85.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"51.0\" y1=\"28.0\" x2=\"65.0\" y2=\"42.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"42.0\" x2=\"75.0\" y2=\"56.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"75.0\" cy=\"56.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"62.0\" x2=\"70.9\" y2=\"73.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"70.8\" y1=\"72.4\" x2=\"72.0\" y2=\"88.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"40.0\" y1=\"60.0\" x2=\"58.6\" y2=\"61.2\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"58.6\" y1=\"61.2\" x2=\"70.0\" y2=\"62.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"75.0\" cy=\"87.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"75.0\" cy=\"89.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"46.0\" y1=\"28.0\" x2=\"49.0\" y2=\"19.8\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M40.0 60.0 Q32.0 44.0 46.0 28.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M40.0 60.0 Q32.0 44.0 46.0 28.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"50.0\" cy=\"17.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"50.0\" cy=\"17.0\" r=\"7.5\" fill=\"url(#hsh-box)\"/><path d=\"M42.2 17.0 A7.8 7.8 0 0 1 57.3 14.3 Z\" fill=\"#2E2420\"/><line x1=\"52.3\" y1=\"36.3\" x2=\"60.0\" y2=\"44.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"44.0\" x2=\"65.0\" y2=\"51.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"64.5\" y1=\"50.3\" x2=\"70.0\" y2=\"58.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"46.0\" y1=\"30.0\" x2=\"52.3\" y2=\"36.3\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"70.0\" cy=\"58.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><\/svg>", "jefferson": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-jefferson\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><rect x=\"22\" y=\"80\" width=\"28\" height=\"13\" rx=\"3\" class=\"ip\"/><line x1=\"2\" y1=\"93\" x2=\"108\" y2=\"93\" class=\"ifl\"/><ellipse cx=\"37.5\" cy=\"92.5\" rx=\"6.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"43.0\" y1=\"61.0\" x2=\"42.0\" y2=\"75.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"43.0\" y1=\"44.0\" x2=\"43.0\" y2=\"54.5\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"43.0\" y1=\"54.5\" x2=\"43.0\" y2=\"61.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"45.0\" cy=\"74.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"43.0\" y1=\"22.0\" x2=\"46.0\" y2=\"34.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"46.0\" y1=\"34.0\" x2=\"47.0\" y2=\"45.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"47.0\" cy=\"45.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"38.0\" y1=\"63.0\" x2=\"37.5\" y2=\"69.3\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"37.6\" y1=\"68.6\" x2=\"37.0\" y2=\"77.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"46.0\" x2=\"38.0\" y2=\"56.5\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"56.5\" x2=\"38.0\" y2=\"63.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"40.0\" cy=\"76.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"40.0\" cy=\"78.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"38.0\" y1=\"22.0\" x2=\"38.0\" y2=\"14.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M38.0 46.0 Q38.0 33.0 38.0 22.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M38.0 46.0 Q38.0 33.0 38.0 22.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"38.0\" cy=\"12.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"38.0\" cy=\"12.0\" r=\"7.5\" fill=\"url(#hsh-jefferson)\"/><path d=\"M30.3 10.6 A7.8 7.8 0 0 1 45.7 10.6 Z\" fill=\"#2E2420\"/><line x1=\"39.4\" y1=\"29.4\" x2=\"41.0\" y2=\"36.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"41.0\" y1=\"36.0\" x2=\"41.5\" y2=\"41.5\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"41.5\" y1=\"41.0\" x2=\"42.0\" y2=\"47.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"24.0\" x2=\"39.4\" y2=\"29.4\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"42.0\" cy=\"47.0\" r=\"3.4\" fill=\"#D9A27E\"/><g fill=\"var(--fig-shoe)\"><rect x=\"35.0\" y=\"48.7\" width=\"14\" height=\"2.6\" rx=\"1\"/><rect x=\"32.5\" y=\"45.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><rect x=\"47.0\" y=\"45.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><\/g><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><rect x=\"22\" y=\"80\" width=\"28\" height=\"13\" rx=\"3\" class=\"ip\"/><line x1=\"2\" y1=\"93\" x2=\"108\" y2=\"93\" class=\"ifl\"/><ellipse cx=\"45.0\" cy=\"92.5\" rx=\"15.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"42.0\" y1=\"58.0\" x2=\"42.0\" y2=\"75.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"41.0\" y1=\"40.0\" x2=\"41.6\" y2=\"51.2\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"41.6\" y1=\"51.2\" x2=\"42.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"45.0\" cy=\"74.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"63.0\" y1=\"60.0\" x2=\"65.0\" y2=\"72.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"72.0\" x2=\"66.0\" y2=\"82.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"66.0\" cy=\"82.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"37.0\" y1=\"60.0\" x2=\"37.0\" y2=\"67.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"37.0\" y1=\"66.8\" x2=\"37.0\" y2=\"77.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"36.0\" y1=\"42.0\" x2=\"36.6\" y2=\"53.2\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"36.6\" y1=\"53.2\" x2=\"37.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"40.0\" cy=\"76.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"40.0\" cy=\"78.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"58.0\" y1=\"62.0\" x2=\"55.0\" y2=\"69.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M36.0 42.0 Q66.0 34.0 58.0 62.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M36.0 42.0 Q66.0 34.0 58.0 62.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"54.0\" cy=\"72.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"54.0\" cy=\"72.0\" r=\"7.5\" fill=\"url(#hsh-jefferson)\"/><path d=\"M56.7 79.3 A7.8 7.8 0 0 1 49.0 66.0 Z\" fill=\"#2E2420\"/><line x1=\"58.9\" y1=\"67.4\" x2=\"60.0\" y2=\"74.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"74.0\" x2=\"60.5\" y2=\"79.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"60.5\" y1=\"78.5\" x2=\"61.0\" y2=\"84.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"58.0\" y1=\"62.0\" x2=\"58.9\" y2=\"67.4\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"61.0\" cy=\"84.0\" r=\"3.4\" fill=\"#D9A27E\"/><g fill=\"var(--fig-shoe)\"><rect x=\"54.0\" y=\"85.7\" width=\"14\" height=\"2.6\" rx=\"1\"/><rect x=\"51.5\" y=\"82.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><rect x=\"66.0\" y=\"82.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><\/g><\/g><\/svg>", "crunch": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-crunch\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"52.0\" cy=\"89.5\" rx=\"42.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"81.0\" y1=\"58.0\" x2=\"93.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"78.0\" x2=\"74.9\" y2=\"65.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"74.9\" y1=\"65.6\" x2=\"81.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"96.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"31.0\" y1=\"80.0\" x2=\"43.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"43.0\" y1=\"84.0\" x2=\"55.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"55.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"81.4\" y2=\"71.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"80.8\" y1=\"70.4\" x2=\"88.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"80.0\" x2=\"69.9\" y2=\"67.6\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"69.9\" y1=\"67.6\" x2=\"76.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"91.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"91.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"26.0\" y1=\"80.0\" x2=\"18.5\" y2=\"78.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q42.0 82.0 26.0 80.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q42.0 82.0 26.0 80.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"url(#hsh-crunch)\"/><path d=\"M14.6 85.7 A7.8 7.8 0 0 1 14.6 70.3 Z\" fill=\"#2E2420\"/><line x1=\"31.4\" y1=\"83.8\" x2=\"38.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"86.0\" x2=\"44.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"43.4\" y1=\"86.0\" x2=\"50.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"82.0\" x2=\"31.4\" y2=\"83.8\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"50.0\" cy=\"86.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"55.5\" cy=\"89.5\" rx=\"38.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"81.0\" y1=\"58.0\" x2=\"93.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"78.0\" x2=\"74.9\" y2=\"65.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"74.9\" y1=\"65.6\" x2=\"81.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"96.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"35.0\" y1=\"64.0\" x2=\"49.0\" y2=\"62.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"49.0\" y1=\"62.0\" x2=\"63.0\" y2=\"60.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"63.0\" cy=\"60.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"81.4\" y2=\"71.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"80.8\" y1=\"70.4\" x2=\"88.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"80.0\" x2=\"69.9\" y2=\"67.6\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"69.9\" y1=\"67.6\" x2=\"76.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"91.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"91.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"30.0\" y1=\"66.0\" x2=\"24.8\" y2=\"59.2\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q40.0 86.0 30.0 66.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q40.0 86.0 30.0 66.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"23.0\" cy=\"57.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"23.0\" cy=\"57.0\" r=\"7.5\" fill=\"url(#hsh-crunch)\"/><path d=\"M18.0 63.0 A7.8 7.8 0 0 1 25.7 49.7 Z\" fill=\"#2E2420\"/><line x1=\"36.3\" y1=\"65.1\" x2=\"44.0\" y2=\"64.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"44.0\" y1=\"64.0\" x2=\"51.0\" y2=\"63.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"50.3\" y1=\"63.1\" x2=\"58.0\" y2=\"62.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"30.0\" y1=\"66.0\" x2=\"36.3\" y2=\"65.1\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"58.0\" cy=\"62.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><\/svg>", "catcow": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-catcow\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"56.0\" cy=\"89.5\" rx=\"42.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"84.0\" x2=\"97.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"77.0\" y1=\"54.0\" x2=\"75.8\" y2=\"72.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"75.8\" y1=\"72.6\" x2=\"75.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"100.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"33.0\" y1=\"52.0\" x2=\"31.0\" y2=\"69.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"31.0\" y1=\"69.0\" x2=\"29.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"29.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"86.0\" x2=\"79.9\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"78.8\" y1=\"86.0\" x2=\"92.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"72.0\" y1=\"56.0\" x2=\"70.8\" y2=\"74.6\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"70.8\" y1=\"74.6\" x2=\"70.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"95.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"95.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"28.0\" y1=\"54.0\" x2=\"22.0\" y2=\"64.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M72.0 56.0 Q48.0 32.0 28.0 54.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M72.0 56.0 Q48.0 32.0 28.0 54.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"20.0\" cy=\"68.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"20.0\" cy=\"68.0\" r=\"7.5\" fill=\"url(#hsh-catcow)\"/><path d=\"M21.4 75.7 A7.8 7.8 0 0 1 16.1 61.2 Z\" fill=\"#2E2420\"/><line x1=\"27.1\" y1=\"61.6\" x2=\"26.0\" y2=\"71.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"71.0\" x2=\"25.0\" y2=\"78.5\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"25.1\" y1=\"77.8\" x2=\"24.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"28.0\" y1=\"54.0\" x2=\"27.1\" y2=\"61.6\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"24.0\" cy=\"86.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"55.0\" cy=\"89.5\" rx=\"43.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"84.0\" x2=\"97.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"77.0\" y1=\"50.0\" x2=\"75.8\" y2=\"71.1\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"75.8\" y1=\"71.1\" x2=\"75.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"100.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"33.0\" y1=\"50.0\" x2=\"31.0\" y2=\"68.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"31.0\" y1=\"68.0\" x2=\"29.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"29.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"86.0\" x2=\"79.9\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"78.8\" y1=\"86.0\" x2=\"92.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"72.0\" y1=\"52.0\" x2=\"70.8\" y2=\"73.1\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"70.8\" y1=\"73.1\" x2=\"70.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"95.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"95.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"28.0\" y1=\"52.0\" x2=\"20.5\" y2=\"44.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M72.0 52.0 Q48.0 72.0 28.0 52.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M72.0 52.0 Q48.0 72.0 28.0 52.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"18.0\" cy=\"42.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"18.0\" cy=\"42.0\" r=\"7.5\" fill=\"url(#hsh-catcow)\"/><path d=\"M12.0 47.0 A7.8 7.8 0 0 1 21.9 35.2 Z\" fill=\"#2E2420\"/><line x1=\"27.1\" y1=\"60.1\" x2=\"26.0\" y2=\"70.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"70.0\" x2=\"25.0\" y2=\"78.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"25.1\" y1=\"77.2\" x2=\"24.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"28.0\" y1=\"52.0\" x2=\"27.1\" y2=\"60.1\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"24.0\" cy=\"86.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><\/svg>", "situp": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-situp\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"52.0\" cy=\"89.5\" rx=\"42.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"81.0\" y1=\"58.0\" x2=\"93.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"78.0\" x2=\"74.9\" y2=\"65.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"74.9\" y1=\"65.6\" x2=\"81.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"96.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"31.0\" y1=\"78.0\" x2=\"39.0\" y2=\"70.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"39.0\" y1=\"70.0\" x2=\"45.0\" y2=\"71.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"45.0\" cy=\"71.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"81.4\" y2=\"71.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"80.8\" y1=\"70.4\" x2=\"88.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"80.0\" x2=\"69.9\" y2=\"67.6\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"69.9\" y1=\"67.6\" x2=\"76.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"91.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"91.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"26.0\" y1=\"80.0\" x2=\"18.5\" y2=\"78.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q42.0 82.0 26.0 80.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q42.0 82.0 26.0 80.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"url(#hsh-situp)\"/><path d=\"M14.6 85.7 A7.8 7.8 0 0 1 14.6 70.3 Z\" fill=\"#2E2420\"/><line x1=\"29.6\" y1=\"76.4\" x2=\"34.0\" y2=\"72.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"34.0\" y1=\"72.0\" x2=\"37.0\" y2=\"72.5\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"36.7\" y1=\"72.5\" x2=\"40.0\" y2=\"73.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"80.0\" x2=\"29.6\" y2=\"76.4\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"40.0\" cy=\"73.0\" r=\"3.4\" fill=\"#D9A27E\"/><g fill=\"var(--fig-shoe)\"><rect x=\"33.0\" y=\"69.7\" width=\"14\" height=\"2.6\" rx=\"1\"/><rect x=\"30.5\" y=\"66.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><rect x=\"45.0\" y=\"66.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><\/g><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"64.5\" cy=\"89.5\" rx=\"29.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"81.0\" y1=\"58.0\" x2=\"93.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"65.0\" y1=\"78.0\" x2=\"74.9\" y2=\"65.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"74.9\" y1=\"65.6\" x2=\"81.0\" y2=\"58.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"96.0\" cy=\"83.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"49.0\" y1=\"52.0\" x2=\"59.0\" y2=\"60.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"59.0\" y1=\"60.0\" x2=\"57.0\" y2=\"52.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"57.0\" cy=\"52.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"81.4\" y2=\"71.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"80.8\" y1=\"70.4\" x2=\"88.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"80.0\" x2=\"69.9\" y2=\"67.6\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"69.9\" y1=\"67.6\" x2=\"76.0\" y2=\"60.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"91.0\" cy=\"85.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"91.0\" cy=\"87.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"44.0\" y1=\"52.0\" x2=\"41.8\" y2=\"44.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q48.0 74.0 44.0 52.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M60.0 80.0 Q48.0 74.0 44.0 52.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"41.0\" cy=\"42.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"41.0\" cy=\"42.0\" r=\"7.5\" fill=\"url(#hsh-situp)\"/><path d=\"M33.3 43.4 A7.8 7.8 0 0 1 47.8 38.1 Z\" fill=\"#2E2420\"/><line x1=\"48.5\" y1=\"57.6\" x2=\"54.0\" y2=\"62.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"54.0\" y1=\"62.0\" x2=\"53.0\" y2=\"58.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"53.1\" y1=\"58.4\" x2=\"52.0\" y2=\"54.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"44.0\" y1=\"54.0\" x2=\"48.5\" y2=\"57.6\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"52.0\" cy=\"54.0\" r=\"3.4\" fill=\"#D9A27E\"/><g fill=\"var(--fig-shoe)\"><rect x=\"45.0\" y=\"50.7\" width=\"14\" height=\"2.6\" rx=\"1\"/><rect x=\"42.5\" y=\"47.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><rect x=\"57.0\" y=\"47.5\" width=\"4.5\" height=\"9\" rx=\"1.5\"/><\/g><\/g><\/svg>", "legraise": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-legraise\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"54.5\" cy=\"89.5\" rx=\"44.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"81.0\" y1=\"77.0\" x2=\"98.0\" y2=\"75.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"63.0\" y1=\"78.0\" x2=\"74.2\" y2=\"77.4\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"74.2\" y1=\"77.4\" x2=\"81.0\" y2=\"77.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"101.0\" cy=\"74.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"31.0\" y1=\"80.0\" x2=\"43.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"43.0\" y1=\"84.0\" x2=\"55.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"55.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"76.0\" y1=\"79.0\" x2=\"83.7\" y2=\"78.1\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"82.8\" y1=\"78.2\" x2=\"93.0\" y2=\"77.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"58.0\" y1=\"80.0\" x2=\"69.2\" y2=\"79.4\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"69.2\" y1=\"79.4\" x2=\"76.0\" y2=\"79.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"96.0\" cy=\"76.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"96.0\" cy=\"78.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"26.0\" y1=\"80.0\" x2=\"18.5\" y2=\"78.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M58.0 80.0 Q42.0 81.0 26.0 80.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M58.0 80.0 Q42.0 81.0 26.0 80.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"url(#hsh-legraise)\"/><path d=\"M14.6 85.7 A7.8 7.8 0 0 1 14.6 70.3 Z\" fill=\"#2E2420\"/><line x1=\"31.4\" y1=\"83.8\" x2=\"38.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"86.0\" x2=\"44.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"43.4\" y1=\"86.0\" x2=\"50.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"82.0\" x2=\"31.4\" y2=\"83.8\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"50.0\" cy=\"86.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"41.0\" cy=\"89.5\" rx=\"31.0\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"78.0\" y1=\"81.0\" x2=\"95.0\" y2=\"81.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"80.0\" x2=\"71.2\" y2=\"80.6\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"71.2\" y1=\"80.6\" x2=\"78.0\" y2=\"81.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"98.0\" cy=\"80.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"31.0\" y1=\"80.0\" x2=\"43.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"43.0\" y1=\"84.0\" x2=\"55.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"55.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"62.0\" y1=\"61.0\" x2=\"63.8\" y2=\"52.5\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"63.6\" y1=\"53.4\" x2=\"66.0\" y2=\"42.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"58.0\" y1=\"80.0\" x2=\"60.5\" y2=\"68.2\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"60.5\" y1=\"68.2\" x2=\"62.0\" y2=\"61.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"69.0\" cy=\"41.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"69.0\" cy=\"43.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"26.0\" y1=\"80.0\" x2=\"18.5\" y2=\"78.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M58.0 80.0 Q42.0 81.0 26.0 80.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M58.0 80.0 Q42.0 81.0 26.0 80.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"16.0\" cy=\"78.0\" r=\"7.5\" fill=\"url(#hsh-legraise)\"/><path d=\"M14.6 85.7 A7.8 7.8 0 0 1 14.6 70.3 Z\" fill=\"#2E2420\"/><line x1=\"31.4\" y1=\"83.8\" x2=\"38.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"86.0\" x2=\"44.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"43.4\" y1=\"86.0\" x2=\"50.0\" y2=\"86.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"26.0\" y1=\"82.0\" x2=\"31.4\" y2=\"83.8\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"50.0\" cy=\"86.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><\/svg>", "twist": "<svg viewBox=\"0 0 250 100\" class=\"illu\" aria-hidden=\"true\"><defs><radialGradient id=\"hsh-twist\" cx=\".35\" cy=\".3\" r=\".8\"><stop offset=\".5\" stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\"1\" stop-color=\"#6B3F25\" stop-opacity=\".35\"/><\/radialGradient><\/defs><g><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"59.5\" cy=\"89.5\" rx=\"32.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"66.0\" x2=\"91.0\" y2=\"72.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"57.0\" y1=\"82.0\" x2=\"68.2\" y2=\"72.1\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"68.2\" y1=\"72.1\" x2=\"75.0\" y2=\"66.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"94.0\" cy=\"71.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"42.0\" y1=\"58.0\" x2=\"38.0\" y2=\"72.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"72.0\" x2=\"36.0\" y2=\"84.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"36.0\" cy=\"84.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"68.0\" x2=\"77.2\" y2=\"70.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"76.4\" y1=\"70.4\" x2=\"86.0\" y2=\"74.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"52.0\" y1=\"84.0\" x2=\"63.2\" y2=\"74.1\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"63.2\" y1=\"74.1\" x2=\"70.0\" y2=\"68.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"89.0\" cy=\"73.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"89.0\" cy=\"75.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"38.0\" y1=\"56.0\" x2=\"34.2\" y2=\"48.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M52.0 84.0 Q40.0 72.0 38.0 56.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M52.0 84.0 Q40.0 72.0 38.0 56.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"33.0\" cy=\"46.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"33.0\" cy=\"46.0\" r=\"7.5\" fill=\"url(#hsh-twist)\"/><path d=\"M26.2 49.9 A7.8 7.8 0 0 1 38.0 40.0 Z\" fill=\"#2E2420\"/><line x1=\"37.1\" y1=\"64.3\" x2=\"36.0\" y2=\"72.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"36.0\" y1=\"72.0\" x2=\"35.0\" y2=\"78.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"35.1\" y1=\"77.4\" x2=\"34.0\" y2=\"84.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"58.0\" x2=\"37.1\" y2=\"64.3\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"34.0\" cy=\"84.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><g class=\"iar\"><path d=\"M114 44h22M130 38l6 6-6 6\"/><path d=\"M136 58h-22M120 52l-6 6 6 6\"/><\/g><g transform=\"translate(140 0)\"><line x1=\"2\" y1=\"90\" x2=\"108\" y2=\"90\" class=\"ifl\"/><ellipse cx=\"59.5\" cy=\"89.5\" rx=\"32.5\" ry=\"3\" fill=\"rgba(0,0,0,.14)\"/><line x1=\"75.0\" y1=\"66.0\" x2=\"91.0\" y2=\"72.0\" stroke=\"#B98163\" stroke-width=\"8\" stroke-linecap=\"round\"/><line x1=\"57.0\" y1=\"82.0\" x2=\"68.2\" y2=\"72.1\" stroke=\"var(--fig-shorts-far)\" stroke-width=\"12\" stroke-linecap=\"round\"/><line x1=\"68.2\" y1=\"72.1\" x2=\"75.0\" y2=\"66.0\" stroke=\"#B98163\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><ellipse cx=\"94.0\" cy=\"71.0\" rx=\"6.5\" ry=\"3.6\" fill=\"var(--fig-shoe)\" opacity=\".75\"/><line x1=\"42.0\" y1=\"58.0\" x2=\"52.0\" y2=\"66.0\" stroke=\"#B98163\" stroke-width=\"6.5\" stroke-linecap=\"round\"/><line x1=\"52.0\" y1=\"66.0\" x2=\"64.0\" y2=\"74.0\" stroke=\"#B98163\" stroke-width=\"5.5\" stroke-linecap=\"round\"/><circle cx=\"64.0\" cy=\"74.0\" r=\"3.2\" fill=\"#B98163\"/><line x1=\"70.0\" y1=\"68.0\" x2=\"77.2\" y2=\"70.7\" stroke=\"#D9A27E\" stroke-width=\"9.5\" stroke-linecap=\"round\"/><line x1=\"76.4\" y1=\"70.4\" x2=\"86.0\" y2=\"74.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"52.0\" y1=\"84.0\" x2=\"63.2\" y2=\"74.1\" stroke=\"var(--fig-shorts)\" stroke-width=\"13.5\" stroke-linecap=\"round\"/><line x1=\"63.2\" y1=\"74.1\" x2=\"70.0\" y2=\"68.0\" stroke=\"#D9A27E\" stroke-width=\"10.5\" stroke-linecap=\"round\"/><ellipse cx=\"89.0\" cy=\"73.0\" rx=\"6.8\" ry=\"3.8\" fill=\"var(--fig-shoe)\"/><ellipse cx=\"89.0\" cy=\"75.6\" rx=\"5\" ry=\"1.2\" fill=\"#fff\" opacity=\".5\"/><line x1=\"38.0\" y1=\"56.0\" x2=\"34.2\" y2=\"48.5\" stroke=\"#C08A66\" stroke-width=\"6\" stroke-linecap=\"round\"/><path d=\"M52.0 84.0 Q40.0 72.0 38.0 56.0\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"15\" stroke-linecap=\"round\"/><path d=\"M52.0 84.0 Q40.0 72.0 38.0 56.0\" fill=\"none\" stroke=\"#fff\" stroke-opacity=\".22\" stroke-width=\"5\" stroke-linecap=\"round\" transform=\"translate(-2.5 -2.5)\"/><circle cx=\"33.0\" cy=\"46.0\" r=\"7.5\" fill=\"#D9A27E\"/><circle cx=\"33.0\" cy=\"46.0\" r=\"7.5\" fill=\"url(#hsh-twist)\"/><path d=\"M26.2 49.9 A7.8 7.8 0 0 1 38.0 40.0 Z\" fill=\"#2E2420\"/><line x1=\"43.4\" y1=\"61.6\" x2=\"50.0\" y2=\"66.0\" stroke=\"#D9A27E\" stroke-width=\"7\" stroke-linecap=\"round\"/><line x1=\"50.0\" y1=\"66.0\" x2=\"57.0\" y2=\"71.0\" stroke=\"#D9A27E\" stroke-width=\"6.8\" stroke-linecap=\"round\"/><line x1=\"56.3\" y1=\"70.5\" x2=\"64.0\" y2=\"76.0\" stroke=\"#D9A27E\" stroke-width=\"5.2\" stroke-linecap=\"round\"/><line x1=\"38.0\" y1=\"58.0\" x2=\"43.4\" y2=\"61.6\" stroke=\"var(--accent)\" stroke-width=\"9\" stroke-linecap=\"round\"/><circle cx=\"64.0\" cy=\"76.0\" r=\"3.4\" fill=\"#D9A27E\"/><\/g><\/svg>"};
+function illuFor(t){ t=(t||'').toLowerCase(); if(/quadrupedia|gatto|cat.?cow/.test(t)) return 'catcow'; if(/retroversione/.test(t)) return 'crunch'; if(/gambe tese/.test(t) && /manubri/.test(t)) return 'jefferson'; if(/box/.test(t) && /schiena/.test(t)) return 'box'; if(/sit.?up/.test(t)) return 'situp'; if(/leg.?rais|sollevament[oi] gamb/.test(t)) return 'legraise'; if(/russian|twist/.test(t)) return 'twist'; return ''; }
+
+function viewPers(){
+  var c = S.client, age=(c.age||'').trim(), w=(c.weight||'').trim(), iss=(c.issues||'').trim(), gen=(c.general||'').trim();
+  if(!age && !w && !iss && !gen && !ui.canEdit) return '';
+  var sum = [age?esc(age)+(/^\d+$/.test(age)?' anni':''):'', w?esc(w)+(/^[\d.,]+$/.test(w)?' kg':''):''].filter(Boolean).join(' · ');
+  var op = ui.ob && ui.ob.__pers;
+  var h = '<details class="plan pland" data-blk="__pers"'+(op?' open':'')+'><summary><span class="bd-t"><span class="eyebrow">Dati personali</span><span class="pl-goal">'+esc((c.name||'').trim()||'Cliente')+'</span>'+(iss?'<small>Problematiche fisiche indicate</small>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="plan-in">';
+  h += '<div class="plan-dates" style="border-top:0;padding-top:0"><div><span class="eyebrow">Età</span><strong>'+(age?esc(age)+(/^\d+$/.test(age)?' anni':''):'—')+'</strong></div><div><span class="eyebrow">Peso</span><strong>'+(w?esc(w)+(/^[\d.,]+$/.test(w)?' kg':''):'—')+'</strong></div></div>';
+  h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Problematiche fisiche</span><span class="pers-iss">'+(iss?esc(iss):'Nessuna indicata')+'</span></div>';
+  if(gen || ui.canEdit) h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Informazioni generali</span><span class="pers-iss">'+(gen?esc(gen):'Nessuna')+'</span></div>';
+  return h + '</div></details>';
+}
+
+function viewPlan(){
+  var c = S.client, g = (c.goal||'').trim(), s = c.start, e = c.end, fq = (c.freq||'').trim(), du = (c.dur||'').trim();
+  if(!g && !s && !e && !fq && !du) return '';
+  var fd = new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
+  var h = '', sumTxt = '';
+  if(fq || du) h += '<div class="plan-dates">'+(fq?'<div><span class="eyebrow">Allenamenti</span><strong>'+esc(fq)+(/^\d+$/.test(fq)?' a settimana':'')+'</strong></div>':'')+(du?'<div><span class="eyebrow">Durata seduta</span><strong>'+esc(du)+'</strong></div>':'')+'</div>';
+  if(s || e){
+    h += '<div class="plan-dates"><div><span class="eyebrow">Inizio</span><strong>'+(s?esc(fd.format(parseD({d:s}))):'—')+'</strong></div><div><span class="eyebrow">Fine</span><strong>'+(e?esc(fd.format(parseD({d:e}))):'—')+'</strong></div></div>';
+    if(s && e){
+      var a = parseD({d:s}), b = parseD({d:e}), n = new Date(); n.setHours(0,0,0,0);
+      var tot = Math.max(1, Math.round((b-a)/864e5)+1), wk = Math.max(1, Math.ceil(tot/7));
+      if(b >= a){
+        var txt, pct;
+        if(n < a){ pct = 0; txt = 'Si parte tra '+Math.round((a-n)/864e5)+' giorni'; }
+        else if(n > b){ pct = 100; txt = 'Programma concluso'; }
+        else { var done = Math.round((n-a)/864e5)+1; pct = Math.round(done/tot*100); txt = 'Settimana '+Math.min(wk, Math.ceil(done/7))+' di '+wk; }
+        h += '<div class="prog"><div class="prog-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div><small>'+txt+'</small></div>';
+        sumTxt = txt;
+      }
+    }
+  }
+  var op = ui.ob && ui.ob.__plan;
+  return '<details class="plan pland" data-blk="__plan"'+(op?' open':'')+'><summary><span class="bd-t"><span class="eyebrow">Obiettivo</span><span class="pl-goal">'+esc(g||'Il tuo programma')+'</span>'+(sumTxt?'<small>'+esc(sumTxt)+'</small>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="plan-in">'+h+'</div></details>';
+}
+
+
+/* ---- Cronometri (recupero e circuiti a tempo) ---- */
+var TM = null, TMI = null, TMA = null, TMW = null;
+var IC_PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4L13 8z"/></svg>', IC_PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg>', IC_RS='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.8 8a5.2 5.2 0 1 0 1.6-3.8M2.5 2.2v2.6h2.6"/></svg>';
+function secsOf(s){
+  s=String(s||'').toLowerCase().replace(/''|’’|′′|"|”|″|“/g,'s').replace(/['’′]/g,'m').replace(/min/g,'m');
+  var m=s.match(/(\d+)\s*m/), x=s.match(/(\d+)\s*s/), t=0;
+  if(m) t+=60*(+m[1]);
+  if(x) t+=+x[1]; else if(m){ var r=s.match(/m\s*(\d+)/); if(r) t+=+r[1]; }
+  if(!m && !x){ var n=s.match(/^\s*(\d+)\s*$/); if(n) t=+n[1]; }
+  return t;
+}
+function mmss(t){ t=Math.max(0,Math.ceil(t)); return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2); }
+function tmRest(e,i){
+  var s=secsOf(e.rec); if(!s) return '';
+  var id='r'+ui.day+'-'+i;
+  return '<div class="tm" data-tmid="'+id+'"><button type="button" data-tm="go" data-id="'+id+'" data-secs="'+s+'" aria-label="Avvia il recupero">'+IC_PLAY+'</button><span class="tm-t">'+mmss(s)+'</span><span class="tm-bar"><i></i></span><button type="button" class="tm-rs" data-tm="rs" data-id="'+id+'" aria-label="Azzera">'+IC_RS+'</button></div>';
+}
+function tmCirc(id,work,rest,rounds,n){
+  return '<div class="tmc" data-tmid="'+id+'"><button type="button" data-tm="go" data-id="'+id+'" data-work="'+work+'" data-rest="'+rest+'" data-rounds="'+rounds+'" data-n="'+n+'" aria-label="Avvia il circuito">'+IC_PLAY+'</button><span class="tm-t">'+mmss(work)+'</span><span class="tm-ph">Premi play per iniziare il circuito</span><button type="button" class="tm-rs" data-tm="rs" data-id="'+id+'" aria-label="Azzera">'+IC_RS+'</button><span class="tm-bar"><i></i></span></div>';
+}
+function tmSteps(d){
+  var st=[{k:'prep',s:3,r:0,j:0}];
+  for(var r=1;r<=d.rounds;r++) for(var j=0;j<d.n;j++){
+    st.push({k:'work',s:d.work,r:r,j:j});
+    if(d.rest && !(r===d.rounds && j===d.n-1)) st.push({k:'rest',s:d.rest,r:r,j:j+1<d.n?j+1:0});
+  }
+  return st;
+}
+function tmBeep(f,ms){
+  try{ if(!TMA) return; var o=TMA.createOscillator(), g=TMA.createGain(); o.frequency.value=f; o.connect(g); g.connect(TMA.destination);
+    var t=TMA.currentTime; g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.25,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+ms/1000); o.start(t); o.stop(t+ms/1000+.02); }catch(err){}
+}
+function tmBuzz(p){ try{ if(navigator.vibrate) navigator.vibrate(p); }catch(err){} }
+function tmLock(on){
+  try{ if(on && !TMW && navigator.wakeLock) navigator.wakeLock.request('screen').then(function(w){ TMW=w; }).catch(function(){});
+       if(!on && TMW){ TMW.release(); TMW=null; } }catch(err){}
+}
+function tmStart(b){
+  try{ if(!TMA){ var AC=window.AudioContext||window.webkitAudioContext; if(AC) TMA=new AC(); } if(TMA && TMA.resume) TMA.resume(); }catch(err){}
+  var id=b.dataset.id;
+  if(TM && TM.id===id && !TM.done){
+    if(TM.run){ TM.left=Math.max(0,(TM.end-Date.now())/1000); TM.run=false; tmLock(false); }
+    else { TM.end=Date.now()+TM.left*1000; TM.run=true; tmLock(true); }
+    tmPaint(); return;
+  }
+  if(b.dataset.secs){ var s=+b.dataset.secs; TM={id:id,c:false,steps:[{k:'rest',s:s}],si:0,left:s}; }
+  else { var st=tmSteps({work:+b.dataset.work,rest:+b.dataset.rest,rounds:+b.dataset.rounds||1,n:+b.dataset.n||1}); TM={id:id,c:true,rounds:+b.dataset.rounds||1,n:+b.dataset.n||1,steps:st,si:0,left:st[0].s}; }
+  TM.end=Date.now()+TM.left*1000; TM.run=true; TM.done=false; TM.last=null; tmLock(true);
+  if(!TMI) TMI=setInterval(tmTick,200);
+  tmPaint();
+}
+function tmReset(){ TM=null; tmLock(false); if(TMI){ clearInterval(TMI); TMI=null; } tmPaint(); }
+function tmTick(){
+  if(!TM || !TM.run) return;
+  var left=(TM.end-Date.now())/1000, sec=Math.ceil(left);
+  if(left<=0){
+    if(TM.si<TM.steps.length-1){
+      TM.si++; var nx=TM.steps[TM.si]; TM.end+=nx.s*1000; left=(TM.end-Date.now())/1000;
+      if(nx.k==='work'){ tmBeep(1046,350); tmBuzz(200); } else { tmBeep(660,350); tmBuzz([120,80,120]); }
+    } else { TM.run=false; TM.done=true; TM.left=0; tmBeep(880,250); setTimeout(function(){ tmBeep(1175,450); },280); tmBuzz([200,100,200,100,300]); tmLock(false); clearInterval(TMI); TMI=null; tmPaint(); return; }
+  } else if(sec<=3 && sec>=1 && TM.last!==sec){ tmBeep(523,110); }
+  TM.last=Math.ceil(left); TM.left=left; tmPaint();
+}
+function tmPaint(){
+  var els=document.querySelectorAll('[data-tmid]');
+  for(var x=0;x<els.length;x++){
+    var el=els[x], on=TM && TM.id===el.getAttribute('data-tmid'), circ=el.classList.contains('tmc'), go=el.querySelector('[data-tm="go"]');
+    var t=el.querySelector('.tm-t'), bar=el.querySelector('.tm-bar i'), ph=el.querySelector('.tm-ph');
+    el.classList.remove('run','done','rest','prep','work');
+    if(!on){
+      if(circ){ t.textContent=mmss(+go.dataset.work); ph.textContent='Premi play per iniziare il circuito'; } else t.textContent=mmss(+go.dataset.secs);
+      bar.style.width='0'; go.innerHTML=IC_PLAY; go.setAttribute('aria-label',circ?'Avvia il circuito':'Avvia il recupero');
+      if(circ){ var ls=el.parentNode.querySelectorAll('.mob li'); for(var q=0;q<ls.length;q++) ls[q].classList.remove('cur'); }
+      continue;
+    }
+    var stp=TM.steps[TM.si], left=TM.run?Math.max(0,(TM.end-Date.now())/1000):TM.left;
+    if(TM.run) el.classList.add('run');
+    go.innerHTML=TM.run?IC_PAUSE:IC_PLAY; go.setAttribute('aria-label',TM.run?'Pausa':'Riprendi');
+    if(TM.done){ el.classList.add('done'); t.textContent=circ?'Circuito finito!':'Vai!'; bar.style.width='100%'; go.innerHTML=IC_PLAY; go.setAttribute('aria-label','Ricomincia');
+      if(circ){ ph.textContent=TM.rounds+(TM.rounds===1?' giro completato':' giri completati'); var l2=el.parentNode.querySelectorAll('.mob li'); for(var z=0;z<l2.length;z++) l2[z].classList.remove('cur'); }
+      continue; }
+    t.textContent=mmss(left); bar.style.width=(100*(1-left/stp.s)).toFixed(1)+'%';
+    if(circ){
+      el.classList.add(stp.k);
+      var nm=function(j){ var li=el.parentNode.querySelector('.mob li[data-ci="'+j+'"] span'); return li?(li.firstChild&&li.firstChild.nodeValue||'').trim():''; };
+      ph.textContent = stp.k==='prep' ? 'Preparati…' : (stp.k==='work' ? 'Lavoro · ' : 'Recupero · prossimo: ')+(stp.k==='prep'?'':(nm(stp.j)||('Esercizio '+(stp.j+1)))+' · giro '+(stp.k==='rest'&&stp.j===0?stp.r+1:stp.r)+'/'+TM.rounds);
+      var ls2=el.parentNode.querySelectorAll('.mob li');
+      for(var y=0;y<ls2.length;y++) ls2[y].classList.toggle('cur', stp.k!=='prep' && +ls2[y].getAttribute('data-ci')===stp.j);
+    }
+  }
+}
+app.addEventListener('click', function(e){
+  var b=e.target.closest && e.target.closest('[data-tm]'); if(!b) return;
+  e.preventDefault();
+  if(b.dataset.tm==='rs'){ if(TM && TM.id===b.dataset.id) tmReset(); return; }
+  if(TM && TM.id===b.dataset.id && TM.done){ TM=null; }
+  tmStart(b);
+});
+try{ document.addEventListener('visibilitychange', function(){ if(!document.hidden && TM && TM.run){ tmTick(); tmLock(true); } }); }catch(err){}
+
+function viewTrain(){
+  var plan = viewPers() + viewPlan();
+  if(!S.days.length) return plan + '<p class="empty">Il programma non è ancora pronto.</p>';
+  if(ui.day >= S.days.length) ui.day = 0;
+  var d = S.days[ui.day], h = plan;
+  if(S.days.length>1){
+    h += '<div class="chips" role="group" aria-label="Giorni">';
+    S.days.forEach(function(x,i){ h += '<button class="chip" data-day="'+i+'" aria-pressed="'+(i===ui.day)+'">'+esc(x.name||('Day '+(i+1)))+'</button>'; });
+    h += '</div>';
+  }
+  h += '<div class="day-head"><h2>'+esc(d.name)+'</h2>'+(d.focus?'<p>'+esc(d.focus)+'</p>':'')+'</div>';
+  function blk(b){
+    if(!(b.text||'').trim()) return;
+    var lines=b.text.split('\n').filter(function(x){ return x.trim(); });
+    if(!lines.some(illuFor)){ h += '<div class="block"><b>'+esc(b.label||'Note')+'</b><div>'+esc(b.text)+'</div></div>'; return; }
+    var L=(b.label||'Note'), rm=L.match(/(\d+)\s*ripetizion/i), sr=rm?'1 x '+rm[1]:'', lab=L, sub='';
+    var pm=L.match(/\(([^)]*)\)/), inside=pm?pm[1]:'';
+    var gm=inside.match(/(\d+)\s*gir/i), wm=inside.match(/(\d+\s*[”"'’]+)\s*di\s*lavoro/i), qm=inside.match(/(\d+\s*[”"'’]+)\s*di\s*recupero/i);
+    if(!sr && wm){ sr=wm[1].replace(/\s+/g,'')+(qm?' · rec '+qm[1].replace(/\s+/g,''):''); }
+    if(rm || wm){ lab=L.replace(/\s*\([^)]*\)\s*/,' ').trim(); if(gm) sub=gm[1]+' giri'; }
+    var bk=lab.toLowerCase(), nEx=lines.filter(illuFor).length;
+    h += '<details class="blockd" data-blk="'+esc(bk)+'"'+(ui.ob&&ui.ob[bk]?' open':'')+'><summary><span class="bd-t"><b>'+esc(lab)+'</b><small>'+nEx+(nEx===1?' esercizio':' esercizi')+(sub?' · '+esc(sub):'')+(sr?' · '+esc(sr):'')+'</small></span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary>'+(wm&&secsOf(wm[1])?tmCirc('c'+ui.day+'-'+bk.replace(/[^a-z0-9]+/g,'-'),secsOf(wm[1]),qm?secsOf(qm[1]):0,gm?+gm[1]:1,lines.length):'')+'<ul class="mob">';
+    lines.forEach(function(x,ci){ var parts=x.split('|'), nm=parts[0].trim(), own=(parts[1]||'').trim(), k=illuFor(nm), pr=own||sr; h += '<li data-ci="'+ci+'"'+(k?'':' class="txt"')+'>'+(k?ILLU[k]:'')+'<span>'+esc(nm)+(pr?'<em class="mob-sr">'+esc(pr)+'</em>':'')+'</span></li>'; });
+    h += '</ul></details>';
+  }
+  S.pre.forEach(blk);
+  (d.extra||[]).forEach(blk);
+  var ex = (d.ex||[]).filter(function(e){ return (e.n||'').trim(); });
+  if(ex.length){
+    h += '<ol class="ex-list">';
+    var cw = curWeek();
+    ex.forEach(function(e,i){
+      var vs = vidLinks(e), one = vs.length===1;
+      h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
+        ((one && !SITE)?'<a class="vid" href="'+esc(safeUrl(vs[0].u))+'" target="_blank" rel="noopener">'+PLAY+'Video</a>':'<span></span>')+
+        '<span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+tmRest(e,i)+
+        (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
+      if(SITE && vs.length){ h += thumbs(vs); }
+      else if(vs.length>1){ h += '<span class="vids">'; vs.forEach(function(v,j){ h += '<a class="vid" href="'+esc(safeUrl(v.u))+'" target="_blank" rel="noopener">'+PLAY+esc((v.t||'').trim()||('Video '+(j+1)))+'</a>'; }); h += '</span>'; }
+      var lg = e.log||[], any = lg.some(function(x){ return (x||'').trim(); });
+      if(SITE){
+        var di = ui.day, last = 0;
+        lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
+        Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
+        var upto = Math.max(nWeeks(), last);
+        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span><div class="log-weeks">';
+        for(var w=1; w<=upto; w++){
+          var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
+          var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
+          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(val.trim()?esc(val):'+ segna')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
+        }
+        h += '</div>';
+        if(ui.le && ui.le.d===di && ui.le.n===e.n){
+          var cur = PEND[pkey(di,e,ui.le.w)] ? PEND[pkey(di,e,ui.le.w)].v : (lg[ui.le.w-1]||'');
+          h += '<div class="le"><label for="le-in">Settimana '+ui.le.w+' · '+esc((e.lab||'').trim()||'REP/KG')+'</label><input id="le-in" type="text" inputmode="text" autocomplete="off" value="'+esc(cur)+'" placeholder="Es. 8/80 · 7/80"><small>Una serie dopo l\u2019altra, ripetizioni/kg.</small><div class="le-btns"><button type="button" class="btn small" data-act="logCancel">Annulla</button><button type="button" class="btn small primary" data-act="logSave">Salva</button></div></div>';
+        }
+        h += '</div>';
+      } else if(true){
+        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Settimane')+'</span><div class="log-weeks">';
+        for(var w2=0, W2=Math.max(nWeeks(), lg.length); w2<W2; w2++){ var x2=(lg[w2]||'').trim(); h += '<span class="wk'+(w2+1===cw?' now':'')+(x2?'':' empty')+'"><b>S'+(w2+1)+'</b>'+(x2?esc(x2):(w2+1===cw?'questa settimana':'—'))+'</span>'; }
+        h += '</div></div>';
+      }
+      h += '</li>';
+    });
+    h += '</ol>';
+  }
+  S.post.forEach(blk);
+  if((S.note||'').trim()) h += '<div class="note"><b>Nota del coach</b><p>'+esc(S.note)+'</p></div>';
+  return h;
+}
+
+function stepper(label, act, val, what){
+  return '<div><span class="eyebrow">'+label+'</span><div class="step"><button class="btn small" data-act="'+act+'" data-v="-1" aria-label="Togli '+what+'">−</button><b>'+val+'</b><button class="btn small" data-act="'+act+'" data-v="1" aria-label="Aggiungi '+what+'">+</button></div></div>';
+}
+function isLesson(a){ var w=(a.what||'').toLowerCase(); return w.indexOf('lezion')>=0 || w.indexOf('massagg')<0; }
+function pastLessonsSince(from){ var now=new Date(); return S.appts.filter(function(a){ return a.d && a.d>=from && parseD(a)<now && isLesson(a); }).length; }
+function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
+function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
+function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
+function viewPkg(){
+  var p = S.pkg || {}, mode = pkgMode(p);
+  var tot = parseInt(p.total,10) || 0, done = parseInt(p.done,10) || 0, quota = parseInt(p.month,10) || 0;
+  var coach = '';
+  if(ui.canEdit){
+    coach = '<div class="pkg-coach"><div class="seg" role="group" aria-label="Tipo di conteggio">'+
+      [['pack','Pacchetto'],['month','Mensile'],['none','Nessuno']].map(function(m){ return '<button data-act="pkgM" data-v="'+m[0]+'" aria-pressed="'+(mode===m[0])+'">'+m[1]+'</button>'; }).join('')+'</div>';
+    if(mode==='pack') coach += '<div class="pkg-ctl">'+stepper('Totale lezioni','pkgT',tot,'una lezione al pacchetto')+(p.start?'<div><small>Lezioni fatte contate dal calendario.</small></div>':stepper('Lezioni fatte','pkgD',Math.min(done,tot),'una lezione fatta'))+'</div><label>Inizio pacchetto (per contare dal calendario)<input type="date" id="pkg-start" data-pkg="start" value="'+esc(p.start||'')+'"></label>';
+    if(mode==='month') coach += '<div class="pkg-ctl">'+stepper('Lezioni al mese','pkgQ',quota,'una lezione al mese')+'<div><small>Fatte e in programma si contano dagli appuntamenti del mese.</small></div></div>';
+    if(mode!=='none'){ var ps0=payState(p,mode); coach += '<div><span class="eyebrow">'+(mode==='month'?'Pagamento del mese':'Pagamento del pacchetto')+'</span><div class="seg" role="group" aria-label="Pagamento" style="margin-top:6px"><button data-act="pkgP" data-v="1" aria-pressed="'+(ps0==='ok')+'">Pagato</button><button data-act="pkgP" data-v="rata" aria-pressed="'+(ps0==='rata')+'">1ª rata</button><button data-act="pkgP" data-v="0" aria-pressed="'+(ps0==='no')+'">Da pagare</button></div>'+(mode==='month'?'<small>Ogni mese nuovo torna su “Da pagare” finché non lo segni.</small>':'')+'</div>'; }
+    coach += '</div>';
+  }
+  var h = '';
+  if(mode==='pack' && p.start) done = pastLessonsSince(p.start);
+  if(mode==='pack' && tot>0){
+    done = Math.max(0, Math.min(done, tot));
+    var left = tot - done;
+    h += '<span class="eyebrow">Pacchetto da '+tot+' lezioni</span>';
+    h += '<div class="pkg-nums"><div><span class="eyebrow">Fatte</span><strong>'+done+'</strong></div><div class="left"><span class="eyebrow">Rimanenti</span><strong>'+left+'</strong></div></div>';
+    if(tot <= 60){ h += '<div class="dots" aria-hidden="true">'; for(var i=0;i<tot;i++) h += '<i'+(i<done?' class="on"':'')+'></i>'; h += '</div>'; }
+    if(left === 0) h += '<small>Pacchetto completato. Chiedimi pure per rinnovarlo!</small>';
+    else if(left <= 2) h += '<small>Ti resta'+(left===1?' 1 lezione':'no '+left+' lezioni')+': ricordati di rinnovare il pacchetto.</small>';
+    if(p.start){ try{ h += '<small>Pacchetto iniziato il '+esc(new Intl.DateTimeFormat("it-IT",{day:"numeric",month:"long"}).format(parseD({d:p.start})))+'.</small>'; }catch(e){} }
+  } else if(mode==='month'){
+    var now = new Date(), y = now.getFullYear(), mo = now.getMonth();
+    var inMonth = S.appts.filter(function(a){ if(!a.d) return false; var d=parseD(a); return d.getFullYear()===y && d.getMonth()===mo && isLesson(a); });
+    var fatte = inMonth.filter(function(a){ return parseD(a) < now; }).length;
+    var prog = inMonth.length - fatte;
+    var mese = new Intl.DateTimeFormat('it-IT',{month:'long'}).format(now);
+    h += '<span class="eyebrow">Lezioni di '+esc(mese)+(quota?' · '+quota+' al mese':'')+'</span>';
+    if(quota){
+      var rim = Math.max(0, quota - fatte);
+      h += '<div class="pkg-nums"><div><span class="eyebrow">Fatte</span><strong>'+fatte+'</strong></div><div class="left"><span class="eyebrow">Rimanenti</span><strong>'+rim+'</strong></div></div>';
+      if(quota <= 60){ h += '<div class="dots" aria-hidden="true">'; for(var j=0;j<quota;j++) h += '<i'+(j<fatte?' class="on"':'')+'></i>'; h += '</div>'; }
+      if(prog) h += '<small>'+prog+(prog===1?' lezione già in programma':' lezioni già in programma')+' questo mese.</small>';
+    } else {
+      h += '<div class="pkg-nums"><div><span class="eyebrow">Fatte</span><strong>'+fatte+'</strong></div><div class="left"><span class="eyebrow">In programma</span><strong>'+prog+'</strong></div></div>';
+    }
+  } else if(!ui.canEdit){
+    return '';
+  } else {
+    h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
+  }
+  var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2713 Prima rata pagata', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
+  var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
+  return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
+}
+
+function viewAppts(){
+  var pk = viewPkg();
+  return pk + viewApptList();
+}
+
+function calendar(list){
+  var now=new Date(), off=ui.calOff||0, base=new Date(now.getFullYear(), now.getMonth()+off, 1);
+  var y=base.getFullYear(), m=base.getMonth(), nd=new Date(y,m+1,0).getDate(), lead=(base.getDay()+6)%7, map={}, done=0;
+  list.forEach(function(a){ var d=parseD(a); if(d.getFullYear()!==y||d.getMonth()!==m) return; var k=d.getDate(), past=d<now, les=isLesson(a);
+    var c=map[k]||(map[k]={}); if(past){ if(les){ c.done=true; done++; } else c.mass=true; } else c.up=true; });
+  var mn=new Intl.DateTimeFormat('it-IT',{month:'long',year:'numeric'}).format(base);
+  var h='<section class="cal" aria-label="Calendario di '+esc(mn)+'"><div class="cal-head"><button type="button" class="cal-nav" data-act="calPrev" aria-label="Mese precedente">‹</button><b>'+esc(mn)+'</b><button type="button" class="cal-nav" data-act="calNext" aria-label="Mese successivo"'+(off>=1?' disabled':'')+'>›</button></div><div class="cal-grid">';
+  ['L','M','M','G','V','S','D'].forEach(function(w){ h+='<span class="cal-w">'+w+'</span>'; });
+  for(var i=0;i<lead;i++) h+='<span></span>';
+  var isCur = (y===now.getFullYear() && m===now.getMonth());
+  for(var dd=1; dd<=nd; dd++){ var c=map[dd]||{}, cls='cal-d'+(c.done?' done':(c.mass?' mass':''))+(c.up?' up':'')+(isCur&&dd===now.getDate()?' today':'');
+    var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.up?', in programma':'');
+    h+='<span class="'+cls+'" aria-label="'+lab+'">'+dd+'</span>'; }
+  h+='</div><div class="cal-foot"><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con me '+(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)))+'</div>';
+  h+='<div class="cal-leg"><span><i class="lg done"></i>Allenamento fatto</span><span><i class="lg mass"></i>Massaggio</span><span><i class="lg up"></i>In programma</span></div></section>';
+  return h;
+}
+
+function viewApptList(){
+  var now = new Date(); now.setHours(0,0,0,0);
+  var list = S.appts.filter(function(a){return a.d;}).slice().sort(function(a,b){return parseD(a)-parseD(b);});
+  var up = list.filter(function(a){ return parseD(a) >= now; });
+  var past = list.filter(function(a){ return parseD(a) < now; }).reverse();
+  if(!list.length) return calendar(list)+'<p class="empty">Nessun appuntamento in programma.</p>';
+  var h = '';
+  if(up.length){
+    var n = up[0];
+    h += '<div class="next"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
+    if(up.length>1){ h += '<ul class="appts">'; up.slice(1).forEach(function(a){ h += row(a,''); }); h += '</ul>'; }
+  } else h += '<p class="empty">Nessun appuntamento in arrivo.</p>';
+  h += calendar(list);
+  if(past.length){ h += '<details><summary>Tutti gli appuntamenti passati ('+past.length+')</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
+  return h;
+  function row(a,cls){ var dt=parseD(a); return '<li class="appt '+cls+'"><span class="date"><strong>'+dt.getDate()+'</strong>'+esc(fmtMon.format(dt))+'</span><span class="what">'+esc(a.what||'Appuntamento')+'<span>'+(a.t?'Ore '+esc(a.t):'')+(a.where?' · '+esc(a.where):'')+'</span></span></li>'; }
+}
+
+function inp(path,val,lab,type,ph,cls){
+  return '<label'+(cls?' class="'+cls+'"':'')+'>'+lab+'<input id="f-'+path.replace(/\./g,'-')+'" data-p="'+path+'" type="'+(type||'text')+'" value="'+esc(val)+'"'+(ph?' placeholder="'+esc(ph)+'"':'')+'></label>';
+}
+function area(path,val,lab,ph){
+  return '<label>'+lab+'<textarea id="f-'+path.replace(/\./g,'-')+'" data-p="'+path+'"'+(ph?' placeholder="'+esc(ph)+'"':'')+'>'+esc(val)+'</textarea></label>';
+}
+
+function viewEdit(){
+  var D = draft, h = '<div class="ed">';
+  h += '<div class="card"><h3>Cliente</h3>'+inp('client.name',D.client.name,'Nome e cognome')+'<div><span class="eyebrow" style="color:var(--muted);font-size:12px">Cliente</span><div class="seg" role="group" aria-label="Uomo o donna" style="margin-top:6px"><button data-act="gen" data-v="m" aria-pressed="'+(D.client.g!=='f')+'">Uomo</button><button data-act="gen" data-v="f" aria-pressed="'+(D.client.g==='f')+'">Donna</button></div></div>'+inp('client.email',D.client.email||'','Email del cliente (per abbinare gli appuntamenti)','email','nome@email.com')+'<div class="row2">'+inp('client.age',D.client.age||'','Età','text','32')+inp('client.weight',D.client.weight||'','Peso (kg)','text','78')+'</div>'+area('client.issues',D.client.issues||'','Problematiche fisiche','Es. lombalgia, ernia L5-S1, spalla destra')+area('client.general',D.client.general||'','Informazioni generali','Es. lavoro sedentario, gioca a calcetto il martedì, preferisce allenarsi la mattina')+inp('client.goal',D.client.goal||'','Obiettivo','text','Es. forza e tonificazione')+'<div class="row2">'+inp('client.freq',D.client.freq||'','Allenamenti a settimana','text','3')+inp('client.dur',D.client.dur||'','Durata seduta','text',"60'")+'</div><div class="row2">'+inp('client.start',D.client.start||'','Data di inizio','date')+inp('client.end',D.client.end||'','Data di fine','date')+'</div>'+inp('weeks',D.weeks||'12','Settimane nella tabella dei carichi','number','12')+area('note',D.note,'Nota per il cliente')+'</div>';
+  h += '<div class="card"><h3>Blocchi per tutti i giorni</h3><small style="color:var(--muted)">Compaiono in ogni giorno: quelli "prima" sopra gli esercizi (es. mobilità), quelli "dopo" sotto (es. circuito addome). Un esercizio per riga. Ripetizioni o tempi per tutti nel titolo tra parentesi, es. "Mobilità (10 ripetizioni ad esercizio)" o "Circuito addome (3 giri 45” di lavoro 15” di recupero)". Per cambiarli su un solo esercizio scrivi dopo il nome una barra: "Russian twist | 1 x 20".</small>';
+  ['pre','post'].forEach(function(w){
+    (D[w]||[]).forEach(function(b,k){ h += '<div class="ex-ed">'+inp(w+'.'+k+'.label',b.label,(w==='pre'?'Prima degli esercizi':'Dopo gli esercizi'),'text','Mobilità / Addome / Cardio','full')+'<label class="full">Contenuto<textarea id="f-'+w+'-'+k+'-text" data-p="'+w+'.'+k+'.text">'+esc(b.text)+'</textarea></label><div class="tools"><button class="btn del small" data-act="delFix" data-w="'+w+'" data-k="'+k+'">Rimuovi blocco</button></div></div>'; });
+  });
+  h += '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost small" data-act="addFix" data-w="pre">+ Blocco prima</button><button class="btn ghost small" data-act="addFix" data-w="post">+ Blocco dopo</button></div></div>';
+  D.days.forEach(function(d,i){
+    h += '<div class="card"><div class="card-head"><h3>'+esc(d.name||('Day '+(i+1)))+'</h3><button class="btn del small" data-act="delDay" data-i="'+i+'">Elimina giorno</button></div>';
+    h += '<div class="row2">'+inp('days.'+i+'.name',d.name,'Nome')+inp('days.'+i+'.focus',d.focus,'Focus','text','Es. parte inferiore')+'</div>';
+    (d.extra||[]).forEach(function(b,k){
+      h += '<div class="ex-ed">'+inp('days.'+i+'.extra.'+k+'.label',b.label,'Blocco','text','Mobilità / Addome / Cardio','full')+'<label class="full">Contenuto<textarea id="f-days-'+i+'-extra-'+k+'-text" data-p="days.'+i+'.extra.'+k+'.text">'+esc(b.text)+'</textarea></label><div class="tools"><button class="btn del small" data-act="delExtra" data-i="'+i+'" data-k="'+k+'">Rimuovi blocco</button></div></div>';
+    });
+    (d.ex||[]).forEach(function(e,k){
+      var p='days.'+i+'.ex.'+k+'.';
+      var vh='';
+      (e.vids||[]).forEach(function(v,j){ vh += '<div class="vid-ed">'+inp(p+'vids.'+j+'.t',v.t,'Nome video','text','Es. Box dip')+inp(p+'vids.'+j+'.u',v.u,'Link video','url','https://…')+'<button class="btn del small" data-act="delVid" data-i="'+i+'" data-k="'+k+'" data-j="'+j+'">Rimuovi</button></div>'; });
+      var lh='<div class="log-ed"><div class="row2">'+inp(p+'lab',e.lab||'','Tabella settimane','text','REP o REP/KG')+'<span></span></div><div class="weeks">';
+      for(var w=0; w<(parseInt(D.weeks,10)||12); w++) lh += inp(p+'log.'+w,(e.log||[])[w]||'','Sett. '+(w+1));
+      lh += '</div></div>';
+      h += '<div class="ex-ed">'+inp(p+'n',e.n,'Esercizio '+(k+1),'text','','full')+inp(p+'sr',e.sr,'Set x Rep','text','4 x 8')+inp(p+'rec',e.rec,'Rec','text',"90''")+inp(p+'info',e.info,'Info')+vh+'<div class="full"><button class="btn ghost small" data-act="addVid" data-i="'+i+'" data-k="'+k+'">+ Video</button></div>'+lh+
+        '<div class="tools">'+(k>0?'<button class="btn small" data-act="up" data-i="'+i+'" data-k="'+k+'">Sposta su</button>':'')+'<button class="btn del small" data-act="delEx" data-i="'+i+'" data-k="'+k+'">Rimuovi</button></div></div>';
+    });
+    h += '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost small" data-act="addEx" data-i="'+i+'">+ Esercizio</button><button class="btn ghost small" data-act="addExtra" data-i="'+i+'">+ Blocco (mobilità, addome, cardio)</button></div></div>';
+  });
+  h += '<button class="btn ghost" data-act="addDay">+ Aggiungi giorno</button>';
+  h += '<div class="card"><h3>Appuntamenti</h3><div class="row2">'+inp('pkg.total',(D.pkg&&D.pkg.total)||'','Lezioni nel pacchetto','number','10')+inp('pkg.done',(D.pkg&&D.pkg.done)||'','Lezioni già fatte','number','0')+'</div>'+inp('pkg.start',(D.pkg&&D.pkg.start)||'','Inizio pacchetto (conta le lezioni fatte dal calendario)','date')+inp('pkg.month',(D.pkg&&D.pkg.month)||'','Lezioni al mese (solo per conteggio mensile)','number','8')+'<small style="color:var(--muted)">Il tipo di conteggio (pacchetto, mensile o nessuno) si sceglie dal riquadro nella sezione Appuntamenti.</small>';
+  D.appts.forEach(function(a,k){
+    var p='appts.'+k+'.';
+    h += '<div class="ex-ed">'+inp(p+'d',a.d,'Data','date')+inp(p+'t',a.t,'Ora','time')+inp(p+'what',a.what,'Cosa','text','Allenamento')+inp(p+'where',a.where,'Dove','text','','full')+'<div class="tools"><button class="btn del small" data-act="delAppt" data-k="'+k+'">Rimuovi</button></div></div>';
+  });
+  h += '<button class="btn ghost small" data-act="addAppt">+ Appuntamento</button></div>';
+  h += '</div>';
+  return h;
+}
+
+function render(){
+  var h = '';
+  if(ui.edit){
+    h += BRAND+'<div class="hero"><span class="eyebrow">Modifica programma</span><h1>'+esc(firstName(draft.client.name))+'</h1></div>' + viewEdit();
+  } else {
+    var nA = S.appts.filter(function(a){ var n=new Date(); n.setHours(0,0,0,0); return a.d && parseD(a)>=n; }).length;
+    h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1><p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p></div>';
+    h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
+    h += ui.tab==='train' ? viewTrain() : viewAppts();
+    if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
+  }
+  if(ui.canEdit){
+    h += '<div class="bar"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Modifiche al pacchetto: premi Salva per mostrarle al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
+      (ui.dirty && !ui.edit ? '<button class="btn" data-act="discard">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>' : ui.edit ? '<button class="btn" data-act="cancel">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>'
+               : '<button class="btn primary" data-act="edit">Modifica</button>')+'</div></div>';
+  }
+  app.innerHTML = h;
+  try{ tmPaint(); }catch(err){}
+  try{ document.querySelectorAll('.log-weeks').forEach(function(el){ var n=el.querySelector('.now'); if(n) el.scrollLeft = Math.max(0, n.offsetLeft - el.offsetLeft - 60); }); }catch(err){}
+}
+
+function setPath(obj,path,val){ var p=path.split('.'), o=obj; for(var i=0;i<p.length-1;i++){ if(o[p[i]]==null) o[p[i]] = /^\d+$/.test(p[i+1]) ? [] : {}; o=o[p[i]]; } o[p[p.length-1]]=val; }
+
+app.addEventListener('change', function(e){
+  var k = e.target.getAttribute && e.target.getAttribute('data-pkg');
+  if(k && !ui.edit){ S.pkg=S.pkg||{total:'',done:''}; S.pkg[k]=e.target.value; ui.dirty=true; ui.msg=''; var y2=window.scrollY; render(); window.scrollTo(0,y2); }
+});
+
+function saveLog(){
+  var inp2=document.getElementById('le-in'); if(!inp2 || !ui.le) return;
+  var v=inp2.value.trim(), L=ui.le, e=findEx(L.d,L.n); if(!e) return;
+  var k=pkey(L.d,e,L.w);
+  if(v===((e.log||[])[L.w-1]||'').trim() && !PEND[k]){ ui.le=null; render(); return; }
+  PEND[k]={d:L.d,dn:(S.days[L.d]||{}).name||'',n:e.n,w:L.w,v:v,ts:Date.now(),sent:false};
+  pendSave(); ui.le=null; var y4=window.scrollY; render(); window.scrollTo(0,y4); sendPend(k);
+}
+app.addEventListener('keydown', function(e){ if(e.target.id==='le-in' && e.key==='Enter'){ e.preventDefault(); saveLog(); } });
+
+app.addEventListener('toggle', function(e){ var k=e.target && e.target.getAttribute && e.target.getAttribute('data-blk'); if(k!=null){ ui.ob=ui.ob||{}; ui.ob[k]=e.target.open; } }, true);
+
+app.addEventListener('input', function(e){
+  var p = e.target.getAttribute && e.target.getAttribute('data-p');
+  if(p && draft){ setPath(draft,p,e.target.value); if(/^days\.\d+\.name$/.test(p)){ var h3=e.target.closest('.card').querySelector('h3'); if(h3) h3.textContent=e.target.value; } }
+});
+
+app.addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  if(b.dataset.tab){ ui.tab=b.dataset.tab; render(); return; }
+  if(b.dataset.day){ ui.day=+b.dataset.day; render(); return; }
+  var a=b.dataset.act, i=+b.dataset.i, k=+b.dataset.k; if(!a) return;
+  if(a==='edit'){ if(ui.dirty){ S=JSON.parse(ORIG); ui.dirty=false; } draft=JSON.parse(JSON.stringify(S)); draft.client.goal=draft.client.goal||''; draft.pkg=draft.pkg||{total:'',done:''}; ui.edit=true; ui.msg=''; render(); window.scrollTo(0,0); return; }
+  if(a==='cancel'){ draft=null; ui.edit=false; ui.msg=''; render(); return; }
+  if(a==='save'){ if(!ui.edit) draft=JSON.parse(JSON.stringify(S)); save(); return; }
+  if(a==='discard'){ S=JSON.parse(ORIG); ui.dirty=false; ui.msg=''; render(); return; }
+  if(a==='calPrev'||a==='calNext'){ ui.calOff=(ui.calOff||0)+(a==='calPrev'?-1:1); if(ui.calOff>1) ui.calOff=1; var y8=window.scrollY; render(); window.scrollTo(0,y8); return; }
+  if(a==='pkgM'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.mode=b.dataset.v; ui.dirty=true; ui.msg=''; var y0=window.scrollY; render(); window.scrollTo(0,y0); return; }
+  if(a==='pkgP'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.paid = b.dataset.v==='1' ? true : (b.dataset.v==='rata' ? 'rata' : false); if(S.pkg.paid) S.pkg.paidMonth=curYM(); ui.dirty=true; ui.msg=''; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
+  if(a==='pkgQ'){ S.pkg=S.pkg||{total:'',done:''}; S.pkg.month=String(Math.max(0,(parseInt(S.pkg.month,10)||0)+(+b.dataset.v))); ui.dirty=true; ui.msg=''; var y1=window.scrollY; render(); window.scrollTo(0,y1); return; }
+  if(a==='pkgT'||a==='pkgD'){
+    S.pkg=S.pkg||{total:'',done:''};
+    var t=parseInt(S.pkg.total,10)||0, dn=parseInt(S.pkg.done,10)||0, v=+b.dataset.v;
+    if(a==='pkgT'){ t=Math.max(0,t+v); if(dn>t) dn=t; } else { dn=Math.max(0,Math.min(t,dn+v)); }
+    S.pkg.total=t?String(t):''; S.pkg.done=String(dn); ui.dirty=true; ui.msg='';
+    var yy=window.scrollY; render(); window.scrollTo(0,yy); return;
+  }
+  if(a==='logEdit'){ ui.le={d:+b.dataset.d,n:b.dataset.n,w:+b.dataset.w}; var y3=window.scrollY; render(); window.scrollTo(0,y3); var inp1=document.getElementById('le-in'); if(inp1){ try{ inp1.focus({preventScroll:true}); }catch(err){ inp1.focus(); } } return; }
+  if(a==='logCancel'){ ui.le=null; render(); return; }
+  if(a==='infoEdit'){ ui.ie={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y5=window.scrollY; render(); window.scrollTo(0,y5); var t1=document.getElementById('ie-in'); if(t1){ try{ t1.focus({preventScroll:true}); }catch(err){ t1.focus(); } } return; }
+  if(a==='infoCancel'){ ui.ie=null; render(); return; }
+  if(a==='infoSave'){
+    var t2=document.getElementById('ie-in'); if(!t2||!ui.ie) return;
+    var I=ui.ie, ex2=findEx(I.d,I.n); if(!ex2) return;
+    var v2=t2.value.trim(), k2=ikey(I.d,ex2);
+    if(v2===(ex2.info||'').trim() && !PEND[k2]){ ui.ie=null; render(); return; }
+    PEND[k2]={f:'info',d:I.d,dn:(S.days[I.d]||{}).name||'',n:ex2.n,v:v2,ts:Date.now(),sent:false};
+    pendSave(); ui.ie=null; var y6=window.scrollY; render(); window.scrollTo(0,y6); sendPend(k2); return;
+  }
+  if(a==='logSave'){ saveLog(); return; }
+  var D=draft;
+  if(a==='addDay') D.days.push({name:'DAY '+(D.days.length+1),focus:'',extra:[],ex:[{n:'',sr:'',info:'',rec:'',vids:[],lab:'',log:[]}]});
+  if(a==='delDay') D.days.splice(i,1);
+  if(a==='addEx') D.days[i].ex.push({n:'',sr:'',info:'',rec:'',vids:[],lab:'',log:[]});
+  if(a==='addVid'){ D.days[i].ex[k].vids=D.days[i].ex[k].vids||[]; D.days[i].ex[k].vids.push({t:'',u:''}); }
+  if(a==='delVid') D.days[i].ex[k].vids.splice(+b.dataset.j,1);
+  if(a==='delEx') D.days[i].ex.splice(k,1);
+  if(a==='up'){ var x=D.days[i].ex; x.splice(k-1,0,x.splice(k,1)[0]); }
+  if(a==='addExtra'){ D.days[i].extra=D.days[i].extra||[]; D.days[i].extra.push({label:'',text:''}); }
+  if(a==='delExtra') D.days[i].extra.splice(k,1);
+  if(a==='addAppt') D.appts.push({d:'',t:'',what:'',where:''});
+  if(a==='gen') D.client.g=b.dataset.v;
+  if(a==='addFix'){ D[b.dataset.w]=D[b.dataset.w]||[]; D[b.dataset.w].push({label:'',text:''}); }
+  if(a==='delFix') D[b.dataset.w].splice(k,1);
+  if(a==='delAppt') D.appts.splice(k,1);
+  var y=window.scrollY; render(); window.scrollTo(0,y);
+});
+
+function clean(D){
+  D.days.forEach(function(d){
+    d.ex=(d.ex||[]).filter(function(e){return (e.n||'').trim();});
+    d.ex.forEach(function(e){ e.vids=(e.vids||[]).filter(function(v){return (v.u||'').trim();}); var lg=(e.log||[]).map(function(x){return x||'';}); while(lg.length && !lg[lg.length-1].trim()) lg.pop(); e.log=lg; });
+    d.extra=(d.extra||[]).filter(function(b){return (b.text||'').trim();});
+  });
+  D.appts=D.appts.filter(function(a){return a.d;});
+  ['pre','post'].forEach(function(w){ D[w]=(D[w]||[]).filter(function(b){return (b.text||'').trim();}); });
+  D.updated=today();
+  return D;
+}
+
+function buildPage(D){
+  var json = JSON.stringify(D).replace(/</g,'\\u003c');
+  return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body>' +
+    '<title>Programma '+esc((D.client.name||'Cliente').trim())+'</title>\n' +
+    '<meta name="claude:viewport-fit-sides" content="cover">\n' +
+    '<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">\n' +
+    '<style id="st">'+CSS+'</style>\n' +
+    '<div id="app"><p class="empty">Caricamento del programma…</p></div>\n' +
+    '<script type="application/json" id="data">'+json+'</scr'+'ipt>\n' +
+    '<script id="app-js">'+SELF+'</scr'+'ipt>\n</body></html>';
+}
+
+var art = null;
+async function save(){
+  if(!art){ ui.msg='Il salvataggio non è disponibile in questa vista.'; render(); return; }
+  ui.saving=true; ui.msg=''; render();
+  try{
+    await art.publish(buildPage(clean(draft)));
+  }catch(err){
+    ui.saving=false;
+    var c = err && err.code;
+    if(c==='conflict'){ ui.msg='La pagina è stata aggiornata altrove: si ricarica con la versione più recente.'; }
+    else if(c==='not_writer'||c==='not_granted'||c==='consent_required'){ ui.canEdit=false; ui.edit=false; }
+    else if(c==='too_large'){ ui.msg='Il programma è troppo grande per essere salvato. Accorcia qualche testo e riprova.'; }
+    else if(c==='rate_limited'){ ui.msg='Troppi salvataggi ravvicinati. Aspetta qualche secondo e premi di nuovo Salva.'; }
+    else { ui.msg='Salvataggio non riuscito. Controlla la connessione e premi di nuovo Salva.'; }
+    render();
+  }
+}
+
+render();
+(async function(){
+  try{
+    if(!window.claude || !window.claude.use) return;
+    var u = await window.claude.use('user');
+    var can = false;
+    if(u){ try{ can = !!(await u.canEdit()); }catch(e){} if(!can){ try{ can = !!(await u.isOwner()); }catch(e){} } }
+    if(!can) return;
+    art = await window.claude.use('artifact');
+    if(!art) return;
+    ui.canEdit = true; render();
+  }catch(e){}
+})();
+})();
+</script>
+
+</body>
+</html>
