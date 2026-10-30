@@ -281,6 +281,12 @@ textarea{min-height:64px;resize:vertical}
 .brand.hello h1 span{font:800 clamp(36px,11vw,52px)/.95 var(--display);text-transform:uppercase;letter-spacing:.01em;color:var(--ink)}
 .brand.hello .logo{width:46px}
 .pland.flat .pl-head{display:flex;padding:14px 16px 12px}
+.splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}
+.splash.out{opacity:0;pointer-events:none}
+.splash .logo{width:96px;animation:spl-in .7s ease both}
+.splash .s-name{font:800 30px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);animation:spl-in .7s .15s ease both}
+.splash .s-role{font:600 clamp(9px,2.9vw,12px)/1.3 var(--body);letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:var(--muted);animation:spl-in .7s .3s ease both}
+@keyframes spl-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <div id="app"><p class="empty">Caricamento del programma…</p></div>
@@ -897,6 +903,7 @@ async function save(){
 }
 
 render();
+if(S.navbar){ try{ var sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },2000); }catch(e){} }
 (async function(){
   try{
     if(!window.claude || !window.claude.use) return;
