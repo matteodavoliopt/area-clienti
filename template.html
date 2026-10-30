@@ -257,6 +257,11 @@ textarea{min-height:64px;resize:vertical}
 .nav b{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font:700 11px/18px var(--body);color:var(--accent-ink);background:var(--accent)}
 .nav-sp{height:64px;flex:0 0 auto}
 .bar.up{bottom:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:12px}
+.brand.hello{justify-content:space-between;gap:12px}
+.brand.hello h1{font:800 clamp(28px,8vw,40px)/1 var(--display);text-transform:uppercase;letter-spacing:.01em;margin:0}
+.brand.hello h1 span{color:var(--accent)}
+.brand.hello .logo{width:46px}
+.pland.flat .pl-head{display:flex;padding:14px 16px 12px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <div id="app"><p class="empty">Caricamento del programma…</p></div>
@@ -354,7 +359,8 @@ function viewPers(){
   if(SITE && ui.pe){
     var f='<details class="plan pland" data-blk="__pers" open><summary><span class="bd-t"><span class="eyebrow">Dati personali</span><span class="pl-goal">'+esc((c.name||'').trim()||'Cliente')+'</span></span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><div class="plan-in pe-form">';
     PERSF.forEach(function(x){ var v=persVal(x[0]); f += '<label class="pe-l" for="pe-'+x[0]+'">'+x[1]+(x[0]==='issues'||x[0]==='general' ? '<textarea id="pe-'+x[0]+'" rows="2" placeholder="'+esc(x[2])+'">'+esc(v)+'</textarea>' : '<input id="pe-'+x[0]+'" type="text" inputmode="'+(x[0]==='general'?'text':'decimal')+'" value="'+esc(v)+'" placeholder="'+esc(x[2])+'">')+'</label>'; });
-    return f+'<div class="le-btns"><button type="button" class="btn small" data-act="persCancel">Annulla</button><button type="button" class="btn small primary" data-act="persSave">Salva</button></div></div></details>';
+    f += '<div class="le-btns"><button type="button" class="btn small" data-act="persCancel">Annulla</button><button type="button" class="btn small primary" data-act="persSave">Salva</button></div></div></details>';
+    return S.navbar ? flatPers(f) : f;
   }
   var anyP = SITE && PERSF.some(function(x){ return PEND['client|'+x[0]]; }), allS = anyP && PERSF.every(function(x){ var q=PEND['client|'+x[0]]; return !q || q.sent; });
   var sum = [age?esc(age)+(/^\d+$/.test(age)?' anni':''):'', w?esc(w)+(/^[\d.,]+$/.test(w)?' kg':''):''].filter(Boolean).join(' · ');
@@ -364,8 +370,10 @@ function viewPers(){
   h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Problematiche fisiche</span><span class="pers-iss">'+(iss?esc(iss):'Nessuna indicata')+'</span></div>';
   if(gen || ui.canEdit || SITE) h += '<div class="plan-goal" style="padding-top:12px;border-top:1px solid var(--line)"><span class="eyebrow">Informazioni generali</span><span class="pers-iss">'+(gen?esc(gen):'Nessuna')+'</span></div>';
   if(SITE) h += '<div class="pe-foot">'+(anyP?'<i>'+(allS?'inviato':'da inviare')+'</i>':'')+'<button type="button" class="pen" data-act="persEdit">Modifica i tuoi dati</button></div>';
-  return h + '</div></details>';
+  h += '</div></details>';
+  return S.navbar ? flatPers(h) : h;
 }
+function flatPers(x){ return x.replace(/<details class="plan pland"[^>]*>/,'<div class="plan pland flat">').replace(/<svg class="chev"[\s\S]*?<\/svg>/,'').replace('<summary>','<div class="pl-head">').replace('</summary>','</div>').replace('<small>Problematiche fisiche indicate</small>','').replace(/<\/details>$/,'</div>'); }
 
 function viewPlan(){
   var c = S.client, g = (c.goal||'').trim(), s = c.start, e = c.end, fq = (c.freq||'').trim(), du = (c.dur||'').trim();
@@ -722,7 +730,8 @@ function render(){
     h += BRAND+'<div class="hero"><span class="eyebrow">Modifica programma</span><h1>'+esc(firstName(draft.client.name))+'</h1></div>' + viewEdit();
   } else {
     var nA = S.appts.filter(function(a){ var n=new Date(); n.setHours(0,0,0,0); return a.d && parseD(a)>=n; }).length;
-    h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
+    if(S.navbar) h += '<header class="brand hello"><h1>'+(S.client.g==='f'?'Bentornata':'Bentornato')+' <span>'+esc(firstName(S.client.name))+'</span></h1>'+LOGO+'</header>';
+    else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
     h += ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
