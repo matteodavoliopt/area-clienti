@@ -1,0 +1,272 @@
+{
+ "slug": "elena-1fab2a20",
+ "source": "https://claude.ai/artifact/PcQ26k7ow6cS6kBMoiJiKe",
+ "data": {
+  "client": {
+   "name": "Elena Pasini",
+   "g": "f",
+   "goal": "Posturale",
+   "freq": "1-2",
+   "dur": "60’",
+   "start": "2026-03-30",
+   "end": "2026-06-30",
+   "age": "",
+   "weight": "",
+   "issues": "",
+   "general": ""
+  },
+  "note": "",
+  "weeks": "12",
+  "pre": [],
+  "post": [],
+  "days": [
+   {
+    "name": "DAY 1",
+    "focus": "",
+    "extra": [
+     {
+      "label": "Mobilità prima di ogni allenamento (10 ripetizioni ogni esercizio)",
+      "text": "Quadrupedia flessione ed estensione schiena\nQuadrupedia avvicino e allontano scapole\nQuadrupedia distendo braccio e gamba opposti\nBastone altezza spalle avvicino e allontano scapole\nBastone sopra la testa alzo e abbasso spalle\nGli esercizi con * sono quelli a corpo libero da poter fare da sola"
+     }
+    ],
+    "ex": [
+     {
+      "n": "*Super man alternato sdraiato",
+      "sr": "2 x 10",
+      "info": "Distendo a terra braccio e gamba opposti, prendo aria quando scendo e butto fuori quando salgo",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Circonduzione braccia al muro",
+      "sr": "2 x 10",
+      "info": "Schiena, testa e braccia attaccate al muro e salgo il più possibile con le braccia senza farle staccare",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Australian pull up trx",
+      "sr": "2 x 10",
+      "info": "Tiro con i gomiti stretti e busto sempre dritto",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Pulley",
+      "sr": "2 x 10 5kg",
+      "info": "Busto dritto, tiro il triangolo all’altezza dell’ombelico tenendo i gomiti stretti",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Croci inverse kinesis",
+      "sr": "3 x 12 1kg",
+      "info": "Braccia semi tese, spalle basse e busto dritto, apro le braccia sempre altezza petto",
+      "rec": "60 sec.",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Abductor machine",
+      "sr": "3 x 12 25kg",
+      "info": "Apro forte e chiudo piano le gambe",
+      "rec": "60 sec.",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/6QsvrlB-w08?si=3k1fPqDtsQZOXA27"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg extension",
+      "sr": "2 x 10 10kg",
+      "info": "Distendo sempre completamente le gambe",
+      "rec": "60 sec.",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "",
+      "log": []
+     }
+    ]
+   },
+   {
+    "name": "DAY 2",
+    "focus": "",
+    "extra": [],
+    "ex": [
+     {
+      "n": "Pullover manubrio",
+      "sr": "2 x 10 2kg",
+      "info": "Braccia sempre tese e porto il manubrio dietro la testa fino a toccare terra",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Pulldown machine",
+      "sr": "2 x 10 15kg",
+      "info": "Porto il bacino verso l’alto spingendo dai talloni, rimango su ogni volta 2 secondi",
+      "rec": "60 sec.",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/NFJXLpobtps?si=7hg333vZ1nQXjvkP"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Wall sit",
+      "sr": "3 x 30”",
+      "info": "Porto il bacino verso l’alto spingendo dai talloni, rimango su ogni volta 2 secondi",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Ponte glutei gambe alternate",
+      "sr": "3 x 10",
+      "info": "Rimango con il bacino alto in ponte e alterno la distensione in avanti delle gambe",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Croci manubri da sdraiata",
+      "sr": "2 x 10 1kg",
+      "info": "Braccia tese verso l’alto, apro le braccia a toccare terra e le riporto verso l’alto",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Tergicristallo gambe piegate",
+      "sr": "3 x 10",
+      "info": "Braccia larghe, faccio oscillare lentamente le gambe da destra a sinistra senza staccare le spalle da terra",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "*Shoulder tap box 60cm.",
+      "sr": "3 x 12",
+      "info": "Braccia tese, bacino basso e addome sempre contratto alterno il tocco delle spalle senza oscillare col bacino",
+      "rec": "60 sec.",
+      "vids": [],
+      "lab": "",
+      "log": []
+     }
+    ]
+   }
+  ],
+  "pkg": {},
+  "appts": [
+   {
+    "d": "2026-06-03",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-10",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-17",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-06-24",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-01",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-08",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-07-15",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-01",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-07",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-14",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-21",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-10-28",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-11",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
+   }
+  ],
+  "updated": "2026-10-30"
+ }
+}
