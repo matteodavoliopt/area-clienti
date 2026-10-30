@@ -134,7 +134,7 @@ function status(c){
   var p = c.pkg || {}, mode = p.mode || ((parseInt(p.total,10)>0)?'pack':'none');
   var r = { next:next, tags:[], renew:false, ending:false, ended:false, unpaid:false };
   var ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-  if(mode!=='none' && p.paid!=null){ var pv = p.paid===true?'ok':(p.paid==='rata'?'rata':'no'); if(mode==='month' && pv!=='no' && p.paidMonth!==ym) pv='no'; if(pv==='no'){ r.unpaid=true; r.tags.push({c:'bad', t: '\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')}); } else if(pv==='rata'){ r.unpaid=true; r.tags.push({c:'rata', t:'\u2713 Prima rata pagata'}); } else r.tags.push({c:'paid', t:'\u2713 Pagato'}); }
+  if(mode!=='none' && p.paid!=null){ var pv = p.paid===true?'ok':(p.paid==='rata'?'rata':'no'); if(mode==='month' && pv!=='no' && p.paidMonth!==ym) pv='no'; r.pv = pv; if(pv==='no'){ r.unpaid=true; r.tags.push({c:'bad', t: '\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')}); } else if(pv==='rata'){ r.unpaid=true; r.tags.push({c:'rata', t:'\u2713 Prima rata pagata'}); } else r.tags.push({c:'paid', t:'\u2713 Pagato'}); }
   if(mode==='pack'){
     var tot = parseInt(p.total,10)||0, done = parseInt(p.done,10)||0;
     if(p.start) done = oneADay(ap.filter(function(a){ return a.d>=p.start && parseD(a)<now; })).length;
@@ -193,6 +193,7 @@ function render(){
     if(ui.f==='pay') return x.s.unpaid;
     return true;
   }).sort(function(a,b){
+    if(ui.f==='pay'){ var ka=a.s.pv==='no'?0:1, kb=b.s.pv==='no'?0:1; if(ka!==kb) return ka-kb; }
     var ua=a.s.up, ub=b.s.up;
     if(ua && ub){ var dd=parseD(ua)-parseD(ub); if(dd) return dd; }
     else if(ua||ub) return ua?-1:1;
