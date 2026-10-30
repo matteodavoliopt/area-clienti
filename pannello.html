@@ -32,7 +32,7 @@ h1,h2{margin:0;text-wrap:balance}
 .hero{display:flex;flex-direction:column;gap:6px}
 .hero h1{font:800 clamp(40px,11vw,64px)/.9 var(--display);text-transform:uppercase}
 .hero p{margin:0;color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 @media (max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:4px;cursor:pointer;text-align:left;color:inherit;font:inherit}
 .stat strong{font:800 34px/1 var(--display);font-variant-numeric:tabular-nums}
@@ -92,7 +92,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .site button,.site a{flex:0 0 auto;font:600 12.5px/1 var(--body);padding:7px 9px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--accent);cursor:pointer;text-decoration:none;white-space:nowrap}
 .site button.done{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
-.nav-in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.nav-in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .nav button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;color:var(--muted);font:600 11px/1.1 var(--body);padding:7px 2px;border-radius:10px;cursor:pointer;text-align:center}
 .nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-current="true"]{color:var(--accent);background:var(--accent-soft)}
@@ -101,6 +101,22 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .nav b.b{background:var(--accent);color:var(--accent-ink)}
 #app{padding-bottom:110px !important}
 @media (max-width:420px){.stat strong{font-size:28px}.stat span{font-size:10.5px}}
+.rc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 12px;margin-top:4px}
+.rc-r{display:grid;grid-template-columns:minmax(0,1fr) 40px 52px 62px 62px;gap:6px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.rc-r:first-child{border-top:0}
+.rc-r b{font-weight:600;overflow-wrap:anywhere;line-height:1.2}
+.rc-hd{font:700 11px/1.1 var(--body);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.rc-hd span{text-align:right}
+.rc-hd span:first-child{text-align:left}
+.rc .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.rc .n.blue{color:var(--brand)}
+.rc .n.warn{color:#D9822B}
+.rc .pay{border-radius:7px;padding:3px 5px}
+.rc .pay.bad{color:#fff;background:#C62828}
+.rc .pay.warn{color:#3B2A00;background:#F2C94C}
+.rc .pay.ok{color:#fff;background:#2E7D32}
+.rc-tot{font-weight:700}
+.rc-tot b{font-weight:700}
 </style>
 <div id="app"><p class="empty">Caricamento dei clienti…</p></div>
 <script type="application/json" id="data">{}</script>
@@ -182,6 +198,25 @@ function week(){
   return h + '</section>';
 }
 
+function eur(n){ return (Math.round(n*100)/100).toLocaleString('it-IT')+' €'; }
+function viewRecap(rows){
+  var now=new Date(), totP=0, totA=0;
+  var h='<section class="rc"><div class="rc-r rc-hd"><span>Cliente</span><span>Fatte</span><span>Rimaste</span><span>Prezzo</span><span>Pagato</span></div>';
+  rows.slice().sort(function(a,b){ return (a.c.name||'').localeCompare(b.c.name||'','it'); }).forEach(function(x){
+    var c=x.c, p=c.pkg||{}, mode=p.mode||((parseInt(p.total,10)>0)?'pack':'none'), f='—', l='—', lc='', pr='—', pa='—', pc='';
+    if(mode==='pack'){ var tot=parseInt(p.total,10)||0;
+      if(tot>0){ var left=x.s.left!=null?x.s.left:tot; f=String(tot-left); l=String(left); lc=left<=2?'warn':'blue'; } }
+    else if(mode==='month'){ var y=now.getFullYear(), m=now.getMonth(); f=String(oneADay((c.appts||[]).filter(function(a){ var d=parseD(a); return a.d && d.getFullYear()===y && d.getMonth()===m && d<now; })).length); l='mese'; }
+    var price=parseFloat(p.price), paid=parseFloat(p.paidAmt);
+    if(price>0){ pr=eur(price); totP+=price; }
+    if(!isNaN(paid)){ pa=eur(paid); totA+=paid; pc = paid<=0 ? 'bad' : (price>0 && paid>=price ? 'ok' : 'warn'); }
+    else if(mode!=='none' && x.s.pv){ pa = x.s.pv==='ok'?'Saldato':(x.s.pv==='rata'?'In parte':'0'); pc = x.s.pv==='ok'?'ok':(x.s.pv==='rata'?'warn':'bad'); }
+    h+='<div class="rc-r"><b>'+esc(c.name)+'</b><span class="n '+lc+'">'+esc(f)+'</span><span class="n '+lc+'">'+esc(l)+'</span><span class="n">'+esc(pr)+'</span><span class="n pay '+pc+'">'+esc(pa)+'</span></div>';
+  });
+  h+='<div class="rc-r rc-tot"><b>Totale</b><span></span><span></span><span class="n">'+(totP?eur(totP):'—')+'</span><span class="n">'+(totA?eur(totA):'—')+'</span></div></section>';
+  h+='<p class="foot">Prezzo e pagato li imposti nella pagina di ogni cliente, nel riquadro del pacchetto.</p>';
+  return h;
+}
 function render(){
   var rows = C.map(function(c){ return {c:c, s:status(c)}; });
   var nRenew = rows.filter(function(x){return x.s.renew;}).length;
@@ -203,8 +238,9 @@ function render(){
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
   var h = '<header class="brand hello"><h1>Pannello clienti</h1>'+LOGO+'</header>';
-  h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
-  if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
+  if(ui.f!=='recap') h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
+  if(ui.f==='recap') h += viewRecap(rows);
+  else if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
   else if(!list.length) h += '<p class="empty">Nessun cliente corrisponde.</p>';
   else {
     h += '<ul class="list">';
@@ -218,11 +254,11 @@ function render(){
     h += '</ul>';
   }
   if(D.updated){ try{ h += '<p class="foot">Dati aggiornati il '+esc(new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long'}).format(parseD({d:D.updated})))+'. Si aggiornano ogni sera insieme agli appuntamenti.</p>'; }catch(e){} }
-  var I = {all:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>',
+  var I = {recap:'<svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>',all:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>',
     noappt:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M10 14l4 4M14 14l-4 4"/></svg>',
     renew:'<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3.6M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.6M20 20v-4h-4"/></svg>',
     pay:'<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg>'};
-  var NB = [['all','Clienti',C.length,'b'],['noappt','Senza app.',nNo,''],['renew','Da rinnovare',nRenew,'w'],['pay','Da pagare',nPay,'']];
+  var NB = [['recap','Recap',0,''],['all','Clienti',C.length,'b'],['noappt','Senza app.',nNo,''],['renew','Da rinnovare',nRenew,'w'],['pay','Da pagare',nPay,'']];
   h += '<nav class="nav" aria-label="Navigazione"><div class="nav-in">'+NB.map(function(n){ return '<button type="button" data-nav="'+n[0]+'" aria-current="'+(ui.f===n[0])+'">'+I[n[0]]+(n[2]?'<b class="'+n[3]+'">'+n[2]+'</b>':'')+'<span>'+n[1]+'</span></button>'; }).join('')+'</div></nav>';
   app.innerHTML = h;
 }
