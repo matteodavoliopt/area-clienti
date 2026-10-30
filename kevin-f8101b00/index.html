@@ -159,7 +159,13 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wk b{font:700 11px/1 var(--display);letter-spacing:.08em;color:var(--muted)}
 .wk.now{border-color:var(--accent);background:var(--accent-soft)}
 .wk.now b{color:var(--accent)}
-.wk.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
+.wk.mass{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:16px}
+.mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.mass p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.45}
+.mass ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.mass li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--accent-soft);font-weight:600;font-size:15px}
+.mass svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
 button.wk{cursor:pointer;color:var(--ink);text-align:left}
 button.wk.empty{color:var(--accent)}
 .wk.mine{border-color:var(--rest)}
@@ -622,6 +628,8 @@ function pastLessonsSince(from){ var now=new Date(); return oneADay(S.appts.filt
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
 function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
+var MASS=['Massaggio decontratturante','Massaggio anticellulite','Massaggio sportivo','Massaggio rilassante svedese','Massaggio linfodrenante Vodder'];
+function viewMass(){ return '<section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><ul>'+MASS.map(function(m){ return '<li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>'+esc(m)+'</li>'; }).join('')+'</ul></section>'; }
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
   var tot = parseInt(p.total,10) || 0, done = parseInt(p.done,10) || 0, quota = parseInt(p.month,10) || 0;
@@ -777,7 +785,7 @@ function render(){
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
-    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">Nessun pacchetto attivo.</p>') : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
+    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">Nessun pacchetto attivo.</p>')+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
