@@ -219,7 +219,7 @@ function render(){
     else if(ua||ub) return ua?-1:1;
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
-  var h = '<header class="brand hello"><h1>Gestionale</h1>'+LOGO+'</header>';
+  var h = '<header class="brand hello"><h1>Pannello clienti</h1>'+LOGO+'</header>';
   h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
   if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
   else if(!list.length) h += '<p class="empty">Nessun cliente corrisponde.</p>';
