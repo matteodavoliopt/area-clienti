@@ -272,6 +272,22 @@ textarea{min-height:64px;resize:vertical}
 .nav b{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font:700 11px/18px var(--body);color:var(--accent-ink);background:var(--accent)}
 .nav b.no{background:var(--danger);color:#fff}
 .nav b.rata{background:#E8B931;color:#3B2A00}
+.mu{position:fixed;left:0;right:0;bottom:calc(62px + env(safe-area-inset-bottom,0px));z-index:5;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 14px rgba(0,0,0,.06)}
+.mu-in{max-width:640px;margin:0 auto;padding:0 12px}
+.mu-h{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:var(--ink);font:600 14px/1 var(--body);padding:10px 2px;cursor:pointer;text-align:left}
+.mu-h svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.mu-h span{flex:1}
+.mu-h .chev{width:14px;height:14px;transition:transform .2s;transform:rotate(180deg)}
+.mu.open .mu-h .chev{transform:none}
+.mu-b{max-height:0;overflow:hidden;transition:max-height .25s}
+.mu.open .mu-b{max-height:260px}
+.mu-t{display:flex;gap:6px;margin-bottom:8px}
+.mu-t button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--muted);font:600 13px/1 var(--body);padding:8px;border-radius:9px;cursor:pointer}
+.mu-t button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mu-p{padding-bottom:10px}
+.mu-p iframe{display:block;width:100%;border:0;border-radius:12px}
+.mu-p p{margin:0;padding:18px 8px;text-align:center;color:var(--muted);font-size:13px;background:var(--bg);border-radius:12px}
+.mu-on .nav-sp{height:110px}
 .nav-sp{height:64px;flex:0 0 auto}
 .bar.up{bottom:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:12px}
 .brand.hello{justify-content:space-between;align-items:flex-start;gap:12px;text-align:left}
@@ -769,6 +785,21 @@ function navBar(nA){
     '<button type="button" data-nav="pers" aria-current="'+(ui.tab==='pers')+'">'+I.pers+'<span>Personale</span></button></div></nav>';
 }
 
+var MUSIC={sp:'37i9dQZF1DX76Wlfdnj7AP', am:''};
+var MUX = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
+function muInit(){
+  if(!MUX || document.getElementById('mu')) return;
+  document.body.classList.add('mu-on');
+  var d=document.createElement('div'); d.className='mu'; d.id='mu';
+  d.innerHTML='<div class="mu-in"><button type="button" class="mu-h" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><span>Musica per allenarti</span><svg class="chev" viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="mu-b"><div class="mu-t"><button type="button" data-mu="sp" aria-pressed="true">Spotify</button><button type="button" data-mu="am" aria-pressed="false">Apple Music</button></div><div class="mu-p" data-p="sp"></div><div class="mu-p" data-p="am" hidden></div></div></div>';
+  document.body.appendChild(d);
+  function load(k){ var el=d.querySelector('[data-p="'+k+'"]'); if(el.dataset.ok) return; el.dataset.ok=1;
+    if(k==='sp') el.innerHTML = MUSIC.sp ? '<iframe src="https://open.spotify.com/embed/playlist/'+MUSIC.sp+'?utm_source=generator&theme=0" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>' : '<p>Playlist Spotify in arrivo.</p>';
+    else el.innerHTML = MUSIC.am ? '<iframe src="https://embed.music.apple.com/it/playlist/'+MUSIC.am+'" height="175" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"></iframe>' : '<p>Playlist Apple Music in arrivo.</p>';
+  }
+  d.querySelector('.mu-h').onclick=function(){ var o=d.classList.toggle('open'); this.setAttribute('aria-expanded',o); if(o) load(d.querySelector('[data-mu][aria-pressed="true"]').dataset.mu); };
+  [].forEach.call(d.querySelectorAll('[data-mu]'),function(b){ b.onclick=function(){ var k=b.dataset.mu; [].forEach.call(d.querySelectorAll('[data-mu]'),function(x){x.setAttribute('aria-pressed',x===b);}); [].forEach.call(d.querySelectorAll('[data-p]'),function(x){x.hidden=x.dataset.p!==k;}); load(k); }; });
+}
 function render(){
   var h = '';
   if(ui.edit){
@@ -789,6 +820,7 @@ function render(){
                : '<button class="btn primary" data-act="edit">Modifica</button>')+'</div></div>';
   }
   app.innerHTML = h;
+  try{ if(S.navbar && !ui.edit) muInit(); }catch(err){}
   try{ tmPaint(); }catch(err){}
   try{ document.querySelectorAll('.log-weeks').forEach(function(el){ var n=el.querySelector('.now'); if(n) el.scrollLeft = Math.max(0, n.offsetLeft - el.offsetLeft - 60); }); }catch(err){}
 }
