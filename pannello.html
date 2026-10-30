@@ -192,11 +192,6 @@ function render(){
   });
   var h = '<header class="brand">'+LOGO+'<div class="brand-txt"><span class="brand-name">Matteo D’Avolio</span><span class="brand-role">Personal Trainer &amp; Massaggiatore sportivo</span></div></header>';
   h += '<div class="hero"><span class="eyebrow">Solo per te</span><h1>Pannello clienti</h1><p>Tutte le aree riservate dei tuoi clienti. In ordine di appuntamento: in cima il cliente che hai adesso o subito dopo.</p></div>';
-  h += '<div class="stats" role="group" aria-label="Filtri">'+
-    '<button class="stat" data-f="all" aria-pressed="'+(ui.f==='all')+'"><strong>'+C.length+'</strong><span>Clienti</span></button>'+
-    '<button class="stat bad" data-f="noappt" aria-pressed="'+(ui.f==='noappt')+'"><strong>'+nNo+'</strong><span>Senza appuntamento</span></button>'+
-    '<button class="stat warn" data-f="renew" aria-pressed="'+(ui.f==='renew')+'"><strong>'+nRenew+'</strong><span>Da rinnovare</span></button>'+
-    '<button class="stat bad" data-f="pay" aria-pressed="'+(ui.f==='pay')+'"><strong>'+nPay+'</strong><span>Da pagare</span></button></div>';
   h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
   if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
   else if(!list.length) h += '<p class="empty">Nessun cliente corrisponde.</p>';
