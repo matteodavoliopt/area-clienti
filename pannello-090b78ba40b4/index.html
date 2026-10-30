@@ -150,7 +150,7 @@ function status(c){
     var a = parseD({d:s}), b = parseD({d:e}), tot = Math.max(1, Math.round((b-a)/864e5)+1), wk = Math.max(1, Math.ceil(tot/7));
     if(today > b){ r.ended = true; r.tags.push({c:'bad', t:'Programma concluso il '+fDate.format(b)}); }
     else if(today >= a){ var dleft = Math.round((b-today)/864e5); r.ending = dleft<=14;
-      r.tags.push({c: r.ending?'warn':'', t:'Sett. '+Math.min(wk, Math.ceil((Math.round((today-a)/864e5)+1)/7))+' di '+wk+(r.ending?' · finisce il '+fDate.format(b):'')}); }
+      if(r.ending) r.tags.push({c:'warn', t:'Programma finisce il '+fDate.format(b)}); }
     else r.tags.push({c:'', t:'Inizia il '+fDate.format(a)});
   }
   r.up = up; r.today = !!(up && up.d===tk);
