@@ -645,7 +645,8 @@ function pkgEnded(){
   var p=S.pkg||{}; if(pkgMode(p)!=='pack' || !p.start) return null;
   var tot=parseInt(p.total,10)||0; if(tot<=0) return null;
   var now=new Date(), l=oneADay(S.appts.filter(function(a){ return a.d && a.d>=p.start && parseD(a)<now; }).sort(function(a,b){ return parseD(a)-parseD(b); }));
-  return l.length>=tot ? {total:tot,start:p.start,end:l[tot-1].d,n:tot,paid:p.paid} : null;
+  var adj=parseInt(p.adj,10)||0, need=tot-adj; if(l.length+adj<tot) return null;
+  return {total:tot,start:p.start,end:(l[Math.max(0,need-1)]||l[l.length-1]||{d:p.start}).d,n:tot,paid:p.paid};
 }
 function pkgEmpty(){ var p=S.pkg||{}; return pkgMode(p)==='pack' && !(parseInt(p.total,10)>0); }
 function viewPkgHist(){
@@ -687,7 +688,7 @@ function viewPkg(){
     coach += '</div>';
   }
   var h = '';
-  if(mode==='pack' && p.start) done = pastLessonsSince(p.start);
+  if(mode==='pack' && p.start) done = Math.max(0, pastLessonsSince(p.start) + (parseInt(p.adj,10)||0));
   if(mode==='pack' && tot>0){
     done = Math.max(0, Math.min(done, tot));
     var left = tot - done;
