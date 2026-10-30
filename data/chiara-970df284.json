@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Chiara Carotenuto",
+   "email": "chiara.carotenuto@pwc.com",
    "g": "f",
    "goal": "Ricomposizione",
    "freq": "2 + 1",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "chiara.carotenuto@pwc.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
@@ -368,6 +368,12 @@
    },
    {
     "d": "2026-10-12",
+    "t": "09:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-02",
     "t": "09:00",
     "what": "Lezione",
     "where": ""

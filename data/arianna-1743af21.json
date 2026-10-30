@@ -10,8 +10,8 @@
    "dur": "60’",
    "start": "2026-10-19",
    "end": "2027-01-19",
-   "age": "",
-   "weight": "",
+   "age": "56",
+   "weight": "68",
    "issues": "",
    "general": "",
    "email": "arianna_salamida@hotmail.com"
@@ -39,13 +39,14 @@
       ],
       "lab": "REP/KG",
       "log": [
-       "8 rep"
+       "8 rep",
+       "10 rep box 50"
       ]
      },
      {
       "n": "CHIN UP ELASTICO",
       "sr": "4 x 20”",
-      "info": "Isometria petto alla sbarra, elastico verde altezza 8",
+      "info": "Isometria petto alla sbarra, elastico viola altezza 8",
       "rec": "60”",
       "vids": [
        {
@@ -55,6 +56,7 @@
       ],
       "lab": "REP/KG",
       "log": [
+       "20 sec",
        "20 sec"
       ]
      },
@@ -77,11 +79,12 @@
      {
       "n": "Australian sbarra presa prona",
       "sr": "3 x 8-12",
-      "info": "Altezza 5",
+      "info": "Altezza 4",
       "rec": "90”",
       "vids": [],
       "lab": "REP/KG",
       "log": [
+       "12 rep",
        "12 rep"
       ]
      },
@@ -383,13 +386,14 @@
     "where": ""
    },
    {
-    "d": "2026-11-06",
-    "t": "08:00",
+    "d": "2026-11-05",
+    "t": "07:00",
     "what": "Lezione",
     "where": ""
    }
   ],
   "updated": "2026-10-30",
-  "navbar": true
+  "navbar": true,
+  "pesiTs": 1793365664856
  }
 }

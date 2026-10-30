@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Massimiliano Iannello",
+   "email": "m.iannello@sunprime.it",
    "g": "m",
    "goal": "Massa muscolare",
    "freq": "3",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "m.iannello@sunprime.it"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
@@ -405,6 +405,12 @@
    },
    {
     "d": "2026-10-28",
+    "t": "08:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-06",
     "t": "08:00",
     "what": "Lezione",
     "where": ""

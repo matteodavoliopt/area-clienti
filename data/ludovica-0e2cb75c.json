@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Ludovica Richiello",
+   "email": "ludovica.richiello@hotmail.it",
    "g": "f",
    "goal": "Ricomposizione",
    "freq": "2",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "ludovica.richiello@hotmail.it"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

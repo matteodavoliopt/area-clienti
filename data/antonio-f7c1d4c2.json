@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Antonio Moschini",
+   "email": "antonio.moschini.66@gmail.com",
    "g": "m",
    "goal": "",
    "freq": "",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "antonio.moschini.66@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
@@ -22,7 +22,14 @@
   "post": [],
   "days": [],
   "pkg": {},
-  "appts": [],
+  "appts": [
+   {
+    "d": "2026-11-05",
+    "t": "17:00",
+    "what": "Lezione",
+    "where": "Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"
+   }
+  ],
   "updated": "2026-10-30"
  }
 }

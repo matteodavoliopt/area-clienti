@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Eduardo Montiel",
+   "email": "eduardomontielc@gmail.com",
    "g": "m",
    "goal": "Ricomposizione e rinforzo posturale",
    "freq": "3",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "eduardomontielc@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

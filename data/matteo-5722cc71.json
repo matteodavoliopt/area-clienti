@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Matteo Gullotta",
+   "email": "gullotta.matteo@gmail.com",
    "g": "m",
    "goal": "",
    "freq": "",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "gullotta.matteo@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

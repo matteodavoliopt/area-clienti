@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Andrea Doati",
+   "email": "andreadoati98@gmail.com",
    "g": "m",
    "goal": "Ricomposizione",
    "freq": "2",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "andreadoati98@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
@@ -358,8 +358,8 @@
     "where": ""
    },
    {
-    "d": "2026-10-30",
-    "t": "14:00",
+    "d": "2026-11-14",
+    "t": "10:00",
     "what": "Lezione",
     "where": ""
    }

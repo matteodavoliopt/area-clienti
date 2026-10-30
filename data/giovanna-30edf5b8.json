@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Giovanna D’Amico",
+   "email": "giovannadamico@hotmail.com",
    "g": "f",
    "goal": "Rinforzo muscolare",
    "freq": "2",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "giovannadamico@hotmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
@@ -286,6 +286,12 @@
    },
    {
     "d": "2026-10-29",
+    "t": "19:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-05",
     "t": "19:00",
     "what": "Lezione",
     "where": ""

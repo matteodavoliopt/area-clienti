@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Gloria Dindelli",
+   "email": "gloria.dindelli@gmail.com",
    "g": "f",
    "goal": "Massa muscolare",
    "freq": "3",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "gloria.dindelli@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

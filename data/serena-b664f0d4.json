@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Serena Wang",
+   "email": "serena0625@hotmail.com",
    "g": "f",
    "goal": "Forza e ricomposizione corporea",
    "freq": "3",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "serena0625@hotmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

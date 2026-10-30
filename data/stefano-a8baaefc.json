@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Stefano Frosi",
+   "email": "frosi.stefano85@gmail.com",
    "g": "m",
    "goal": "Hyrox",
    "freq": "3",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "frosi.stefano85@gmail.com"
+   "general": ""
   },
   "note": "",
   "weeks": "12",

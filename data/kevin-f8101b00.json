@@ -4,6 +4,7 @@
  "data": {
   "client": {
    "name": "Kevin Perez",
+   "email": "danielsanperez@hotmail.it",
    "g": "m",
    "goal": "Weightlifting",
    "freq": "4",
@@ -13,8 +14,7 @@
    "age": "",
    "weight": "",
    "issues": "",
-   "general": "",
-   "email": "danielsanperez@hotmail.it"
+   "general": ""
   },
   "note": "",
   "weeks": "12",
