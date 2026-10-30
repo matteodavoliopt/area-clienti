@@ -129,6 +129,8 @@ function status(c){
   var now = new Date(), today = new Date(); today.setHours(0,0,0,0);
   var ap = (c.appts||[]).filter(function(a){return a.d;}).sort(function(a,b){return parseD(a)-parseD(b);});
   var next = ap.filter(function(a){ return parseD(a) >= now; })[0] || null;
+  var tk = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  var up = ap.filter(function(a){ return a.d >= tk; })[0] || null;
   var p = c.pkg || {}, mode = p.mode || ((parseInt(p.total,10)>0)?'pack':'none');
   var r = { next:next, tags:[], renew:false, ending:false, ended:false, unpaid:false };
   var ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
@@ -151,7 +153,8 @@ function status(c){
       r.tags.push({c: r.ending?'warn':'', t:'Sett. '+Math.min(wk, Math.ceil((Math.round((today-a)/864e5)+1)/7))+' di '+wk+(r.ending?' · finisce il '+fDate.format(b):'')}); }
     else r.tags.push({c:'', t:'Inizia il '+fDate.format(a)});
   }
-  r.tags.unshift(next ? {c:'next', t:'Prossimo: '+fNext.format(parseD(next))+(next.t?' '+next.t:'')} : {c:'nonext', t:'Nessun appuntamento fissato'});
+  r.up = up; r.today = !!(up && up.d===tk);
+  r.tags.unshift(up ? {c:'next', t:(r.today?'Oggi alle '+(up.t||''):'Prossimo: '+fNext.format(parseD(up))+(up.t?' '+up.t:''))} : {c:'nonext', t:'Nessun appuntamento fissato'});
   return r;
 }
 
@@ -180,22 +183,23 @@ function week(){
 function render(){
   var rows = C.map(function(c){ return {c:c, s:status(c)}; });
   var nRenew = rows.filter(function(x){return x.s.renew;}).length;
-  var nNo = rows.filter(function(x){return !x.s.next;}).length;
+  var nNo = rows.filter(function(x){return !x.s.up;}).length;
   var nPay = rows.filter(function(x){return x.s.unpaid;}).length;
   var q = ui.q.trim().toLowerCase();
   var list = rows.filter(function(x){
     if(q && (x.c.name||'').toLowerCase().indexOf(q)<0) return false;
     if(ui.f==='renew') return x.s.renew;
-    if(ui.f==='noappt') return !x.s.next;
+    if(ui.f==='noappt') return !x.s.up;
     if(ui.f==='pay') return x.s.unpaid;
     return true;
   }).sort(function(a,b){
-    var pa = (a.s.unpaid||a.s.renew||!a.s.next)?0:1, pb = (b.s.unpaid||b.s.renew||!b.s.next)?0:1;
-    if(pa!==pb) return pa-pb;
+    var ua=a.s.up, ub=b.s.up;
+    if(ua && ub){ var dd=parseD(ua)-parseD(ub); if(dd) return dd; }
+    else if(ua||ub) return ua?-1:1;
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
   var h = '<header class="brand">'+LOGO+'<div class="brand-txt"><span class="brand-name">Matteo D’Avolio</span><span class="brand-role">Personal Trainer &amp; Massaggiatore sportivo</span></div></header>';
-  h += '<div class="hero"><span class="eyebrow">Solo per te</span><h1>Pannello clienti</h1><p>Tutte le aree riservate dei tuoi clienti. In cima chi ha bisogno di attenzione.</p></div>';
+  h += '<div class="hero"><span class="eyebrow">Solo per te</span><h1>Pannello clienti</h1><p>Tutte le aree riservate dei tuoi clienti. In ordine di appuntamento: in cima chi hai oggi.</p></div>';
   h += '<div class="stats" role="group" aria-label="Filtri">'+
     '<button class="stat" data-f="all" aria-pressed="'+(ui.f==='all')+'"><strong>'+C.length+'</strong><span>Clienti</span></button>'+
     '<button class="stat warn" data-f="renew" aria-pressed="'+(ui.f==='renew')+'"><strong>'+nRenew+'</strong><span>Da rinnovare</span></button>'+
