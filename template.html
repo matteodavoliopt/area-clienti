@@ -125,7 +125,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .thumb.noimg img{display:none}
 .thumb.play-on{background:#000}
-.thumb.play-on iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.thumb.play-on iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;color-scheme:normal}
 .thumb.short.play-on{aspect-ratio:9/16;max-width:min(100%,320px)}
 .yt-out{font-size:12.5px;color:var(--muted);text-decoration:underline}
 .thumb .play{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:rgba(0,0,0,.62);display:grid;place-items:center}
@@ -312,7 +312,7 @@ function thumbs(vs){
   vs.forEach(function(v,j){
     var u=safeUrl(v.u), id=ytId(u), cap=(v.t||'').trim()||(vs.length>1?'Video '+(j+1):'Guarda il video');
     if(id && S.inplay && ui.play && ui.play[id]){
-      h+='<div class="thumb play-on'+(isShort(u)?' short':'')+'"><iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="'+esc(cap)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><a class="yt-out" href="'+esc(u)+'" target="_blank" rel="noopener">Non parte? Aprilo su YouTube</a>';
+      h+='<div class="thumb play-on'+(isShort(u)?' short':'')+'"><iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1" title="'+esc(cap)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><a class="yt-out" href="'+esc(u)+'" target="_blank" rel="noopener">Non parte? Aprilo su YouTube</a>';
     } else if(id){
       h+='<a class="thumb'+(isShort(u)?' short':'')+'" data-yt="'+id+'" href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+esc(cap)+'"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'noimg\')"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'+(vs.length>1||v.t?'<span class="cap">'+esc(cap)+'</span>':'')+'</a>';
     } else {
