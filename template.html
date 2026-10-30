@@ -735,7 +735,7 @@ function viewEdit(){
   return h;
 }
 
-function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none') return ''; var s=payState(p,m); return s==='no' ? '<b class="no" aria-label="Da pagare">✕</b>' : s==='rata' ? '<b class="rata" aria-label="Prima rata pagata">✓</b>' : ''; }
+function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none') return ''; var s=payState(p,m); return s==='no' ? '<b class="no" aria-label="Da pagare">1</b>' : s==='rata' ? '<b class="rata" aria-label="Prima rata pagata">1</b>' : ''; }
 function navBar(nA){
   var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',pkg:'<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1M15 17h1"/></svg>',pers:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>'};
   return '<div class="nav-sp"></div><nav class="nav" aria-label="Navigazione"><div class="nav-in">'+
