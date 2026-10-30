@@ -151,7 +151,7 @@ function status(c){
       r.tags.push({c: r.ending?'warn':'', t:'Sett. '+Math.min(wk, Math.ceil((Math.round((today-a)/864e5)+1)/7))+' di '+wk+(r.ending?' · finisce il '+fDate.format(b):'')}); }
     else r.tags.push({c:'', t:'Inizia il '+fDate.format(a)});
   }
-  r.tags.unshift(next ? {c:'next', t:'Prossimo: '+fNext.format(parseD(next))+(next.t?' '+next.t:'')} : {c:'nonext', t:'Nessun appuntamento in arrivo'});
+  r.tags.unshift(next ? {c:'next', t:'Prossimo: '+fNext.format(parseD(next))+(next.t?' '+next.t:'')} : {c:'nonext', t:'Nessun appuntamento fissato'});
   return r;
 }
 
