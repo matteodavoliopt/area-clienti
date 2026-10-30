@@ -41,7 +41,7 @@ def nonblock(s):
 def page(entry):
     d = dict(entry['data'])
     d['client'] = dict(d.get('client', {}))
-    d['pkg'] = {k: v for k, v in (d.get('pkg') or {}).items() if k not in ('price', 'paidAmt')}
+    d['pkg'] = {k: v for k, v in (d.get('pkg') or {}).items() if k not in ('price', 'paidAmt', 'recapTs')}
     d['pkgHist'] = [{k: v for k, v in x.items() if k not in ('price', 'paidAmt')} for x in (d.get('pkgHist') or [])]
     name = (d['client'].get('name') or 'Cliente').strip()
     js = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
@@ -91,6 +91,7 @@ def main():
         body = (ROOT / 'pannello.html').read_text(encoding='utf-8')
         body, n = re.subn(r'(<script type="application/json" id="data">).*?(</script>)', lambda m: m.group(1) + js + m.group(2), body, count=1, flags=re.S)
         assert n == 1
+        body = body.replace('<script>', '<script>window.PFORM=' + json.dumps(CONFIG.get('form') or {}) + ';</script>\n<script>', 1)
         out = ROOT / panel; out.mkdir(exist_ok=True)
         head = HEAD.format(title='Pannello clienti', short='Pannello', splash=SPLASH).replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
         (out / 'index.html').write_text(head + nonblock(body) + '\n</body>\n</html>\n', encoding='utf-8')

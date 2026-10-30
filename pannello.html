@@ -155,6 +155,8 @@ function effPkg(c){ var p=Object.assign({}, c.pkg||{}), e=ED[rcKey(c)]; if(!e) r
   if(e.total!=null && !p.mode) p.mode='pack';
   var pr=parseFloat(p.price)||0, pa=parseFloat(p.paidAmt); if(pr>0 && !isNaN(pa)){ p.paid = pa>=pr ? true : (pa>0 ? 'rata' : false); if(p.paid===true) p.paidMonth=new Date().toISOString().slice(0,7); }
   return p; }
+var PF = window.PFORM && window.PFORM.action ? window.PFORM : null;
+try{ var lo=JSON.parse(localStorage.getItem('rc-edits')||'{}'); Object.keys(lo).forEach(function(k){ if(lo[k] && new Date(lo[k].ts).toISOString().slice(0,10) >= (D.updated||'')) ED[k]=lo[k]; }); }catch(e){}
 (async function(){ try{ if(!window.claude || !window.claude.use) return; var db=await window.claude.use('db'); if(!db) return; EDB=db;
   db.collection('edits').onSnapshot(function(snap){ var o={}; (snap.docs||snap).forEach(function(d){ var v=d.data?d.data():d; o[d.id||v.id]=v; }); ED=o; render(); }, function(){}); }catch(e){} })();
 function status(c){
@@ -229,12 +231,12 @@ function viewRecap(rows){
     if(price>0){ pr=eur(price); totP+=price; }
     if(!isNaN(paid)){ pa=eur(paid); totA+=paid; pc = paid<=0 ? 'bad' : (price>0 && paid>=price ? 'ok' : 'warn'); }
     else if(mode!=='none' && x.s.pv){ pa = x.s.pv==='ok'?'Saldato':(x.s.pv==='rata'?'In parte':'0'); pc = x.s.pv==='ok'?'ok':(x.s.pv==='rata'?'warn':'bad'); }
-    var k=rcKey(c), op=EDB&&rcOpen===k;
-    h+='<div class="rc-r'+(EDB?' ed':'')+(op?' on':'')+'" data-rc="'+esc(k)+'"><b>'+esc(c.name)+'</b><span class="n '+lc+'">'+esc(f)+'</span><span class="n '+lc+'">'+esc(l)+'</span><span class="n">'+esc(pr)+'</span><span class="n pay '+pc+'">'+esc(pa)+'</span></div>';
+    var k=rcKey(c), op=(EDB||PF)&&rcOpen===k;
+    h+='<div class="rc-r'+((EDB||PF)?' ed':'')+(op?' on':'')+'" data-rc="'+esc(k)+'"><b>'+esc(c.name)+'</b><span class="n '+lc+'">'+esc(f)+'</span><span class="n '+lc+'">'+esc(l)+'</span><span class="n">'+esc(pr)+'</span><span class="n pay '+pc+'">'+esc(pa)+'</span></div>';
     if(op){ var tt=parseInt(p.total,10)||0, dd=x.s.done!=null?x.s.done:0; h+='<form class="rc-ed" data-rcf="'+esc(k)+'"><label>Fatte<input type="number" inputmode="numeric" min="0" name="done" value="'+(mode==='pack'&&tt?dd:'')+'"></label><label>Rimaste<input type="number" inputmode="numeric" min="0" name="left" value="'+(mode==='pack'&&tt?tt-dd:'')+'"></label><label>Prezzo €<input type="number" inputmode="decimal" min="0" name="price" value="'+esc(p.price||'')+'"></label><label>Pagato €<input type="number" inputmode="decimal" min="0" name="paidAmt" value="'+esc(p.paidAmt||'')+'"></label><div class="rc-bt"><button type="button" data-rcx="1">Annulla</button><button type="submit">Salva</button></div></form>'; }
   });
   h+='<div class="rc-r rc-tot"><b>Totale</b><span></span><span></span><span class="n">'+(totP?eur(totP):'—')+'</span><span class="n">'+(totA?eur(totA):'—')+'</span></div></section>';
-  h+='<p class="foot">'+(rcMsg?esc(rcMsg)+' ':'')+(EDB?'Tocca un cliente per modificare lezioni, prezzo e pagato. Le modifiche arrivano nella sua pagina e nel suo sito con l’aggiornamento serale.':'Per modificare usa il pannello su Claude.')+'</p>';
+  h+='<p class="foot">'+(rcMsg?esc(rcMsg)+' ':'')+((EDB||PF)?'Tocca un cliente per modificare lezioni, prezzo e pagato. Le modifiche arrivano nella sua pagina e nel suo sito con l’aggiornamento serale.':'Per modificare usa il pannello su Claude.')+'</p>';
   return h;
 }
 function render(){
@@ -302,14 +304,14 @@ app.addEventListener('click', function(e){
   render();
 });
 app.addEventListener('click', function(e){
-  if(ui.f!=='recap' || !EDB) return;
+  if(ui.f!=='recap' || !(EDB||PF)) return;
   if(e.target.closest('[data-rcx]')){ rcOpen=null; render(); return; }
   if(e.target.closest('.rc-ed')) return;
   var r=e.target.closest('[data-rc]'); if(!r) return;
   rcOpen = rcOpen===r.dataset.rc ? null : r.dataset.rc; rcMsg=''; render();
 });
 app.addEventListener('submit', function(e){
-  var fm=e.target.closest('[data-rcf]'); if(!fm || !EDB) return; e.preventDefault();
+  var fm=e.target.closest('[data-rcf]'); if(!fm || !(EDB||PF)) return; e.preventDefault();
   var k=fm.dataset.rcf, c=C.filter(function(x){ return rcKey(x)===k; })[0]; if(!c) return;
   var v=function(n){ var x=fm.elements[n].value.trim(); return x===''?null:x; };
   var p=effPkg(c), st=status(c), cur=st.done!=null?st.done:0, adj0=parseInt(p.adj,10)||0, o={ts:Date.now(), name:c.name};
@@ -319,7 +321,11 @@ app.addEventListener('submit', function(e){
   if(v('price')!=null) o.price=v('price');
   if(v('paidAmt')!=null) o.paidAmt=v('paidAmt');
   var prev=ED[k]||{}; ED[k]=Object.assign({},prev,o); rcOpen=null; rcMsg='Salvato.'; render();
-  EDB.collection('edits').doc(k).set(ED[k]).catch(function(){ rcMsg='Non salvato, riprova.'; render(); });
+  if(EDB){ EDB.collection('edits').doc(k).set(ED[k]).catch(function(){ rcMsg='Non salvato, riprova.'; render(); }); return; }
+  try{ var lo=JSON.parse(localStorage.getItem('rc-edits')||'{}'); lo[k]=ED[k]; localStorage.setItem('rc-edits', JSON.stringify(lo)); }catch(err){}
+  var row={s:'__panel',f:'recap',k:k,t:o.ts}; ['total','adj','price','paidAmt'].forEach(function(n){ if(ED[k][n]!=null) row[n]=ED[k][n]; });
+  var fd=new FormData(); fd.append(PF.entry, JSON.stringify(row));
+  fetch(PF.action,{method:'POST',mode:'no-cors',body:fd}).catch(function(){ rcMsg='Non inviato: controlla la connessione e riprova.'; render(); });
 });
 app.addEventListener('input', function(e){
   if(e.target.id!=='q') return;
