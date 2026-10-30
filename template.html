@@ -224,6 +224,8 @@ button.wk.empty{color:var(--accent)}
 .appt .what{min-width:0}
 .appt .what span{display:block;color:var(--muted);font-size:14px}
 .past{opacity:.55}
+.pkh-e{margin:0;padding:4px 0 8px;color:var(--muted);font-size:14px}
+.pkh-r .date strong{font-size:24px}
 .mass-sep{align-self:stretch;width:100%;height:1px;background:var(--line);margin:8px 0 0}
 .mass{margin-top:0}
 .mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
@@ -617,6 +619,22 @@ function pastLessonsSince(from){ var now=new Date(); return oneADay(S.appts.filt
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
 function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
+function viewPkgHist(){
+  var p=S.pkg||{}, list=(S.pkgHist||[]).slice(), fD=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
+  if(pkgMode(p)==='pack' && p.start){
+    var pre=oneADay(S.appts.filter(function(a){ return a.d && a.d<p.start && !list.some(function(x){ return x.start && x.end && a.d>=x.start && a.d<=x.end; }); }).sort(function(a,b){ return a.d<b.d?-1:1; }));
+    if(pre.length) list.push({auto:1,n:pre.length,start:pre[0].d,end:pre[pre.length-1].d});
+  }
+  list.sort(function(a,b){ return (b.end||'')<(a.end||'')?-1:1; });
+  var h='<details class="pkh"><summary>Pacchetti conclusi ('+list.length+')</summary>';
+  if(!list.length) h+='<p class="pkh-e">Nessun pacchetto concluso.</p>';
+  else { h+='<ul class="appts">'; list.forEach(function(x){
+    var n=x.n!=null?x.n:(x.total||''), rng='';
+    try{ rng=(x.start?'dal '+fD.format(parseD({d:x.start})):'')+(x.end?' al '+fD.format(parseD({d:x.end})):''); }catch(e){}
+    h+='<li class="appt pkh-r"><span class="date"><strong>'+esc(String(n))+'</strong>'+(Number(n)===1?'lezione':'lezioni')+'</span><span class="what">'+(x.auto?'Lezioni precedenti':'Pacchetto da '+esc(String(x.total||n))+' lezioni')+'<span>'+esc(rng)+'</span></span></li>'; });
+    h+='</ul>'; }
+  return h+'</details>';
+}
 var MASS=[
 ['Massaggio decontratturante','Un massaggio profondo che lavora sui muscoli contratti e sui punti di tensione. È indicato per rigidità a collo, spalle e schiena dovute a postura, stress o sforzi. Le manovre sono decise e mirate, per sciogliere i nodi e ridare elasticità al muscolo. Riduce il dolore e migliora la mobilità. Ideale anche come prevenzione.'],
 ['Massaggio anticellulite','Un trattamento mirato su gambe, glutei e addome per contrastare la cellulite. Le manovre energiche stimolano la circolazione e aiutano a ridurre i ristagni di liquidi. La pelle risulta più tonica, liscia e compatta. Per risultati visibili si consiglia un ciclo di più sedute. Si abbina bene ad allenamento e alimentazione corretta.'],
@@ -779,7 +797,7 @@ function render(){
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
-    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">Nessun pacchetto attivo.</p>')+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
+    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">Nessun pacchetto attivo.</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
