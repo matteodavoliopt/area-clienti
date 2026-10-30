@@ -619,8 +619,16 @@ function pastLessonsSince(from){ var now=new Date(); return oneADay(S.appts.filt
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
 function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
+function pkgEnded(){
+  var p=S.pkg||{}; if(pkgMode(p)!=='pack' || !p.start) return null;
+  var tot=parseInt(p.total,10)||0; if(tot<=0) return null;
+  var now=new Date(), l=oneADay(S.appts.filter(function(a){ return a.d && a.d>=p.start && parseD(a)<now; }).sort(function(a,b){ return parseD(a)-parseD(b); }));
+  return l.length>=tot ? {total:tot,start:p.start,end:l[tot-1].d,n:tot,paid:p.paid} : null;
+}
+function pkgEmpty(){ var p=S.pkg||{}; return pkgMode(p)==='pack' && !(parseInt(p.total,10)>0); }
 function viewPkgHist(){
-  var p=S.pkg||{}, list=(S.pkgHist||[]).slice(), fD=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
+  var p=S.pkg||{}, list=(S.pkgHist||[]).slice(), en=pkgEnded(), fD=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
+  if(en && !list.some(function(x){ return x.start===en.start; })) list.push(en);
   if(pkgMode(p)==='pack' && p.start){
     var pre=oneADay(S.appts.filter(function(a){ return a.d && a.d<p.start && !list.some(function(x){ return x.start && x.end && a.d>=x.start && a.d<=x.end; }); }).sort(function(a,b){ return a.d<b.d?-1:1; }));
     if(pre.length) list.push({auto:1,n:pre.length,start:pre[0].d,end:pre[pre.length-1].d});
@@ -630,7 +638,7 @@ function viewPkgHist(){
   if(!list.length) h+='<p class="pkh-e">Nessun pacchetto concluso.</p>';
   else { h+='<ul class="appts">'; list.forEach(function(x){
     var n=x.n!=null?x.n:(x.total||''), rng='';
-    try{ rng=(x.start?'dal '+fD.format(parseD({d:x.start})):'')+(x.end?' al '+fD.format(parseD({d:x.end})):''); }catch(e){}
+    try{ rng=(x.start&&x.start===x.end)?'il '+fD.format(parseD({d:x.start})):(x.start?'dal '+fD.format(parseD({d:x.start})):'')+(x.end?' al '+fD.format(parseD({d:x.end})):''); }catch(e){}
     h+='<li class="appt pkh-r"><span class="date"><strong>'+esc(String(n))+'</strong>'+(Number(n)===1?'lezione':'lezioni')+'</span><span class="what">'+(x.auto?'Lezioni precedenti':'Pacchetto da '+esc(String(x.total||n))+' lezioni')+'<span>'+esc(rng)+'</span></span></li>'; });
     h+='</ul>'; }
   return h+'</details>';
@@ -644,6 +652,7 @@ var MASS=[
 function viewMass(){ return '<div class="mass-sep"></div><section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><div class="mass-l">'+MASS.map(function(m){ return '<details><summary>'+esc(m[0])+'<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><p>'+esc(m[1])+'</p></details>'; }).join('')+'</div></section>'; }
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
+  if(!ui.canEdit && (pkgEnded() || pkgEmpty())) return '';
   var tot = parseInt(p.total,10) || 0, done = parseInt(p.done,10) || 0, quota = parseInt(p.month,10) || 0;
   var coach = '';
   if(ui.canEdit){
@@ -777,7 +786,7 @@ function viewEdit(){
   return h;
 }
 
-function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none') return ''; var s=payState(p,m); return s==='no' ? '<b class="no" aria-label="Da pagare">1</b>' : s==='rata' ? '<b class="rata" aria-label="Prima rata pagata">1</b>' : ''; }
+function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none' || pkgEnded() || pkgEmpty()) return ''; var s=payState(p,m); return s==='no' ? '<b class="no" aria-label="Da pagare">1</b>' : s==='rata' ? '<b class="rata" aria-label="Prima rata pagata">1</b>' : ''; }
 function navBar(nA){
   var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',pkg:'<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1M15 17h1"/></svg>',pers:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>'};
   return '<div class="nav-sp"></div><nav class="nav" aria-label="Navigazione"><div class="nav-in">'+
@@ -797,7 +806,7 @@ function render(){
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
-    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">Nessun pacchetto attivo.</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
+    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
