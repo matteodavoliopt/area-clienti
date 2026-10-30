@@ -20,7 +20,13 @@
   "pre": [],
   "post": [],
   "days": [],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "8",
+   "done": "0",
+   "start": "2026-11-02",
+   "paid": false
+  },
   "appts": [
    {
     "d": "2026-10-29",

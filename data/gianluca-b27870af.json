@@ -22,9 +22,11 @@
   "days": [],
   "pkg": {
    "mode": "pack",
-   "total": "",
+   "total": "8",
    "done": "0",
-   "start": "2026-10-05"
+   "start": "2026-10-05",
+   "paid": "rata",
+   "paidMonth": "2026-10"
   },
   "appts": [
    {
