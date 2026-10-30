@@ -292,7 +292,14 @@
     ]
    }
   ],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "10",
+   "done": "0",
+   "start": "2026-07-20",
+   "paid": true,
+   "paidMonth": "2026-10"
+  },
   "appts": [
    {
     "d": "2026-06-19",

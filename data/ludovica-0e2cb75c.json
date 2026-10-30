@@ -227,7 +227,11 @@
     ]
    }
   ],
-  "pkg": {},
+  "pkg": {
+   "mode": "month",
+   "paid": true,
+   "paidMonth": "2026-10"
+  },
   "appts": [
    {
     "d": "2026-06-16",
