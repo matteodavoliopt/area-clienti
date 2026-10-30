@@ -159,13 +159,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wk b{font:700 11px/1 var(--display);letter-spacing:.08em;color:var(--muted)}
 .wk.now{border-color:var(--accent);background:var(--accent-soft)}
 .wk.now b{color:var(--accent)}
-.wk.mass{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:14px;padding:16px}
-.mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
-.mass p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.45}
-.mass ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.mass li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--accent-soft);font-weight:600;font-size:15px}
-.mass svg{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
+.wk.empty{color:var(--muted);font-family:var(--body);border-style:dashed}
 button.wk{cursor:pointer;color:var(--ink);text-align:left}
 button.wk.empty{color:var(--accent)}
 .wk.mine{border-color:var(--rest)}
@@ -249,6 +243,17 @@ button.wk.empty{color:var(--accent)}
 .appt .what{min-width:0}
 .appt .what span{display:block;color:var(--muted);font-size:14px}
 .past{opacity:.55}
+.mass-sep{align-self:stretch;width:100%;height:1px;background:var(--line);margin:8px 0 0}
+.mass{margin-top:0}
+.mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.mass>p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.45}
+.mass-l{display:flex;flex-direction:column;gap:8px}
+.mass details{border-radius:10px;background:var(--accent-soft)}
+.mass summary{list-style:none;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;font-weight:600;font-size:15px;cursor:pointer}
+.mass summary::-webkit-details-marker{display:none}
+.mass .chev{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.mass details[open] .chev{transform:rotate(180deg)}
+.mass details p{margin:0;padding:0 14px 14px;font-size:14px;line-height:1.5;color:var(--ink)}
 .empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
 .foot{color:var(--muted);font-size:13px}
 details summary{cursor:pointer;color:var(--muted);font-weight:600;padding:8px 0}
@@ -628,8 +633,13 @@ function pastLessonsSince(from){ var now=new Date(); return oneADay(S.appts.filt
 function curYM(){ var n=new Date(); return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0'); }
 function payState(p,mode){ if(p.paid==null) return null; var v = p.paid===true ? 'ok' : (p.paid==='rata' ? 'rata' : 'no'); if(mode==='month' && v!=='no' && p.paidMonth!==curYM()) v='no'; return v; }
 function pkgMode(p){ return p.mode || ((parseInt(p.total,10)>0) ? 'pack' : 'none'); }
-var MASS=['Massaggio decontratturante','Massaggio anticellulite','Massaggio sportivo','Massaggio rilassante svedese','Massaggio linfodrenante Vodder'];
-function viewMass(){ return '<section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><ul>'+MASS.map(function(m){ return '<li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>'+esc(m)+'</li>'; }).join('')+'</ul></section>'; }
+var MASS=[
+['Massaggio decontratturante','Un massaggio profondo che lavora sui muscoli contratti e sui punti di tensione. È indicato per rigidità a collo, spalle e schiena dovute a postura, stress o sforzi. Le manovre sono decise e mirate, per sciogliere i nodi e ridare elasticità al muscolo. Riduce il dolore e migliora la mobilità. Ideale anche come prevenzione.'],
+['Massaggio anticellulite','Un trattamento mirato su gambe, glutei e addome per contrastare la cellulite. Le manovre energiche stimolano la circolazione e aiutano a ridurre i ristagni di liquidi. La pelle risulta più tonica, liscia e compatta. Per risultati visibili si consiglia un ciclo di più sedute. Si abbina bene ad allenamento e alimentazione corretta.'],
+['Massaggio sportivo','Pensato per chi si allena e vuole preparare o recuperare i muscoli. Prima della prestazione li riscalda e li attiva, dopo aiuta a smaltire la fatica e ridurre i dolori. Lavora in profondità sui gruppi muscolari più sollecitati. Migliora elasticità e recupero e aiuta a prevenire infortuni. Adatto a ogni livello, dal principiante all’atleta.'],
+['Massaggio rilassante svedese','Il massaggio classico per staccare la mente e rilassare tutto il corpo. Si basa su movimenti fluidi e avvolgenti, con una pressione media e piacevole. Allevia lo stress, scioglie le tensioni leggere e favorisce la circolazione. Aiuta a dormire meglio e a ritrovare energia. Perfetto per regalarsi un momento solo per sé.'],
+['Massaggio linfodrenante Vodder','Una tecnica dolce e lenta che stimola il sistema linfatico. Con movimenti leggeri e ritmici aiuta a eliminare liquidi in eccesso e tossine. È indicato per gambe gonfie e pesanti, ritenzione idrica e cattiva circolazione. Riduce il gonfiore e dona una piacevole sensazione di leggerezza. Molto rilassante, anche come complemento all’anticellulite.']];
+function viewMass(){ return '<div class="mass-sep"></div><section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><div class="mass-l">'+MASS.map(function(m){ return '<details><summary>'+esc(m[0])+'<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><p>'+esc(m[1])+'</p></details>'; }).join('')+'</div></section>'; }
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
   var tot = parseInt(p.total,10) || 0, done = parseInt(p.done,10) || 0, quota = parseInt(p.month,10) || 0;
