@@ -137,7 +137,7 @@ function status(c){
     var tot = parseInt(p.total,10)||0, done = parseInt(p.done,10)||0;
     if(p.start) done = oneADay(ap.filter(function(a){ return a.d>=p.start && parseD(a)<now; })).length;
     if(tot>0){ var left = Math.max(0, tot-Math.min(done,tot)); r.left=left; r.renew = left<=2;
-      r.tags.push({c: left<=1?'bad':(left===2?'warn':'ok'), t: left===0?'Pacchetto finito':(left+(left===1?' lezione rimasta':' lezioni rimaste')+' su '+tot)}); }
+      r.tags.push({c: left===0?'bad':(left<=2?'warn':'ok'), t: left===0?'Pacchetto finito':(left+(left===1?' lezione rimasta':' lezioni rimaste')+' su '+tot)}); }
   } else if(mode==='month'){
     var y=now.getFullYear(), m=now.getMonth(), q=parseInt(p.month,10)||0;
     var fatte = oneADay(ap.filter(function(a){ var d=parseD(a); return d.getFullYear()===y && d.getMonth()===m && d<now; })).length;
