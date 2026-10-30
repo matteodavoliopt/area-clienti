@@ -111,7 +111,7 @@ function status(c){
   var ap = (c.appts||[]).filter(function(a){return a.d;}).sort(function(a,b){return parseD(a)-parseD(b);});
   var next = ap.filter(function(a){ return parseD(a) >= now; })[0] || null;
   var tk = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
-  var up = ap.filter(function(a){ return a.d >= tk; })[0] || null;
+  var up = ap.filter(function(a){ return parseD(a).getTime() + 60*60000 > now.getTime(); })[0] || null;
   var p = c.pkg || {}, mode = p.mode || ((parseInt(p.total,10)>0)?'pack':'none');
   var r = { next:next, tags:[], renew:false, ending:false, ended:false, unpaid:false };
   var ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
@@ -180,7 +180,7 @@ function render(){
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
   var h = '<header class="brand">'+LOGO+'<div class="brand-txt"><span class="brand-name">Matteo D’Avolio</span><span class="brand-role">Personal Trainer &amp; Massaggiatore sportivo</span></div></header>';
-  h += '<div class="hero"><span class="eyebrow">Solo per te</span><h1>Pannello clienti</h1><p>Tutte le aree riservate dei tuoi clienti. In ordine di appuntamento: in cima chi hai oggi.</p></div>';
+  h += '<div class="hero"><span class="eyebrow">Solo per te</span><h1>Pannello clienti</h1><p>Tutte le aree riservate dei tuoi clienti. In ordine di appuntamento: in cima il cliente che hai adesso o subito dopo.</p></div>';
   h += '<div class="stats" role="group" aria-label="Filtri">'+
     '<button class="stat" data-f="all" aria-pressed="'+(ui.f==='all')+'"><strong>'+C.length+'</strong><span>Clienti</span></button>'+
     '<button class="stat warn" data-f="renew" aria-pressed="'+(ui.f==='renew')+'"><strong>'+nRenew+'</strong><span>Da rinnovare</span></button>'+
@@ -223,5 +223,6 @@ app.addEventListener('input', function(e){
   render(); var i = document.getElementById('q'); i.focus(); try{ i.setSelectionRange(pos,pos); }catch(err){}
 });
 render();
+setInterval(function(){ var q=document.getElementById('q'); if(q && document.activeElement===q) return; render(); }, 60000);
 })();
 </script>
