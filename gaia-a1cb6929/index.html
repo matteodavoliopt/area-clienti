@@ -297,7 +297,7 @@ var SELF = document.getElementById('app-js').textContent;
 var CSS = document.getElementById('st').textContent;
 var S;
 try { S = JSON.parse(document.getElementById('data').textContent); } catch(e){ S = {client:{name:''},note:'',days:[],appts:[]}; }
-S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
+S.navbar = S.navbar!==false; S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
 S.days.forEach(function(d){ (d.ex||[]).forEach(function(e){ if(!e.vids){ e.vids = e.v ? [{t:'',u:e.v}] : []; } delete e.v; e.log = e.log || []; if(e.lab==null) e.lab=''; }); });
 var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false, le:null, ie:null };
 var ORIG = JSON.stringify(S);
