@@ -14,11 +14,12 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=3">
 <link rel="icon" type="image/png" href="../assets/favicon-32.png?v=3">
 <link rel="manifest" href="manifest.webmanifest">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}html,body{background:#F2F4F3}@media (prefers-color-scheme:dark){html,body{background:#0F1413}}.splash{position:fixed;inset:0;z-index:50;background:#F2F4F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}@media (prefers-color-scheme:dark){.splash{background:#0F1413}}.splash.out{opacity:0;pointer-events:none}.splash .logo{width:96px;height:auto;fill:#2397A9;stroke:#2397A9;stroke-width:22;stroke-linejoin:round;overflow:visible}.splash .s-name{font:800 30px/1 'Barlow Condensed','Arial Narrow',Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#141C1A}.splash .s-role{font:600 clamp(9px,2.9vw,12px)/1.3 system-ui,sans-serif;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:#5D6B67}@media (prefers-color-scheme:dark){.splash .logo{fill:#3FB4C5;stroke:#3FB4C5}.splash .s-name{color:#E8EEEC}.splash .s-role{color:#93A29E}}</style>
 </head>
 <body>
+<div class="splash" id="splash0" aria-hidden="true"><svg class="logo" viewBox="440 380 1060 1170" role="img" aria-label="Logo"><path d="M463 405H900C1220 405 1470 640 1470 966C1470 1290 1220 1528 900 1528H463V1302H552V1455H880C1170 1455 1377 1250 1377 966C1377 690 1170 478 880 478H552V643H463Z"/><path d="M463 720H552L778 1213L774 1223H696L552 915V1223H463Z"/><path d="M909 720H992V1223H911V915L822 1113L777 1014Z"/></svg><div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div></div>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
 <style>
 /* Layout: coach's roster — summary counts, search + filter, then one row per client with the states that need action */
 :root{
@@ -268,7 +269,7 @@ app.addEventListener('input', function(e){
   render(); var i = document.getElementById('q'); i.focus(); try{ i.setSelectionRange(pos,pos); }catch(err){}
 });
 render();
-try{ var sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },2000); }catch(e){}
+try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },wait); }catch(e){}
 setInterval(function(){ var q=document.getElementById('q'); if(q && document.activeElement===q) return; render(); }, 60000);
 })();
 </script>

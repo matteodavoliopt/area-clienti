@@ -283,7 +283,7 @@ var SELF = document.getElementById('app-js').textContent;
 var CSS = document.getElementById('st').textContent;
 var S;
 try { S = JSON.parse(document.getElementById('data').textContent); } catch(e){ S = {client:{name:''},note:'',days:[],appts:[]}; }
-S.navbar = S.navbar!==false; S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
+S.navbar = S.navbar!==false; S.inplay = S.inplay!==false; S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
 S.days.forEach(function(d){ (d.ex||[]).forEach(function(e){ if(!e.vids){ e.vids = e.v ? [{t:'',u:e.v}] : []; } delete e.v; e.log = e.log || []; if(e.lab==null) e.lab=''; }); });
 var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false, le:null, ie:null };
 var ORIG = JSON.stringify(S);
@@ -895,7 +895,7 @@ async function save(){
 }
 
 render();
-if(S.navbar){ try{ var sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },2000); }catch(e){} }
+if(S.navbar){ try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },wait); }catch(e){} }
 (async function(){
   try{
     if(!window.claude || !window.claude.use) return;

@@ -249,7 +249,7 @@ app.addEventListener('input', function(e){
   render(); var i = document.getElementById('q'); i.focus(); try{ i.setSelectionRange(pos,pos); }catch(err){}
 });
 render();
-try{ var sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },2000); }catch(e){}
+try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); },wait); }catch(e){}
 setInterval(function(){ var q=document.getElementById('q'); if(q && document.activeElement===q) return; render(); }, 60000);
 })();
 </script>

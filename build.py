@@ -27,10 +27,16 @@ HEAD = '''<!doctype html>
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=3">
 <link rel="icon" type="image/png" href="../assets/favicon-32.png?v=3">
 <link rel="manifest" href="manifest.webmanifest">
-<style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}</style>
+<style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}html,body{{background:#F2F4F3}}@media (prefers-color-scheme:dark){{html,body{{background:#0F1413}}}}.splash{{position:fixed;inset:0;z-index:50;background:#F2F4F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}}@media (prefers-color-scheme:dark){{.splash{{background:#0F1413}}}}.splash.out{{opacity:0;pointer-events:none}}.splash .logo{{width:96px;height:auto;fill:#2397A9;stroke:#2397A9;stroke-width:22;stroke-linejoin:round;overflow:visible}}.splash .s-name{{font:800 30px/1 'Barlow Condensed','Arial Narrow',Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#141C1A}}.splash .s-role{{font:600 clamp(9px,2.9vw,12px)/1.3 system-ui,sans-serif;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:#5D6B67}}@media (prefers-color-scheme:dark){{.splash .logo{{fill:#3FB4C5;stroke:#3FB4C5}}.splash .s-name{{color:#E8EEEC}}.splash .s-role{{color:#93A29E}}}}</style>
 </head>
 <body>
-'''
+{splash}'''
+
+LOGO = re.search(r"var LOGO = '(<svg.*?</svg>)';", (ROOT / 'template.html').read_text(encoding='utf-8')).group(1)
+SPLASH = '<div class="splash" id="splash0" aria-hidden="true">' + LOGO + '<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div></div>\n'
+FONTS_RE = re.compile(r'<link rel="stylesheet" href="(https://fonts\.googleapis\.com/[^"]+)">')
+def nonblock(s):
+    return FONTS_RE.sub(lambda m: '<link rel="stylesheet" href="' + m.group(1) + '" media="print" onload="this.media=\'all\'">', s, count=1)
 
 def page(entry):
     d = dict(entry['data'])
@@ -45,7 +51,7 @@ def page(entry):
     first = name.split()[0]
     site = {'slug': entry['slug'], 'form': CONFIG.get('form')}
     boot = '<script>window.SITE=' + json.dumps(site, ensure_ascii=False).replace('<', '\\u003c') + ';</script>\n'
-    return HEAD.format(title=html.escape('Area riservata · ' + name), short=html.escape(first)) + boot + body + '\n</body>\n</html>\n', first
+    return HEAD.format(title=html.escape('Area riservata · ' + name), short=html.escape(first), splash=SPLASH) + boot + nonblock(body) + '\n</body>\n</html>\n', first
 
 def manifest(first):
     return json.dumps({
@@ -84,8 +90,8 @@ def main():
         body, n = re.subn(r'(<script type="application/json" id="data">).*?(</script>)', lambda m: m.group(1) + js + m.group(2), body, count=1, flags=re.S)
         assert n == 1
         out = ROOT / panel; out.mkdir(exist_ok=True)
-        head = HEAD.format(title='Pannello clienti', short='Pannello').replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
-        (out / 'index.html').write_text(head + body + '\n</body>\n</html>\n', encoding='utf-8')
+        head = HEAD.format(title='Pannello clienti', short='Pannello', splash=SPLASH).replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
+        (out / 'index.html').write_text(head + nonblock(body) + '\n</body>\n</html>\n', encoding='utf-8')
         (out / 'manifest.webmanifest').write_text(json.dumps({"name": "Pannello clienti", "short_name": "Pannello", "start_url": "./", "scope": "./", "display": "standalone",
             "background_color": "#000000", "theme_color": "#1B7D8D", "lang": "it",
             "icons": [{"src": "../assets/icon-192.png?v=3", "sizes": "192x192", "type": "image/png"}, {"src": "../assets/icon-512.png?v=3", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False, indent=1), encoding='utf-8')
