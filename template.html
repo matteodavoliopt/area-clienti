@@ -249,6 +249,14 @@ textarea{min-height:64px;resize:vertical}
 .ex-ed .full{grid-column:1/-1}
 .ex-ed .tools{grid-column:1/-1;display:flex;justify-content:flex-end;gap:4px}
 @media (max-width:420px){.ex-ed{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.nav button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;color:var(--muted);font:600 12px/1.1 var(--body);padding:7px 2px;border-radius:10px;cursor:pointer}
+.nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav button[aria-current="true"]{color:var(--accent);background:var(--accent-soft)}
+.nav b{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font:700 11px/18px var(--body);color:var(--accent-ink);background:var(--accent)}
+.nav-sp{height:64px;flex:0 0 auto}
+.bar.up{bottom:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:12px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <div id="app"><p class="empty">Caricamento del programma…</p></div>
@@ -700,6 +708,13 @@ function viewEdit(){
   return h;
 }
 
+function navBar(nA){
+  var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'};
+  return '<div class="nav-sp"></div><nav class="nav" aria-label="Navigazione"><div class="nav-in">'+
+    '<button type="button" data-nav="train" aria-current="'+(ui.tab==='train')+'">'+I.train+'<span>Programma</span></button>'+
+    '<button type="button" data-nav="appts" aria-current="'+(ui.tab==='appts')+'">'+I.appts+(nA?'<b>'+nA+'</b>':'')+'<span>Appuntamenti</span></button></div></nav>';
+}
+
 function render(){
   var h = '';
   if(ui.edit){
@@ -709,10 +724,11 @@ function render(){
     h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1><p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p></div>';
     h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     h += ui.tab==='train' ? viewTrain() : viewAppts();
+    if(S.navbar) h += navBar(nA);
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
   if(ui.canEdit){
-    h += '<div class="bar"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Modifiche al pacchetto: premi Salva per mostrarle al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
+    h += '<div class="bar'+(S.navbar&&!ui.edit?' up':'')+'"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Modifiche al pacchetto: premi Salva per mostrarle al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
       (ui.dirty && !ui.edit ? '<button class="btn" data-act="discard">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>' : ui.edit ? '<button class="btn" data-act="cancel">Annulla</button><button class="btn primary" data-act="save"'+(ui.saving?' disabled':'')+'>'+(ui.saving?'Salvataggio…':'Salva')+'</button>'
                : '<button class="btn primary" data-act="edit">Modifica</button>')+'</div></div>';
   }
@@ -747,6 +763,7 @@ app.addEventListener('input', function(e){
 
 app.addEventListener('click', function(e){
   var b = e.target.closest('button'); if(!b) return;
+  if(b.dataset.nav){ ui.tab=b.dataset.nav; render(); window.scrollTo(0,0); return; }
   if(b.dataset.tab){ ui.tab=b.dataset.tab; render(); return; }
   if(b.dataset.day){ ui.day=+b.dataset.day; render(); return; }
   var a=b.dataset.act, i=+b.dataset.i, k=+b.dataset.k; if(!a) return;
