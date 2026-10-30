@@ -49,6 +49,9 @@ h1,h2{margin:0;text-wrap:balance}
 .who b{font-size:16px;font-weight:600;line-height:1.25}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font:600 12.5px/1 var(--body);padding:6px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--line);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tag.next{color:var(--accent);background:var(--accent-soft);border-color:transparent}
+.tag.next,.tag.nonext{display:inline-flex;align-items:center;gap:5px}
+.tag svg{width:13px;height:13px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
 .tag.ok{color:var(--accent);background:var(--accent-soft);border-color:transparent}
 .tag.paid{color:var(--ok-ink);background:var(--ok-bg);border-color:transparent}
 .tag.warn{color:var(--warn);background:var(--warn-soft);border-color:transparent}
@@ -99,6 +102,7 @@ function oneADay(l){ var s={}; return l.filter(function(a){ if(s[a.d]) return fa
 var fNext = new Intl.DateTimeFormat('it-IT',{weekday:'short',day:'numeric',month:'short'});
 var fDate = new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short'});
 var LOGO = '<svg class="logo" viewBox="440 380 1060 1170" role="img" aria-label="Logo"><path d="M463 405H900C1220 405 1470 640 1470 966C1470 1290 1220 1528 900 1528H463V1302H552V1455H880C1170 1455 1377 1250 1377 966C1377 690 1170 478 880 478H552V643H463Z"/><path d="M463 720H552L778 1213L774 1223H696L552 915V1223H463Z"/><path d="M909 720H992V1223H911V915L822 1113L777 1014Z"/></svg>';
+var CAL = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 7h12M5.5 1.5v3M10.5 1.5v3"/></svg>';
 var ARROW = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2h6v6M10 2L3 9"/></svg>';
 
 function status(c){
@@ -127,7 +131,7 @@ function status(c){
       r.tags.push({c: r.ending?'warn':'', t:'Sett. '+Math.min(wk, Math.ceil((Math.round((today-a)/864e5)+1)/7))+' di '+wk+(r.ending?' · finisce il '+fDate.format(b):'')}); }
     else r.tags.push({c:'', t:'Inizia il '+fDate.format(a)});
   }
-  r.tags.unshift(next ? {c:'', t:'Prossimo: '+fNext.format(parseD(next))+(next.t?' '+next.t:'')} : {c:'', t:'Nessun appuntamento in arrivo'});
+  r.tags.unshift(next ? {c:'next', t:'Prossimo: '+fNext.format(parseD(next))+(next.t?' '+next.t:'')} : {c:'nonext', t:'Nessun appuntamento in arrivo'});
   return r;
 }
 
@@ -185,7 +189,7 @@ function render(){
     list.forEach(function(x){
       var url = /^https:\/\/claude\.ai\//.test(x.c.url||'') ? x.c.url : '';
       var site = x.c.site || SITES[x.c.url||''] || '', site = /^https:\/\//.test(site) ? site : '';
-      h += '<li class="row"><div class="who"><b>'+esc(x.c.name)+'</b><div class="tags">'+x.s.tags.map(function(t){ return '<span class="tag '+t.c+'">'+esc(t.t)+'</span>'; }).join('')+'</div></div>'+
+      h += '<li class="row"><div class="who"><b>'+esc(x.c.name)+'</b><div class="tags">'+x.s.tags.map(function(t){ return '<span class="tag '+t.c+'">'+((t.c==='next'||t.c==='nonext')?CAL:'')+esc(t.t)+'</span>'; }).join('')+'</div></div>'+
         (url?'<a class="open" href="'+esc(url)+'" target="_blank" rel="noopener">Apri'+ARROW+'</a>':'')+
         (site?'<div class="site"><span>Link per il cliente: '+esc(site.replace(/^https:\/\//,''))+'</span><input type="text" readonly tabindex="-1" aria-hidden="true" value="'+esc(site)+'"><button type="button" data-copy="'+esc(site)+'">Copia link</button><a href="'+esc(site)+'" target="_blank" rel="noopener">Apri il sito</a></div>':'')+'</li>';
     });
