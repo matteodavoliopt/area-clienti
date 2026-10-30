@@ -278,7 +278,7 @@ function render(){
     noappt:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M10 14l4 4M14 14l-4 4"/></svg>',
     renew:'<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3.6M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.6M20 20v-4h-4"/></svg>',
     pay:'<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg>'};
-  var NB = [['recap','Recap',0,''],['all','Clienti',C.length,'b'],['noappt','Senza app.',nNo,''],['renew','Da rinnovare',nRenew,'w'],['pay','Da pagare',nPay,'']];
+  var NB = [['all','Clienti',C.length,'b'],['noappt','Senza app.',nNo,''],['renew','Da rinnovare',nRenew,'w'],['pay','Da pagare',nPay,''],['recap','Recap',0,'']];
   h += '<nav class="nav" aria-label="Navigazione"><div class="nav-in">'+NB.map(function(n){ return '<button type="button" data-nav="'+n[0]+'" aria-current="'+(ui.f===n[0])+'">'+I[n[0]]+(n[2]?'<b class="'+n[3]+'">'+n[2]+'</b>':'')+'<span>'+n[1]+'</span></button>'; }).join('')+'</div></nav>';
   app.innerHTML = h;
 }

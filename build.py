@@ -41,6 +41,8 @@ def nonblock(s):
 def page(entry):
     d = dict(entry['data'])
     d['client'] = dict(d.get('client', {}))
+    d['pkg'] = {k: v for k, v in (d.get('pkg') or {}).items() if k not in ('price', 'paidAmt')}
+    d['pkgHist'] = [{k: v for k, v in x.items() if k not in ('price', 'paidAmt')} for x in (d.get('pkgHist') or [])]
     name = (d['client'].get('name') or 'Cliente').strip()
     js = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
     body = re.sub(r'<title>.*?</title>\s*', '', TPL, count=1, flags=re.S)
