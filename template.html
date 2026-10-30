@@ -368,7 +368,7 @@ function illuFor(t){ t=(t||'').toLowerCase();
   if(/quadrupedia|gatto|cat.?cow/.test(t)) return 'catcow'; if(/retroversione/.test(t)) return 'crunch'; if(/gambe tese/.test(t) && /manubri/.test(t)) return 'jefferson'; if(/box/.test(t) && /schiena/.test(t)) return 'box'; if(/sit.?up/.test(t)) return 'situp'; if(/leg.?rais|sollevament[oi] gamb/.test(t)) return 'legraise'; if(/russian|twist/.test(t)) return 'twist'; return ''; }
 
 var PERSF=[['age','Età','Es. 32'],['weight','Peso (kg)','Es. 78'],['issues','Problematiche fisiche','Es. fastidio spalla destra'],['general','Informazioni generali','Es. lavoro sedentario, nuoto il martedì']];
-var PERSX = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
+var PERSX = !!SITE;
 if(PERSX) PERSF=[['name','Nome e cognome','Es. Mario Rossi'],['email','Email','Es. nome@email.it']].concat(PERSF);
 function persVal(k){ var p=SITE&&PEND['client|'+k]; return String(p ? p.v : ((S.client||{})[k]||'')).trim(); }
 function viewPers(){

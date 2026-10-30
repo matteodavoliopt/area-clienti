@@ -1,7 +1,7 @@
 """Costruisce il sito "Area clienti" di Matteo D'Avolio.
 
 Per ogni file in data/*.json ({"slug", "source", "data"}) crea <slug>/index.html
-partendo da template.html, con i dati del cliente incorporati (senza email).
+partendo da template.html, con i dati del cliente incorporati (con email).
 Uso: python3 build.py
 """
 import json, re, html, pathlib
@@ -40,7 +40,7 @@ def nonblock(s):
 
 def page(entry):
     d = dict(entry['data'])
-    d['client'] = {k: v for k, v in d.get('client', {}).items() if k != 'email'}
+    d['client'] = dict(d.get('client', {}))
     name = (d['client'].get('name') or 'Cliente').strip()
     js = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
     body = re.sub(r'<title>.*?</title>\s*', '', TPL, count=1, flags=re.S)
