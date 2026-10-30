@@ -268,7 +268,7 @@ textarea{min-height:64px;resize:vertical}
 .ex-ed .tools{grid-column:1/-1;display:flex;justify-content:flex-end;gap:4px}
 @media (max-width:420px){.ex-ed{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
-.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .nav button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;border:0;background:none;color:var(--muted);font:600 12px/1.1 var(--body);padding:7px 2px;border-radius:10px;cursor:pointer}
 .nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-current="true"]{color:var(--accent);background:var(--accent-soft)}
@@ -513,7 +513,7 @@ app.addEventListener('click', function(e){
 try{ document.addEventListener('visibilitychange', function(){ if(!document.hidden && TM && TM.run){ tmTick(); tmLock(true); } }); }catch(err){}
 
 function viewTrain(){
-  var plan = viewPers() + viewPlan();
+  var plan = (S.navbar?'':viewPers()) + viewPlan();
   if(!S.days.length) return plan + '<p class="empty">Il programma non è ancora pronto.</p>';
   if(ui.day >= S.days.length) ui.day = 0;
   var d = S.days[ui.day], h = plan;
@@ -727,10 +727,11 @@ function viewEdit(){
 }
 
 function navBar(nA){
-  var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'};
+  var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',pers:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>'};
   return '<div class="nav-sp"></div><nav class="nav" aria-label="Navigazione"><div class="nav-in">'+
     '<button type="button" data-nav="train" aria-current="'+(ui.tab==='train')+'">'+I.train+'<span>Programma</span></button>'+
-    '<button type="button" data-nav="appts" aria-current="'+(ui.tab==='appts')+'">'+I.appts+(nA?'<b>'+nA+'</b>':'')+'<span>Appuntamenti</span></button></div></nav>';
+    '<button type="button" data-nav="appts" aria-current="'+(ui.tab==='appts')+'">'+I.appts+(nA?'<b>'+nA+'</b>':'')+'<span>Appuntamenti</span></button>'+
+    '<button type="button" data-nav="pers" aria-current="'+(ui.tab==='pers')+'">'+I.pers+'<span>Personale</span></button></div></nav>';
 }
 
 function render(){
@@ -741,7 +742,8 @@ function render(){
     var nA = S.appts.filter(function(a){ var n=new Date(); n.setHours(0,0,0,0); return a.d && parseD(a)>=n; }).length;
     h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
-    h += ui.tab==='train' ? viewTrain() : viewAppts();
+    if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
+    h += ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
