@@ -216,6 +216,7 @@ function render(){
     return true;
   }).sort(function(a,b){
     if(ui.f==='pay'){ var ka=a.s.pv==='no'?0:1, kb=b.s.pv==='no'?0:1; if(ka!==kb) return ka-kb; }
+    if(ui.f==='renew'){ var rr=function(x){ return x.s.left===1?0:(x.s.left===2?1:2); }; if(rr(a)!==rr(b)) return rr(a)-rr(b); }
     var ua=a.s.up, ub=b.s.up;
     if(ua && ub){ var dd=parseD(ua)-parseD(ub); if(dd) return dd; }
     else if(ua||ub) return ua?-1:1;
