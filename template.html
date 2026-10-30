@@ -775,7 +775,7 @@ function render(){
     h += BRAND+'<div class="hero"><span class="eyebrow">Modifica programma</span><h1>'+esc(firstName(draft.client.name))+'</h1></div>' + viewEdit();
   } else {
     var nA = S.appts.filter(function(a){ var n=new Date(); n.setHours(0,0,0,0); return a.d && parseD(a)>=n; }).length;
-    if(S.navbar) h += '<header class="brand hello'+(SITE&&window.SITE&&/^riccardo-/.test(window.SITE.slug||'')?' sm':'')+'"><h1><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><span>'+esc(firstName(S.client.name))+(SITE&&window.SITE&&/^riccardo-/.test(window.SITE.slug||'')?'?':'')+'</span></h1>'+LOGO+'</header>';
+    if(S.navbar) h += '<header class="brand hello'+(SITE&&window.SITE&&/^riccardo-/.test(window.SITE.slug||'')?' sm':'')+'"><h1><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><span>'+esc(firstName(S.client.name))+(SITE&&window.SITE&&/^riccardo-/.test(window.SITE.slug||'')?'!':'')+'</span></h1>'+LOGO+'</header>';
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
