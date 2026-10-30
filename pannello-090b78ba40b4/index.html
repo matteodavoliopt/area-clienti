@@ -180,17 +180,17 @@ function week(){
 function render(){
   var rows = C.map(function(c){ return {c:c, s:status(c)}; });
   var nRenew = rows.filter(function(x){return x.s.renew;}).length;
-  var nEnd = rows.filter(function(x){return x.s.ending || x.s.ended;}).length;
+  var nNo = rows.filter(function(x){return !x.s.next;}).length;
   var nPay = rows.filter(function(x){return x.s.unpaid;}).length;
   var q = ui.q.trim().toLowerCase();
   var list = rows.filter(function(x){
     if(q && (x.c.name||'').toLowerCase().indexOf(q)<0) return false;
     if(ui.f==='renew') return x.s.renew;
-    if(ui.f==='end') return x.s.ending || x.s.ended;
+    if(ui.f==='noappt') return !x.s.next;
     if(ui.f==='pay') return x.s.unpaid;
     return true;
   }).sort(function(a,b){
-    var pa = (a.s.unpaid||a.s.renew||a.s.ending||a.s.ended)?0:1, pb = (b.s.unpaid||b.s.renew||b.s.ending||b.s.ended)?0:1;
+    var pa = (a.s.unpaid||a.s.renew||!a.s.next)?0:1, pb = (b.s.unpaid||b.s.renew||!b.s.next)?0:1;
     if(pa!==pb) return pa-pb;
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
@@ -199,7 +199,7 @@ function render(){
   h += '<div class="stats" role="group" aria-label="Filtri">'+
     '<button class="stat" data-f="all" aria-pressed="'+(ui.f==='all')+'"><strong>'+C.length+'</strong><span>Clienti</span></button>'+
     '<button class="stat warn" data-f="renew" aria-pressed="'+(ui.f==='renew')+'"><strong>'+nRenew+'</strong><span>Da rinnovare</span></button>'+
-    '<button class="stat bad" data-f="end" aria-pressed="'+(ui.f==='end')+'"><strong>'+nEnd+'</strong><span>Scheda in scadenza</span></button>'+
+    '<button class="stat bad" data-f="noappt" aria-pressed="'+(ui.f==='noappt')+'"><strong>'+nNo+'</strong><span>Senza appuntamento</span></button>'+
     '<button class="stat bad" data-f="pay" aria-pressed="'+(ui.f==='pay')+'"><strong>'+nPay+'</strong><span>Da pagare</span></button></div>';
   h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
   if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
