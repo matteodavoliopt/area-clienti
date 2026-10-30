@@ -136,6 +136,8 @@ function status(c){
   }
   r.up = up; r.today = !!(up && up.d===tk);
   r.tags.unshift(up ? {c:'next', t:(r.today?'Oggi alle '+(up.t||''):'Prossimo: '+fNext.format(parseD(up))+(up.t?' '+up.t:''))} : {c:'nonext', t:'Nessun appuntamento fissato'});
+  function rk(t){ if(t.c==='next'||t.c==='nonext') return 0; if(/pagat|pagare/i.test(t.t)) return 2; if(/^Sett\.|^Programma|^Inizia/.test(t.t)) return 3; return 1; }
+  r.tags = r.tags.map(function(t,i){ return {t:t,i:i}; }).sort(function(x,y){ return (rk(x.t)-rk(y.t)) || (x.i-y.i); }).map(function(x){ return x.t; });
   return r;
 }
 
