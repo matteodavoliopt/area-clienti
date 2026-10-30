@@ -215,7 +215,8 @@
    "total": "10",
    "done": "0",
    "start": "2026-10-30",
-   "paid": false
+   "paid": "rata",
+   "paidMonth": "2026-10"
   },
   "appts": [
    {
@@ -387,6 +388,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-30",
+  "navbar": true
  }
 }
