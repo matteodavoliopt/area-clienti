@@ -176,6 +176,11 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .g-bt button{font:600 15px var(--body);padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .g-bt button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .g-bt button.wide{flex:1}
+.cn-add{display:block;width:100%;text-align:left;border:1.5px dashed var(--line);background:var(--surface);color:var(--muted);font:500 14px var(--body);padding:14px;border-radius:12px;cursor:pointer}
+.cn-box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.cn-box p{margin:0;font-size:14px;line-height:1.45;color:var(--ink);white-space:pre-wrap}
+.cn-l{font:700 11px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.cn-mod{align-self:flex-start;border:0;background:none;padding:0;color:var(--accent);font:600 13px var(--body);text-decoration:underline;cursor:pointer}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -428,9 +433,18 @@ if(SITE){ try{ PEND = JSON.parse(localStorage.getItem(PK)||'{}') || {}; }catch(e
 function pendSave(){ try{ localStorage.setItem(PK, JSON.stringify(PEND)); }catch(e){} }
 function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
 function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
-if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.f==='client'){ if(p.sent && String((S.client||{})[p.k]||'').trim()===String(p.v||'').trim()) delete PEND[k]; return; } var e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
+if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.f==='client'){ if(p.sent && String((S.client||{})[p.k]||'').trim()===String(p.v||'').trim()) delete PEND[k]; return; } var e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : p.f==='cn' ? (e.cn||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
 function ikey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|info'; }
 function exInfo(e){ var p=SITE?PEND[ikey(ui.day,e)]:null; return String(p?p.v:(e.info||'')).trim(); }
+function ckey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|cn'; }
+function noteSite(e){
+  var di=ui.day, k=ckey(di,e), p=PEND[k], val=String(p?p.v:(e.cn||''));
+  if(ui.ce && ui.ce.d===di && ui.ce.n===e.n){
+    return '<div class="le ie cn-ed"><label for="cn-in">Le tue note</label><textarea id="cn-in" rows="3" placeholder="Es. sensazioni, regolazioni della macchina, dolori…">'+esc(val)+'</textarea><div class="le-btns"><button type="button" class="btn small" data-act="cnCancel">Annulla</button><button type="button" class="btn small primary" data-act="cnSave">Salva</button></div></div>';
+  }
+  if(!val.trim()) return '<button type="button" class="cn-add" data-act="cnEdit" data-d="'+di+'" data-n="'+esc(e.n)+'">+ Aggiungi nota</button>';
+  return '<div class="cn-box"><span class="cn-l">Le tue note'+(p?' · '+(p.sent?'inviata':'da inviare'):'')+'</span><p>'+esc(val)+'</p><button type="button" class="cn-mod" data-act="cnEdit" data-d="'+di+'" data-n="'+esc(e.n)+'">Modifica nota</button></div>';
+}
 function infoSite(e){
   var di = ui.day, k = ikey(di,e), p = PEND[k], val = p ? p.v : (e.info||'');
   if(ui.ie && ui.ie.d===di && ui.ie.n===e.n){
@@ -441,7 +455,7 @@ function infoSite(e){
 function sendPend(k){
   var p=PEND[k]; if(!p || !SITE) return;
   var fd=new FormData();
-  fd.append(SITE.form.entry, JSON.stringify(p.f==='client' ? {s:SITE.slug,f:'client',k:p.k,v:p.v,t:p.ts} : p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
+  fd.append(SITE.form.entry, JSON.stringify(p.f==='client' ? {s:SITE.slug,f:'client',k:p.k,v:p.v,t:p.ts} : p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : p.f==='cn' ? {s:SITE.slug,f:'cn',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
   fetch(SITE.form.action,{method:'POST',mode:'no-cors',body:fd}).then(function(){ if(PEND[k]){ PEND[k].sent=true; pendSave(); render(); } }).catch(function(){});
 }
 if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
@@ -661,7 +675,7 @@ function viewTrain(){
       if(ACC){
         var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
-        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+((exInfo(e)||eo)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?(exInfo(e)?' ':'')+'<span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">'+(exInfo(e)?'Modifica':'+ Aggiungi nota')+'</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (Week '+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+(exInfo(e)?'<span class="ex-i">'+esc(exInfo(e))+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (Week '+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
       } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
@@ -695,7 +709,7 @@ function viewTrain(){
         for(var w2=0, W2=Math.max(nWeeks(), lg.length); w2<W2; w2++){ var x2=(lg[w2]||'').trim(); h += '<span class="wk'+(w2+1===cw?' now':'')+(x2?'':' empty')+'"><b>S'+(w2+1)+'</b>'+(x2?esc(x2):(w2+1===cw?'questa settimana':'—'))+'</span>'; }
         h += '</div></div>';
       }
-      h += (ACC?thH+'</div>':'')+'</li>';
+      h += (ACC?thH+(SITE?noteSite(e):'')+'</div>':'')+'</li>';
     });
     h += '</ol>';
   }
@@ -945,14 +959,14 @@ function showOpen(el){
   },40);
 }
 function kbFit(){
-  var a=document.activeElement; if(!a || (a.id!=='le-in' && a.id!=='ie-in')) return;
+  var a=document.activeElement; if(!a || (a.id!=='le-in' && a.id!=='ie-in' && a.id!=='cn-in')) return;
   var box=a.closest('.le')||a, r=box.getBoundingClientRect(), vv=window.visualViewport;
   var top=vv?vv.offsetTop:0, bot=vv?(vv.offsetTop+vv.height):window.innerHeight;
   var nv=document.querySelector('.nav'); if(nv){ var nr=nv.getBoundingClientRect(); if(nr.top>top && nr.top<bot) bot=nr.top; }
   if(r.bottom > bot-12) window.scrollBy(0, r.bottom-(bot-12));
   else if(r.top < top+12) window.scrollBy(0, r.top-(top+12));
 }
-document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in')){ [80,320,650].forEach(function(t){ setTimeout(kbFit,t); }); } });
+document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in'||e.target.id==='cn-in')){ [80,320,650].forEach(function(t){ setTimeout(kbFit,t); }); } });
 if(window.visualViewport) window.visualViewport.addEventListener('resize', function(){ setTimeout(kbFit,30); });
 app.addEventListener('input', function(e){
   var el=e.target; if(!el || el.id!=='le-in') return;
@@ -999,6 +1013,11 @@ app.addEventListener('click', function(e){
   if(a==='logCancel'){ ui.le=null; render(); return; }
   if(a==='infoEdit'){ ui.ie={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y5=window.scrollY; render(); window.scrollTo(0,y5); var t1=document.getElementById('ie-in'); if(t1){ try{ t1.focus({preventScroll:true}); }catch(err){ t1.focus(); } } return; }
   if(a==='infoCancel'){ ui.ie=null; render(); return; }
+  if(a==='cnEdit'){ ui.ce={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y7=window.scrollY; render(); window.scrollTo(0,y7); var t7=document.getElementById('cn-in'); if(t7){ try{ t7.focus({preventScroll:true}); }catch(err){ t7.focus(); } } return; }
+  if(a==='cnCancel'){ ui.ce=null; render(); return; }
+  if(a==='cnSave'){ var t8=document.getElementById('cn-in'); if(!t8||!ui.ce) return; var C8=ui.ce, ex8=findEx(C8.d,C8.n); if(!ex8) return; var v8=t8.value.trim(), k8=ckey(C8.d,ex8);
+    if(v8===(ex8.cn||'').trim() && !PEND[k8]){ ui.ce=null; render(); return; }
+    PEND[k8]={f:'cn',d:C8.d,dn:(S.days[C8.d]||{}).name||'',n:ex8.n,v:v8,ts:Date.now(),sent:false}; pendSave(); ui.ce=null; var y8=window.scrollY; render(); window.scrollTo(0,y8); sendPend(k8); return; }
   if(a==='persEdit'){ ui.pe=true; ui.ob=ui.ob||{}; ui.ob.__pers=true; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='persCancel'){ ui.pe=false; render(); return; }
   if(a==='persSave'){
