@@ -369,7 +369,11 @@
    "mode": "pack",
    "start": "2026-09-14",
    "paid": "rata",
-   "paidMonth": "2026-10"
+   "paidMonth": "2026-10",
+   "adj": "0",
+   "recapTs": 1793462923948,
+   "price": "250",
+   "paidAmt": "100"
   },
   "appts": [
    {
@@ -433,7 +437,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "pesiTs": 1793373809047,
   "navbar": true,
   "inplay": true

@@ -299,7 +299,11 @@
    "done": "0",
    "start": "2026-07-20",
    "paid": true,
-   "paidMonth": "2026-10"
+   "paidMonth": "2026-10",
+   "adj": "0",
+   "price": "450",
+   "paidAmt": "450",
+   "recapTs": 1793462930559
   },
   "appts": [
    {
@@ -391,8 +395,26 @@
     "t": "11:30",
     "what": "Lezione",
     "where": ""
+   },
+   {
+    "d": "2026-11-02",
+    "t": "21:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-04",
+    "t": "21:00",
+    "what": "Lezione",
+    "where": ""
+   },
+   {
+    "d": "2026-11-07",
+    "t": "10:00",
+    "what": "Lezione",
+    "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31"
  }
 }

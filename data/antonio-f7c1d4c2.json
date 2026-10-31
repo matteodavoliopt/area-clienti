@@ -21,7 +21,16 @@
   "pre": [],
   "post": [],
   "days": [],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "10",
+   "done": "6",
+   "paid": true,
+   "paidMonth": "2026-10",
+   "price": "400",
+   "paidAmt": "400",
+   "recapTs": 1793463412774
+  },
   "appts": [
    {
     "d": "2026-11-05",
@@ -30,6 +39,7 @@
     "where": "Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31",
+  "navbar": true
  }
 }

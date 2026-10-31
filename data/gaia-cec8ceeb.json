@@ -235,7 +235,11 @@
    "done": "0",
    "start": "2026-10-05",
    "paid": true,
-   "paidMonth": "2026-10"
+   "paidMonth": "2026-10",
+   "adj": "0",
+   "price": "400",
+   "paidAmt": "400",
+   "recapTs": 1793463043000
   },
   "appts": [
    {
@@ -309,8 +313,14 @@
     "t": "19:30",
     "what": "Lezione",
     "where": ""
+   },
+   {
+    "d": "2026-11-14",
+    "t": "11:00",
+    "what": "Lezione",
+    "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31"
  }
 }

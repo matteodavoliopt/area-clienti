@@ -259,7 +259,10 @@
   "pkg": {
    "mode": "month",
    "paid": "rata",
-   "paidMonth": "2026-10"
+   "paidMonth": "2026-10",
+   "price": "400",
+   "paidAmt": "160",
+   "recapTs": 1793463371022
   },
   "appts": [
    {
@@ -479,6 +482,6 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31"
  }
 }

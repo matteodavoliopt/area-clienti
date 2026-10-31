@@ -27,7 +27,11 @@
    "done": "0",
    "start": "2026-09-07",
    "paid": true,
-   "paidMonth": "2026-10"
+   "paidMonth": "2026-10",
+   "adj": "0",
+   "price": "500",
+   "paidAmt": "500",
+   "recapTs": 1793462958829
   },
   "appts": [
    {
@@ -133,6 +137,6 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31"
  }
 }

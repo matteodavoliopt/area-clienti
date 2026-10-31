@@ -268,7 +268,10 @@
   ],
   "pkg": {
    "mode": "month",
-   "paid": false
+   "paid": false,
+   "price": "280",
+   "paidAmt": "0",
+   "recapTs": 1793463176644
   },
   "appts": [
    {
@@ -416,6 +419,6 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31"
  }
 }

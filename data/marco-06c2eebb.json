@@ -248,7 +248,12 @@
    "total": "10",
    "done": "0",
    "start": "2026-10-26",
-   "paid": false
+   "paid": "rata",
+   "paidMonth": "2026-10",
+   "price": "450",
+   "paidAmt": "250",
+   "adj": "0",
+   "recapTs": 1793462973673
   },
   "appts": [
    {
@@ -324,7 +329,8 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30",
-  "pesiTs": 1793385117526
+  "updated": "2026-10-31",
+  "pesiTs": 1793385117526,
+  "navbar": true
  }
 }

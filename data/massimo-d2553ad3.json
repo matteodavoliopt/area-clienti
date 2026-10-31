@@ -323,7 +323,15 @@
     ]
    }
   ],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "5",
+   "done": "5",
+   "paid": false,
+   "price": "150",
+   "paidAmt": "0",
+   "recapTs": 1793463388644
+  },
   "appts": [
    {
     "d": "2026-06-10",
@@ -380,6 +388,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31",
+  "navbar": true
  }
 }

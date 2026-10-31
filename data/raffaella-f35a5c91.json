@@ -325,7 +325,11 @@
    "total": "10",
    "done": "0",
    "start": "2026-10-19",
-   "paid": false
+   "paid": false,
+   "adj": "0",
+   "price": "450",
+   "paidAmt": "0",
+   "recapTs": 1793462891325
   },
   "appts": [
    {
@@ -419,6 +423,6 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-29"
+  "updated": "2026-10-31"
  }
 }

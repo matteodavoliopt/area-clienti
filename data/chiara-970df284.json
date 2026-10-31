@@ -274,7 +274,17 @@
     ]
    }
   ],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "10",
+   "done": "0",
+   "start": "2026-07-15",
+   "paid": true,
+   "paidMonth": "2026-10",
+   "price": "400",
+   "paidAmt": "400",
+   "recapTs": 1793463407078
+  },
   "appts": [
    {
     "d": "2026-06-05",
@@ -379,6 +389,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31",
+  "navbar": true
  }
 }

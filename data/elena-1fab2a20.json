@@ -187,7 +187,16 @@
     ]
    }
   ],
-  "pkg": {},
+  "pkg": {
+   "mode": "pack",
+   "total": "5",
+   "done": "0",
+   "start": "2026-11-02",
+   "paid": false,
+   "price": "225",
+   "paidAmt": "0",
+   "recapTs": 1793463133693
+  },
   "appts": [
    {
     "d": "2026-06-03",
@@ -268,6 +277,7 @@
     "where": ""
    }
   ],
-  "updated": "2026-10-30"
+  "updated": "2026-10-31",
+  "navbar": true
  }
 }
