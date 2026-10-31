@@ -891,6 +891,16 @@ function saveLog(){
   PEND[k]={d:L.d,dn:(S.days[L.d]||{}).name||'',n:e.n,w:L.w,v:v,ts:Date.now(),sent:false};
   pendSave(); ui.le=null; var y4=window.scrollY; render(); window.scrollTo(0,y4); sendPend(k);
 }
+function kbFit(){
+  var a=document.activeElement; if(!a || (a.id!=='le-in' && a.id!=='ie-in')) return;
+  var box=a.closest('.le')||a, r=box.getBoundingClientRect(), vv=window.visualViewport;
+  var top=vv?vv.offsetTop:0, bot=vv?(vv.offsetTop+vv.height):window.innerHeight;
+  var nv=document.querySelector('.nav'); if(nv){ var nr=nv.getBoundingClientRect(); if(nr.top>top && nr.top<bot) bot=nr.top; }
+  if(r.bottom > bot-12) window.scrollBy(0, r.bottom-(bot-12));
+  else if(r.top < top+12) window.scrollBy(0, r.top-(top+12));
+}
+document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in')){ [80,320,650].forEach(function(t){ setTimeout(kbFit,t); }); } });
+if(window.visualViewport) window.visualViewport.addEventListener('resize', function(){ setTimeout(kbFit,30); });
 app.addEventListener('input', function(e){
   var el=e.target; if(!el || el.id!=='le-in') return;
   var v=el.value, atEnd=el.selectionStart===v.length;
