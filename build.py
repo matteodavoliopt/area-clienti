@@ -83,7 +83,7 @@ def main():
         for f in sorted((ROOT / 'data').glob('*.json')):
             e = json.loads(f.read_text(encoding='utf-8')); d = e['data']; c = d.get('client', {})
             clients.append({'name': c.get('name', ''), 'url': e.get('source', ''), 'site': 'https://matteodavoliopt.github.io/area-clienti/' + e['slug'] + '/',
-                            'g': c.get('g', 'm'), 'start': c.get('start', ''), 'end': c.get('end', ''), 'pkg': d.get('pkg') or {},
+                            'g': c.get('g', 'm'), 'start': c.get('start', ''), 'end': c.get('end', ''), 'pkg': d.get('pkg') or {}, 'pkgHist': d.get('pkgHist') or [],
                             'appts': [{'d': a.get('d', ''), 't': a.get('t', ''), 'what': a.get('what', '')} for a in d.get('appts', [])]})
         clients.sort(key=lambda x: x['name'].lower())
         upd = max([json.loads(f.read_text(encoding='utf-8'))['data'].get('updated', '') for f in (ROOT / 'data').glob('*.json')] or [''])
