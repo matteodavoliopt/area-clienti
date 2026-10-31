@@ -139,6 +139,8 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex-last b{color:var(--accent);font-family:var(--mono);font-weight:700}
 .ex-i{color:var(--muted);font-size:14px;line-height:1.35}
 .ex.acc .ex-b .info-ed{display:none}
+.wk-lab{display:block;font:600 9.5px/1.1 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:1px 0 3px}
+.ex.acc .wk b{font-size:13px}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -633,11 +635,11 @@ function viewTrain(){
         lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
         var upto = Math.max(nWeeks(), last);
-        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+(ACC?'':' · tocca una settimana per segnare i tuoi pesi')+'</span><div class="log-weeks">';
+        h += '<div class="log">'+(ACC?'':'<span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span>')+'<div class="log-weeks">';
         for(var w=1; w<=upto; w++){
           var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
           var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
-          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(val.trim()?esc(val):'+ segna')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
+          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(ACC?'<small class="wk-lab">'+esc((e.lab||'').trim()||'REP/KG')+'</small>':'')+(val.trim()?esc(val):'+ segna')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
         }
         h += '</div>';
         if(ui.le && ui.le.d===di && ui.le.n===e.n){
