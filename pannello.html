@@ -304,8 +304,7 @@ app.addEventListener('click', function(e){
   if(e.target.closest('[data-clr]')){ ui.q=''; render(); try{ document.activeElement && document.activeElement.blur(); }catch(err){} return; }
   var nv = e.target.closest('[data-nav]');
   if(nv){ ui.f = nv.dataset.nav; try{ localStorage.setItem('pc-filter', ui.f); }catch(err){} render();
-    var tg = ui.f==='all' ? null : document.querySelector('.tools');
-    try{ if(tg) tg.scrollIntoView({behavior:'smooth',block:'start'}); else window.scrollTo({top:0,behavior:'smooth'}); }catch(err){ window.scrollTo(0, tg?tg.offsetTop:0); }
+    window.scrollTo(0,0);
     return; }
   var b = e.target.closest('[data-f]'); if(!b) return;
   ui.f = (ui.f===b.dataset.f && b.dataset.f!=='all') ? 'all' : b.dataset.f;
