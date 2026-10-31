@@ -127,7 +127,12 @@
       "sr": "3 volte",
       "info": "200m corsa 6-6,5 km/h 100m camminata tranquilla",
       "rec": "",
-      "vids": [],
+      "vids": [
+       {
+        "u": "https://youtube.com/shorts/0g-OEBjr5qY?is=wfm4fGQVIxb7fcZn",
+        "t": ""
+       }
+      ],
       "lab": "",
       "log": []
      }

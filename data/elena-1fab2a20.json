@@ -54,7 +54,12 @@
       "sr": "2 x 10",
       "info": "Tiro con i gomiti stretti e busto sempre dritto",
       "rec": "60 sec.",
-      "vids": [],
+      "vids": [
+       {
+        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4",
+        "t": ""
+       }
+      ],
       "lab": "",
       "log": []
      },

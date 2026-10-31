@@ -40,7 +40,12 @@
       "sr": "3 x 8",
       "info": "Uso il box da 40 cm e scarico il peso quando mi siedo",
       "rec": "90’",
-      "vids": [],
+      "vids": [
+       {
+        "u": "https://youtube.com/shorts/fXSnbO2PIcs?feature=share",
+        "t": ""
+       }
+      ],
       "lab": "",
       "log": []
      },
