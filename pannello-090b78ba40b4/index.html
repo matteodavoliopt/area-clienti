@@ -265,7 +265,7 @@ function viewRecap(rows){
     h+='<div class="rc-r'+((EDB||PF)?' ed':'')+(op?' on':'')+'" data-rc="'+esc(k)+'"><b>'+esc(c.name)+'</b><span class="n '+lc+'">'+esc(f)+'</span><span class="n '+lc+'">'+esc(l)+'</span><span class="n">'+esc(pr)+'</span><span class="n pay '+pc+'">'+esc(pa)+'</span><span class="n np">'+npk+'</span></div>';
     if(op){ var tt=parseInt(p.total,10)||0, dd=x.s.done!=null?x.s.done:0; h+='<form class="rc-ed" data-rcf="'+esc(k)+'"><label>Fatte<input type="number" inputmode="numeric" min="0" name="done" value="'+(mode==='pack'&&tt?dd:'')+'"></label><label>Rimaste<input type="number" inputmode="numeric" min="0" name="left" value="'+(mode==='pack'&&tt?tt-dd:'')+'"></label><label>Prezzo €<input type="number" inputmode="decimal" min="0" name="price" value="'+esc(p.price||'')+'"></label><label>Pagato €<input type="number" inputmode="decimal" min="0" name="paidAmt" value="'+esc(p.paidAmt||'')+'"></label><div class="rc-bt"><button type="button" data-rcx="1">Annulla</button><button type="submit">Salva</button></div></form>'; }
   });
-  h+='<div class="rc-r rc-tot"><b>Totale</b><span></span><span></span><span class="n">'+(totP?eur(totP):'—')+'</span><span class="n">'+(totA?eur(totA):'—')+'</span><span class="n np">'+totN+'</span></div></section>';
+  h+='</section>';
   h+='<p class="foot">'+(rcMsg?esc(rcMsg)+' ':'')+((EDB||PF)?'Tocca un cliente per modificare lezioni, prezzo e pagato. Le modifiche arrivano nella sua pagina e nel suo sito con l’aggiornamento serale.':'Per modificare usa il pannello su Claude.')+'</p>';
   return h;
 }
