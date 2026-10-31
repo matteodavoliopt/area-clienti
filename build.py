@@ -24,8 +24,8 @@ HEAD = '''<!doctype html>
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1413" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=3">
-<link rel="icon" type="image/png" href="../assets/favicon-32.png?v=3">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png?v=4">
+<link rel="icon" type="image/png" href="../assets/favicon-32.png?v=4">
 <link rel="manifest" href="manifest.webmanifest">
 <style>:root{{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}}body{{margin:0;font:14px system-ui,sans-serif}}img{{max-width:100%}}[hidden]{{display:none!important}}html,body{{background:#F2F4F3}}@media (prefers-color-scheme:dark){{html,body{{background:#0F1413}}}}.splash{{position:fixed;inset:0;z-index:50;background:#F2F4F3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}}@media (prefers-color-scheme:dark){{.splash{{background:#0F1413}}}}.splash.out{{opacity:0;pointer-events:none}}.splash .logo{{width:96px;height:auto;fill:#2397A9;stroke:#2397A9;stroke-width:22;stroke-linejoin:round;overflow:visible}}.splash .s-name{{font:800 30px/1 'Barlow Condensed','Arial Narrow',Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:#141C1A}}.splash .s-role{{font:600 clamp(9px,2.9vw,12px)/1.3 system-ui,sans-serif;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:#5D6B67}}@media (prefers-color-scheme:dark){{.splash .logo{{fill:#3FB4C5;stroke:#3FB4C5}}.splash .s-name{{color:#E8EEEC}}.splash .s-role{{color:#93A29E}}}}</style>
 </head>
@@ -59,9 +59,9 @@ def manifest(first):
     return json.dumps({
         "name": "Area riservata " + first, "short_name": first,
         "start_url": "./", "scope": "./", "display": "standalone",
-        "background_color": "#000000", "theme_color": "#1B7D8D", "lang": "it",
-        "icons": [{"src": "../assets/icon-192.png?v=3", "sizes": "192x192", "type": "image/png"},
-                  {"src": "../assets/icon-512.png?v=3", "sizes": "512x512", "type": "image/png"}]
+        "background_color": "#F2F4F3", "theme_color": "#1B7D8D", "lang": "it",
+        "icons": [{"src": "../assets/icon-192.png?v=4", "sizes": "192x192", "type": "image/png"},
+                  {"src": "../assets/icon-512.png?v=4", "sizes": "512x512", "type": "image/png"}]
     }, ensure_ascii=False, indent=1)
 
 def main():
@@ -96,8 +96,8 @@ def main():
         head = HEAD.format(title='Pannello clienti', short='Pannello', splash=SPLASH).replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
         (out / 'index.html').write_text(head + nonblock(body) + '\n</body>\n</html>\n', encoding='utf-8')
         (out / 'manifest.webmanifest').write_text(json.dumps({"name": "Pannello clienti", "short_name": "Pannello", "start_url": "./", "scope": "./", "display": "standalone",
-            "background_color": "#000000", "theme_color": "#1B7D8D", "lang": "it",
-            "icons": [{"src": "../assets/icon-192.png?v=3", "sizes": "192x192", "type": "image/png"}, {"src": "../assets/icon-512.png?v=3", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False, indent=1), encoding='utf-8')
+            "background_color": "#F2F4F3", "theme_color": "#1B7D8D", "lang": "it",
+            "icons": [{"src": "../assets/icon-192.png?v=4", "sizes": "192x192", "type": "image/png"}, {"src": "../assets/icon-512.png?v=4", "sizes": "512x512", "type": "image/png"}]}, ensure_ascii=False, indent=1), encoding='utf-8')
         print('Pannello creato:', panel)
     print('Pagine create:', len(slugs))
 
