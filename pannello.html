@@ -228,7 +228,7 @@ function week(){
 function eur(n){ return (Math.round(n*100)/100).toLocaleString('it-IT')+' €'; }
 function viewRecap(rows){
   var now=new Date(), totP=0, totA=0, totN=0;
-  var h='<section class="rc"><div class="rc-r rc-hd"><span>Cliente</span><span>Fatte</span><span>Rim.</span><span>Prezzo</span><span>Pagato</span><span>Pacc.</span></div>';
+  var h='<section class="rc"><div class="rc-r rc-hd"><span>Cliente</span><span>Fatte</span><span>Rim.</span><span>Prezzo</span><span>Pagato</span><span>Tot.</span></div>';
   rows.slice().sort(function(a,b){ return (a.c.name||'').localeCompare(b.c.name||'','it'); }).forEach(function(x){
     var c=x.c, p=effPkg(c), mode=p.mode||((parseInt(p.total,10)>0)?'pack':'none'), f='—', l='—', lc='', pr='—', pa='—', pc='';
     if(mode==='pack'){ var tot=parseInt(p.total,10)||0;
