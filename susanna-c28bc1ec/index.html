@@ -661,7 +661,7 @@ function viewTrain(){
       if(ACC){
         var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
-        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+((exInfo(e)||eo)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?(exInfo(e)?' ':'')+'<span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">'+(exInfo(e)?'Modifica':'+ Aggiungi nota')+'</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (S'+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+((exInfo(e)||eo)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?(exInfo(e)?' ':'')+'<span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">'+(exInfo(e)?'Modifica':'+ Aggiungi nota')+'</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (Week '+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
       } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
@@ -676,12 +676,13 @@ function viewTrain(){
         var di = ui.day, last = 0;
         lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
-        var upto = Math.max(nWeeks(), last);
+        var nost = !(S.client && S.client.start), upto = Math.max(nWeeks(), last + (nost?1:0));
+        var cwe = cw || (nost ? last+1 : 0);
         h += '<div class="log">'+(ACC?'':'<span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span>')+'<div class="log-weeks">';
         for(var w=1; w<=upto; w++){
           var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
-          var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
-          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(ACC&&w===cw?'<small class="wk-lab">'+esc((e.lab||'').trim()||'REP/KG')+'</small>':'')+(val.trim()?esc(val):(ACC&&w===cw?'Segna':'+ segna'))+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
+          var cls = 'wk edit'+(w===cwe?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
+          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>Week '+w+'</b>'+(ACC&&w===cwe?'<small class="wk-lab">'+esc((e.lab||'').trim()||'REP/KG')+'</small>':'')+(val.trim()?esc(val):(ACC&&w===cwe?'Segna':'+ segna'))+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
         }
         h += '</div>';
         if(ui.le && ui.le.d===di && ui.le.n===e.n){
@@ -724,10 +725,6 @@ var CHEV='<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4
 function viewPkgHist(){
   var p=S.pkg||{}, list=(S.pkgHist||[]).slice(), en=pkgEnded(), fD=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
   if(en && !list.some(function(x){ return x.start===en.start; })) list.push(en);
-  if(pkgMode(p)==='pack' && p.start){
-    var pre=oneADay(S.appts.filter(function(a){ return a.d && a.d<p.start && !list.some(function(x){ return x.start && x.end && a.d>=x.start && a.d<=x.end; }); }).sort(function(a,b){ return a.d<b.d?-1:1; }));
-    if(pre.length) list.push({auto:1,n:pre.length,start:pre[0].d,end:pre[pre.length-1].d});
-  }
   list.sort(function(a,b){ return (b.end||'')<(a.end||'')?-1:1; });
   var h='<details class="pkh'+(R2?' ddc':'')+'"><summary>'+(R2?'<span>Pacchetti conclusi ('+list.length+')</span>'+CHEV:'Pacchetti conclusi ('+list.length+')')+'</summary>';
   if(!list.length) h+='<p class="pkh-e">Nessun pacchetto concluso.</p>';
@@ -792,7 +789,7 @@ function viewPkg(){
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
   var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
-  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2715 2\u00aa rata da pagare', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2013 2\u00aa rata da pagare', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
   if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
   var pol = POLHTML = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>, altrimenti verrà conteggiata ugualmente.</span></p>' : '';
   return '<section class="pkg" aria-label="Lezioni">'+h+(SITE?'':pol)+coach+'</section>';
