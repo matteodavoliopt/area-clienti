@@ -144,6 +144,11 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex.acc .log-weeks{scroll-padding-left:0}
 .ex.acc .wk.now.empty{background:var(--accent);border:1px solid var(--accent);color:var(--accent-ink);font-weight:700}
 .ex.acc .wk.now.empty b,.ex.acc .wk.now.empty .wk-lab{color:var(--accent-ink);opacity:.95}
+.ex-h .n{display:flex;flex-direction:column;align-items:center;gap:4px}
+.mus{width:26px;height:52px;display:block}
+.mus .mb{fill:var(--line)}
+.mus .ms{fill:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.mus .mp{fill:var(--accent)}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -396,6 +401,42 @@ function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
 function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
 if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.f==='client'){ if(p.sent && String((S.client||{})[p.k]||'').trim()===String(p.v||'').trim()) delete PEND[k]; return; } var e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
 function ikey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|info'; }
+var MUS_RULES=[
+ [/leg ?curl|gambe tese|rdl|romanian|good ?morning|nordic/i,'back',['ham'],['glu']],
+ [/push ?down|french|tricip|kick ?back|estensioni? .*sopra|skull/i,'back',['tri'],[]],
+ [/curl/i,'front',['bic'],['fore']],
+ [/trazion|pull ?down|lat ?machine|pull ?up|chin/i,'back',['lat'],['bic','rdelt']],
+ [/row|rematore|pulley|pull ?over/i,'back',['lat','upb'],['rdelt']],
+ [/posterior|croce inversa|face ?pull|reverse ?fl|rear/i,'back',['rdelt','upb'],[]],
+ [/alzat\w* lateral|lateral raise/i,'front',['delt'],[]],
+ [/60°|lento|military|shoulder ?press|arnold|spinte?\w* sopra/i,'front',['delt'],['chest']],
+ [/dip/i,'front',['chest'],['delt']],
+ [/panca|chest ?press|croci|push ?up|piegament|bench|pectoral|peck/i,'front',['chest'],['delt']],
+ [/hip ?th?rust|glute|ponte|abdu|kickback/i,'back',['glu'],['ham']],
+ [/stacco|deadlift/i,'back',['ham','glu','lowb'],['upb']],
+ [/calf|polpacc/i,'back',['calf'],[]],
+ [/iperesten|lombar|hyperext/i,'back',['lowb'],['glu']],
+ [/squat|leg ?press|affond|lunge|hack|leg ?ext|step ?up|bulgar|pressa/i,'front',['quad'],['glu']],
+ [/crunch|addom|plank|sit ?up|leg ?raise|russian|twist|hollow|\bab/i,'front',['abs'],[]]
+];
+function musFor(n){ for(var i=0;i<MUS_RULES.length;i++){ var r=MUS_RULES[i]; if(r[0].test(n)) return {v:r[1],p:r[2],s:r[3]}; } return null; }
+function musSvg(m){
+  var F={delt:'<ellipse cx="9.5" cy="20" rx="3.6" ry="3.2"/><ellipse cx="30.5" cy="20" rx="3.6" ry="3.2"/>',
+    chest:'<path d="M13.5 18.5h6v8.5c-2.6 .6-5 .1-6-1.5z"/><path d="M26.5 18.5h-6v8.5c2.6 .6 5 .1 6-1.5z"/>',
+    bic:'<ellipse cx="7.2" cy="29" rx="2.4" ry="5.2"/><ellipse cx="32.8" cy="29" rx="2.4" ry="5.2"/>',
+    fore:'<ellipse cx="5.6" cy="40" rx="2" ry="5"/><ellipse cx="34.4" cy="40" rx="2" ry="5"/>',
+    abs:'<rect x="15.5" y="28.5" width="9" height="14" rx="2.5"/>',
+    quad:'<ellipse cx="15.6" cy="55" rx="3.8" ry="9.5"/><ellipse cx="24.4" cy="55" rx="3.8" ry="9.5"/>',
+    calf:'<ellipse cx="15.6" cy="71" rx="2.6" ry="6"/><ellipse cx="24.4" cy="71" rx="2.6" ry="6"/>'};
+  var B={rdelt:F.delt, upb:'<path d="M14 15.5h12l1.5 5h-15z"/>', lat:'<path d="M12.5 21.5h15l-2 13.5c-2.5 1.6-8.5 1.6-11 0z"/>',
+    tri:F.bic, fore:F.fore, lowb:'<rect x="16" y="36" width="8" height="7" rx="2"/>',
+    glu:'<ellipse cx="15.8" cy="47.5" rx="4.2" ry="4"/><ellipse cx="24.2" cy="47.5" rx="4.2" ry="4"/>',
+    ham:'<ellipse cx="15.6" cy="58.5" rx="3.6" ry="7.5"/><ellipse cx="24.4" cy="58.5" rx="3.6" ry="7.5"/>', calf:F.calf, bic:''};
+  var P=m.v==='front'?F:B, base='', hi='', se='';
+  Object.keys(P).forEach(function(k){ if(!P[k]) return; if(m.p.indexOf(k)>=0) hi+=P[k]; else if(m.s.indexOf(k)>=0) se+=P[k]; else base+=P[k]; });
+  return '<svg class="mus" viewBox="0 0 40 80" aria-hidden="true"><circle class="mb" cx="20" cy="7" r="4.6"/><rect class="mb" x="17.6" y="11" width="4.8" height="4" rx="1"/>'+(m.v==='back'?'':'')+'<g class="mb">'+base+'</g><g class="ms">'+se+'</g><g class="mp">'+hi+'</g></svg>';
+}
+var MUSX = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 function exInfo(e){ var p=SITE?PEND[ikey(ui.day,e)]:null; return String(p?p.v:(e.info||'')).trim(); }
 function infoSite(e){
   var di = ui.day, k = ikey(di,e), p = PEND[k], val = p ? p.v : (e.info||'');
@@ -624,7 +665,7 @@ function viewTrain(){
       if(ACC){
         var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
-        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+((exInfo(e)||eo)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?(exInfo(e)?' ':'')+'<span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">'+(exInfo(e)?'Modifica':'+ Aggiungi nota')+'</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (S'+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+(MUSX&&musFor(e.n)?musSvg(musFor(e.n)):'')+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+((exInfo(e)||eo)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?(exInfo(e)?' ':'')+'<span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">'+(exInfo(e)?'Modifica':'+ Aggiungi nota')+'</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (S'+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
       } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
