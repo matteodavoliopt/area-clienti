@@ -872,6 +872,15 @@ function saveLog(){
   PEND[k]={d:L.d,dn:(S.days[L.d]||{}).name||'',n:e.n,w:L.w,v:v,ts:Date.now(),sent:false};
   pendSave(); ui.le=null; var y4=window.scrollY; render(); window.scrollTo(0,y4); sendPend(k);
 }
+function showOpen(el){
+  if(!el) return;
+  setTimeout(function(){
+    var r=el.getBoundingClientRect(), vv=window.visualViewport, bot=vv?vv.height:window.innerHeight;
+    var nv=document.querySelector('.nav'); if(nv){ var nr=nv.getBoundingClientRect(); if(nr.top<bot) bot=nr.top; }
+    var over=r.bottom-(bot-12); if(over<=0) return;
+    var d=Math.min(over, r.top-12); if(d>4){ try{ window.scrollBy({top:d,behavior:'smooth'}); }catch(err){ window.scrollBy(0,d); } }
+  },40);
+}
 function kbFit(){
   var a=document.activeElement; if(!a || (a.id!=='le-in' && a.id!=='ie-in')) return;
   var box=a.closest('.le')||a, r=box.getBoundingClientRect(), vv=window.visualViewport;
@@ -893,7 +902,8 @@ app.addEventListener('input', function(e){
 });
 app.addEventListener('keydown', function(e){ if(e.target.id==='le-in' && e.key==='Enter'){ e.preventDefault(); saveLog(); } });
 
-app.addEventListener('toggle', function(e){ var k=e.target && e.target.getAttribute && e.target.getAttribute('data-blk'); if(k!=null){ ui.ob=ui.ob||{}; ui.ob[k]=e.target.open; } }, true);
+app.addEventListener('toggle', function(e){ var k=e.target && e.target.getAttribute && e.target.getAttribute('data-blk'); if(k!=null){ ui.ob=ui.ob||{}; ui.ob[k]=e.target.open; } if(e.target && e.target.open && e.target.tagName==='DETAILS' && e.target.dataset.user) showOpen(e.target); }, true);
+app.addEventListener('click', function(e){ var sm=e.target.closest && e.target.closest('summary'); if(sm && sm.parentNode) sm.parentNode.dataset.user='1'; }, true);
 
 app.addEventListener('input', function(e){
   var p = e.target.getAttribute && e.target.getAttribute('data-p');
@@ -921,7 +931,7 @@ app.addEventListener('click', function(e){
     S.pkg.total=t?String(t):''; S.pkg.done=String(dn); ui.dirty=true; ui.msg='';
     var yy=window.scrollY; render(); window.scrollTo(0,yy); return;
   }
-  if(a==='exT'){ ui.exo=ui.exo||{}; ui.exo[b.dataset.k]=!ui.exo[b.dataset.k]; var y9=window.scrollY; render(); window.scrollTo(0,y9); return; }
+  if(a==='exT'){ ui.exo=ui.exo||{}; var k9=b.dataset.k; ui.exo[k9]=!ui.exo[k9]; var y9=window.scrollY; render(); window.scrollTo(0,y9); if(ui.exo[k9]){ var hb=[].filter.call(document.querySelectorAll('.ex-h'),function(x){ return x.dataset.k===k9; })[0]; showOpen(hb&&hb.parentNode); } return; }
   if(a==='logEdit'){ ui.le={d:+b.dataset.d,n:b.dataset.n,w:+b.dataset.w}; var y3=window.scrollY; render(); window.scrollTo(0,y3); var inp1=document.getElementById('le-in'); if(inp1){ try{ inp1.focus({preventScroll:true}); }catch(err){ inp1.focus(); } } return; }
   if(a==='logCancel'){ ui.le=null; render(); return; }
   if(a==='infoEdit'){ ui.ie={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y5=window.scrollY; render(); window.scrollTo(0,y5); var t1=document.getElementById('ie-in'); if(t1){ try{ t1.focus({preventScroll:true}); }catch(err){ t1.focus(); } } return; }
