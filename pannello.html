@@ -50,7 +50,12 @@ h1,h2{margin:0;text-wrap:balance}
 .splash .s-role{font:600 clamp(9px,2.9vw,12px)/1.3 var(--body);letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:var(--muted);animation:spl-in .7s .3s ease both}
 @keyframes spl-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .tools{display:flex;gap:8px;flex-wrap:wrap}
-.search{flex:1 1 220px;font:15px/1.4 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-width:0}
+.sbox{position:relative;flex:1 1 220px;display:flex;min-width:0}
+.sbox .search{padding-right:42px !important}
+.search::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.sx{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:50%;background:var(--line);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.sx svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;fill:none}
+.search{flex:1 1 auto;width:100%;font:15px/1.4 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-width:0}
 .list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px}
 .row{position:relative;display:grid;grid-template-columns:1fr auto;gap:8px 12px;padding:14px 16px;border-top:1px solid var(--line);align-items:center}
 .row:first-child{border-top:0}
@@ -260,7 +265,7 @@ function render(){
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
   var h = '<header class="brand hello"><h1>Pannello clienti</h1>'+LOGO+'</header>';
-  if(ui.f!=='recap') h += '<div class="tools"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'"></div>';
+  if(ui.f!=='recap') h += '<div class="tools"><div class="sbox"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'">'+(ui.q?'<button type="button" class="sx" data-clr="1" aria-label="Cancella ricerca"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>':'')+'</div></div>';
   if(ui.f==='recap') h += viewRecap(rows);
   else if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
   else if(!list.length) h += '<p class="empty">Nessun cliente corrisponde.</p>';
@@ -293,6 +298,7 @@ app.addEventListener('click', function(e){
     try{ if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(ok, fb); else fb(); }catch(err){ fb(); }
     return;
   }
+  if(e.target.closest('[data-clr]')){ ui.q=''; render(); var qi=document.getElementById('q'); if(qi) qi.focus(); return; }
   var nv = e.target.closest('[data-nav]');
   if(nv){ ui.f = nv.dataset.nav; try{ localStorage.setItem('pc-filter', ui.f); }catch(err){} render();
     var tg = ui.f==='all' ? null : document.querySelector('.tools');
