@@ -243,6 +243,7 @@ button.wk.empty{color:var(--accent)}
 .pay.no{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
 .policy{margin:0;display:flex;gap:8px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.4;color:var(--muted)}
 .policy svg{flex:0 0 auto;width:16px;height:16px;margin-top:1px;color:var(--rest)}
+.pol-ap{border-top:0;padding:2px 4px 0}
 .policy strong{color:var(--ink);font-weight:600}
 .pkg-coach{display:flex;flex-direction:column;gap:12px;padding-top:12px;border-top:1px dashed var(--line)}
 .pkg-coach .pkg-ctl{padding-top:0;border-top:0}
@@ -728,6 +729,7 @@ var MASS=[
 ['Massaggio rilassante svedese','Il massaggio classico per staccare la mente e rilassare tutto il corpo. Si basa su movimenti fluidi e avvolgenti, con una pressione media e piacevole. Allevia lo stress, scioglie le tensioni leggere e favorisce la circolazione. Aiuta a dormire meglio e a ritrovare energia. Perfetto per regalarsi un momento solo per sé.'],
 ['Massaggio linfodrenante Vodder','Una tecnica dolce e lenta che stimola il sistema linfatico. Con movimenti leggeri e ritmici aiuta a eliminare liquidi in eccesso e tossine. È indicato per gambe gonfie e pesanti, ritenzione idrica e cattiva circolazione. Riduce il gonfiore e dona una piacevole sensazione di leggerezza. Molto rilassante, anche come complemento all’anticellulite.']];
 function viewMass(){ return '<div class="mass-sep"></div><section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><div class="mass-l">'+MASS.map(function(m){ return '<details><summary>'+esc(m[0])+'<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><p>'+esc(m[1])+'</p></details>'; }).join('')+'</div></section>'; }
+var POLHTML='';
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
   if(!ui.canEdit && (pkgEnded() || pkgEmpty())) return '';
@@ -774,10 +776,10 @@ function viewPkg(){
     h += '<span class="eyebrow">Conteggio lezioni</span><small>'+(mode==='pack'?'Imposta il numero di lezioni del pacchetto: il cliente vedrà il contatore.':'Scegli come contare le lezioni di questo cliente. Con “Nessuno” il cliente non vede questo riquadro.')+'</small>';
   }
   var ps = (mode==='month' || (mode==='pack' && tot>0)) ? payState(p,mode) : null;
-  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2715 2\u00b0 rata da pagare', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
+  var PAYTXT = {ok:'\u2713 '+(mode==='month'?'Mese pagato':'Pacchetto pagato'), rata:'\u2715 2\u00aa rata da pagare', no:'\u2715 '+(mode==='month'?'Mese da pagare':'Pacchetto da pagare')};
   if(ps!==null) h = h.replace('</span>', '</span><span class="pay '+ps+'">'+PAYTXT[ps]+'</span>');
-  var pol = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
-  return '<section class="pkg" aria-label="Lezioni">'+h+pol+coach+'</section>';
+  var pol = POLHTML = (mode==='month' || (mode==='pack' && tot>0)) ? '<p class="policy"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Puoi annullare una lezione solo con almeno <strong>24 ore di preavviso</strong>.</span></p>' : '';
+  return '<section class="pkg" aria-label="Lezioni">'+h+(SITE?'':pol)+coach+'</section>';
 }
 
 function viewAppts(){
@@ -813,6 +815,7 @@ function viewApptList(){
   if(up.length){
     var n = up[0];
     h += '<div class="next"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
+    if(SITE){ viewPkg(); if(POLHTML) h += POLHTML.replace('class="policy"','class="policy pol-ap"'); }
     if(up.length>1){ h += '<ul class="appts">'; up.slice(1).forEach(function(a){ h += row(a,''); }); h += '</ul>'; }
   } else h += '<p class="empty">Nessun appuntamento in arrivo.</p>';
   h += calendar(list);
