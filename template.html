@@ -125,6 +125,15 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex.acc .log-weeks{scroll-padding-left:0}
 .ex.acc .wk.now.empty{background:var(--accent);border:1px solid var(--accent);color:var(--accent-ink);font-weight:700}
 .ex.acc .wk.now.empty b,.ex.acc .wk.now.empty .wk-lab{color:var(--accent-ink);opacity:.95}
+.r2 .next{background:var(--accent);color:var(--accent-ink)}
+.r2 .next .eyebrow{opacity:.85}
+.ddc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 16px}
+.ddc>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0;color:var(--ink);font-weight:600;font-size:15px}
+.ddc>summary::-webkit-details-marker{display:none}
+.ddc>summary .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;flex:0 0 auto}
+.ddc[open]>summary .chev{transform:rotate(180deg)}
+.ddc[open]{padding-bottom:6px}
+.ddc .pkh-e{padding:0 0 12px}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -414,6 +423,8 @@ function illuFor(t){ t=(t||'').toLowerCase();
 var PERSF=[['age','Età','Es. 32'],['weight','Peso (kg)','Es. 78'],['issues','Problematiche fisiche','Es. fastidio spalla destra'],['general','Informazioni generali','Es. lavoro sedentario, nuoto il martedì']];
 var PERSX = !!SITE;
 var ACC = !!SITE;
+var R2 = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
+if(R2) document.documentElement.classList.add('r2');
 if(PERSX) PERSF=[['name','Nome e cognome','Es. Mario Rossi'],['email','Email','Es. nome@email.it']].concat(PERSF);
 function persVal(k){ var p=SITE&&PEND['client|'+k]; return String(p ? p.v : ((S.client||{})[k]||'')).trim(); }
 function viewPers(){
@@ -579,7 +590,8 @@ function viewTrain(){
     S.days.forEach(function(x,i){ h += '<button class="chip" data-day="'+i+'" aria-pressed="'+(i===ui.day)+'">'+esc(x.name||('Day '+(i+1)))+'</button>'; });
     h += '</div>';
   }
-  h += '<div class="day-head"><h2>'+esc(d.name)+'</h2>'+(d.focus?'<p>'+esc(d.focus)+'</p>':'')+'</div>';
+  if(R2 && S.days.length>1){ if(d.focus) h += '<div class="day-head"><p>'+esc(d.focus)+'</p></div>'; }
+  else h += '<div class="day-head"><h2>'+esc(d.name)+'</h2>'+(d.focus?'<p>'+esc(d.focus)+'</p>':'')+'</div>';
   function blk(b){
     if(!(b.text||'').trim()) return;
     var lines=b.text.split('\n').filter(function(x){ return x.trim(); });
@@ -664,6 +676,7 @@ function pkgEnded(){
   return {total:tot,start:p.start,end:(l[Math.max(0,need-1)]||l[l.length-1]||{d:p.start}).d,n:tot,paid:p.paid};
 }
 function pkgEmpty(){ var p=S.pkg||{}; return pkgMode(p)==='pack' && !(parseInt(p.total,10)>0); }
+var CHEV='<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>';
 function viewPkgHist(){
   var p=S.pkg||{}, list=(S.pkgHist||[]).slice(), en=pkgEnded(), fD=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'});
   if(en && !list.some(function(x){ return x.start===en.start; })) list.push(en);
@@ -672,7 +685,7 @@ function viewPkgHist(){
     if(pre.length) list.push({auto:1,n:pre.length,start:pre[0].d,end:pre[pre.length-1].d});
   }
   list.sort(function(a,b){ return (b.end||'')<(a.end||'')?-1:1; });
-  var h='<details class="pkh"><summary>Pacchetti conclusi ('+list.length+')</summary>';
+  var h='<details class="pkh'+(R2?' ddc':'')+'"><summary>'+(R2?'<span>Pacchetti conclusi ('+list.length+')</span>'+CHEV:'Pacchetti conclusi ('+list.length+')')+'</summary>';
   if(!list.length) h+='<p class="pkh-e">Nessun pacchetto concluso.</p>';
   else { h+='<ul class="appts">'; list.forEach(function(x){
     var n=x.n!=null?x.n:(x.total||''), rng='';
@@ -776,7 +789,7 @@ function viewApptList(){
     if(up.length>1){ h += '<ul class="appts">'; up.slice(1).forEach(function(a){ h += row(a,''); }); h += '</ul>'; }
   } else h += '<p class="empty">Nessun appuntamento in arrivo.</p>';
   h += calendar(list);
-  if(past.length){ h += '<details><summary>Tutti gli appuntamenti passati ('+past.length+')</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
+  if(past.length){ h += '<details'+(R2?' class="ddc"':'')+'><summary>'+(R2?'<span>Appuntamenti passati ('+past.length+')</span>'+CHEV:'Tutti gli appuntamenti passati ('+past.length+')')+'</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
   return h;
   function row(a,cls){ var dt=parseD(a); return '<li class="appt '+cls+'"><span class="date"><strong>'+dt.getDate()+'</strong>'+esc(fmtMon.format(dt))+'</span><span class="what">'+esc(a.what||'Appuntamento')+'<span>'+(a.t?'Ore '+esc(a.t):'')+(a.where?' · '+esc(a.where):'')+'</span></span></li>'; }
 }
@@ -847,7 +860,7 @@ function render(){
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
     h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
-    if(S.updated){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
+    if(S.updated && !R2){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
   if(ui.canEdit){
     h += '<div class="bar'+(S.navbar&&!ui.edit?' up':'')+'"><div class="bar-in"><span class="msg" aria-live="polite">'+esc(ui.msg || (ui.dirty && !ui.edit ? 'Modifiche al pacchetto: premi Salva per mostrarle al cliente.' : ui.edit?'Le modifiche diventano visibili al cliente quando salvi.':'Vista coach: solo tu vedi questa barra.'))+'</span>'+
