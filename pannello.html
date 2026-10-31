@@ -163,7 +163,7 @@ function effPkg(c){ var p=Object.assign({}, c.pkg||{}), e=ED[rcKey(c)]; if(!e) r
   var pr=parseFloat(p.price)||0, pa=parseFloat(p.paidAmt); if(pr>0 && !isNaN(pa)){ p.paid = pa>=pr ? true : (pa>0 ? 'rata' : false); if(p.paid===true) p.paidMonth=new Date().toISOString().slice(0,7); }
   return p; }
 var PF = window.PFORM && window.PFORM.action ? window.PFORM : null;
-try{ var lo=JSON.parse(localStorage.getItem('rc-edits')||'{}'); Object.keys(lo).forEach(function(k){ if(lo[k] && new Date(lo[k].ts).toISOString().slice(0,10) >= (D.updated||'')) ED[k]=lo[k]; }); }catch(e){}
+try{ var lo=JSON.parse(localStorage.getItem('rc-edits')||'{}'); Object.keys(lo).forEach(function(k){ var cc=C.filter(function(x){ return rcKey(x)===k; })[0], pk=(cc&&cc.pkg)||{}; var gone=cc && !(parseInt(pk.total,10)>0) && (cc.pkgHist||[]).length; if(lo[k] && cc && !gone && lo[k].ts > (parseInt(pk.recapTs,10)||0)) ED[k]=lo[k]; else delete lo[k]; }); localStorage.setItem('rc-edits', JSON.stringify(lo)); }catch(e){}
 (async function(){ try{ if(!window.claude || !window.claude.use) return; var db=await window.claude.use('db'); if(!db) return; EDB=db;
   db.collection('edits').onSnapshot(function(snap){ var o={}; (snap.docs||snap).forEach(function(d){ var v=d.data?d.data():d; o[d.id||v.id]=v; }); ED=o; render(); }, function(){}); }catch(e){} })();
 function status(c){
