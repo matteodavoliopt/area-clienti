@@ -229,7 +229,8 @@ function eur(n){ return (Math.round(n*100)/100).toLocaleString('it-IT')+' €'; 
 function viewRecap(rows){
   var now=new Date(), totP=0, totA=0, totN=0;
   var h='<section class="rc"><div class="rc-r rc-hd"><span>Cliente</span><span>Fatte</span><span>Rim.</span><span>Prezzo</span><span>Pagato</span><span>Tot.</span></div>';
-  rows.slice().sort(function(a,b){ return (a.c.name||'').localeCompare(b.c.name||'','it'); }).forEach(function(x){
+  var rq=(ui.q||'').trim().toLowerCase();
+  rows.filter(function(x){ return !rq || (x.c.name||'').toLowerCase().indexOf(rq)>=0; }).sort(function(a,b){ return (a.c.name||'').localeCompare(b.c.name||'','it'); }).forEach(function(x){
     var c=x.c, p=effPkg(c), mode=p.mode||((parseInt(p.total,10)>0)?'pack':'none'), f='—', l='—', lc='', pr='—', pa='—', pc='';
     if(mode==='pack'){ var tot=parseInt(p.total,10)||0;
       if(tot>0){ var dn=x.s.done!=null?x.s.done:(parseInt(p.done,10)||0), left=tot-dn; f=String(dn); l=String(left); lc=left<=2?'warn':'blue'; } }
@@ -268,7 +269,7 @@ function render(){
     return (a.c.name||'').localeCompare(b.c.name||'','it');
   });
   var h = '<header class="brand hello"><h1>Pannello clienti</h1>'+LOGO+'</header>';
-  if(ui.f!=='recap') h += '<div class="tools"><div class="sbox"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'">'+(ui.q?'<button type="button" class="sx" data-clr="1" aria-label="Cancella ricerca"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>':'')+'</div></div>';
+  h += '<div class="tools"><div class="sbox"><input class="search" id="q" type="search" placeholder="Cerca un cliente" aria-label="Cerca un cliente" value="'+esc(ui.q)+'">'+(ui.q?'<button type="button" class="sx" data-clr="1" aria-label="Cancella ricerca"><svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>':'')+'</div></div>';
   if(ui.f==='recap') h += viewRecap(rows);
   else if(!C.length) h += '<p class="empty">Ancora nessun cliente. Chiedimi di creare la pagina di un cliente e comparirà qui.</p>';
   else if(!list.length) h += '<p class="empty">Nessun cliente corrisponde.</p>';
