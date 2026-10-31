@@ -1064,7 +1064,7 @@ async function save(){
 render();
 
 /* --- Guida alla prima apertura e uso senza connessione --- */
-var R3 = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
+var R3 = !!SITE;
 function guida(){
   if(!R3) return;
   var force=/[?&]guida\b/.test(location.search), seen=false;
