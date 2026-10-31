@@ -423,7 +423,7 @@ function illuFor(t){ t=(t||'').toLowerCase();
 var PERSF=[['age','Età','Es. 32'],['weight','Peso (kg)','Es. 78'],['issues','Problematiche fisiche','Es. fastidio spalla destra'],['general','Informazioni generali','Es. lavoro sedentario, nuoto il martedì']];
 var PERSX = !!SITE;
 var ACC = !!SITE;
-var R2 = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
+var R2 = !!SITE;
 if(R2) document.documentElement.classList.add('r2');
 if(PERSX) PERSF=[['name','Nome e cognome','Es. Mario Rossi'],['email','Email','Es. nome@email.it']].concat(PERSF);
 function persVal(k){ var p=SITE&&PEND['client|'+k]; return String(p ? p.v : ((S.client||{})[k]||'')).trim(); }
