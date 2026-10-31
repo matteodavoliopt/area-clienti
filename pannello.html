@@ -298,7 +298,7 @@ app.addEventListener('click', function(e){
     try{ if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(ok, fb); else fb(); }catch(err){ fb(); }
     return;
   }
-  if(e.target.closest('[data-clr]')){ ui.q=''; render(); var qi=document.getElementById('q'); if(qi) qi.focus(); return; }
+  if(e.target.closest('[data-clr]')){ ui.q=''; render(); try{ document.activeElement && document.activeElement.blur(); }catch(err){} return; }
   var nv = e.target.closest('[data-nav]');
   if(nv){ ui.f = nv.dataset.nav; try{ localStorage.setItem('pc-filter', ui.f); }catch(err){} render();
     var tg = ui.f==='all' ? null : document.querySelector('.tools');
