@@ -130,6 +130,18 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .block div{white-space:pre-wrap}
 .ex-list{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px}
 .ex{display:grid;grid-template-columns:28px 1fr auto;gap:4px 12px;padding:14px 16px;border-top:1px solid var(--line)}
+.ex.acc{display:block;padding:0}
+.ex-h{display:grid;grid-template-columns:28px 1fr 16px;gap:12px;align-items:center;width:100%;padding:14px 16px;border:0;background:none;text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.ex-h .n{align-self:start}
+.ex-t{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ex-h .meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--mono);font-size:13px}
+.ex-last{color:var(--accent);font-weight:600}
+.ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.ex.acc.open .ex-h .chev{transform:rotate(180deg)}
+.ex-b{display:none;padding:0 16px 16px 56px}
+.ex.acc.open .ex-b{display:flex;flex-direction:column;gap:10px}
+.ex.acc.open{background:color-mix(in srgb,var(--accent-soft) 35%,transparent)}
+@media (max-width:420px){.ex-b{padding-left:16px}}
 .ex:first-child{border-top:0}
 .ex .n{font:700 20px/1.3 var(--display);color:var(--muted)}
 .ex .name{min-width:0;font-weight:600;font-size:16px;line-height:1.3}
@@ -407,6 +419,7 @@ function illuFor(t){ t=(t||'').toLowerCase();
 
 var PERSF=[['age','Età','Es. 32'],['weight','Peso (kg)','Es. 78'],['issues','Problematiche fisiche','Es. fastidio spalla destra'],['general','Informazioni generali','Es. lavoro sedentario, nuoto il martedì']];
 var PERSX = !!SITE;
+var ACC = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 if(PERSX) PERSF=[['name','Nome e cognome','Es. Mario Rossi'],['email','Email','Es. nome@email.it']].concat(PERSF);
 function persVal(k){ var p=SITE&&PEND['client|'+k]; return String(p ? p.v : ((S.client||{})[k]||'')).trim(); }
 function viewPers(){
@@ -594,6 +607,13 @@ function viewTrain(){
     var cw = curWeek();
     ex.forEach(function(e,i){
       var vs = vidLinks(e), one = vs.length===1;
+      var ek = ui.day+'|'+e.n, eo = ACC && ui.exo && ui.exo[ek];
+      if(ACC){
+        var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
+        Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
+        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+(lastV?'<span class="ex-last">Ultimo S'+lastW+': '+esc(lastV)+'</span>':'')+'</span></span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
+      } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
         ((one && !SITE)?'<a class="vid" href="'+esc(safeUrl(vs[0].u))+'" target="_blank" rel="noopener">'+PLAY+'Video</a>':'<span></span>')+
         '<span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+tmRest(e,i)+
@@ -623,7 +643,7 @@ function viewTrain(){
         for(var w2=0, W2=Math.max(nWeeks(), lg.length); w2<W2; w2++){ var x2=(lg[w2]||'').trim(); h += '<span class="wk'+(w2+1===cw?' now':'')+(x2?'':' empty')+'"><b>S'+(w2+1)+'</b>'+(x2?esc(x2):(w2+1===cw?'questa settimana':'—'))+'</span>'; }
         h += '</div></div>';
       }
-      h += '</li>';
+      h += (ACC?'</div>':'')+'</li>';
     });
     h += '</ol>';
   }
@@ -889,6 +909,7 @@ app.addEventListener('click', function(e){
     S.pkg.total=t?String(t):''; S.pkg.done=String(dn); ui.dirty=true; ui.msg='';
     var yy=window.scrollY; render(); window.scrollTo(0,yy); return;
   }
+  if(a==='exT'){ ui.exo=ui.exo||{}; ui.exo[b.dataset.k]=!ui.exo[b.dataset.k]; var y9=window.scrollY; render(); window.scrollTo(0,y9); return; }
   if(a==='logEdit'){ ui.le={d:+b.dataset.d,n:b.dataset.n,w:+b.dataset.w}; var y3=window.scrollY; render(); window.scrollTo(0,y3); var inp1=document.getElementById('le-in'); if(inp1){ try{ inp1.focus({preventScroll:true}); }catch(err){ inp1.focus(); } } return; }
   if(a==='logCancel'){ ui.le=null; render(); return; }
   if(a==='infoEdit'){ ui.ie={d:+b.dataset.d,n:b.dataset.n}; ui.le=null; var y5=window.scrollY; render(); window.scrollTo(0,y5); var t1=document.getElementById('ie-in'); if(t1){ try{ t1.focus({preventScroll:true}); }catch(err){ t1.focus(); } } return; }
