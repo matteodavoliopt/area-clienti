@@ -162,7 +162,7 @@ var C = D.clients || [];
 var SITES = {}; try{ SITES = JSON.parse(document.getElementById('sites').textContent) || {}; }catch(e){}
 var app = document.getElementById('app');
 var ui = { q:'', f:'all' };
-try{ ui.f = localStorage.getItem('pc-filter') || 'all'; }catch(e){}
+ui.f = 'all'; try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; window.scrollTo(0,0); }catch(e){}
 
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
 function parseD(a){ var p=(a.d||'').split('-'); var t=(a.t||'00:00').split(':'); return new Date(+p[0],(+p[1]||1)-1,+p[2]||1,+t[0]||0,+t[1]||0); }
