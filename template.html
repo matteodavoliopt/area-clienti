@@ -872,6 +872,15 @@ function saveLog(){
   PEND[k]={d:L.d,dn:(S.days[L.d]||{}).name||'',n:e.n,w:L.w,v:v,ts:Date.now(),sent:false};
   pendSave(); ui.le=null; var y4=window.scrollY; render(); window.scrollTo(0,y4); sendPend(k);
 }
+app.addEventListener('input', function(e){
+  var el=e.target; if(!el || el.id!=='le-in') return;
+  var v=el.value, atEnd=el.selectionStart===v.length;
+  if(!atEnd) return;
+  var nv;
+  if((e.inputType||'').indexOf('delete')===0){ nv = /\s·\s?$/.test(v) ? v.replace(/\s*·\s*$/,'') : v; }
+  else nv = v.replace(/ +/g,' ').replace(/(?:\s*·\s*)+/g,' · ').replace(/^ · /,'').replace(/([^\s·]) (?!·)/g,'$1 · ');
+  if(nv!==v){ el.value=nv; try{ el.setSelectionRange(nv.length,nv.length); }catch(err){} }
+});
 app.addEventListener('keydown', function(e){ if(e.target.id==='le-in' && e.key==='Enter'){ e.preventDefault(); saveLog(); } });
 
 app.addEventListener('toggle', function(e){ var k=e.target && e.target.getAttribute && e.target.getAttribute('data-blk'); if(k!=null){ ui.ob=ui.ob||{}; ui.ob[k]=e.target.open; } }, true);
