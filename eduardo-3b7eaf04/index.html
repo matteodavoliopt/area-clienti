@@ -333,6 +333,7 @@ textarea{min-height:64px;resize:vertical}
 .nav b{position:absolute;top:2px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font:700 11px/18px var(--body);color:var(--accent-ink);background:var(--accent)}
 .nav b.no{background:var(--danger);color:#fff}
 .nav b.rata{background:#E8B931;color:#3B2A00}
+.nav b.warn{background:#E07B24;color:#fff}
 .nav-sp{height:64px;flex:0 0 auto}
 .bar.up{bottom:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:12px}
 .brand.hello{justify-content:space-between;align-items:flex-start;gap:12px;text-align:left}
@@ -863,7 +864,11 @@ function viewEdit(){
   return h;
 }
 
-function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none' || pkgEnded() || pkgEmpty()) return ''; var s=payState(p,m); return s==='no' ? '<b class="no" aria-label="Da pagare">1</b>' : s==='rata' ? '<b class="rata" aria-label="Prima rata pagata">1</b>' : ''; }
+function pkgLeft(){ var p=S.pkg||{}; if(pkgMode(p)!=='pack') return null; var t=parseInt(p.total,10)||0; if(!t) return null; var d=p.start?Math.max(0,pastLessonsSince(p.start)+(parseInt(p.adj,10)||0)):(parseInt(p.done,10)||0); return Math.max(0,t-Math.min(d,t)); }
+function pkgBadge(){ var p=S.pkg||{}, m=pkgMode(p); if(m==='none' || pkgEnded() || pkgEmpty()) return ''; var s=payState(p,m), l=pkgLeft(), n=0, c='', lab=[];
+  if(s==='no'){ n++; c='no'; lab.push('Da pagare'); } else if(s==='rata'){ n++; c='rata'; lab.push('Seconda rata da pagare'); }
+  if(l!=null && l>0 && l<=2){ n++; lab.push(l===1?'Resta 1 lezione':'Restano 2 lezioni'); if(l===1) c='no'; else if(c!=='no') c='warn'; }
+  return n ? '<b class="'+c+'" aria-label="'+esc(lab.join(', '))+'">'+n+'</b>' : ''; }
 function navBar(nA){
   var I={train:'<svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg>',appts:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',pkg:'<svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 3-3M8.5 16l1.5 1.5 3-3M15 11h1M15 17h1"/></svg>',pers:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>'};
   return '<div class="nav-sp"></div><nav class="nav" aria-label="Navigazione"><div class="nav-in">'+
