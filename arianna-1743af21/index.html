@@ -624,7 +624,8 @@ function viewTrain(){
         ((one && !SITE)?'<a class="vid" href="'+esc(safeUrl(vs[0].u))+'" target="_blank" rel="noopener">'+PLAY+'Video</a>':'<span></span>')+
         '<span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
-      if(SITE && vs.length){ h += thumbs(vs); }
+      var thH = (SITE && vs.length) ? thumbs(vs) : '';
+      if(SITE && vs.length){ if(!ACC) h += thH; }
       else if(vs.length>1){ h += '<span class="vids">'; vs.forEach(function(v,j){ h += '<a class="vid" href="'+esc(safeUrl(v.u))+'" target="_blank" rel="noopener">'+PLAY+esc((v.t||'').trim()||('Video '+(j+1)))+'</a>'; }); h += '</span>'; }
       var lg = e.log||[], any = lg.some(function(x){ return (x||'').trim(); });
       if(SITE){
@@ -649,7 +650,7 @@ function viewTrain(){
         for(var w2=0, W2=Math.max(nWeeks(), lg.length); w2<W2; w2++){ var x2=(lg[w2]||'').trim(); h += '<span class="wk'+(w2+1===cw?' now':'')+(x2?'':' empty')+'"><b>S'+(w2+1)+'</b>'+(x2?esc(x2):(w2+1===cw?'questa settimana':'—'))+'</span>'; }
         h += '</div></div>';
       }
-      h += (ACC?'</div>':'')+'</li>';
+      h += (ACC?thH+'</div>':'')+'</li>';
     });
     h += '</ol>';
   }
