@@ -349,6 +349,8 @@ try { S = JSON.parse(document.getElementById('data').textContent); } catch(e){ S
 S.navbar = S.navbar!==false; S.inplay = S.inplay!==false; S.days = S.days || []; S.appts = S.appts || []; S.client = S.client || {name:''}; S.pre = S.pre || []; S.post = S.post || [];
 S.days.forEach(function(d){ (d.ex||[]).forEach(function(e){ if(!e.vids){ e.vids = e.v ? [{t:'',u:e.v}] : []; } delete e.v; e.log = e.log || []; if(e.lab==null) e.lab=''; }); });
 var ui = { tab:'train', day:0, edit:false, canEdit:false, saving:false, msg:'', dirty:false, le:null, ie:null };
+try{ if(SITE_START()){ if('scrollRestoration' in history) history.scrollRestoration='manual'; window.scrollTo(0,0); } }catch(e){}
+function SITE_START(){ return !!(window.SITE && window.SITE.form); }
 var ORIG = JSON.stringify(S);
 var draft = null;
 var app = document.getElementById('app');
