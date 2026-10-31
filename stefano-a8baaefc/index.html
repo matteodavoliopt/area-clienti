@@ -141,6 +141,9 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex.acc .ex-b .info-ed{display:none}
 .wk-lab{display:block;font:600 9.5px/1.1 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:1px 0 3px}
 .ex.acc .wk b{font-size:13px}
+.ex.acc .log-weeks{scroll-padding-left:0}
+.ex.acc .wk.now.empty{background:var(--accent);border:1px solid var(--accent);color:var(--accent-ink);font-weight:700}
+.ex.acc .wk.now.empty b,.ex.acc .wk.now.empty .wk-lab{color:var(--accent-ink);opacity:.95}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -639,7 +642,7 @@ function viewTrain(){
         for(var w=1; w<=upto; w++){
           var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
           var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
-          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(ACC?'<small class="wk-lab">'+esc((e.lab||'').trim()||'REP/KG')+'</small>':'')+(val.trim()?esc(val):'+ segna')+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
+          h += '<button type="button" class="'+cls+'" data-act="logEdit" data-d="'+di+'" data-n="'+esc(e.n)+'" data-w="'+w+'"><b>S'+w+'</b>'+(ACC&&w===cw?'<small class="wk-lab">'+esc((e.lab||'').trim()||'REP/KG')+'</small>':'')+(val.trim()?esc(val):(ACC&&w===cw?'Segna':'+ segna'))+(p?'<i>'+(p.sent?'inviato':'da inviare')+'</i>':'')+'</button>';
         }
         h += '</div>';
         if(ui.le && ui.le.d===di && ui.le.n===e.n){
@@ -870,7 +873,7 @@ function render(){
   }
   app.innerHTML = h;
   try{ tmPaint(); }catch(err){}
-  try{ document.querySelectorAll('.log-weeks').forEach(function(el){ var n=el.querySelector('.now'); if(n) el.scrollLeft = Math.max(0, n.offsetLeft - el.offsetLeft - 60); }); }catch(err){}
+  try{ document.querySelectorAll('.log-weeks').forEach(function(el){ var n=el.querySelector('.now'); if(!n) return; var pv=ACC?n.previousElementSibling:null; el.scrollLeft = Math.max(0, pv ? (pv.offsetLeft - el.offsetLeft) : (n.offsetLeft - el.offsetLeft - 60)); }); }catch(err){}
 }
 
 function setPath(obj,path,val){ var p=path.split('.'), o=obj; for(var i=0;i<p.length-1;i++){ if(o[p[i]]==null) o[p[i]] = /^\d+$/.test(p[i+1]) ? [] : {}; o=o[p[i]]; } o[p[p.length-1]]=val; }
