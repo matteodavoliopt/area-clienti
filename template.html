@@ -614,7 +614,7 @@ function viewTrain(){
         lg.forEach(function(x,w){ if((x||'').trim()) last = w+1; });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k && p.w>last) last=p.w; });
         var upto = Math.max(nWeeks(), last);
-        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+' · tocca una settimana per segnare i tuoi pesi</span><div class="log-weeks">';
+        h += '<div class="log"><span class="log-lab">'+esc((e.lab||'').trim()||'Pesi')+(ACC?'':' · tocca una settimana per segnare i tuoi pesi')+'</span><div class="log-weeks">';
         for(var w=1; w<=upto; w++){
           var k = pkey(di,e,w), p = PEND[k], val = p ? p.v : (lg[w-1]||'');
           var cls = 'wk edit'+(w===cw?' now':'')+(val.trim()?'':' empty')+(p?' mine':'');
