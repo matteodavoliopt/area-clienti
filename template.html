@@ -135,6 +135,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ddc[open]{padding-bottom:6px}
 .ddc .pkh-e{padding:0 0 12px}
 .renew{display:flex;align-items:center;gap:12px;background:color-mix(in srgb,var(--rest) 15%,var(--surface));color:var(--rest);border:1px solid color-mix(in srgb,var(--rest) 35%,transparent);border-radius:12px;padding:12px 14px}
+.renew.last{background:color-mix(in srgb,var(--danger) 13%,var(--surface));color:var(--danger);border-color:color-mix(in srgb,var(--danger) 40%,transparent)}
 .renew svg{width:24px;height:24px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .renew span{display:flex;flex-direction:column;gap:2px;font-size:14px;font-weight:600}
 .renew b{font:800 18px/1.1 var(--display);text-transform:uppercase;letter-spacing:.02em}
@@ -728,7 +729,7 @@ function viewPkg(){
     h += '<div class="pkg-nums"><div><span class="eyebrow">Fatte</span><strong>'+done+'</strong></div><div class="left"><span class="eyebrow">Rimanenti</span><strong>'+left+'</strong></div></div>';
     if(tot <= 60){ h += '<div class="dots" aria-hidden="true">'; for(var i=0;i<tot;i++) h += '<i'+(i<done?' class="on"':'')+'></i>'; h += '</div>'; }
     if(left === 0) h += '<small>Pacchetto completato. Chiedimi pure per rinnovarlo!</small>';
-    else if(left <= 2) h += '<div class="renew"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.6M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.6M20 20v-4h-4"/></svg><span><b>Ti resta'+(left===1?' 1 lezione':'no '+left+' lezioni')+'</b>Ricordati di rinnovare il pacchetto!</span></div>';
+    else if(left <= 2) h += '<div class="renew'+(left===1?' last':'')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.9-3.6M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.6M20 20v-4h-4"/></svg><span><b>Ti resta'+(left===1?' 1 lezione':'no '+left+' lezioni')+'</b>Ricordati di rinnovare il pacchetto!</span></div>';
     if(p.start){ try{ h += '<small>Pacchetto iniziato il '+esc(new Intl.DateTimeFormat("it-IT",{day:"numeric",month:"long"}).format(parseD({d:p.start})))+'.</small>'; }catch(e){} }
   } else if(mode==='month'){
     var now = new Date(), y = now.getFullYear(), mo = now.getMonth();
