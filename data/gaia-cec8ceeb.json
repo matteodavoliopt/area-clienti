@@ -9,8 +9,8 @@
    "goal": "Ricomposizione",
    "freq": "3",
    "dur": "60’",
-   "start": "2026-01-19",
-   "end": "2026-04-19",
+   "start": "",
+   "end": "",
    "age": "",
    "weight": "",
    "issues": "",
@@ -27,14 +27,14 @@
     "extra": [],
     "ex": [
      {
-      "n": "Leg press 45°",
-      "sr": "3 x 8 80kg",
-      "info": "Piedi alti e larghi, punte in fuori e ginocchia larghe",
+      "n": "Leg press orizzontale",
+      "sr": "3 x 10",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
-        "u": "https://youtu.be/lR23kM1k9uI?si=VQ3gGN7cZ5KBorsa",
-        "t": ""
+        "t": "",
+        "u": "https://youtu.be/pOzkipChf68?si=-BKaN7x_R7cQ8A8N"
        }
       ],
       "lab": "",
@@ -42,8 +42,8 @@
      },
      {
       "n": "Hip trust machine",
-      "sr": "3 x 10 5kg",
-      "info": "Non supero con il bacino l’altezza delle ginocchia, addome sempre contratto e ginocchia larghe",
+      "sr": "3 x 10",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
@@ -56,8 +56,8 @@
      },
      {
       "n": "Leg extension",
-      "sr": "3 x 12 30kg",
-      "info": "Distendo completamente le gambe con i piedi a martello",
+      "sr": "3 x 12",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
@@ -69,207 +69,56 @@
       "log": []
      },
      {
-      "n": "Abductor machine dropset",
-      "sr": "3 x 12 + 12 40kg",
-      "info": "Apro il più possibile e poi scendo di circa metà peso",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/6QsvrlB-w08?si=3k1fPqDtsQZOXA27",
-        "t": ""
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Super-set: Push down sbarra curva + curl manubri",
-      "sr": "3 x 12 + 12 10kg 4kg",
-      "info": "Distendo completamente le braccia in entrambi, braccio fermo muovo solo l’avambraccio",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/f3-ogykya8Y?si=40XpgmmazjbyyFa1",
-        "t": "Push down sbarra curva"
-       },
-       {
-        "u": "https://youtu.be/wROaj1Tu9bk?si=ikOBwn5aHpvlkCbc",
-        "t": "Curl manubri"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Circuito: Crunch gambe tese + · Leg raises alternato + · Spider plank",
-      "sr": "3 giri x 30” + 30” + 30”",
-      "info": "Circuito da 30 secondi di lavoro per esercizio e recupero di 20 secondi tra un esercizio e l’altro",
-      "rec": "90”",
-      "vids": [],
-      "lab": "",
-      "log": []
-     }
-    ]
-   },
-   {
-    "name": "DAY 2",
-    "focus": "",
-    "extra": [],
-    "ex": [
-     {
-      "n": "Affondi bulgari",
-      "sr": "3 x 8 8kg",
-      "info": "Busto leggermente in avanti, tibia verticale e non porto il ginocchio in avanti",
-      "rec": "90”",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Stacchi gambe semitese",
-      "sr": "3 x 10 6kg",
-      "info": "Piedi larghezza anche, gambe semi tese, scendo con la schiena senza ingobbirmi",
-      "rec": "90”",
-      "vids": [],
-      "lab": "",
-      "log": []
-     },
-     {
       "n": "Leg curl",
-      "sr": "3 x 12 35kg",
-      "info": "Piedi sempre a martello e distendo completamente le gambe",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/JpdJA3FPE0Q?si=texDFCIgW_drLyol",
-        "t": ""
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Adductor machine",
-      "sr": "3 x 12 20kg",
-      "info": "Chiudo forte le gambe senza far sbattere il peso",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk",
-        "t": ""
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Super-set: Australian trx + · Alzate laterali manubri",
-      "sr": "3 x 12 + 12",
-      "info": "Australian tiro con i gomiti stretti vicino ai fianchi e nelle alzate braccia sempre semi tese e non supero l’altezza delle spalle con i manubri",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4",
-        "t": "Australian TRX"
-       },
-       {
-        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye",
-        "t": "Alzate laterali"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Circuito: crunch bicicletta + · Hells touch + · barchetta",
-      "sr": "3 giri x 30” + 30” + 30”",
-      "info": "Circuito da 30 secondi di lavoro per esercizio e recupero di 20 secondi tra un esercizio e l’altro",
-      "rec": "90”",
-      "vids": [],
-      "lab": "",
-      "log": []
-     }
-    ]
-   },
-   {
-    "name": "DAY 3",
-    "focus": "",
-    "extra": [],
-    "ex": [
-     {
-      "n": "Leg press 45°",
-      "sr": "3 x 8",
-      "info": "Piedi alti e larghi, punte in fuori e ginocchia larghe",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/lR23kM1k9uI?si=VQ3gGN7cZ5KBorsa",
-        "t": ""
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Hip trust machine",
-      "sr": "3 x 10",
-      "info": "Non supero con il bacino l’altezza delle ginocchia, addome sempre contratto e ginocchia larghe",
+      "sr": "3 x 12",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
         "t": "",
-        "u": "https://youtu.be/jIibhC_hWbQ?si=TYG1D8cJo8EowxIE"
+        "u": "https://youtu.be/JpdJA3FPE0Q?si=texDFCIgW_drLyol"
        }
       ],
       "lab": "",
       "log": []
      },
      {
-      "n": "Abductor machine dropset",
-      "sr": "3 x 12 + 12",
-      "info": "Apro il più possibile e poi scendo di circa metà peso",
-      "rec": "90”",
-      "vids": [
-       {
-        "u": "https://youtu.be/6QsvrlB-w08?si=3k1fPqDtsQZOXA27",
-        "t": ""
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "Adductor machine",
+      "n": "Abductor machine in piedi",
       "sr": "3 x 12",
-      "info": "Chiudo forte le gambe senza far sbattere il peso",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
-        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk",
-        "t": ""
+        "t": "",
+        "u": "https://youtube.com/shorts/qPJa8M3iB7M?is=r2_ZeA3Szu2Yo0t1"
        }
       ],
       "lab": "",
       "log": []
      },
      {
-      "n": "Pulley",
+      "n": "Lat machine triangolo",
       "sr": "3 x 10",
-      "info": "Schiena dritta e tiro il triangolo altezza ombelico con i gomiti stretti",
+      "info": "",
       "rec": "90”",
-      "vids": [],
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/yAn2qY7WplY?si=d9vy1CRjETVC7zfO"
+       }
+      ],
       "lab": "",
       "log": []
      },
      {
-      "n": "Super-set: Croci inverse kinesis + spinte manubri sopra la testa",
-      "sr": "3 x 12 + 10",
-      "info": "Petto alto, spalle basse e braccia semi tese nelle croci, braccia 45° nelle spinte",
+      "n": "Push down corda cavo alto",
+      "sr": "3 x 12",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
-        "u": "https://youtu.be/ICq3e4H6FJQ?si=ZGT_7mBU3o7uWnnl",
-        "t": "Croci inverse kinesis"
+        "t": "",
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
        }
       ],
       "lab": "",
@@ -278,12 +127,12 @@
      {
       "n": "Sit up panca crunch",
       "sr": "3 x 12",
-      "info": "Per aumentare la difficoltà reclino la panca o prendo un pesetto da tenere sul petto",
-      "rec": "90”",
+      "info": "",
+      "rec": "60”",
       "vids": [
        {
-        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO",
-        "t": ""
+        "t": "",
+        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO"
        }
       ],
       "lab": "",

@@ -9,8 +9,8 @@
    "goal": "Forza e ricomposizione corporea",
    "freq": "3",
    "dur": "60’",
-   "start": "2026-06-01",
-   "end": "2026-09-01",
+   "start": "",
+   "end": "",
    "age": "",
    "weight": "",
    "issues": "",
@@ -27,100 +27,9 @@
     "extra": [],
     "ex": [
      {
-      "n": "PUSH UP RIALZATI",
-      "sr": "3 x 8",
-      "info": "Box 60 cm.",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/SqrDZTgDLVA?si=4vMRmn1ORAMg1MEZ"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "SHOULDER PRESS ISOTONICA",
+      "n": "Leg press orizzontale",
       "sr": "3 x 10",
-      "info": "7,5kg",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/0gDiaXl8WuU?si=XTD2paNQTomlcHz1"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "ALZATE LATERALI MANUBRI",
-      "sr": "3 x 12",
-      "info": "5kg",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/-ZWIOBZIGv4?si=ORhy92ZgwdTvA1Ye"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "LAT MACHINE TRIANGOLO",
-      "sr": "3 x 10",
-      "info": "27kg",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/yAn2qY7WplY?si=d9vy1CRjETVC7zfO"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "PULLEY TRIANGOLO",
-      "sr": "3 x 10",
-      "info": "15kg",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/EMg1HGTwiTw?si=Rjw76P0xy5XDZxPY"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "SIT UP PANCA CRUNCH",
-      "sr": "3 x 12",
-      "info": "Declinata a metà",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO"
-       }
-      ],
-      "lab": "",
-      "log": []
-     }
-    ]
-   },
-   {
-    "name": "DAY 2",
-    "focus": "",
-    "extra": [],
-    "ex": [
-     {
-      "n": "LEG PRESS ORIZZONTALE",
-      "sr": "3 x 10",
-      "info": "60kg",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
@@ -132,85 +41,9 @@
       "log": []
      },
      {
-      "n": "LEG EXTENSION",
+      "n": "Hip trust machine",
       "sr": "3 x 10",
-      "info": "30kg sedile 2 e cuscinetto 1",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "ADDUCTOR MACHINE",
-      "sr": "3 x 12",
-      "info": "25kg apertura 2",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/tIjzhusL1FA?si=4pXgFLS5v9O9AGXk"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "PUSH DOWN SBARRA CURVA CAVO ALTO",
-      "sr": "3 x 12 + 10 10kg 7,5kg",
-      "info": "Da fare in drop set: dopo le prime 12 ripetizioni diminuisco di un terzo il peso e ne faccio altre 10",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/f3-ogykya8Y?si=40XpgmmazjbyyFa1"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "CURL SBARRA DRITTA CAVO BASSO + FRENCH PRESS MANUBRIO IN PIEDI",
-      "sr": "3 x 10 + 10 7,5kg 6kg",
-      "info": "Da fare in super set: due esercizi di fila senza recuperare",
-      "rec": "90”",
-      "vids": [
-       {
-        "t": "",
-        "u": "https://youtu.be/c17jTjnaMRM?si=_YICmCHNVw7_qt2y"
-       },
-       {
-        "t": "",
-        "u": "https://youtu.be/6EwEemytwiE?si=ZOrXHqMsTLN6aQHc"
-       }
-      ],
-      "lab": "",
-      "log": []
-     },
-     {
-      "n": "CRUNCH GAMBE TESE + LEG RAISES ALTERNATO",
-      "sr": "3 x 10 + 20",
-      "info": "Da fare in super set: due esercizi di fila senza recuperare",
-      "rec": "90”",
-      "vids": [],
-      "lab": "",
-      "log": []
-     }
-    ]
-   },
-   {
-    "name": "DAY 3",
-    "focus": "",
-    "extra": [],
-    "ex": [
-     {
-      "n": "HIP TRUST MACHINE",
-      "sr": "3 x 10",
-      "info": "15kg",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
@@ -222,9 +55,23 @@
       "log": []
      },
      {
-      "n": "LEG CURL",
-      "sr": "3 x 10",
-      "info": "seduta 3 e cuscinetto 1 25kg",
+      "n": "Leg extension",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "90”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/qWViRHQf2VI?si=m1MUfTFDtLSZdi8z"
+       }
+      ],
+      "lab": "",
+      "log": []
+     },
+     {
+      "n": "Leg curl",
+      "sr": "3 x 12",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
@@ -236,57 +83,58 @@
       "log": []
      },
      {
-      "n": "ABDUCTOR MACHINE",
+      "n": "Abductor machine in piedi",
       "sr": "3 x 12",
-      "info": "40kg",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
         "t": "",
-        "u": "https://youtu.be/6QsvrlB-w08?si=3k1fPqDtsQZOXA27"
+        "u": "https://youtube.com/shorts/qPJa8M3iB7M?is=r2_ZeA3Szu2Yo0t1"
        }
       ],
       "lab": "",
       "log": []
      },
      {
-      "n": "VERTICAL TRACTION PRESA PRONA",
+      "n": "Lat machine triangolo",
       "sr": "3 x 10",
-      "info": "28kg",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
         "t": "",
-        "u": "https://youtu.be/teEW0jbbcqE?si=hDcyC0wj5JY-tOxy"
+        "u": "https://youtu.be/yAn2qY7WplY?si=d9vy1CRjETVC7zfO"
        }
       ],
       "lab": "",
       "log": []
      },
      {
-      "n": "AUSTRALIAN TRX + CURL MANUBRI",
-      "sr": "3 x 10 + 10 4kg",
-      "info": "Da fare in super set: due esercizi di fila senza recuperare",
+      "n": "Push down corda cavo alto",
+      "sr": "3 x 12",
+      "info": "",
       "rec": "90”",
       "vids": [
        {
         "t": "",
-        "u": "https://youtu.be/cPiv7JruMcE?si=mKxcVFS_Qio-hil4"
-       },
-       {
-        "t": "",
-        "u": "https://youtu.be/h9hZmMdmLSk?si=cU1w-RzrnHkL_SBp"
+        "u": "https://youtu.be/WS2YynB4mik?si=pxYR0GxdW-VhSSal"
        }
       ],
       "lab": "",
       "log": []
      },
      {
-      "n": "BARCHETTA ISOMETRIA",
-      "sr": "3 x 40”",
-      "info": "Zona lombare sempre attaccata a terra e entrambe le gambe tese",
-      "rec": "90”",
-      "vids": [],
+      "n": "Sit up panca crunch",
+      "sr": "3 x 12",
+      "info": "",
+      "rec": "60”",
+      "vids": [
+       {
+        "t": "",
+        "u": "https://youtu.be/befNB4Tr_30?si=1CTyGC65JgRTlJGO"
+       }
+      ],
       "lab": "",
       "log": []
      }
