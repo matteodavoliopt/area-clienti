@@ -92,7 +92,7 @@ h1,h2{margin:0;text-wrap:balance}
 .tag.warn{color:var(--warn);background:var(--warn-soft);border-color:transparent}
 .tag.rata{color:var(--rata-ink);background:var(--rata-bg);border-color:transparent}
 .tag.bad{color:var(--bad);background:var(--bad-soft);border-color:transparent}
-.open{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font:600 14px/1 var(--body);color:var(--accent-ink);background:var(--accent);padding:10px 14px;border-radius:10px;white-space:nowrap}
+.open{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font:600 14px/1 var(--body);color:var(--accent-ink);background:var(--accent);padding:16px 14px;border-radius:10px;white-space:nowrap}
 .open svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
 .empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
 .foot{color:var(--muted);font-size:13px}
@@ -300,7 +300,7 @@ function render(){
       var url = /^https:\/\/claude\.ai\//.test(x.c.url||'') ? x.c.url : '';
       var site = x.c.site || SITES[x.c.url||''] || '', site = /^https:\/\//.test(site) ? site : '';
       h += '<li class="row"><div class="who"><b>'+esc(x.c.name)+'</b><div class="tags">'+x.s.tags.map(function(t){ return '<span class="tag '+t.c+'">'+((t.c==='next'||t.c==='nonext')?CAL:'')+esc(t.t)+'</span>'; }).join('')+'</div></div>'+
-        (url?'<a class="open" href="'+esc(url)+'" target="_blank" rel="noopener">Apri'+ARROW+'</a>':'')+
+        (url?'<a class="open" href="'+esc(url)+'" target="_blank" rel="noopener">Modifica'+ARROW+'</a>':'')+
         (site?'<div class="site"><span>Link per il cliente: '+esc(site.replace(/^https:\/\//,''))+'</span><input type="text" readonly tabindex="-1" aria-hidden="true" value="'+esc(site)+'"><button type="button" data-copy="'+esc(site)+'">Copia link</button><a href="'+esc(site)+'" target="_blank" rel="noopener">Apri il sito</a></div>':'')+'</li>';
     });
     h += '</ul>';
