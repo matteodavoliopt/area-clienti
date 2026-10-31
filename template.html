@@ -116,7 +116,11 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex-h .n{align-self:start}
 .ex-t{display:flex;flex-direction:column;gap:4px;min-width:0}
 .ex-h .meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--mono);font-size:13px}
-.ex-last{color:var(--accent);font-weight:600}
+.ex-last{color:var(--muted);font-size:13px}
+.ex-last b{color:var(--accent);font-family:var(--mono);font-weight:700}
+.ex-i{color:var(--muted);font-size:14px;line-height:1.35}
+.ex.acc .ex-b .info-ed>span{display:none}
+.ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .ex.acc.open .ex-h .chev{transform:rotate(180deg)}
 .ex-b{display:none;padding:0 16px 16px 56px}
@@ -365,6 +369,7 @@ function pkey(di,e,w){ return di+'|'+(e.n||'').trim().toUpperCase()+'|'+w; }
 function findEx(di,name){ var d=S.days[di]; if(!d) return null; var n=(name||'').trim().toUpperCase(); return (d.ex||[]).filter(function(x){ return (x.n||'').trim().toUpperCase()===n; })[0]||null; }
 if(SITE){ Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.f==='client'){ if(p.sent && String((S.client||{})[p.k]||'').trim()===String(p.v||'').trim()) delete PEND[k]; return; } var e=findEx(p.d,p.n); if(!e){ return; } var cur0 = p.f==='info' ? (e.info||'') : ((e.log||[])[p.w-1]||''); if(p.sent && cur0.trim()===p.v.trim()) delete PEND[k]; }); pendSave(); }
 function ikey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|info'; }
+function exInfo(e){ var p=SITE?PEND[ikey(ui.day,e)]:null; return String(p?p.v:(e.info||'')).trim(); }
 function infoSite(e){
   var di = ui.day, k = ikey(di,e), p = PEND[k], val = p ? p.v : (e.info||'');
   if(ui.ie && ui.ie.d===di && ui.ie.n===e.n){
@@ -592,7 +597,7 @@ function viewTrain(){
       if(ACC){
         var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
-        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+(lastV?'<span class="ex-last">Ultimo S'+lastW+': '+esc(lastV)+'</span>':'')+'</span></span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        h += '<li class="ex acc'+(eo?' open':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+(exInfo(e)?'<span class="ex-i">'+esc(exInfo(e))+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (S'+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
       } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
