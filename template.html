@@ -162,6 +162,10 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .cn-box p{margin:0;font-size:14px;line-height:1.45;color:var(--ink);white-space:pre-wrap}
 .cn-l{font:700 11px/1 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
 .cn-mod{align-self:flex-start;border:0;background:none;padding:0;color:var(--accent);font:600 13px var(--body);text-decoration:underline;cursor:pointer}
+.poldd .pol-h{display:flex;align-items:center;gap:10px}
+.poldd .pol-h svg{width:18px;height:18px;color:var(--rest);flex:0 0 auto}
+.poldd .pol-t{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted)}
+.poldd .pol-t strong{color:var(--ink)}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -824,7 +828,7 @@ function viewApptList(){
   if(up.length){
     var n = up[0];
     h += '<div class="next"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
-    if(SITE){ viewPkg(); if(POLHTML) h += POLHTML.replace('class="policy"','class="policy pol-ap"'); }
+    if(SITE){ viewPkg(); if(POLHTML){ if(/^riccardo-/.test((window.SITE&&window.SITE.slug)||'')){ var pm=POLHTML.match(/<svg[\s\S]*?<\/svg>/), pt=POLHTML.match(/<span>([\s\S]*?)<\/span><\/p>/); h += '<details class="ddc poldd"><summary><span class="pol-h">'+(pm?pm[0]:'')+'Annullamento lezione</span>'+CHEV+'</summary><p class="pol-t">'+(pt?pt[1]:'')+'</p></details>'; } else h += POLHTML.replace('class="policy"','class="policy pol-ap"'); } }
     if(up.length>1){ h += '<ul class="appts">'; up.slice(1).forEach(function(a){ h += row(a,''); }); h += '</ul>'; }
   } else h += '<p class="empty">Nessun appuntamento in arrivo.</p>';
   h += calendar(list);
