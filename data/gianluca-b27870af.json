@@ -1,76 +1,76 @@
 {
- "slug": "gianluca-b27870af",
- "source": "https://claude.ai/artifact/2VgUXLhvHA8UwEEG1WsZvn",
- "data": {
-  "client": {
-   "name": "Gianluca Falzarano",
-   "email": "g.falzarano@bonolacase.it",
-   "g": "m",
-   "goal": "",
-   "freq": "",
-   "dur": "",
-   "start": "",
-   "end": "",
-   "age": "",
-   "weight": "",
-   "issues": "",
-   "general": ""
-  },
-  "note": "",
-  "weeks": "12",
-  "pre": [],
-  "post": [],
-  "days": [],
-  "pkg": {
-   "mode": "pack",
-   "total": "8",
-   "done": "0",
-   "start": "2026-10-05",
-   "paid": "rata",
-   "paidMonth": "2026-10",
-   "adj": "0",
-   "price": "480",
-   "paidAmt": "240",
-   "recapTs": 1793463035533
-  },
-  "appts": [
-   {
-    "d": "2026-09-30",
-    "t": "09:15",
-    "what": "Massaggio",
-    "where": ""
-   },
-   {
-    "d": "2026-10-07",
-    "t": "09:00",
-    "what": "Massaggio",
-    "where": ""
-   },
-   {
-    "d": "2026-10-14",
-    "t": "07:30",
-    "what": "Massaggio",
-    "where": ""
-   },
-   {
-    "d": "2026-10-21",
-    "t": "09:00",
-    "what": "Massaggio",
-    "where": ""
-   },
-   {
-    "d": "2026-10-28",
-    "t": "09:00",
-    "what": "Massaggio",
-    "where": ""
-   },
-   {
-    "d": "2026-11-07",
-    "t": "13:00",
-    "what": "Massaggio",
-    "where": ""
-   }
-  ],
-  "updated": "2026-10-31"
- }
+  "slug": "gianluca-b27870af",
+  "source": "https://claude.ai/artifact/2VgUXLhvHA8UwEEG1WsZvn",
+  "data": {
+    "client": {
+      "name": "Gianluca Falzarano",
+      "email": "g.falzarano@bonolacase.it",
+      "g": "m",
+      "goal": "",
+      "freq": "",
+      "dur": "",
+      "start": "",
+      "end": "",
+      "age": "",
+      "weight": "",
+      "issues": "",
+      "general": ""
+    },
+    "note": "",
+    "weeks": "12",
+    "pre": [],
+    "post": [],
+    "days": [],
+    "pkg": {
+      "mode": "pack",
+      "total": "8",
+      "done": "0",
+      "start": "2026-10-05",
+      "paid": "rata",
+      "paidMonth": "2026-10",
+      "adj": "0",
+      "price": "480",
+      "paidAmt": "240",
+      "recapTs": 1793463035533
+    },
+    "appts": [
+      {
+        "d": "2026-09-30",
+        "t": "09:15",
+        "what": "Massaggio",
+        "where": ""
+      },
+      {
+        "d": "2026-10-07",
+        "t": "09:00",
+        "what": "Massaggio",
+        "where": ""
+      },
+      {
+        "d": "2026-10-14",
+        "t": "07:30",
+        "what": "Massaggio",
+        "where": ""
+      },
+      {
+        "d": "2026-10-21",
+        "t": "09:00",
+        "what": "Massaggio",
+        "where": ""
+      },
+      {
+        "d": "2026-10-28",
+        "t": "09:00",
+        "what": "Massaggio",
+        "where": ""
+      },
+      {
+        "d": "2026-11-07",
+        "t": "13:00",
+        "what": "Massaggio",
+        "where": ""
+      }
+    ],
+    "updated": "2026-10-31"
+  }
 }

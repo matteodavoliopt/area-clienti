@@ -1,45 +1,45 @@
 {
- "slug": "antonio-f7c1d4c2",
- "source": "https://claude.ai/artifact/EdMuvKzhQWzLqsU8UfzPwF",
- "data": {
-  "client": {
-   "name": "Antonio Moschini",
-   "email": "antonio.moschini.66@gmail.com",
-   "g": "m",
-   "goal": "",
-   "freq": "",
-   "dur": "",
-   "start": "",
-   "end": "",
-   "age": "",
-   "weight": "",
-   "issues": "",
-   "general": ""
-  },
-  "note": "",
-  "weeks": "12",
-  "pre": [],
-  "post": [],
-  "days": [],
-  "pkg": {
-   "mode": "pack",
-   "total": "10",
-   "done": "6",
-   "paid": true,
-   "paidMonth": "2026-10",
-   "price": "400",
-   "paidAmt": "400",
-   "recapTs": 1793463412774
-  },
-  "appts": [
-   {
-    "d": "2026-11-05",
-    "t": "17:00",
-    "what": "Lezione",
-    "where": "Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"
-   }
-  ],
-  "updated": "2026-10-31",
-  "navbar": true
- }
+  "slug": "antonio-f7c1d4c2",
+  "source": "https://claude.ai/artifact/EdMuvKzhQWzLqsU8UfzPwF",
+  "data": {
+    "client": {
+      "name": "Antonio Moschini",
+      "email": "antonio.moschini.66@gmail.com",
+      "g": "m",
+      "goal": "",
+      "freq": "",
+      "dur": "",
+      "start": "",
+      "end": "",
+      "age": "",
+      "weight": "",
+      "issues": "",
+      "general": ""
+    },
+    "note": "",
+    "weeks": "12",
+    "pre": [],
+    "post": [],
+    "days": [],
+    "pkg": {
+      "mode": "pack",
+      "total": "10",
+      "done": "6",
+      "paid": true,
+      "paidMonth": "2026-10",
+      "price": "400",
+      "paidAmt": "400",
+      "recapTs": 1793463412774
+    },
+    "appts": [
+      {
+        "d": "2026-11-05",
+        "t": "17:00",
+        "what": "Lezione",
+        "where": "Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"
+      }
+    ],
+    "updated": "2026-10-31",
+    "navbar": true
+  }
 }

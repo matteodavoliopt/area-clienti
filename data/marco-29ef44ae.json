@@ -1,100 +1,100 @@
 {
- "slug": "marco-29ef44ae",
- "source": "https://claude.ai/artifact/3sdz8RjZy954Vuy9gH7xc6",
- "data": {
-  "client": {
-   "name": "Marco Caminiti",
-   "email": "m.caminitimarco@gmail.com",
-   "g": "m",
-   "goal": "",
-   "freq": "",
-   "dur": "",
-   "start": "",
-   "end": "",
-   "age": "",
-   "weight": "",
-   "issues": "",
-   "general": ""
-  },
-  "note": "",
-  "weeks": "12",
-  "pre": [],
-  "post": [],
-  "days": [],
-  "pkg": {
-   "mode": "pack",
-   "total": "10",
-   "done": "0",
-   "start": "2026-09-07",
-   "paid": true,
-   "paidMonth": "2026-10",
-   "adj": "0",
-   "price": "500",
-   "paidAmt": "500",
-   "recapTs": 1793462979197
-  },
-  "appts": [
-   {
-    "d": "2026-09-11",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-09-18",
-    "t": "17:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-09-25",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-02",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-07",
-    "t": "10:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-09",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-16",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-22",
-    "t": "10:30",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-10-30",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   },
-   {
-    "d": "2026-11-06",
-    "t": "11:00",
-    "what": "Lezione",
-    "where": ""
-   }
-  ],
-  "updated": "2026-10-31"
- }
+  "slug": "marco-29ef44ae",
+  "source": "https://claude.ai/artifact/3sdz8RjZy954Vuy9gH7xc6",
+  "data": {
+    "client": {
+      "name": "Marco Caminiti",
+      "email": "m.caminitimarco@gmail.com",
+      "g": "m",
+      "goal": "",
+      "freq": "",
+      "dur": "",
+      "start": "",
+      "end": "",
+      "age": "",
+      "weight": "",
+      "issues": "",
+      "general": ""
+    },
+    "note": "",
+    "weeks": "12",
+    "pre": [],
+    "post": [],
+    "days": [],
+    "pkg": {
+      "mode": "pack",
+      "total": "10",
+      "done": "0",
+      "start": "2026-09-07",
+      "paid": true,
+      "paidMonth": "2026-10",
+      "adj": "0",
+      "price": "500",
+      "paidAmt": "500",
+      "recapTs": 1793462979197
+    },
+    "appts": [
+      {
+        "d": "2026-09-11",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-09-18",
+        "t": "17:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-09-25",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-02",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-07",
+        "t": "10:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-09",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-16",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-22",
+        "t": "10:30",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-10-30",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      },
+      {
+        "d": "2026-11-06",
+        "t": "11:00",
+        "what": "Lezione",
+        "where": ""
+      }
+    ],
+    "updated": "2026-10-31"
+  }
 }
