@@ -210,6 +210,15 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ex-chk{display:block;font:700 10.5px/1 var(--body);text-transform:uppercase;letter-spacing:.03em;padding:12px 5px;border-radius:8px;border:1.5px solid var(--accent);color:var(--accent);background:var(--surface);cursor:pointer;white-space:nowrap}
 .ex-chk.on{background:var(--accent);color:var(--accent-ink)}
 .ex.wo-done .ex-t .name{text-decoration:line-through;opacity:.6}
+.ws-card{max-height:86vh;overflow:auto}
+.ws-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ws-r{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--line);border-radius:12px}
+.ws-h{display:flex;align-items:center;gap:8px;min-width:0}
+.ws-h b{flex:1;min-width:0;font-size:14px;line-height:1.2}
+.ws-h small{color:var(--muted);font-size:12px;white-space:nowrap}
+.ws-ck{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;font:800 12px var(--body);background:var(--line);color:var(--muted)}
+.ws-r.dn .ws-ck{background:var(--accent);color:var(--accent-ink)}
+.ws-r input{font:16px var(--mono);padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);width:100%;box-sizing:border-box}
 .ex-mod{color:var(--accent);font-weight:600;text-decoration:underline;white-space:nowrap;cursor:pointer}
 .ex-h .meta{flex-wrap:nowrap !important}
 .ex-h .chev{width:14px;height:14px;fill:none;stroke:var(--muted);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
@@ -972,10 +981,21 @@ function woBar(){
     '<button type="button" class="wo-b end" data-wo="end" aria-label="Termina"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button></div>';
 }
 function woStart(){ WS={day:ui.day, acc:0, run:Date.now(), done:{}, start:Date.now()}; woSave(); render(); }
+function woWeek(e){ var di=WS.day, lg=e.log||[], last=0, pw=0;
+  lg.forEach(function(x,w){ if((x||'').trim()) last=w+1; });
+  Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===di && pkey(di,e,p.w)===k){ if(p.w>last) last=p.w; if(p.ts>=WS.start && p.w>pw) pw=p.w; } });
+  var cw=curWeek(); if(cw) return cw; if(pw) return pw; return last+1; }
 function woEnd(){
-  var c=woCount(), t=woFmt(woMs()); WS=null; woSave(); woBar(); render();
-  var d=document.createElement('div'); d.className='guida'; d.innerHTML='<div class="g-card"><div class="g-ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti.</p><div class="g-bt"><button type="button" class="pri wide" data-g="end">Chiudi</button></div></div>';
-  d.addEventListener('click',function(e){ if(e.target.closest('[data-g]')) d.parentNode.removeChild(d); }); document.body.appendChild(d);
+  var c=woCount(), t=woFmt(woMs()), di=WS.day, ex=woExs();
+  var rows=ex.map(function(e,i){ var w=woWeek(e), k=pkey(di,e,w), p=PEND[k], v=p?p.v:((e.log||[])[w-1]||''), dn=!!WS.done[(e.n||'').trim().toUpperCase()];
+    return '<div class="ws-r'+(dn?' dn':'')+'"><div class="ws-h"><span class="ws-ck">'+(dn?'✓':'✕')+'</span><b>'+esc(e.n)+'</b><small>Week '+w+'</small></div><input class="wo-w" type="text" autocomplete="off" data-i="'+i+'" data-w="'+w+'" value="'+esc(v)+'" placeholder="Es. 8/80 · 7/80"></div>'; }).join('');
+  var d=document.createElement('div'); d.className='guida';
+  d.innerHTML='<div class="g-card ws-card"><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti. Controlla i carichi e correggili se serve.</p><div class="ws-list">'+rows+'</div><div class="g-bt"><button type="button" data-ws="del">Elimina</button><button type="button" class="pri" data-ws="save">Salva</button></div></div>';
+  d.addEventListener('click',function(ev){ var x=ev.target.closest('[data-ws]'); if(!x) return;
+    if(x.dataset.ws==='save'){ [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
+        if(v!==String(cur).trim()){ PEND[k]={d:di,dn:(S.days[di]||{}).name||'',n:e.n,w:w,v:v,ts:Date.now(),sent:false}; pendSave(); sendPend(k); } }); }
+    WS=null; woSave(); woBar(); if(d.parentNode) d.parentNode.removeChild(d); render(); });
+  document.body.appendChild(d);
 }
 if(WO) setInterval(function(){ if(WS && WS.run){ var t=document.querySelector('#wobar .wo-t'); if(t) t.textContent=woFmt(woMs()); } },1000);
 function render(){
@@ -1040,7 +1060,7 @@ function kbFit(){
 document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in'||e.target.id==='cn-in')){ document.body.classList.add('kb-pad'); [80,320,650,1000,1500].forEach(function(t){ setTimeout(kbFit,t); }); } });
 if(window.visualViewport){ window.visualViewport.addEventListener('resize', function(){ setTimeout(kbFit,30); }); }
 app.addEventListener('input', function(e){
-  var el=e.target; if(!el || el.id!=='le-in') return;
+  var el=e.target; if(!el || (el.id!=='le-in' && !(el.classList && el.classList.contains('wo-w')))) return;
   var v=el.value, atEnd=el.selectionStart===v.length;
   if(!atEnd) return;
   var nv;
