@@ -850,8 +850,8 @@ function viewApptList(){
   var h = '';
   if(up.length){
     var n = up[0];
-    h += '<div class="next'+(SITE&&/^riccardo-/.test((window.SITE&&window.SITE.slug)||'')?' att':'')+'"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
-    if(SITE){ viewPkg(); if(POLHTML){ if(/^riccardo-/.test((window.SITE&&window.SITE.slug)||'')){ var pm=POLHTML.match(/<svg[\s\S]*?<\/svg>/);
+    h += '<div class="next'+(SITE&&true?' att':'')+'"><span class="eyebrow">Prossimo appuntamento</span><span class="when">'+esc(fmtDay.format(parseD(n)))+'</span><span class="sub">'+(n.t?'Ore '+esc(n.t)+' · ':'')+esc(n.what||'Appuntamento')+(n.where?' · '+esc(n.where):'')+'</span></div>';
+    if(SITE){ viewPkg(); if(POLHTML){ if(true){ var pm=POLHTML.match(/<svg[\s\S]*?<\/svg>/);
       var nx=up.filter(function(a){ return parseD(a).getTime()>Date.now(); })[0], msg='';
       if(nx){ var st=parseD(nx), dl=new Date(st.getTime()-864e5), fT=function(d){ return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
         msg = Date.now()<dl.getTime() ? 'Hai tempo fino a <strong>'+esc(fmtDay.format(dl))+' alle '+fT(dl)+'</strong> per annullare la lezione.' : 'Il tempo per annullare la lezione di <strong>'+esc(fmtDay.format(st))+' alle '+fT(st)+'</strong> <span class="pol-exp">è scaduto</span>.'; }
