@@ -188,8 +188,9 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wo-on .nav-sp{height:140px}
 .ex-h .n{display:flex;flex-direction:column;align-items:center;gap:6px}
 .wo-on .ex-h{grid-template-columns:46px 1fr 16px;gap:10px}
-.ex-chk{display:block;font:700 10.5px/1 var(--body);text-transform:uppercase;letter-spacing:.03em;padding:12px 5px;border-radius:8px;border:1.5px solid var(--accent);color:var(--accent);background:var(--surface);cursor:pointer;white-space:nowrap}
-.ex-chk.on{background:var(--accent);color:var(--accent-ink)}
+.ex-chk{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:2px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;padding:0}
+.ex-chk svg{width:20px;height:20px}
+.ex-chk.on{background:var(--accent);color:#fff}
 .ex.wo-done .ex-t .name{text-decoration:line-through;opacity:.6}
 .ws-card{max-height:86vh;overflow:auto}
 .ws-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
@@ -700,7 +701,7 @@ function viewTrain(){
       if(ACC){
         var lastV='', lastW=0, lg0=e.log||[]; lg0.forEach(function(x,w){ if((x||'').trim()){ lastV=x.trim(); lastW=w+1; } });
         Object.keys(PEND).forEach(function(k){ var p=PEND[k]; if(p.d===ui.day && pkey(ui.day,e,p.w)===k && p.w>=lastW && (p.v||'').trim()){ lastV=p.v.trim(); lastW=p.w; } });
-        h += '<li class="ex acc'+(eo?' open':'')+((WO&&WS&&WS.day===ui.day&&WS.done[(e.n||'').trim().toUpperCase()])?' wo-done':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+((WO&&WS&&WS.day===ui.day)?'<span class="ex-chk'+(WS.done[(e.n||'').trim().toUpperCase()]?' on':'')+'" role="checkbox" aria-checked="'+(!!WS.done[(e.n||'').trim().toUpperCase()])+'" data-act="woDone" data-n="'+esc(e.n)+'">'+(WS.done[(e.n||'').trim().toUpperCase()]?'\u2713 Fatto':'Fatto')+'</span>':'')+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+(exInfo(e)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?' <span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">Modifica</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (Week '+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
+        h += '<li class="ex acc'+(eo?' open':'')+((WO&&WS&&WS.day===ui.day&&WS.done[(e.n||'').trim().toUpperCase()])?' wo-done':'')+'"><button type="button" class="ex-h" data-act="exT" data-k="'+esc(ek)+'" aria-expanded="'+(eo?'true':'false')+'"><span class="n">'+(i+1)+((WO&&WS&&WS.day===ui.day)?'<span class="ex-chk'+(WS.done[(e.n||'').trim().toUpperCase()]?' on':'')+'" role="checkbox" aria-checked="'+(!!WS.done[(e.n||'').trim().toUpperCase()])+'" data-act="woDone" data-n="'+esc(e.n)+'" aria-label="Fatto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>':'')+'</span><span class="ex-t"><span class="name">'+esc(e.n)+'</span><span class="meta">'+(e.sr?'<span class="sr">'+esc(e.sr)+'</span>':'')+(e.rec?'<span class="rec">Rec '+esc(e.rec)+'</span>':'')+'</span>'+(exInfo(e)?'<span class="ex-i">'+esc(exInfo(e))+(eo&&SITE?' <span class="ex-mod" role="button" tabindex="0" data-act="infoEdit" data-d="'+ui.day+'" data-n="'+esc(e.n)+'">Modifica</span>':'')+'</span>':'')+(lastV?'<span class="ex-last">Ultima settimana (Week '+lastW+'): <b>'+esc(lastV)+'</b></span>':'')+'</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></button><div class="ex-b">'+tmRest(e,i)+
         (SITE ? infoSite(e) : (e.info?'<span class="info">'+esc(e.info)+'</span>':''));
       } else
       h += '<li class="ex"><span class="n">'+(i+1)+'</span><span class="name">'+esc(e.n)+'</span>'+
