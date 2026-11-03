@@ -325,6 +325,9 @@ button.wk.empty{color:var(--accent)}
 .cal-d.done{background:var(--accent);color:var(--accent-ink)}
 .cal-d.mass{background:var(--rest);color:var(--accent-ink)}
 .cal-d.up{border-color:var(--accent);border-style:dashed}
+.cal-d.solo{background:#3FA66B;color:#fff}
+.cal-d.solo2{position:relative}
+.cal-d.solo2::after{content:'';position:absolute;right:2px;top:2px;width:9px;height:9px;border-radius:50%;background:#3FA66B;border:2px solid var(--surface)}
 .cal-d.today{box-shadow:inset 0 0 0 2px var(--ink)}
 .cal-d.done.today,.cal-d.mass.today{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
 .cal-foot{color:var(--muted);font-size:14px}
@@ -332,7 +335,7 @@ button.wk.empty{color:var(--accent)}
 .cal-leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
 .cal-leg span{display:inline-flex;align-items:center;gap:6px}
 .lg{width:12px;height:12px;border-radius:50%;display:inline-block}
-.lg.done{background:var(--accent)} .lg.mass{background:var(--rest)} .lg.up{border:2px dashed var(--accent)}
+.lg.done{background:var(--accent)} .lg.solo{background:#3FA66B} .lg.mass{background:var(--rest)} .lg.up{border:2px dashed var(--accent)}
 .next{background:var(--ink);color:var(--bg);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:4px}
 .next .eyebrow{color:inherit;opacity:.7}
 .next .when{font:800 32px/1 var(--display);text-transform:uppercase}
@@ -859,16 +862,17 @@ function calendar(list){
   var y=base.getFullYear(), m=base.getMonth(), nd=new Date(y,m+1,0).getDate(), lead=(base.getDay()+6)%7, map={}, done=0;
   list.forEach(function(a){ var d=parseD(a); if(d.getFullYear()!==y||d.getMonth()!==m) return; var k=d.getDate(), past=d<now, les=isLesson(a);
     var c=map[k]||(map[k]={}); if(past){ if(les){ c.done=true; done++; } else c.mass=true; } else c.up=true; });
+  var solo=0; if(WO) woLog().forEach(function(w){ var d=parseD({d:w.d}); if(d.getFullYear()!==y||d.getMonth()!==m) return; var c=map[d.getDate()]||(map[d.getDate()]={}); if(!c.solo){ c.solo=true; solo++; } });
   var mn=new Intl.DateTimeFormat('it-IT',{month:'long',year:'numeric'}).format(base);
   var h='<section class="cal" aria-label="Calendario di '+esc(mn)+'"><div class="cal-head"><button type="button" class="cal-nav" data-act="calPrev" aria-label="Mese precedente">‹</button><b>'+esc(mn)+'</b><button type="button" class="cal-nav" data-act="calNext" aria-label="Mese successivo"'+(off>=1?' disabled':'')+'>›</button></div><div class="cal-grid">';
   ['L','M','M','G','V','S','D'].forEach(function(w){ h+='<span class="cal-w">'+w+'</span>'; });
   for(var i=0;i<lead;i++) h+='<span></span>';
   var isCur = (y===now.getFullYear() && m===now.getMonth());
-  for(var dd=1; dd<=nd; dd++){ var c=map[dd]||{}, cls='cal-d'+(c.done?' done':(c.mass?' mass':''))+(c.up?' up':'')+(isCur&&dd===now.getDate()?' today':'');
-    var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.up?', in programma':'');
+  for(var dd=1; dd<=nd; dd++){ var c=map[dd]||{}, cls='cal-d'+(c.done?' done':(c.mass?' mass':(c.solo?' solo':'')))+((c.solo&&(c.done||c.mass))?' solo2':'')+(c.up?' up':'')+(isCur&&dd===now.getDate()?' today':'');
+    var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.solo?', allenamento da solo':'')+(c.up?', in programma':'');
     h+='<span class="'+cls+'" aria-label="'+lab+'">'+dd+'</span>'; }
-  h+='</div><div class="cal-foot"><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con me '+(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)))+'</div>';
-  h+='<div class="cal-leg"><span><i class="lg done"></i>Allenamento fatto</span><span><i class="lg mass"></i>Massaggio</span><span><i class="lg up"></i>In programma</span></div></section>';
+  h+='</div><div class="cal-foot"><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con me'+(solo?' e <strong>'+solo+'</strong> da solo':'')+' '+(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)))+'</div>';
+  h+='<div class="cal-leg"><span><i class="lg done"></i>Allenamento fatto</span><span><i class="lg mass"></i>Massaggio</span><span><i class="lg up"></i>In programma</span>'+(WO?'<span><i class="lg solo"></i>Allenamento da solo</span>':'')+'</div></section>';
   return h;
 }
 
@@ -960,6 +964,9 @@ var WO = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 var WK = SITE ? 'wo-'+SITE.slug : '';
 var WS = null;
 if(WO){ try{ WS = JSON.parse(localStorage.getItem(WK)||'null'); }catch(e){ WS=null; } }
+var WLK = SITE ? 'wolog-'+SITE.slug : '';
+function woLog(){ try{ return JSON.parse(localStorage.getItem(WLK)||'[]')||[]; }catch(e){ return []; } }
+function woLogAdd(x){ try{ var l=woLog(); l.push(x); localStorage.setItem(WLK, JSON.stringify(l)); }catch(e){} }
 function woSave(){ try{ if(WS) localStorage.setItem(WK, JSON.stringify(WS)); else localStorage.removeItem(WK); }catch(e){} }
 function woMs(){ if(!WS) return 0; return WS.acc + (WS.run ? Date.now()-WS.run : 0); }
 function woFmt(ms){ var t=Math.floor(ms/1000), h=Math.floor(t/3600), m=Math.floor(t%3600/60), sec=t%60, p=function(x){ return String(x).padStart(2,'0'); }; return (h?h+':'+p(m):p(m))+':'+p(sec); }
@@ -992,7 +999,7 @@ function woEnd(){
   var d=document.createElement('div'); d.className='guida';
   d.innerHTML='<div class="g-card ws-card"><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti. Controlla i carichi e correggili se serve.</p><div class="ws-list">'+rows+'</div><div class="g-bt"><button type="button" data-ws="del">Elimina</button><button type="button" class="pri" data-ws="save">Salva</button></div></div>';
   d.addEventListener('click',function(ev){ var x=ev.target.closest('[data-ws]'); if(!x) return;
-    if(x.dataset.ws==='save'){ [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
+    if(x.dataset.ws==='save'){ var sd=new Date(WS.start); woLogAdd({d:sd.getFullYear()+'-'+String(sd.getMonth()+1).padStart(2,'0')+'-'+String(sd.getDate()).padStart(2,'0'), t:String(sd.getHours()).padStart(2,'0')+':'+String(sd.getMinutes()).padStart(2,'0'), ms:woMs(), done:c[0], tot:c[1], day:(S.days[di]||{}).name||''}); [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
         if(v!==String(cur).trim()){ PEND[k]={d:di,dn:(S.days[di]||{}).name||'',n:e.n,w:w,v:v,ts:Date.now(),sent:false}; pendSave(); sendPend(k); } }); }
     WS=null; woSave(); woBar(); if(d.parentNode) d.parentNode.removeChild(d); render(); });
   document.body.appendChild(d);
