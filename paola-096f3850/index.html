@@ -1072,7 +1072,7 @@ app.addEventListener('input', function(e){
   if(!atEnd) return;
   var nv;
   if((e.inputType||'').indexOf('delete')===0){ nv = /\s·\s?$/.test(v) ? v.replace(/\s*·\s*$/,'') : v; }
-  else nv = v.replace(/ +/g,' ').replace(/(?:\s*·\s*)+/g,' · ').replace(/^ · /,'').replace(/([^\s·]) (?!·)/g,'$1 · ');
+  else nv = v.replace(/([^\s.])\. $/,'$1 · ').replace(/ {2,}/g,' · ').replace(/(?:\s*·\s*)+/g,' · ').replace(/^ · /,'');
   if(nv!==v){ el.value=nv; try{ el.setSelectionRange(nv.length,nv.length); }catch(err){} }
 });
 app.addEventListener('keydown', function(e){ if(e.target.id==='le-in' && e.key==='Enter'){ e.preventDefault(); saveLog(); } });
