@@ -300,8 +300,8 @@ function render(){
       var url = /^https:\/\/claude\.ai\//.test(x.c.url||'') ? x.c.url : '';
       var site = x.c.site || SITES[x.c.url||''] || '', site = /^https:\/\//.test(site) ? site : '';
       h += '<li class="row"><div class="who"><b>'+esc(x.c.name)+'</b><div class="tags">'+x.s.tags.map(function(t){ return '<span class="tag '+t.c+'">'+((t.c==='next'||t.c==='nonext')?CAL:'')+esc(t.t)+'</span>'; }).join('')+'</div></div>'+
-        (site?'<a class="open" href="'+esc(site)+'" target="_blank" rel="noopener">Apri il sito'+ARROW+'</a>':(url?'<a class="open" href="'+esc(url)+'" target="_blank" rel="noopener">Modifica'+ARROW+'</a>':''))+
-        (site?'<div class="site"><span>Link per il cliente: '+esc(site.replace(/^https:\/\//,''))+'</span><input type="text" readonly tabindex="-1" aria-hidden="true" value="'+esc(site)+'"><button type="button" data-copy="'+esc(site)+'">Copia link</button>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener">Modifica</a>':'')+'</div>':'')+'</li>';
+        (url?'<a class="open" href="'+esc(url)+'" target="_blank" rel="noopener">Modifica'+ARROW+'</a>':(site?'<a class="open" href="'+esc(site)+'" target="_blank" rel="noopener">Apri il sito'+ARROW+'</a>':''))+
+        (site?'<div class="site"><span>Link per il cliente: '+esc(site.replace(/^https:\/\//,''))+'</span><input type="text" readonly tabindex="-1" aria-hidden="true" value="'+esc(site)+'"><button type="button" data-copy="'+esc(site)+'">Copia link</button>'+(url?'<a href="'+esc(site)+'" target="_blank" rel="noopener">Apri il sito</a>':'')+'</div>':'')+'</li>';
     });
     h += '</ul>';
   }
