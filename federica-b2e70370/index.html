@@ -1057,7 +1057,7 @@ function woBar(){
 }
 var WLE = SITE ? 'wled-'+SITE.slug : '';
 function wlEd(){ try{ return JSON.parse(localStorage.getItem(WLE)||'{}')||{}; }catch(e){ return {}; } }
-function woRecap(day, edit){
+function woRecap(day, edit, bottom){
   var L=(S.wolog||[]).concat(WO?woLog():[]).filter(function(w){ return w.d===day; }); if(!L.length) return;
   var OV=wlEd(), ok=function(w,x){ return w.d+'|'+(w.t||'')+'|'+(x.n||'').trim().toUpperCase(); };
   var mix=L.some(function(w){ return !!w.coach; }) && L.some(function(w){ return !w.coach; });
@@ -1087,9 +1087,10 @@ function woRecap(day, edit){
       try{ localStorage.setItem(WLE, JSON.stringify(ov)); }catch(e){}
       if(locCh){ try{ localStorage.setItem(WLK, JSON.stringify(loc)); }catch(e){} }
       if(sent.length){ pendSave(); sent.forEach(sendPend); }
-      q.parentNode.removeChild(q); var y=window.scrollY; render(); window.scrollTo(0,y); woRecap(day); }
+      q.parentNode.removeChild(q); var y=window.scrollY; render(); window.scrollTo(0,y); woRecap(day, false, true); }
   });
   document.body.appendChild(q);
+  if(bottom){ var cd=q.querySelector('.ws-card'); if(cd) cd.scrollTop=cd.scrollHeight; }
 }
 app.addEventListener('click',function(e){ var c=e.target.closest && e.target.closest('[data-solo]'); if(c){ e.stopPropagation(); woRecap(c.dataset.solo); } },true);
 function woStart(){ WS={day:ui.day, acc:0, run:Date.now(), done:{}, start:Date.now()}; woSave(); render(); }
