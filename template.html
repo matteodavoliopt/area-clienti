@@ -404,7 +404,7 @@ textarea{min-height:64px;resize:vertical}
 .splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}
 .splash .s-hi{display:flex;flex-direction:column;align-items:center;gap:4px;font:800 44px/1 var(--display);text-transform:uppercase;color:var(--ink);margin-bottom:22px;animation:spl-in .6s ease both}
 .splash .s-hi small{font:600 18px/1 var(--body);text-transform:none;color:var(--accent);letter-spacing:.02em}
-.hi-toast{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top,0px));z-index:70;display:flex;align-items:center;gap:12px;width:calc(100% - 32px);max-width:440px;box-sizing:border-box;padding:18px 22px;gap:16px;border-radius:22px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18);transform:translate(-50%,-140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .3s ease}
+.hi-toast{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top,0px));z-index:70;display:flex;align-items:center;gap:12px;width:calc(100% - 32px);max-width:440px;box-sizing:border-box;padding:18px 22px;gap:16px;border-radius:22px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18);transform:translate(-50%,-140%);opacity:0;transition:transform .7s cubic-bezier(.2,.9,.3,1.12),opacity .5s ease}
 .hi-toast.in{transform:translate(-50%,0);opacity:1}
 .hi-toast .logo{width:52px;height:auto;flex:0 0 auto}
 .hi-toast span{display:flex;flex-direction:column;gap:5px}
@@ -982,7 +982,7 @@ function navBar(nA){
 var HB = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 function hiToast(){ try{ var t=document.createElement('div'); t.className='hi-toast'; t.setAttribute('role','status'); t.innerHTML=LOGO+'<span><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><b>'+esc(firstName(S.client.name))+'!</b></span>'; document.body.appendChild(t);
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('in'); }); });
-  setTimeout(function(){ t.classList.remove('in'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },450); },2300);
+  setTimeout(function(){ t.classList.remove('in'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },750); },2600);
   t.addEventListener('click',function(){ t.classList.remove('in'); }); }catch(e){} }
 (function(){ var locked=false, y0=0;
   function chk(){ var on=!!document.querySelector('.guida'); if(on===locked) return; locked=on; var b=document.body;
