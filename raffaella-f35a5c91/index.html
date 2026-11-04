@@ -1057,7 +1057,7 @@ function woBar(){
 }
 var WLE = SITE ? 'wled-'+SITE.slug : '';
 function wlEd(){ try{ return JSON.parse(localStorage.getItem(WLE)||'{}')||{}; }catch(e){ return {}; } }
-function woRecap(day, edit, bottom){
+function woRecap(day, edit, bottom, old){
   var L=(S.wolog||[]).concat(WO?woLog():[]).filter(function(w){ return w.d===day; }); if(!L.length) return;
   var OV=wlEd(), ok=function(w,x){ return w.d+'|'+(w.t||'')+'|'+(x.n||'').trim().toUpperCase(); };
   var mix=L.some(function(w){ return !!w.coach; }) && L.some(function(w){ return !w.coach; });
@@ -1074,7 +1074,7 @@ function woRecap(day, edit, bottom){
   q.addEventListener('click',function(ev){ var b=ev.target.closest('[data-q]');
     if(ev.target===q || (b && b.dataset.q==='x')){ q.parentNode.removeChild(q); return; }
     if(!b) return;
-    if(b.dataset.q==='edit'){ q.parentNode.removeChild(q); woRecap(day,true); return; }
+    if(b.dataset.q==='edit'){ woRecap(day,true,false,q); return; }
     if(b.dataset.q==='save'){ var ov=wlEd(), loc=woLog(), locCh=false, sent=[];
       [].forEach.call(q.querySelectorAll('input.wo-w'),function(inp){ var w=L[+inp.dataset.l], x=w.ex[+inp.dataset.x], k=ok(w,x), v=inp.value.replace(/\s*·\s*$/,'').trim(), cur=(k in ov)?ov[k]:(x.v||'');
         if(v===String(cur).trim()) return;
@@ -1087,9 +1087,9 @@ function woRecap(day, edit, bottom){
       try{ localStorage.setItem(WLE, JSON.stringify(ov)); }catch(e){}
       if(locCh){ try{ localStorage.setItem(WLK, JSON.stringify(loc)); }catch(e){} }
       if(sent.length){ pendSave(); sent.forEach(sendPend); }
-      q.parentNode.removeChild(q); var y=window.scrollY; render(); window.scrollTo(0,y); woRecap(day, false, true); }
+      var y=window.scrollY; render(); window.scrollTo(0,y); woRecap(day, false, true, q); }
   });
-  document.body.appendChild(q);
+  if(old){ q.style.animation='none'; document.body.appendChild(q); if(old.parentNode) old.parentNode.removeChild(old); } else document.body.appendChild(q);
   if(bottom){ var cd=q.querySelector('.ws-card'); if(cd) cd.scrollTop=cd.scrollHeight; }
 }
 app.addEventListener('click',function(e){ var c=e.target.closest && e.target.closest('[data-solo]'); if(c){ e.stopPropagation(); woRecap(c.dataset.solo); } },true);
