@@ -945,7 +945,7 @@ function viewApptList(){
   if(past.length){ h += '<details'+(R2?' class="ddc"':'')+'><summary>'+(R2?'<span>Appuntamenti passati ('+past.length+')</span>'+CHEV:'Tutti gli appuntamenti passati ('+past.length+')')+'</summary><ul class="appts">'; past.forEach(function(a){ h += row(a,'past'); }); h += '</ul></details>'; }
   if(SITE){ var logs=(S.wolog||[]).concat(WO?woLog():[]), WL=[];
     oneADay(past.filter(isLesson)).forEach(function(a){ var lg=logs.filter(function(w){ return w.coach && w.d===a.d; })[0]; WL.push({d:a.d,t:a.t,coach:true,lg:lg}); });
-    logs.forEach(function(w){ if(!w.coach) WL.push({d:w.d,t:w.t,coach:false,lg:w}); });
+    logs.forEach(function(w){ if(!w.coach || !WL.some(function(z){ return z.coach && z.d===w.d; })) WL.push({d:w.d,t:w.t,coach:!!w.coach,lg:w}); });
     WL.sort(function(x,y){ return (y.d+(y.t||'')).localeCompare(x.d+(x.t||'')); });
     if(WL.length){ h += '<details class="ddc"><summary><span>Allenamenti fatti ('+WL.length+')</span>'+CHEV+'</summary><ul class="appts">';
       WL.forEach(function(x){ var dt=parseD({d:x.d}), L=x.lg, sub=[x.t?'Ore '+esc(x.t):'', L&&L.day?esc(L.day):'', L&&L.ms?Math.max(1,Math.round(L.ms/60000))+' min':''].filter(Boolean).join(' · ');
