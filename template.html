@@ -410,6 +410,7 @@ textarea{min-height:64px;resize:vertical}
 .hi-toast span{display:flex;flex-direction:column;gap:2px}
 .hi-toast small{font:600 13px/1 var(--body);color:var(--accent)}
 .hi-toast b{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.top-sp{height:calc(6px + env(safe-area-inset-top,0px))}
 .brand.slim{display:flex;align-items:center;gap:12px;padding:4px 0 12px;margin-bottom:14px;border-bottom:1px solid var(--line)}
 .brand.slim .logo{width:30px;height:auto}
 .brand.slim span{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.03em;color:var(--ink)}
@@ -1051,7 +1052,7 @@ function render(){
     h += BRAND+'<div class="hero"><span class="eyebrow">Modifica programma</span><h1>'+esc(firstName(draft.client.name))+'</h1></div>' + viewEdit();
   } else {
     var nA = S.appts.filter(function(a){ return a.d && parseD(a).getTime() > Date.now()-3600e3; }).length;
-    if(S.navbar && HB) h += '<header class="brand slim">'+LOGO+'<span>'+({train:'Programma',appts:'Appuntamenti',pkg:'Pacchetti',pers:'Personale'}[ui.tab]||'')+'</span></header>';
+    if(S.navbar && HB) h += '<div class="top-sp"></div>';
     else if(S.navbar) h += '<header class="brand hello'+(SITE?' sm':'')+'"><h1><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><span>'+esc(firstName(S.client.name))+(SITE?'!':'')+'</span></h1>'+LOGO+'</header>';
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
