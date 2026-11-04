@@ -400,6 +400,11 @@ textarea{min-height:64px;resize:vertical}
 .pe-mail{font-size:14px !important;color:var(--muted)}
 .pland.flat .pl-head{display:flex;padding:14px 16px 12px}
 .splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}
+.splash .s-hi{display:flex;flex-direction:column;align-items:center;gap:4px;font:800 44px/1 var(--display);text-transform:uppercase;color:var(--ink);margin-bottom:22px;animation:spl-in .6s ease both}
+.splash .s-hi small{font:600 18px/1 var(--body);text-transform:none;color:var(--accent);letter-spacing:.02em}
+.brand.slim{display:flex;align-items:center;gap:12px;padding:4px 0 12px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.brand.slim .logo{width:30px;height:auto}
+.brand.slim span{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.03em;color:var(--ink)}
 .splash.out{opacity:0;pointer-events:none}
 .splash .logo{width:96px;animation:spl-in .7s ease both}
 .splash .s-name{font:800 30px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);animation:spl-in .7s .15s ease both}
@@ -953,6 +958,7 @@ function navBar(nA){
 
 
 /* --- Allenamento in corso (prova su Riccardo) --- */
+var HB = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 var WO = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 var WK = SITE ? 'wo-'+SITE.slug : '';
 var WS = null;
@@ -1018,7 +1024,8 @@ function render(){
     h += BRAND+'<div class="hero"><span class="eyebrow">Modifica programma</span><h1>'+esc(firstName(draft.client.name))+'</h1></div>' + viewEdit();
   } else {
     var nA = S.appts.filter(function(a){ return a.d && parseD(a).getTime() > Date.now()-3600e3; }).length;
-    if(S.navbar) h += '<header class="brand hello'+(SITE?' sm':'')+'"><h1><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><span>'+esc(firstName(S.client.name))+(SITE?'!':'')+'</span></h1>'+LOGO+'</header>';
+    if(S.navbar && HB) h += '<header class="brand slim">'+LOGO+'<span>'+({train:'Programma',appts:'Appuntamenti',pkg:'Pacchetti',pers:'Personale'}[ui.tab]||'')+'</span></header>';
+    else if(S.navbar) h += '<header class="brand hello'+(SITE?' sm':'')+'"><h1><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><span>'+esc(firstName(S.client.name))+(SITE?'!':'')+'</span></h1>'+LOGO+'</header>';
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
@@ -1231,7 +1238,7 @@ if(R3){
   window.addEventListener('online', function(){ try{ Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); }); }catch(e){} });
   if('serviceWorker' in navigator && location.protocol==='https:'){ try{ navigator.serviceWorker.register('../sw.js',{scope:'../'}).catch(function(){}); }catch(e){} }
 }
-if(S.navbar){ try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); try{ guida(); }catch(e){} },wait); }catch(e){} }
+if(S.navbar){ try{ var sp=document.getElementById('splash0'); if(sp && HB && !sp.querySelector('.s-hi')){ var hi=document.createElement('div'); hi.className='s-hi'; hi.innerHTML='<small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small>'+esc(firstName(S.client.name))+'!'; sp.insertBefore(hi, sp.firstChild); } if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); try{ guida(); }catch(e){} },wait); }catch(e){} }
 (async function(){
   try{
     if(!window.claude || !window.claude.use) return;
