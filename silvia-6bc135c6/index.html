@@ -193,6 +193,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .pol-exp{color:var(--danger);font-weight:800;text-transform:uppercase;letter-spacing:.02em}
 .cn-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .cn-top .le-btns{margin:0}
+.cn-bt{display:flex;justify-content:flex-end;gap:8px}
 .kb-pad{padding-bottom:60vh !important}
 .wo-start{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font:700 16px var(--body);cursor:pointer}
 .wo-start svg{width:20px;height:20px;fill:currentColor}
@@ -516,7 +517,7 @@ function ckey(di,e){ return di+'|'+(e.n||'').trim().toUpperCase()+'|cn'; }
 function noteSite(e){
   var di=ui.day, k=ckey(di,e), p=PEND[k], val=String(p?p.v:(e.cn||''));
   if(ui.ce && ui.ce.d===di && ui.ce.n===e.n){
-    return '<div class="le ie cn-ed"><div class="cn-top"><label for="cn-in">Le tue note</label><div class="le-btns"><button type="button" class="btn small" data-act="cnCancel">Annulla</button><button type="button" class="btn small primary" data-act="cnSave">Salva</button></div></div><textarea id="cn-in" rows="3" placeholder="Es. sensazioni, regolazioni della macchina, dolori…">'+esc(val)+'</textarea></div>';
+    return '<div class="le ie cn-ed"><div class="cn-top"><label for="cn-in">Le tue note</label></div><textarea id="cn-in" rows="3" placeholder="Es. sensazioni, regolazioni della macchina, dolori…">'+esc(val)+'</textarea><div class="le-btns cn-bt"><button type="button" class="btn small" data-act="cnCancel">Annulla</button><button type="button" class="btn small primary" data-act="cnSave">Salva</button></div></div>';
   }
   if(!val.trim()) return '<button type="button" class="cn-add" data-act="cnEdit" data-d="'+di+'" data-n="'+esc(e.n)+'">+ Aggiungi nota</button>';
   return '<div class="cn-box"><span class="cn-l">Le tue note'+(p?' · '+(p.sent?'inviata':'da inviare'):'')+'</span><p>'+esc(val)+'</p><button type="button" class="cn-mod" data-act="cnEdit" data-d="'+di+'" data-n="'+esc(e.n)+'">Modifica nota</button></div>';
