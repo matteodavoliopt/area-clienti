@@ -176,7 +176,6 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .cn-top .le-btns{margin:0}
 .cn-bt{display:flex;justify-content:flex-end;gap:8px}
 .kb-pad{padding-bottom:60vh !important}
-.kb-pad #wobar{display:none !important}
 .wo-start{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font:700 16px var(--body);cursor:pointer}
 .wo-start svg{width:20px;height:20px;fill:currentColor}
 .wo-other{margin:0;padding:10px 12px;border-radius:12px;background:var(--accent-soft);color:var(--ink);font-size:14px}
@@ -1106,7 +1105,9 @@ function showOpen(el){
     var d=Math.min(over, r.top-12); if(d>4){ try{ window.scrollBy({top:d,behavior:'smooth'}); }catch(err){ window.scrollBy(0,d); } }
   },40);
 }
-document.addEventListener('focusout', function(e){ if(e.target && /^(le|ie|cn)-in$/.test(e.target.id||'')) setTimeout(function(){ var a=document.activeElement; if(!a || !/^(le|ie|cn)-in$/.test(a.id||'')) document.body.classList.remove('kb-pad'); },300); });
+document.addEventListener('focusout', function(e){ if(e.target && /^(le|ie|cn)-in$/.test(e.target.id||'')) setTimeout(function(){ var a=document.activeElement; if(!a || !/^(le|ie|cn)-in$/.test(a.id||'')){ document.body.classList.remove('kb-pad'); pinBars(false); } },300); });
+function pinBars(on){ var o=(on && window.visualViewport) ? Math.max(0, window.visualViewport.offsetTop) : 0; [document.getElementById('wobar'), document.querySelector('.nav')].forEach(function(el){ if(el) el.style.transform = o ? 'translateY('+o+'px)' : ''; }); }
+if(window.visualViewport){ ['resize','scroll'].forEach(function(ev){ window.visualViewport.addEventListener(ev, function(){ pinBars(document.body.classList.contains('kb-pad')); }); }); }
 function toTop(id){ var el=document.getElementById(id); if(!el) return; var box=el.closest('.le')||el; var r=box.getBoundingClientRect(); var d=r.top-80; if(Math.abs(d)>4) window.scrollBy(0,d); }
 function kbFit(){
   var a=document.activeElement; if(!a || (a.id!=='le-in' && a.id!=='ie-in' && a.id!=='cn-in')) return;
@@ -1117,7 +1118,7 @@ function kbFit(){
   if(r.bottom > bot-12) window.scrollBy(0, r.bottom-(bot-12));
   else if(r.top < top+12) window.scrollBy(0, r.top-(top+12));
 }
-document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in'||e.target.id==='cn-in')){ document.body.classList.add('kb-pad'); [80,320,650,1000,1500].forEach(function(t){ setTimeout(kbFit,t); }); } });
+document.addEventListener('focusin', function(e){ if(e.target && (e.target.id==='le-in'||e.target.id==='ie-in'||e.target.id==='cn-in')){ document.body.classList.add('kb-pad'); pinBars(true); [80,320,650,1000,1500].forEach(function(t){ setTimeout(kbFit,t); }); } });
 if(window.visualViewport){ window.visualViewport.addEventListener('resize', function(){ setTimeout(kbFit,30); }); }
 app.addEventListener('input', function(e){
   var el=e.target; if(!el || (el.id!=='le-in' && !(el.classList && el.classList.contains('wo-w')))) return;
