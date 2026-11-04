@@ -93,7 +93,7 @@ def main():
         assert n == 1
         body = body.replace('<script>', '<script>window.PFORM=' + json.dumps(CONFIG.get('form') or {}) + ';</script>\n<script>', 1)
         out = ROOT / panel; out.mkdir(exist_ok=True)
-        head = HEAD.format(title='Pannello clienti', short='Pannello', splash=SPLASH).replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
+        head = HEAD.format(title='Pannello clienti', short='Pannello', splash='').replace('<meta name="apple-mobile-web-app-status-bar-style" content="default">', '<meta name="apple-mobile-web-app-status-bar-style" content="default">')
         (out / 'index.html').write_text(head + nonblock(body) + '\n</body>\n</html>\n', encoding='utf-8')
         (out / 'manifest.webmanifest').write_text(json.dumps({"name": "Pannello clienti", "short_name": "Pannello", "start_url": "./", "scope": "./", "display": "standalone",
             "background_color": "#000000", "theme_color": "#1B7D8D", "lang": "it",
