@@ -982,7 +982,7 @@ function navBar(nA){
 var HB = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 function hiToast(){ try{ var t=document.createElement('div'); t.className='hi-toast'; t.setAttribute('role','status'); t.innerHTML=LOGO+'<span><small>'+(S.client.g==='f'?'Bentornata':'Bentornato')+'</small><b>'+esc(firstName(S.client.name))+'!</b></span>'; document.body.appendChild(t);
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('in'); }); });
-  setTimeout(function(){ t.classList.remove('in'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },750); },2600);
+  setTimeout(function(){ t.classList.remove('in'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },750); },2000);
   t.addEventListener('click',function(){ t.classList.remove('in'); }); }catch(e){} }
 (function(){ var locked=false, y0=0;
   function chk(){ var on=!!document.querySelector('.guida'); if(on===locked) return; locked=on; var b=document.body;
