@@ -404,12 +404,12 @@ textarea{min-height:64px;resize:vertical}
 .splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;transition:opacity .45s ease}
 .splash .s-hi{display:flex;flex-direction:column;align-items:center;gap:4px;font:800 44px/1 var(--display);text-transform:uppercase;color:var(--ink);margin-bottom:22px;animation:spl-in .6s ease both}
 .splash .s-hi small{font:600 18px/1 var(--body);text-transform:none;color:var(--accent);letter-spacing:.02em}
-.hi-toast{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top,0px));z-index:70;display:flex;align-items:center;gap:12px;min-width:220px;max-width:calc(100% - 32px);padding:12px 18px 12px 14px;border-radius:18px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18);transform:translate(-50%,-140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .3s ease}
+.hi-toast{position:fixed;left:50%;top:calc(10px + env(safe-area-inset-top,0px));z-index:70;display:flex;align-items:center;gap:12px;width:calc(100% - 32px);max-width:440px;box-sizing:border-box;padding:18px 22px;gap:16px;border-radius:22px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18);transform:translate(-50%,-140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .3s ease}
 .hi-toast.in{transform:translate(-50%,0);opacity:1}
-.hi-toast .logo{width:34px;height:auto;flex:0 0 auto}
-.hi-toast span{display:flex;flex-direction:column;gap:2px}
-.hi-toast small{font:600 13px/1 var(--body);color:var(--accent)}
-.hi-toast b{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
+.hi-toast .logo{width:52px;height:auto;flex:0 0 auto}
+.hi-toast span{display:flex;flex-direction:column;gap:5px}
+.hi-toast small{font:600 17px/1 var(--body);color:var(--accent)}
+.hi-toast b{font:800 34px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
 .top-sp{height:calc(6px + env(safe-area-inset-top,0px))}
 .brand.slim{display:flex;align-items:center;gap:12px;padding:4px 0 12px;margin-bottom:14px;border-bottom:1px solid var(--line)}
 .brand.slim .logo{width:30px;height:auto}
