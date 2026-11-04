@@ -450,6 +450,8 @@ textarea{min-height:64px;resize:vertical}
 .wo-b{background:#fff;color:var(--accent)}
 .wo-b.end{background:var(--danger);color:#fff}
 .wo-start{height:50px;padding:0 14px;border-radius:16px;box-sizing:border-box}
+.guida{overscroll-behavior:contain;touch-action:none}
+.guida .g-card{touch-action:pan-y;overscroll-behavior:contain}
 </style>
 <div id="app"><p class="empty">Caricamento del programma…</p></div>
 <script type="application/json" id="data">{"client":{"name":"Antonio Moschini","email":"antonio.moschini.66@gmail.com","g":"m","goal":"","freq":"","dur":"","start":"","end":"","age":"","weight":"","issues":"","general":""},"note":"","weeks":"12","pre":[],"post":[],"days":[],"pkg":{"mode":"pack","total":"10","done":"6","paid":true,"paidMonth":"2026-10"},"appts":[{"d":"2026-11-05","t":"17:00","what":"Lezione","where":"Viale Alcide De Gasperi 2\n20151 Milano Lombardia\nItalia"}],"updated":"2026-10-31","navbar":true,"pkgHist":[]}</script>
@@ -1001,6 +1003,11 @@ function hiToast(){ try{ var t=document.createElement('div'); t.className='hi-to
   requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('in'); }); });
   setTimeout(function(){ t.classList.remove('in'); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },450); },2300);
   t.addEventListener('click',function(){ t.classList.remove('in'); }); }catch(e){} }
+(function(){ var locked=false, y0=0;
+  function chk(){ var on=!!document.querySelector('.guida'); if(on===locked) return; locked=on; var b=document.body;
+    if(on){ y0=window.scrollY; b.style.position='fixed'; b.style.top=(-y0)+'px'; b.style.left='0'; b.style.right='0'; b.style.width='100%'; }
+    else { b.style.position=''; b.style.top=''; b.style.left=''; b.style.right=''; b.style.width=''; window.scrollTo(0,y0); } }
+  try{ new MutationObserver(chk).observe(document.body,{childList:true}); }catch(e){} })();
 var WO = !!(SITE && window.SITE && /^riccardo-/.test(window.SITE.slug||''));
 var WK = SITE ? 'wo-'+SITE.slug : '';
 var WS = null;
