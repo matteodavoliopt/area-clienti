@@ -312,6 +312,9 @@ button.wk.empty{color:var(--accent)}
 .cal-d.mass{background:var(--rest);color:var(--accent-ink)}
 .cal-d.up{border-color:var(--accent);border-style:dashed}
 .cal-d.solo{background:#3FA66B;color:#fff}
+[data-solo]{cursor:pointer}
+.ws-v{font:500 14px/1.3 var(--mono);color:var(--ink);padding:2px 0 0 26px}
+.ws-day{text-transform:capitalize;margin-top:-6px}
 .cal-d.solo2{position:relative}
 .cal-d.solo2::after{content:'';position:absolute;right:2px;top:2px;width:9px;height:9px;border-radius:50%;background:#3FA66B;border:2px solid var(--surface)}
 .cal-d.today{box-shadow:inset 0 0 0 2px var(--ink)}
@@ -858,7 +861,7 @@ function calendar(list){
   var isCur = (y===now.getFullYear() && m===now.getMonth());
   for(var dd=1; dd<=nd; dd++){ var c=map[dd]||{}, cls='cal-d'+(c.done?' done':(c.mass?' mass':(c.solo?' solo':'')))+((c.solo&&(c.done||c.mass))?' solo2':'')+(c.up?' up':'')+(isCur&&dd===now.getDate()?' today':'');
     var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.solo?', allenamento da solo':'')+(c.up?', in programma':'');
-    h+='<span class="'+cls+'" aria-label="'+lab+'">'+dd+'</span>'; }
+    h+='<span class="'+cls+'" aria-label="'+lab+'"'+(c.solo?' role="button" tabindex="0" data-solo="'+y+'-'+String(m+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0')+'"':'')+'>'+dd+'</span>'; }
   h+='</div><div class="cal-foot"><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con me'+(solo?' e <strong>'+solo+'</strong> da solo':'')+' '+(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)))+'</div>';
   h+='<div class="cal-leg"><span><i class="lg done"></i>Allenamento fatto</span><span><i class="lg mass"></i>Massaggio</span><span><i class="lg up"></i>In programma</span>'+(WO?'<span><i class="lg solo"></i>Allenamento da solo</span>':'')+'</div></section>';
   return h;
@@ -975,6 +978,19 @@ function woBar(){
     '<button type="button" class="wo-b" data-wo="pause" aria-label="'+(paused?'Riprendi':'Pausa')+'">'+(paused?'<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>':'<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>')+'</button>'+
     '<button type="button" class="wo-b end" data-wo="end" aria-label="Termina"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button></div>';
 }
+function woRecap(day){
+  var L=woLog().filter(function(w){ return w.d===day; }); if(!L.length) return;
+  var fd=new Intl.DateTimeFormat('it-IT',{weekday:'long',day:'numeric',month:'long'}).format(parseD({d:day}));
+  var body=L.map(function(w){
+    var rows=(w.ex||[]).map(function(x){ return '<div class="ws-r'+(x.ok?' dn':'')+'"><div class="ws-h"><span class="ws-ck">'+(x.ok?'✓':'✕')+'</span><b>'+esc(x.n)+'</b><small>Week '+x.w+'</small></div>'+(x.v?'<div class="ws-v">'+esc(x.v)+'</div>':'')+'</div>'; }).join('');
+    return '<p>'+esc(w.day||'Allenamento')+' · ore '+esc(w.t||'')+'<br>Durata <b>'+woFmt(w.ms||0)+'</b> · <b>'+w.done+' su '+w.tot+'</b> esercizi fatti</p>'+(rows?'<div class="ws-list">'+rows+'</div>':'');
+  }).join('');
+  var q=document.createElement('div'); q.className='guida';
+  q.innerHTML='<div class="g-card ws-card"><h2>Allenamento da solo</h2><p class="ws-day">'+esc(fd)+'</p>'+body+'<div class="g-bt"><button type="button" class="pri" data-q="x">Chiudi</button></div></div>';
+  q.addEventListener('click',function(ev){ if(ev.target===q || ev.target.closest('[data-q]')) q.parentNode.removeChild(q); });
+  document.body.appendChild(q);
+}
+app.addEventListener('click',function(e){ var c=e.target.closest && e.target.closest('[data-solo]'); if(c){ e.stopPropagation(); woRecap(c.dataset.solo); } },true);
 function woStart(){ WS={day:ui.day, acc:0, run:Date.now(), done:{}, start:Date.now()}; woSave(); render(); }
 function woWeek(e){ var di=WS.day, lg=e.log||[], last=0, pw=0;
   lg.forEach(function(x,w){ if((x||'').trim()) last=w+1; });
@@ -987,7 +1003,8 @@ function woEnd(){
   var d=document.createElement('div'); d.className='guida';
   d.innerHTML='<div class="g-card ws-card"><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti. Controlla i carichi e correggili se serve.</p><div class="ws-list">'+rows+'</div><div class="g-bt"><button type="button" data-ws="del">Elimina</button><button type="button" class="pri" data-ws="save">Salva</button></div></div>';
   d.addEventListener('click',function(ev){ var x=ev.target.closest('[data-ws]'); if(!x) return;
-    if(x.dataset.ws==='save'){ var sd=new Date(WS.start); woLogAdd({d:sd.getFullYear()+'-'+String(sd.getMonth()+1).padStart(2,'0')+'-'+String(sd.getDate()).padStart(2,'0'), t:String(sd.getHours()).padStart(2,'0')+':'+String(sd.getMinutes()).padStart(2,'0'), ms:woMs(), done:c[0], tot:c[1], day:(S.days[di]||{}).name||''}); [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
+    if(x.dataset.ws==='save'){ var sd=new Date(WS.start); var exl=[].map.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i]; return {n:e.n, ok:!!WS.done[(e.n||'').trim().toUpperCase()], w:+inp.dataset.w, v:inp.value.replace(/\s*·\s*$/,'').trim()}; });
+      woLogAdd({d:sd.getFullYear()+'-'+String(sd.getMonth()+1).padStart(2,'0')+'-'+String(sd.getDate()).padStart(2,'0'), t:String(sd.getHours()).padStart(2,'0')+':'+String(sd.getMinutes()).padStart(2,'0'), ms:woMs(), done:c[0], tot:c[1], day:(S.days[di]||{}).name||'', ex:exl}); [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
         if(v!==String(cur).trim()){ PEND[k]={d:di,dn:(S.days[di]||{}).name||'',n:e.n,w:w,v:v,ts:Date.now(),sent:false}; pendSave(); sendPend(k); } }); }
     WS=null; woSave(); woBar(); if(d.parentNode) d.parentNode.removeChild(d); render(); });
   document.body.appendChild(d);
