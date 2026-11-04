@@ -1110,6 +1110,7 @@ function kbFit(){
   var box=a.closest('.le')||a, r=box.getBoundingClientRect(), vv=window.visualViewport;
   var top=vv?vv.offsetTop:0, bot=vv?(vv.offsetTop+vv.height):window.innerHeight;
   var nv=document.querySelector('.nav'); if(nv){ var nr=nv.getBoundingClientRect(); if(nr.top>top && nr.top<bot) bot=nr.top; }
+  var wb=document.querySelector('#wobar .wo-in'); if(wb){ var wr=wb.getBoundingClientRect(); if(wr.height && wr.top>top && wr.top<bot) bot=wr.top; }
   if(r.bottom > bot-12) window.scrollBy(0, r.bottom-(bot-12));
   else if(r.top < top+12) window.scrollBy(0, r.top-(top+12));
 }
