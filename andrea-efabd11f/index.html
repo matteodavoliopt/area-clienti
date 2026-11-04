@@ -1118,6 +1118,7 @@ function showOpen(el){
   setTimeout(function(){
     var r=el.getBoundingClientRect(), vv=window.visualViewport, bot=vv?vv.height:window.innerHeight;
     var nv=document.querySelector('.nav'); if(nv){ var nr=nv.getBoundingClientRect(); if(nr.top<bot) bot=nr.top; }
+    var wb=document.querySelector('#wobar .wo-in'); if(wb){ var wr=wb.getBoundingClientRect(); if(wr.height && wr.top<bot) bot=wr.top; }
     var over=r.bottom-(bot-12); if(over<=0) return;
     var d=Math.min(over, r.top-12); if(d>4){ try{ window.scrollBy({top:d,behavior:'smooth'}); }catch(err){ window.scrollBy(0,d); } }
   },40);
