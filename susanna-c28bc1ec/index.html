@@ -1022,13 +1022,14 @@ function woBar(){
 }
 function woRecap(day){
   var L=(S.wolog||[]).concat(WO?woLog():[]).filter(function(w){ return w.d===day; }); if(!L.length) return;
+  var mix=L.some(function(w){ return !!w.coach; }) && L.some(function(w){ return !w.coach; });
   var fd=new Intl.DateTimeFormat('it-IT',{weekday:'long',day:'numeric',month:'long'}).format(parseD({d:day}));
   var body=L.map(function(w){
     var rows=(w.ex||[]).map(function(x){ return '<div class="ws-r'+(x.ok?' dn':'')+'"><div class="ws-h"><span class="ws-ck">'+(x.ok?'✓':'✕')+'</span><b>'+esc(x.n)+'</b><small>Week '+x.w+'</small></div>'+(x.v?'<div class="ws-v">'+esc(x.v)+'</div>':'')+'</div>'; }).join('');
-    return '<p>'+(w.coach?'Con Matteo':'Da solo')+' · '+'<b class="ws-dn">'+esc(w.day||'Allenamento')+'</b> · ore '+esc(w.t||'')+'<br>Durata <b>'+woFmt(w.ms||0)+'</b> · <b>'+w.done+' su '+w.tot+'</b> esercizi fatti</p>'+(rows?'<div class="ws-list">'+rows+'</div>':'');
+    return (mix?'<p class="ws-dn">'+(w.coach?'Con Matteo':'Da solo')+'</p>':'')+'<p>'+'<b class="ws-dn">'+esc(w.day||'Allenamento')+'</b> · ore '+esc(w.t||'')+'<br>Durata <b>'+woFmt(w.ms||0)+'</b> · <b>'+w.done+' su '+w.tot+'</b> esercizi fatti</p>'+(rows?'<div class="ws-list">'+rows+'</div>':'');
   }).join('');
   var q=document.createElement('div'); q.className='guida';
-  q.innerHTML='<div class="g-card ws-card"><h2>Recap allenamento</h2><p class="ws-day">'+esc(fd)+'</p>'+body+'<div class="g-bt"><button type="button" class="pri" data-q="x">Chiudi</button></div></div>';
+  q.innerHTML='<div class="g-card ws-card"><h2>'+(mix?'Recap allenamenti':(L[0].coach?'Recap allenamento con Matteo':'Recap allenamento da solo'))+'</h2><p class="ws-day">'+esc(fd)+'</p>'+body+'<div class="g-bt"><button type="button" class="pri" data-q="x">Chiudi</button></div></div>';
   q.addEventListener('click',function(ev){ if(ev.target===q || ev.target.closest('[data-q]')) q.parentNode.removeChild(q); });
   document.body.appendChild(q);
 }
