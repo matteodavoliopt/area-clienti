@@ -143,11 +143,11 @@
     ],
     "pkg": {
       "mode": "month",
-      "paid": true,
+      "paid": false,
       "paidMonth": "2026-11",
       "price": "120",
-      "paidAmt": "120",
-      "recapTs": 1793539684748
+      "paidAmt": "0",
+      "recapTs": 1793788918339
     },
     "appts": [
       {
