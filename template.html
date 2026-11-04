@@ -158,6 +158,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .g-bt button{font:600 15px var(--body);padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
 .g-bt button.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .g-bt button.wide{flex:1}
+.g-bt button.ws-cont{border-color:var(--accent);color:var(--accent)}
 .cn-add{display:block;width:100%;text-align:left;border:1.5px dashed var(--line);background:var(--surface);color:var(--muted);font:500 14px var(--body);padding:14px;border-radius:12px;cursor:pointer}
 .cn-box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .cn-box p{margin:0;font-size:14px;line-height:1.45;color:var(--ink);white-space:pre-wrap}
@@ -187,6 +188,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wo-b.end{background:var(--danger);color:#fff}
 .wo-b svg{width:20px;height:20px;fill:currentColor}
 .wo-on .nav-sp{height:140px}
+.wo-rdy .nav-sp{height:130px}
 .ex-h .n{display:flex;flex-direction:column;align-items:center;gap:6px}
 .wo-on .ex-h{grid-template-columns:46px 1fr 16px;gap:10px}
 .wo-on .ex-h{position:relative;min-height:124px}
@@ -684,7 +686,7 @@ function viewTrain(){
     S.days.forEach(function(x,i){ h += '<button class="chip" data-day="'+i+'" aria-pressed="'+(i===ui.day)+'">'+esc(x.name||('Day '+(i+1)))+'</button>'; });
     h += '</div>';
   }
-  if(WO && !WS && (d.ex||[]).length) h += '<button type="button" class="wo-start" data-act="woStart"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Inizia allenamento</button>';
+
   else if(WO && WS && WS.day!==ui.day) h += '<p class="wo-other">Hai un allenamento in corso su '+esc((S.days[WS.day]||{}).name||'un altro giorno')+'.</p>';
   if(R2 && S.days.length>1){ if(d.focus) h += '<div class="day-head"><p>'+esc(d.focus)+'</p></div>'; }
   else h += '<div class="day-head"><h2>'+esc(d.name)+'</h2>'+(d.focus?'<p>'+esc(d.focus)+'</p>':'')+'</div>';
@@ -974,13 +976,16 @@ function woExs(){ return (woDay().ex||[]).filter(function(e){ return (e.n||'').t
 function woCount(){ var ex=woExs(), d=0; ex.forEach(function(e){ if(WS.done[(e.n||'').trim().toUpperCase()]) d++; }); return [d, ex.length]; }
 function woBar(){
   var el=document.getElementById('wobar');
-  if(!WS){ if(el) el.parentNode.removeChild(el); document.body.classList.remove('wo-on'); return; }
-  document.body.classList.add('wo-on');
+  var canStart = WO && !WS && ui.tab==='train' && ((S.days[ui.day]||{}).ex||[]).length;
+  if(!WS && !canStart){ if(el) el.parentNode.removeChild(el); document.body.classList.remove('wo-on'); document.body.classList.remove('wo-rdy'); return; }
+  document.body.classList.add('wo-on'); document.body.classList.remove('wo-rdy');
   if(!el){ el=document.createElement('div'); el.id='wobar'; el.className='wobar'; document.body.appendChild(el);
     el.addEventListener('click', function(e){ var b=e.target.closest('[data-wo]'); if(!b) return; var a=b.dataset.wo;
       if(a==='pause'){ if(WS.run){ WS.acc+=Date.now()-WS.run; WS.run=0; } else WS.run=Date.now(); woSave(); woBar(); }
       else if(a==='end'){ var c0=woCount(), q=document.createElement('div'); q.className='guida'; q.innerHTML='<div class="g-card"><h2>Terminare l\u2019allenamento?</h2><p>Hai fatto <b>'+c0[0]+' su '+c0[1]+'</b> esercizi in <b>'+woFmt(woMs())+'</b>.</p><div class="g-bt"><button type="button" data-q="no">Continua</button><button type="button" class="pri" data-q="yes">Termina</button></div></div>'; q.addEventListener('click',function(ev){ var x=ev.target.closest('[data-q]'); if(!x) return; q.parentNode.removeChild(q); if(x.dataset.q==='yes') woEnd(); }); document.body.appendChild(q); }
+      else if(a==='start'){ woStart(); }
       else if(a==='go'){ ui.tab='train'; ui.day=WS.day; render(); window.scrollTo(0,0); } }); }
+  if(!WS){ document.body.classList.remove('wo-on'); document.body.classList.add('wo-rdy'); el.innerHTML='<div class="wo-in" style="padding:0;background:none;box-shadow:none"><button type="button" class="wo-start" data-wo="start"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Inizia allenamento</button></div>'; return; }
   var c=woCount(), paused=!WS.run;
   el.innerHTML='<div class="wo-in"><button type="button" class="wo-info" data-wo="go"><span class="wo-t'+(paused?' paused':'')+'">'+woFmt(woMs())+'</span><span class="wo-s">'+esc(woDay().name||'Allenamento')+' · '+c[0]+'/'+c[1]+' esercizi'+(paused?' · in pausa':'')+'</span></button>'+
     '<button type="button" class="wo-b" data-wo="pause" aria-label="'+(paused?'Riprendi':'Pausa')+'">'+(paused?'<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>':'<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>')+'</button>'+
@@ -1009,8 +1014,9 @@ function woEnd(){
   var rows=ex.map(function(e,i){ var w=woWeek(e), k=pkey(di,e,w), p=PEND[k], v=p?p.v:((e.log||[])[w-1]||''), dn=!!WS.done[(e.n||'').trim().toUpperCase()];
     return '<div class="ws-r'+(dn?' dn':'')+'"><div class="ws-h"><span class="ws-ck">'+(dn?'✓':'✕')+'</span><b>'+esc(e.n)+'</b><small>Week '+w+'</small></div><input class="wo-w" type="text" autocomplete="off" data-i="'+i+'" data-w="'+w+'" value="'+esc(v)+'" placeholder="Es. 8/80 · 7/80"></div>'; }).join('');
   var d=document.createElement('div'); d.className='guida';
-  d.innerHTML='<div class="g-card ws-card"><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti. Controlla i carichi e correggili se serve.</p><div class="ws-list">'+rows+'</div><div class="g-bt"><button type="button" data-ws="del">Elimina</button><button type="button" class="pri" data-ws="save">Salva</button></div></div>';
+  d.innerHTML='<div class="g-card ws-card"><h2>Allenamento finito!</h2><p>Durata <b>'+t+'</b> · <b>'+c[0]+' su '+c[1]+'</b> esercizi fatti. Controlla i carichi e correggili se serve.</p><div class="ws-list">'+rows+'</div><div class="g-bt"><button type="button" data-ws="del">Elimina</button><button type="button" class="ws-cont" data-ws="back">Continua</button><button type="button" class="pri" data-ws="save">Salva</button></div></div>';
   d.addEventListener('click',function(ev){ var x=ev.target.closest('[data-ws]'); if(!x) return;
+    if(x.dataset.ws==='back'){ if(d.parentNode) d.parentNode.removeChild(d); return; }
     if(x.dataset.ws==='save'){ var sd=new Date(WS.start); var exl=[].map.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i]; return {n:e.n, ok:!!WS.done[(e.n||'').trim().toUpperCase()], w:+inp.dataset.w, v:inp.value.replace(/\s*·\s*$/,'').trim()}; });
       woLogAdd({d:sd.getFullYear()+'-'+String(sd.getMonth()+1).padStart(2,'0')+'-'+String(sd.getDate()).padStart(2,'0'), t:String(sd.getHours()).padStart(2,'0')+':'+String(sd.getMinutes()).padStart(2,'0'), ms:woMs(), done:c[0], tot:c[1], day:(S.days[di]||{}).name||'', ex:exl}); [].forEach.call(d.querySelectorAll('input.wo-w'),function(inp){ var e=ex[+inp.dataset.i], w=+inp.dataset.w, v=inp.value.replace(/\s*·\s*$/,'').trim(), k=pkey(di,e,w), cur=PEND[k]?PEND[k].v:((e.log||[])[w-1]||'');
         if(v!==String(cur).trim()){ PEND[k]={d:di,dn:(S.days[di]||{}).name||'',n:e.n,w:w,v:v,ts:Date.now(),sent:false}; pendSave(); sendPend(k); } }); }
