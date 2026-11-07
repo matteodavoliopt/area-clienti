@@ -200,6 +200,22 @@ button.bc-t{text-align:left;font:inherit;color:inherit;cursor:pointer;position:r
 .bc-t strong i{font:600 13px var(--body);font-style:normal;color:var(--muted);margin-left:2px}
 .bc-d{font:600 12.5px var(--body);font-style:normal;color:var(--muted)}
 .bc-d.ok{color:var(--ok-ink)} .bc-d.ko{color:var(--danger)}
+.pv-gate{align-items:center;background:rgba(10,14,13,.75)}
+.pv-gate .g-card{max-height:90vh;overflow:auto}
+.pv-gate .g-card h2{margin-top:0}
+.pv-link{align-self:flex-start;border:0;background:none;padding:0;color:var(--accent);font:600 15px var(--body);text-decoration:underline;cursor:pointer}
+.pv-ck{display:flex;flex-direction:row !important;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font:500 14px/1.45 var(--body);color:var(--ink);padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer}
+.pv-ck input{width:20px;height:20px;flex:0 0 auto;margin:1px 0 0;accent-color:var(--accent)}
+.g-bt button.pri:disabled{opacity:.45}
+.pv-full{z-index:61}
+.pv-card{max-height:88vh;overflow:auto}
+.pv-txt h3{margin:4px 0 4px;font:800 22px/1.1 var(--display);text-transform:uppercase}
+.pv-txt h4{margin:16px 0 4px;font:700 15px var(--body);color:var(--accent)}
+.pv-txt p,.pv-txt li{margin:0 0 6px;color:var(--ink);font-size:14px;line-height:1.5}
+.pv-txt ul{margin:0;padding-left:18px}
+.pv-txt a{color:var(--accent)}
+.pv-sub{color:var(--muted) !important;font-size:12.5px !important}
+.pv-foot{align-self:center;border:0;background:none;color:var(--muted);font:600 13px var(--body);text-decoration:underline;cursor:pointer;padding:6px}
 .wa-btn svg{width:20px;height:20px;fill:currentColor;flex:0 0 auto}
 .poldd .pol-dl{color:var(--ink)}
 .pol-exp{color:var(--danger);font-weight:800;text-transform:uppercase;letter-spacing:.02em}
@@ -506,7 +522,7 @@ function thumbs(vs){
   vs.forEach(function(v,j){
     var u=safeUrl(v.u), id=ytId(u), cap=(v.t||'').trim()||(vs.length>1?'Video '+(j+1):'Guarda il video');
     if(id && S.inplay && ui.play && ui.play[id]){
-      h+='<div class="thumb play-on'+(isShort(u)?' short':'')+'"><iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1" title="'+esc(cap)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><a class="yt-out" href="'+esc(u)+'" target="_blank" rel="noopener">Non parte? Aprilo su YouTube</a>';
+      h+='<div class="thumb play-on'+(isShort(u)?' short':'')+'"><iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&controls=1" title="'+esc(cap)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><a class="yt-out" href="'+esc(u)+'" target="_blank" rel="noopener">Non parte? Aprilo su YouTube</a>';
     } else if(id){
       h+='<a class="thumb'+(isShort(u)?' short':'')+'" data-yt="'+id+'" href="'+esc(u)+'" target="_blank" rel="noopener" aria-label="'+esc(cap)+'"><img src="https://i.ytimg.com/vi/'+id+'/hqdefault.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'noimg\')"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>'+(vs.length>1||v.t?'<span class="cap">'+esc(cap)+'</span>':'')+'</a>';
     } else {
@@ -545,7 +561,7 @@ function infoSite(e){
 function sendPend(k){
   var p=PEND[k]; if(!p || !SITE) return;
   var fd=new FormData();
-  fd.append(SITE.form.entry, JSON.stringify(p.f==='client' ? {s:SITE.slug,f:'client',k:p.k,v:p.v,t:p.ts} : p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : p.f==='cn' ? {s:SITE.slug,f:'cn',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
+  fd.append(SITE.form.entry, JSON.stringify(p.f==='client' ? {s:SITE.slug,f:'client',k:p.k,v:p.v,t:p.ts} : p.f==='info' ? {s:SITE.slug,f:'info',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : p.f==='cn' ? {s:SITE.slug,f:'cn',d:p.d,dn:p.dn,n:p.n,v:p.v,t:p.ts} : p.f==='privacy' ? {s:SITE.slug,f:'privacy',v:p.v,c:p.c,t:p.ts} : {s:SITE.slug,d:p.d,dn:p.dn,n:p.n,w:p.w,v:p.v,t:p.ts}));
   fetch(SITE.form.action,{method:'POST',mode:'no-cors',body:fd}).then(function(){ if(PEND[k]){ PEND[k].sent=true; pendSave(); render(); } }).catch(function(){});
 }
 if(SITE) Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); });
@@ -1060,6 +1076,22 @@ function hiToast(){ try{ var t=document.createElement('div'); t.className='hi-to
     else { b.style.position=''; b.style.top=''; b.style.left=''; b.style.right=''; b.style.width=''; window.scrollTo(0,y0); } }
   try{ new MutationObserver(chk).observe(document.body,{childList:true}); }catch(e){} })();
 var WO = !!SITE;
+var PRIV = !!(SITE && window.SITE && /^danilo-/.test(window.SITE.slug||'')), PRIVV='1.0', PRIVK = SITE ? 'priv-'+SITE.slug : '';
+var PRIVHTML = "<h3>Informativa sul trattamento dei dati personali<\/h3>\n<p class=\"pv-sub\">ai sensi degli artt. 13 e 9 del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 · Versione 1.0 del 7 novembre 2026<\/p>\n<h4>1. Titolare del trattamento<\/h4>\n<p>Matteo D’Avolio, Personal Trainer e Massaggiatore sportivo, Via Don Minzoni 14, 20018 Sedriano (MI), P.IVA 13314600969, email <a href=\"mailto:matteodavoliopt@gmail.com\">matteodavoliopt@gmail.com<\/a>.<\/p>\n<h4>2. Quali dati trattiamo<\/h4>\n<ul><li><b>Dati identificativi e di contatto:<\/b> nome, cognome, email, sesso.<\/li>\n<li><b>Dati sul servizio:<\/b> appuntamenti, lezioni svolte, pacchetti acquistati e stato dei pagamenti.<\/li>\n<li><b>Dati di allenamento:<\/b> programma, carichi e ripetizioni, note sugli esercizi, allenamenti svolti e relativi recap.<\/li>\n<li><b>Dati relativi alla salute<\/b> (categoria particolare, art. 9 GDPR): problematiche fisiche, dolori o fastidi indicati nelle note, età, altezza e misurazioni della composizione corporea (es. peso, massa muscolare e grassa, acqua corporea, grasso viscerale, metabolismo basale).<\/li><\/ul>\n<h4>3. Finalità e basi giuridiche<\/h4>\n<ul><li><b>Erogazione del servizio<\/b> di personal training e massaggio e gestione dell’area clienti (programma, appuntamenti, pacchetti): esecuzione del contratto (art. 6.1.b GDPR).<\/li>\n<li><b>Dati relativi alla salute<\/b>, usati solo per personalizzare l’allenamento e monitorare i progressi: <b>consenso esplicito<\/b> (art. 9.2.a GDPR), che puoi revocare in qualsiasi momento.<\/li>\n<li><b>Adempimenti amministrativi e fiscali:<\/b> obbligo di legge (art. 6.1.c GDPR).<\/li>\n<li><b>Funzionamento e sicurezza tecnica del sito:<\/b> legittimo interesse del Titolare (art. 6.1.f GDPR).<\/li><\/ul>\n<p>I dati non sono usati per pubblicità, profilazione o decisioni automatizzate e non sono venduti né diffusi.<\/p>\n<h4>4. Conferimento dei dati<\/h4>\n<p>I dati di contatto e sul servizio sono necessari per seguirti. Il consenso ai dati sulla salute è facoltativo, ma senza di esso non è possibile usare l’area clienti né personalizzare il programma in sicurezza. La revoca del consenso non pregiudica la liceità del trattamento effettuato prima.<\/p>\n<h4>5. Come funziona l’area clienti<\/h4>\n<p>La tua pagina è raggiungibile tramite un indirizzo personale non pubblicizzato e non indicizzato nei motori di ricerca, ma non è protetta da password: <b>non condividere il link<\/b> con altre persone. Sul tuo dispositivo vengono salvate solo informazioni tecniche necessarie al funzionamento (es. i dati che inserisci prima dell’invio, il timer dell’allenamento, la copia per l’uso senza connessione). Non usiamo cookie di profilazione né strumenti di statistica. Il sito carica i caratteri tipografici da Google Fonts; i video degli esercizi sono ospitati su YouTube e, quando li avvii, Google può trattare alcuni dati secondo la propria informativa.<\/p>\n<h4>6. A chi comunichiamo i dati<\/h4>\n<p>I dati sono trattati dal Titolare e, per suo conto, da fornitori che agiscono come responsabili del trattamento o titolari autonomi per i servizi tecnici: Google (Drive, Fogli, Calendar, Gmail, Fonts, YouTube), GitHub (pubblicazione del sito), Anthropic (strumento usato per gestire e aggiornare le pagine). I dati amministrativi possono essere comunicati al commercialista per gli obblighi fiscali.<\/p>\n<h4>7. Trasferimento fuori dall’Unione Europea<\/h4>\n<p>Alcuni fornitori hanno sede negli Stati Uniti. Il trasferimento avviene sulla base della decisione di adeguatezza della Commissione Europea relativa all’EU-US Data Privacy Framework, per i fornitori aderenti, oppure delle clausole contrattuali standard approvate dalla Commissione (art. 46 GDPR).<\/p>\n<h4>8. Per quanto tempo conserviamo i dati<\/h4>\n<ul><li>Dati di allenamento e relativi alla salute: per la durata del rapporto e fino a 24 mesi dall’ultimo servizio, poi cancellati; prima, se revochi il consenso o chiedi la cancellazione.<\/li>\n<li>Dati amministrativi e fiscali: 10 anni, come previsto dalla legge (art. 2220 c.c.).<\/li><\/ul>\n<h4>9. I tuoi diritti<\/h4>\n<p>Puoi chiedere in qualsiasi momento l’accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione del trattamento, la portabilità e opporti al trattamento (artt. 15–22 GDPR), oltre a revocare il consenso, scrivendo a <a href=\"mailto:matteodavoliopt@gmail.com\">matteodavoliopt@gmail.com<\/a>. Rispondiamo entro un mese. Hai anche il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href=\"https://www.garanteprivacy.it\" target=\"_blank\" rel=\"noopener\">www.garanteprivacy.it<\/a>).<\/p>\n<h4>10. Minori<\/h4>\n<p>L’area clienti è destinata a persone maggiorenni. Per i minori il consenso deve essere dato da chi esercita la responsabilità genitoriale.<\/p>\n<h4>11. Modifiche<\/h4>\n<p>Eventuali aggiornamenti di questa informativa ti saranno mostrati nell’area clienti e, se riguardano il consenso, ti verrà chiesto di confermarlo di nuovo.<\/p>";
+function privOk(){ try{ var x=JSON.parse(localStorage.getItem(PRIVK)||'null'); return !!(x && x.v===PRIVV); }catch(e){ return false; } }
+function privFull(){ var q=document.createElement('div'); q.className='guida pv-full'; q.innerHTML='<div class="g-card ws-card pv-card"><div class="pv-txt">'+PRIVHTML+'</div><div class="g-bt"><span></span><button type="button" class="pri" data-q="x">Chiudi</button></div></div>'; q.addEventListener('click',function(ev){ if(ev.target===q || ev.target.closest('[data-q]')) q.parentNode.removeChild(q); }); document.body.appendChild(q); }
+function privGate(){ if(!PRIV || privOk() || document.querySelector('.pv-gate')) return;
+  var q=document.createElement('div'); q.className='guida pv-gate';
+  q.innerHTML='<div class="g-card pv-card"><h2>La tua privacy</h2><p>Per seguirti al meglio in quest’area salvo i tuoi dati di allenamento e alcuni dati sulla salute (problematiche fisiche, misurazioni, note su dolori). Li uso solo per il tuo programma, non li vendo né li uso per pubblicità, e puoi chiederne la cancellazione quando vuoi.</p><button type="button" class="pv-link" data-pv="read">Leggi l’informativa completa</button>'+
+    '<label class="pv-ck"><input type="checkbox" id="pv1"><span>Ho letto l’<b>informativa privacy</b> (artt. 13 e 9 GDPR).</span></label>'+
+    '<label class="pv-ck"><input type="checkbox" id="pv2"><span>Acconsento al trattamento dei miei <b>dati relativi alla salute</b> per la gestione del mio programma di allenamento (art. 9.2.a GDPR). Posso revocare il consenso in qualsiasi momento.</span></label>'+
+    '<div class="g-bt"><span></span><button type="button" class="pri wide" data-pv="ok" disabled>Accetto e continuo</button></div></div>';
+  q.addEventListener('change',function(){ q.querySelector('[data-pv=ok]').disabled = !(q.querySelector('#pv1').checked && q.querySelector('#pv2').checked); });
+  q.addEventListener('click',function(ev){ var b=ev.target.closest('[data-pv]'); if(!b) return;
+    if(b.dataset.pv==='read'){ privFull(); return; }
+    if(b.dataset.pv==='ok' && !b.disabled){ var ts=Date.now(); try{ localStorage.setItem(PRIVK, JSON.stringify({v:PRIVV,t:ts})); }catch(e){} PEND['privacy']={f:'privacy',v:PRIVV,c:'informativa+salute',ts:ts,sent:false}; pendSave(); sendPend('privacy'); q.parentNode.removeChild(q); } });
+  document.body.appendChild(q); }
+
 var WK = SITE ? 'wo-'+SITE.slug : '';
 var WS = null;
 if(WO){ try{ WS = JSON.parse(localStorage.getItem(WK)||'null'); }catch(e){ WS=null; } }
@@ -1158,7 +1190,7 @@ function render(){
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
-    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? ((viewPers()+viewBody())||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
+    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? ((viewPers()+viewBody()+(PRIV?'<button type="button" class="pv-foot" data-act="privRead">Informativa privacy</button>':''))||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated && !R2){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
@@ -1265,6 +1297,7 @@ app.addEventListener('click', function(e){
   if(a==='cnSave'){ var t8=document.getElementById('cn-in'); if(!t8||!ui.ce) return; var C8=ui.ce, ex8=findEx(C8.d,C8.n); if(!ex8) return; var v8=t8.value.trim(), k8=ckey(C8.d,ex8);
     if(v8===(ex8.cn||'').trim() && !PEND[k8]){ ui.ce=null; render(); return; }
     PEND[k8]={f:'cn',d:C8.d,dn:(S.days[C8.d]||{}).name||'',n:ex8.n,v:v8,ts:Date.now(),sent:false}; pendSave(); ui.ce=null; var y8=window.scrollY; render(); window.scrollTo(0,y8); sendPend(k8); return; }
+  if(a==='privRead'){ privFull(); return; }
   if(a==='bcT'){ ui.bcOpen = ui.bcOpen===b.dataset.k ? null : b.dataset.k; var yb=window.scrollY; render(); window.scrollTo(0,yb); return; }
   if(a==='persEdit'){ ui.pe=true; ui.ob=ui.ob||{}; ui.ob.__pers=true; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='persCancel'){ ui.pe=false; render(); return; }
@@ -1372,7 +1405,7 @@ if(R3){
   window.addEventListener('online', function(){ try{ Object.keys(PEND).forEach(function(k){ if(!PEND[k].sent) sendPend(k); }); }catch(e){} });
   if('serviceWorker' in navigator && location.protocol==='https:'){ try{ navigator.serviceWorker.register('../sw.js',{scope:'../'}).catch(function(){}); }catch(e){} }
 }
-if(S.navbar){ try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); if(HB) setTimeout(hiToast,350); try{ guida(); }catch(e){} },wait); }catch(e){} }
+if(S.navbar){ try{ var sp=document.getElementById('splash0'); if(!sp){ sp=document.createElement('div'); sp.className='splash'; sp.setAttribute('aria-hidden','true'); sp.innerHTML=LOGO+'<div class="s-name">Matteo D’Avolio</div><div class="s-role">Personal Trainer &amp; Massaggiatore sportivo</div>'; document.body.appendChild(sp); } var wait=2000; try{ wait=Math.max(500,2000-Math.round(performance.now())); }catch(e){} setTimeout(function(){ sp.classList.add('out'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); },500); if(PRIV && !privOk()) setTimeout(privGate,350); else if(HB) setTimeout(hiToast,350); try{ guida(); }catch(e){} },wait); }catch(e){} }
 (async function(){
   try{
     if(!window.claude || !window.claude.use) return;
