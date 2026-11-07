@@ -192,6 +192,18 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .appt.wf.rc{cursor:pointer}
 .wf-r{color:var(--accent);font-weight:700}
 .pkg > .eyebrow:first-child{font-size:15px;letter-spacing:.14em}
+.bc{gap:12px}
+.bc-head{display:flex;flex-direction:column;gap:4px}
+.bc-head .eyebrow{font-size:15px;letter-spacing:.14em}
+.bc-head small{color:var(--muted);font-size:13px}
+.bc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bc-t{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.bc-t span{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.bc-t strong{font:800 26px/1.05 var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
+.bc-t:last-child:nth-child(odd){grid-column:1/-1}
+.bc-t strong i{font:600 13px var(--body);font-style:normal;color:var(--muted);margin-left:2px}
+.bc-d{font:600 12.5px var(--body);font-style:normal;color:var(--muted)}
+.bc-d.ok{color:var(--ok-ink)} .bc-d.ko{color:var(--danger)}
 .wa-btn svg{width:20px;height:20px;fill:currentColor;flex:0 0 auto}
 .poldd .pol-dl{color:var(--ink)}
 .pol-exp{color:var(--danger);font-weight:800;text-transform:uppercase;letter-spacing:.02em}
@@ -589,6 +601,16 @@ function viewPers(){
 }
 function flatPers(x){ return x.replace(/<details class="plan pland"[^>]*>/,'<div class="plan pland flat">').replace(/<svg class="chev"[\s\S]*?<\/svg>/,'').replace('<summary>','<div class="pl-head">').replace('</summary>','</div>').replace('<small>Problematiche fisiche indicate</small>','').replace(/<\/details>$/,'</div>'); }
 
+function viewBody(){
+  var B=(S.body||[]).slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length) return '';
+  var c=B[0], p=B[1]||{}, fd=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+  function num(v,k){ return (k==='vis'||k==='bmr') ? String(Math.round(v)) : Number(v).toFixed(1).replace('.',','); }
+  function dl(k,u,good){ if(p[k]==null||c[k]==null) return ''; var d=Math.round((c[k]-p[k])*10)/10; if(!d) return '<em class="bc-d">=</em>'; var ok=good==='up'?d>0:(good==='down'?d<0:null); return '<em class="bc-d'+(ok===true?' ok':(ok===false?' ko':''))+'">'+(d>0?'+':'−')+num(Math.abs(d))+u+'</em>'; }
+  var T=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
+  var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">Body check</span><small>Misurazione del '+esc(fd.format(parseD({d:c.d})))+(p.d?' · confronto con il '+esc(fd.format(parseD({d:p.d}))):'')+'</small></div><div class="bc-grid">';
+  T.forEach(function(t){ if(c[t[0]]==null) return; h+='<div class="bc-t"><span>'+t[1]+'</span><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</div>'; });
+  return h+'</div></section>';
+}
 function viewPlan(){
   var c = S.client, g = (c.goal||'').trim(), s = c.start, e = c.end, fq = (c.freq||'').trim(), du = (c.dur||'').trim();
   if(!g && !s && !e && !fq && !du) return '';
@@ -1124,7 +1146,7 @@ function render(){
     else h += BRAND+'<div class="hero"><span class="eyebrow">Area riservata</span><h1>'+esc(firstName(S.client.name))+'</h1>'+(S.navbar?'':'<p>Tutto ciò che ti serve per allenarti con Matteo è qui, in maniera comoda e semplice in un’unica app!</p>')+'</div>';
     if(!S.navbar) h += '<div class="tabs" role="tablist"><button role="tab" data-tab="train" aria-selected="'+(ui.tab==='train')+'">Programma</button><button role="tab" data-tab="appts" aria-selected="'+(ui.tab==='appts')+'">Appuntamenti'+(nA?' ('+nA+')':'')+'</button></div>';
     if(ui.tab==='pers'){ ui.ob=ui.ob||{}; if(ui.ob.__pers==null) ui.ob.__pers=true; }
-    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? (viewPers()||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
+    h += ui.tab==='pkg' ? (viewPkg()||'<p class="empty">'+((pkgEnded()||(pkgEmpty()&&(S.pkgHist||[]).length))?'Il tuo pacchetto è concluso: lo trovi qui sotto in Pacchetti conclusi. Chiedimi pure per rinnovarlo!':'Nessun pacchetto attivo.')+'</p>')+viewPkgHist()+viewMass() : ui.tab==='pers' ? ((viewPers()+viewBody())||'<p class="empty">Nessun dato personale.</p>') : ui.tab==='train' ? viewTrain() : viewAppts();
     if(S.navbar) h += navBar(nA);
     if(S.updated && !R2){ try{ h += '<p class="foot">Aggiornato il '+esc(fmtUpd.format(parseD({d:S.updated})))+'</p>'; }catch(e){} }
   }
