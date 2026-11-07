@@ -200,7 +200,19 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .bc-t{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .bc-t span{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .bc-t strong{font:800 26px/1.05 var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
-.bc-t:last-child:nth-child(odd){grid-column:1/-1}
+.bc-t.wide{grid-column:1/-1}
+button.bc-t{text-align:left;font:inherit;color:inherit;cursor:pointer}
+.bc-t.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.bc-ch{grid-column:1/-1;padding:12px;border:1px solid var(--accent);border-radius:12px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.bc-ch b{font:700 13px var(--body);color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.bc-ch p{margin:0;color:var(--muted);font-size:14px}
+.bc-svg{width:100%;height:auto;display:block;overflow:visible}
+.bc-gl{stroke:var(--line);stroke-width:1}
+.bc-ln{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.bc-pt{fill:var(--surface);stroke:var(--accent);stroke-width:2.5}
+.bc-pt.last{fill:var(--accent)}
+.bc-v{font:700 12px var(--mono);fill:var(--ink);text-anchor:middle}
+.bc-x{font:600 11px var(--body);fill:var(--muted);text-anchor:middle}
 .bc-t strong i{font:600 13px var(--body);font-style:normal;color:var(--muted);margin-left:2px}
 .bc-d{font:600 12.5px var(--body);font-style:normal;color:var(--muted)}
 .bc-d.ok{color:var(--ok-ink)} .bc-d.ko{color:var(--danger)}
@@ -608,7 +620,23 @@ function viewBody(){
   function dl(k,u,good){ if(p[k]==null||c[k]==null) return ''; var d=Math.round((c[k]-p[k])*10)/10; if(!d) return '<em class="bc-d">=</em>'; var ok=good==='up'?d>0:(good==='down'?d<0:null); return '<em class="bc-d'+(ok===true?' ok':(ok===false?' ko':''))+'">'+(d>0?'+':'−')+num(Math.abs(d))+u+'</em>'; }
   var T=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
   var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">Body check</span><small>Misurazione del '+esc(fd.format(parseD({d:c.d})))+(p.d?' · confronto con il '+esc(fd.format(parseD({d:p.d}))):'')+'</small></div><div class="bc-grid">';
-  T.forEach(function(t){ if(c[t[0]]==null) return; h+='<div class="bc-t"><span>'+t[1]+'</span><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</div>'; });
+  var TT=T.filter(function(t){ return c[t[0]]!=null; }), op=ui.bcOpen;
+  function chart(t){
+    var P=B.filter(function(b){ return b[t[0]]!=null; }).slice().reverse();
+    if(P.length<2) return '<div class="bc-ch"><p>Serve almeno un\'altra misurazione per vedere l\'andamento.</p></div>';
+    var W=320,H=150,l=34,r=14,tp=18,bt=30, vs=P.map(function(b){ return +b[t[0]]; }), mn=Math.min.apply(0,vs), mx=Math.max.apply(0,vs), pad=(mx-mn)*0.25||Math.max(1,mx*0.02); mn-=pad; mx+=pad;
+    var X=function(i){ return l+(W-l-r)*(P.length===1?0.5:i/(P.length-1)); }, Y=function(v){ return tp+(H-tp-bt)*(1-(v-mn)/(mx-mn)); };
+    var fs=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short'});
+    var pts=P.map(function(b,i){ return X(i).toFixed(1)+','+Y(+b[t[0]]).toFixed(1); }).join(' ');
+    var g='<svg viewBox="0 0 '+W+' '+H+'" class="bc-svg" role="img" aria-label="Andamento '+esc(t[1])+'">';
+    [0,0.5,1].forEach(function(f){ var y=tp+(H-tp-bt)*f; g+='<line x1="'+l+'" x2="'+(W-r)+'" y1="'+y+'" y2="'+y+'" class="bc-gl"/>'; });
+    g+='<polyline points="'+pts+'" class="bc-ln"/>';
+    P.forEach(function(b,i){ var x=X(i), y=Y(+b[t[0]]); g+='<circle cx="'+x+'" cy="'+y+'" r="4.5" class="bc-pt'+(i===P.length-1?' last':'')+'"/><text x="'+x+'" y="'+(y-9)+'" class="bc-v">'+num(b[t[0]],t[0])+'</text><text x="'+x+'" y="'+(H-10)+'" class="bc-x">'+esc(fs.format(parseD({d:b.d})))+'</text>'; });
+    return '<div class="bc-ch"><b>Andamento '+esc(t[1].toLowerCase())+'</b>'+g+'</svg></div>';
+  }
+  TT.forEach(function(t,i){ h+='<button type="button" class="bc-t'+(op===t[0]?' on':'')+((i===TT.length-1&&TT.length%2)?' wide':'')+'" data-act="bcT" data-k="'+t[0]+'" aria-expanded="'+(op===t[0])+'"><span>'+t[1]+'</span><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</button>';
+    var oi=-1; TT.forEach(function(x,k){ if(x[0]===op) oi=k; });
+    if(oi>=0 && (i===(oi|1) || (i===oi && i===TT.length-1))) h+=chart(TT[oi]); });
   return h+'</div></section>';
 }
 function viewPlan(){
@@ -1253,6 +1281,7 @@ app.addEventListener('click', function(e){
   if(a==='cnSave'){ var t8=document.getElementById('cn-in'); if(!t8||!ui.ce) return; var C8=ui.ce, ex8=findEx(C8.d,C8.n); if(!ex8) return; var v8=t8.value.trim(), k8=ckey(C8.d,ex8);
     if(v8===(ex8.cn||'').trim() && !PEND[k8]){ ui.ce=null; render(); return; }
     PEND[k8]={f:'cn',d:C8.d,dn:(S.days[C8.d]||{}).name||'',n:ex8.n,v:v8,ts:Date.now(),sent:false}; pendSave(); ui.ce=null; var y8=window.scrollY; render(); window.scrollTo(0,y8); sendPend(k8); return; }
+  if(a==='bcT'){ ui.bcOpen = ui.bcOpen===b.dataset.k ? null : b.dataset.k; var yb=window.scrollY; render(); window.scrollTo(0,yb); return; }
   if(a==='persEdit'){ ui.pe=true; ui.ob=ui.ob||{}; ui.ob.__pers=true; var y7=window.scrollY; render(); window.scrollTo(0,y7); return; }
   if(a==='persCancel'){ ui.pe=false; render(); return; }
   if(a==='persSave'){
