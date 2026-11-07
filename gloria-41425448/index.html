@@ -652,11 +652,10 @@ function flatPers(x){ return x.replace(/<details class="plan pland"[^>]*>/,'<div
 function viewBody(){
   var TB=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
   var TM=[['fia','Fianchi',' cm',''],['pet','Petto',' cm',''],['brs','Braccio sx',' cm',''],['gms','Gamba sx',' cm','']];
-  if(!(S.body||[]).length && !(S.misure||[]).length) return '';
   return bcSec('Body check', S.body||[], TB, false) + bcSec('Circonferenze corporee', S.misure||[], TM, true);
 }
 function bcSec(title, list, T, always){
-  var B=list.slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length && !always) return '';
+  var B=list.slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length) return '<section class="plan bc"><div class="bc-head"><span class="eyebrow">'+esc(title)+'</span><small>Nessun dato</small></div></section>';
   var c=B[0]||{}, p=B[1]||{}, fd=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
   function num(v,k){ return (k==='vis'||k==='bmr') ? String(Math.round(v)) : Number(v).toFixed(1).replace('.',','); }
   function dl(k,u,good){ if(p[k]==null||c[k]==null) return ''; var d=Math.round((c[k]-p[k])*10)/10; if(!d) return '<em class="bc-d">=</em>'; var ok=good==='up'?d>0:(good==='down'?d<0:null); return '<em class="bc-d'+(ok===true?' ok':(ok===false?' ko':''))+'">'+(d>0?'+':'−')+num(Math.abs(d))+u+'</em>'; }
