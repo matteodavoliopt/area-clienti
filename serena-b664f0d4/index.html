@@ -640,7 +640,7 @@ function viewBody(){
   var TB=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
   var TM=[['fia','Fianchi',' cm',''],['pet','Petto',' cm',''],['brs','Braccio sx',' cm',''],['gms','Gamba sx',' cm','']];
   if(!(S.body||[]).length && !(S.misure||[]).length) return '';
-  return bcSec('Body check', S.body||[], TB, false) + bcSec('Misure corporee', S.misure||[], TM, true);
+  return bcSec('Body check', S.body||[], TB, false) + bcSec('Circonferenze corporee', S.misure||[], TM, true);
 }
 function bcSec(title, list, T, always){
   var B=list.slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length && !always) return '';
