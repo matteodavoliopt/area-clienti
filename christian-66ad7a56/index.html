@@ -1010,7 +1010,7 @@ function calendar(list){
     var lab=dd+(c.done?', allenamento fatto':'')+(c.mass?', massaggio':'')+(c.solo?', allenamento da solo':'')+(c.up?', in programma':'');
     h+='<span class="'+cls+'" aria-label="'+lab+'"'+(c.solo||c.rc?' role="button" tabindex="0" data-solo="'+y+'-'+String(m+1).padStart(2,'0')+'-'+String(dd).padStart(2,'0')+'"':'')+'>'+dd+'</span>'; }
   var mq=(isCur?'questo mese':'a '+esc(new Intl.DateTimeFormat('it-IT',{month:'long'}).format(base)));
-  h+='</div><div class="cal-foot"><div><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con Matteo '+mq+'</div>'+(WO?'<div><strong>'+solo+'</strong> '+(solo===1?'allenamento':'allenamenti')+' da solo '+mq+'</div>':'')+'</div>';
+  h+='</div><div class="cal-foot"><div><strong>'+done+'</strong> '+(done===1?'allenamento':'allenamenti')+' con Matteo '+mq+'</div>'+(WO?'<div><strong style="color:#3FA66B">'+solo+'</strong> '+(solo===1?'allenamento':'allenamenti')+' da solo '+mq+'</div>':'')+'</div>';
   h+='<div class="cal-leg"><span><i class="lg done"></i>Lezione</span><span><i class="lg mass"></i>Massaggio</span>'+(WO?'<span><i class="lg solo"></i>Allenamento</span>':'')+'<span><i class="lg up"></i>Lezione in programma</span></div></section>';
   return h;
 }
