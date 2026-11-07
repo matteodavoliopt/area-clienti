@@ -182,7 +182,9 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .bc-t span{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .bc-t strong{font:800 26px/1.05 var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
 .bc-t.wide{grid-column:1/-1}
-button.bc-t{text-align:left;font:inherit;color:inherit;cursor:pointer}
+button.bc-t{text-align:left;font:inherit;color:inherit;cursor:pointer;position:relative;padding-right:30px}
+.bc-chev{position:absolute;top:10px;right:10px;width:16px;height:16px}
+.bc-t.on .bc-chev{transform:rotate(180deg)}
 .bc-t.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .bc-ch{grid-column:1/-1;padding:12px;border:1px solid var(--accent);border-radius:12px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
 .bc-ch b{font:700 13px var(--body);color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
@@ -615,7 +617,7 @@ function viewBody(){
     P.forEach(function(b,i){ var x=X(i), y=Y(+b[t[0]]); g+='<circle cx="'+x+'" cy="'+y+'" r="4.5" class="bc-pt'+(i===P.length-1?' last':'')+'"/><text x="'+x+'" y="'+(y-9)+'" class="bc-v">'+num(b[t[0]],t[0])+'</text><text x="'+x+'" y="'+(H-10)+'" class="bc-x">'+esc(fs.format(parseD({d:b.d})))+'</text>'; });
     return '<div class="bc-ch"><b>Andamento '+esc(t[1].toLowerCase())+'</b>'+g+'</svg></div>';
   }
-  TT.forEach(function(t,i){ h+='<button type="button" class="bc-t'+(op===t[0]?' on':'')+((i===TT.length-1&&TT.length%2)?' wide':'')+'" data-act="bcT" data-k="'+t[0]+'" aria-expanded="'+(op===t[0])+'"><span>'+t[1]+'</span><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</button>';
+  TT.forEach(function(t,i){ h+='<button type="button" class="bc-t'+(op===t[0]?' on':'')+((i===TT.length-1&&TT.length%2)?' wide':'')+'" data-act="bcT" data-k="'+t[0]+'" aria-expanded="'+(op===t[0])+'"><span>'+t[1]+'</span><svg class="chev bc-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</button>';
     var oi=-1; TT.forEach(function(x,k){ if(x[0]===op) oi=k; });
     if(oi>=0 && (i===(oi|1) || (i===oi && i===TT.length-1))) h+=chart(TT[oi]); });
   return h+'</div></section>';
