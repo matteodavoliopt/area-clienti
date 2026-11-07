@@ -414,13 +414,13 @@ button.wk.empty{color:var(--accent)}
 .mass-sep{align-self:stretch;width:100%;height:1px;background:var(--line);margin:8px 0 0}
 section.mass{margin-top:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
 .mass-sep{display:none !important}
-.mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.mass h2{margin:0 0 6px;font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--rest)}
 .mass>p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.45}
 .mass-l{display:flex;flex-direction:column;gap:8px}
-.mass details{border-radius:10px;background:var(--accent-soft)}
+.mass details{border-radius:10px;background:#3A2A1C;background:color-mix(in srgb,var(--rest) 20%,var(--surface))}
 .mass summary{list-style:none;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;font-weight:600;font-size:15px;cursor:pointer}
 .mass summary::-webkit-details-marker{display:none}
-.mass .chev{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.mass .chev{width:14px;height:14px;flex:0 0 auto;fill:none;stroke:var(--rest);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .mass details[open] .chev{transform:rotate(180deg)}
 .mass details p{margin:0;padding:0 14px 14px;font-size:14px;line-height:1.5;color:var(--ink)}
 .empty{color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
@@ -930,7 +930,7 @@ var MASS=[
 ['Massaggio sportivo','Pensato per chi si allena e vuole preparare o recuperare i muscoli. Prima della prestazione li riscalda e li attiva, dopo aiuta a smaltire la fatica e ridurre i dolori. Lavora in profondità sui gruppi muscolari più sollecitati. Migliora elasticità e recupero e aiuta a prevenire infortuni. Adatto a ogni livello, dal principiante all’atleta.'],
 ['Massaggio rilassante svedese','Il massaggio classico per staccare la mente e rilassare tutto il corpo. Si basa su movimenti fluidi e avvolgenti, con una pressione media e piacevole. Allevia lo stress, scioglie le tensioni leggere e favorisce la circolazione. Aiuta a dormire meglio e a ritrovare energia. Perfetto per regalarsi un momento solo per sé.'],
 ['Massaggio linfodrenante Vodder','Una tecnica dolce e lenta che stimola il sistema linfatico. Con movimenti leggeri e ritmici aiuta a eliminare liquidi in eccesso e tossine. È indicato per gambe gonfie e pesanti, ritenzione idrica e cattiva circolazione. Riduce il gonfiore e dona una piacevole sensazione di leggerezza. Molto rilassante, anche come complemento all’anticellulite.']];
-function viewMass(){ return '<div class="mass-sep"></div><section class="mass"><h2>Prenota il tuo trattamento</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><div class="mass-l">'+MASS.map(function(m){ return '<details><summary>'+esc(m[0])+'<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><p>'+esc(m[1])+'</p><a class="wa-btn" href="https://wa.me/393662272236" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Scrivimi su WhatsApp</a></details>'; }).join('')+'</div></section>'; }
+function viewMass(){ return '<div class="mass-sep"></div><section class="mass"><h2>Prenota il tuo massaggio</h2><p>Vuoi alleviare delle tensioni muscolari, migliorare qualche inestetismo o semplicemente rilassarti? Prova uno dei miei trattamenti!</p><div class="mass-l">'+MASS.map(function(m){ return '<details><summary>'+esc(m[0])+'<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><p>'+esc(m[1])+'</p><a class="wa-btn" href="https://wa.me/393662272236" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Scrivimi su WhatsApp</a></details>'; }).join('')+'</div></section>'; }
 var POLHTML='';
 function viewPkg(){
   var p = S.pkg || {}, mode = pkgMode(p);
