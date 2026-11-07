@@ -614,16 +614,21 @@ function viewPers(){
 function flatPers(x){ return x.replace(/<details class="plan pland"[^>]*>/,'<div class="plan pland flat">').replace(/<svg class="chev"[\s\S]*?<\/svg>/,'').replace('<summary>','<div class="pl-head">').replace('</summary>','</div>').replace('<small>Problematiche fisiche indicate</small>','').replace(/<\/details>$/,'</div>'); }
 
 function viewBody(){
-  var B=(S.body||[]).slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length) return '';
-  var c=B[0], p=B[1]||{}, fd=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
+  var TB=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
+  var TM=[['fia','Fianchi',' cm',''],['pet','Petto',' cm',''],['brs','Braccio sx',' cm',''],['gms','Gamba sx',' cm','']];
+  if(!(S.body||[]).length && !(S.misure||[]).length) return '';
+  return bcSec('Body check', S.body||[], TB, false) + bcSec('Misure corporee', S.misure||[], TM, true);
+}
+function bcSec(title, list, T, always){
+  var B=list.slice().sort(function(a,b){ return (b.d||'').localeCompare(a.d||''); }); if(!B.length && !always) return '';
+  var c=B[0]||{}, p=B[1]||{}, fd=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric'});
   function num(v,k){ return (k==='vis'||k==='bmr') ? String(Math.round(v)) : Number(v).toFixed(1).replace('.',','); }
   function dl(k,u,good){ if(p[k]==null||c[k]==null) return ''; var d=Math.round((c[k]-p[k])*10)/10; if(!d) return '<em class="bc-d">=</em>'; var ok=good==='up'?d>0:(good==='down'?d<0:null); return '<em class="bc-d'+(ok===true?' ok':(ok===false?' ko':''))+'">'+(d>0?'+':'−')+num(Math.abs(d))+u+'</em>'; }
-  var T=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
-  var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">Body check</span><small>Ultima misurazione: <b>'+esc(fd.format(parseD({d:c.d})))+'</b>'+(p.d?'<br>Penultima misurazione: <b>'+esc(fd.format(parseD({d:p.d})))+'</b>':'')+'</small></div><div class="bc-grid">';
-  var TT=T.filter(function(t){ return c[t[0]]!=null; }), op=ui.bcOpen;
+  var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">'+esc(title)+'</span><small>'+(c.d?'Ultima misurazione: <b>'+esc(fd.format(parseD({d:c.d})))+'</b>':'Nessuna misurazione ancora')+(p.d?'<br>Penultima misurazione: <b>'+esc(fd.format(parseD({d:p.d})))+'</b>':'')+'</small></div><div class="bc-grid">';
+  var TT=always?T:T.filter(function(t){ return c[t[0]]!=null; }), op=ui.bcOpen;
   function chart(t){
     var P=B.filter(function(b){ return b[t[0]]!=null; }).slice().reverse();
-    if(P.length<2) return '<div class="bc-ch"><p>Serve almeno un\'altra misurazione per vedere l\'andamento.</p></div>';
+    if(P.length<2) return '<div class="bc-ch"><p>'+(P.length?'Serve almeno un\'altra misurazione per vedere l\'andamento.':'Nessuna misurazione ancora.')+'</p></div>';
     var W=320,H=150,l=34,r=14,tp=18,bt=30, vs=P.map(function(b){ return +b[t[0]]; }), mn=Math.min.apply(0,vs), mx=Math.max.apply(0,vs), pad=(mx-mn)*0.25||Math.max(1,mx*0.02); mn-=pad; mx+=pad;
     var X=function(i){ return l+(W-l-r)*(P.length===1?0.5:i/(P.length-1)); }, Y=function(v){ return tp+(H-tp-bt)*(1-(v-mn)/(mx-mn)); };
     var fs=new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short'});
@@ -634,7 +639,7 @@ function viewBody(){
     P.forEach(function(b,i){ var x=X(i), y=Y(+b[t[0]]); g+='<circle cx="'+x+'" cy="'+y+'" r="4.5" class="bc-pt'+(i===P.length-1?' last':'')+'"/><text x="'+x+'" y="'+(y-9)+'" class="bc-v">'+num(b[t[0]],t[0])+'</text><text x="'+x+'" y="'+(H-10)+'" class="bc-x">'+esc(fs.format(parseD({d:b.d})))+'</text>'; });
     return '<div class="bc-ch"><b>Andamento '+esc(t[1].toLowerCase())+'</b>'+g+'</svg></div>';
   }
-  TT.forEach(function(t,i){ h+='<button type="button" class="bc-t'+(op===t[0]?' on':'')+((i===TT.length-1&&TT.length%2)?' wide':'')+'" data-act="bcT" data-k="'+t[0]+'" aria-expanded="'+(op===t[0])+'"><span>'+t[1]+'</span><svg class="chev bc-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg><strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>'+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</button>';
+  TT.forEach(function(t,i){ h+='<button type="button" class="bc-t'+(op===t[0]?' on':'')+((i===TT.length-1&&TT.length%2)?' wide':'')+'" data-act="bcT" data-k="'+t[0]+'" aria-expanded="'+(op===t[0])+'"><span>'+t[1]+'</span><svg class="chev bc-chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>'+(c[t[0]]!=null?'<strong>'+num(c[t[0]],t[0])+'<i>'+(t[0]==='vis'?' livello':t[2])+'</i></strong>':'<strong>—</strong>')+dl(t[0],t[2]==='%'?'%':t[2],t[3])+'</button>';
     var oi=-1; TT.forEach(function(x,k){ if(x[0]===op) oi=k; });
     if(oi>=0 && (i===(oi|1) || (i===oi && i===TT.length-1))) h+=chart(TT[oi]); });
   return h+'</div></section>';
