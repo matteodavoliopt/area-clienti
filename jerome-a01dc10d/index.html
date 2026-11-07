@@ -195,7 +195,8 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .bc{gap:12px}
 .bc-head{display:flex;flex-direction:column;gap:4px}
 .bc-head .eyebrow{font-size:15px;letter-spacing:.14em}
-.bc-head small{color:var(--muted);font-size:13px}
+.bc-head small{color:var(--muted);font-size:13px;line-height:1.5}
+.bc-head small b{color:var(--ink);font-weight:600}
 .bc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .bc-t{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .bc-t span{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
@@ -621,7 +622,7 @@ function viewBody(){
   function num(v,k){ return (k==='vis'||k==='bmr') ? String(Math.round(v)) : Number(v).toFixed(1).replace('.',','); }
   function dl(k,u,good){ if(p[k]==null||c[k]==null) return ''; var d=Math.round((c[k]-p[k])*10)/10; if(!d) return '<em class="bc-d">=</em>'; var ok=good==='up'?d>0:(good==='down'?d<0:null); return '<em class="bc-d'+(ok===true?' ok':(ok===false?' ko':''))+'">'+(d>0?'+':'−')+num(Math.abs(d))+u+'</em>'; }
   var T=[['w','Peso',' kg','down'],['mm','Massa muscolare',' kg','up'],['mg','Massa grassa',' kg','down'],['pg','Grasso corporeo','%','down'],['acq','Acqua totale',' L',''],['ai','Acqua intracellulare',' L',''],['ae','Acqua extracellulare',' L',''],['vis','Grasso viscerale','',''],['bmr','Metabolismo basale',' kcal','']];
-  var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">Body check</span><small>Misurazione del '+esc(fd.format(parseD({d:c.d})))+(p.d?' · confronto con il '+esc(fd.format(parseD({d:p.d}))):'')+'</small></div><div class="bc-grid">';
+  var h='<section class="plan bc"><div class="bc-head"><span class="eyebrow">Body check</span><small>Ultima misurazione: <b>'+esc(fd.format(parseD({d:c.d})))+'</b>'+(p.d?'<br>Penultima misurazione: <b>'+esc(fd.format(parseD({d:p.d})))+'</b>':'')+'</small></div><div class="bc-grid">';
   var TT=T.filter(function(t){ return c[t[0]]!=null; }), op=ui.bcOpen;
   function chart(t){
     var P=B.filter(function(b){ return b[t[0]]!=null; }).slice().reverse();
